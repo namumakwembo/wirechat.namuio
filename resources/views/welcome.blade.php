@@ -22,7 +22,7 @@
                         <div class="w-full px-4">
                           <div class=" mx-auto max-w-5xl text-center" style="visibility: visible; animation-delay: 0.2s;">
                             <h1 class="mb-6 text-4xl md:text-5xl lg:text-6xl  lg:leading-[1.2] font-extrabold font-manrope font-black leading-snug text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-pink-600 to-purple-600 ">
-                              Scalable Livewire Powered
+                              Livewire-Powered, Scalable
                                
                                <span class="bg-gradient-to-r from-blue-600 p-1 mx-2   to-purple-600  bg-no-repeat bg-bottom text-white">Chat   </span> <br>
                                Package

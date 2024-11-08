@@ -9,7 +9,7 @@
            {{-- <img class="rounded-xl w-9 h-9 lg:h-11 lg:w-11 " src="{{ asset('assets/wirechat.svg') }}" alt="Alerts"> --}}
 
            
-          <svg class=" w-9 h-9 lg:h-11 lg:w-11" id="OBJECTS" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500">
+          <svg class=" w-9 h-9 lg:h-10 lg:w-10" id="OBJECTS" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500">
             <defs>
               <style>
                 .cls-1 {
