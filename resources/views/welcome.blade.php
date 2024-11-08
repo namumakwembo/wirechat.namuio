@@ -1,6 +1,6 @@
 <x-app-layout>  
 
-  <x-navigation class="border-b dark:border-blue-700/20" />
+  <x-navigation class="border-b border-blue-700/20" />
   {{-- Boxed line --}}
   <svg class="pointer-events-none z-10 absolute -inset-px h-full w-full stroke-black/10 dark:stroke-white/10 stroke-[4] [mask-image:radial-gradient(white,transparent_70%)] [stroke-dasharray:5_6] [stroke-dashoffset:10]">
     <defs>
@@ -16,15 +16,13 @@
         <div class="relative w-full max-w-2xl px-6 lg:max-w-7xl">
             
             <main class="mt-6">
-                <div   class="relative overflow-hidden bg-primary pt-[120px] md:pt-[130px] ">
+                <div   class="relative overflow-hidden bg-primary pt-[40px] sm:pt-[80px] md:pt-[130px] ">
                     <div class="container">
                       <div class="-mx-4 flex flex-wrap items-center">
                         <div class="w-full px-4">
                           <div class=" mx-auto max-w-5xl text-center" style="visibility: visible; animation-delay: 0.2s;">
-                            <h1 class="mb-6 text-3xl font-extrabold font-manrope font-black leading-snug text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-pink-600 to-purple-600 sm:text-4xl lg:text-6xl  lg:leading-[1.2]">
-                              Open-Source 
-      
-                              Livewire
+                            <h1 class="mb-6 text-4xl md:text-5xl lg:text-6xl  lg:leading-[1.2] font-extrabold font-manrope font-black leading-snug text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-pink-600 to-purple-600 ">
+                              Scalable Livewire Powered
                                
                                <span class="bg-gradient-to-r from-blue-600 p-1 mx-2   to-purple-600  bg-no-repeat bg-bottom text-white">Chat   </span> <br>
                                Package

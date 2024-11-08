@@ -15,7 +15,7 @@
 
 
 
-    <main class="bg-gray-50/30 w-full dark:bg-gray-900 pb-14 h-full px-10    overflow-y-auto">
+    <main class="bg-gray-50/30 w-full dark:bg-gray-900 pb-14 h-full px-5 md:px-10    overflow-y-auto">
 
         <x-prose class=" mx-auto w-full dark:text-white/90 rounded-lg text-gray-900">
 

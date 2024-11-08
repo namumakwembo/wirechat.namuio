@@ -20,7 +20,7 @@ Before you begin, ensure the following are installed:
 
 ## Installing
 
-1. **Install the package via Composer**
+### 1. Install the package via Composer
 
 Before installing, ensure that authentication is already set up in your application. For more information, check out [Laravel Breeze](https://laravel.com/docs/11.x/starter-kits#laravel-breeze)
 
@@ -28,7 +28,7 @@ Before installing, ensure that authentication is already set up in your applicat
 composer require namu/wirechat
 ```
 
-2. **Run the installation command**
+### 2. Run the installation command
 
 Run this command to install and publish the necessary files:
 
