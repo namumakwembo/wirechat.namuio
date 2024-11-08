@@ -5,7 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>{{ $title ?? 'Wirechat' }}</title>
+
+    
     <script>
         // It's best to inline this in `head` to avoid FOUC (flash of unstyled content) when changing pages or themes
         if (
@@ -18,6 +19,10 @@
             document.documentElement.classList.remove('dark');
         }
     </script>
+
+
+    <!-- MINIFIED -->
+    {!! SEO::generate(true) !!}
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
@@ -31,6 +36,9 @@
         [x-cloak]{
             display: none!important;
         }
+        html {
+    scroll-behavior: smooth;
+}
     </style>
     <!-- Styles / Scripts -->
     @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))

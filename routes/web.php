@@ -1,9 +1,11 @@
 <?php
 
+use App\Helpers\Helper;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
 
+    Helper::seo('Home');
     return view('welcome');
 });
 
@@ -11,16 +13,15 @@ Route::get('/', function () {
 
 Route::prefix('docs')->group(function () {
     Route::get('/', function () {
+        Helper::seo('Introduction');
         return view('docs.introduction');
     })->name('docs');
 
 
     Route::get('/installation', function () {
+        Helper::seo('Installation','Install a realtime chat app into your Laravel-Livewire application');
         return view('docs.installation');
     })->name('installation');
-
-
-
 
 
     /**----------------

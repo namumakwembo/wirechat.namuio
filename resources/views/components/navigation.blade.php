@@ -8,7 +8,8 @@
        <a href="/" class="flex items-center gap-2 w-auto text-lg lg:text-2xl font-extrabold leading-none text-black dark:text-white  ">
            {{-- <img class="rounded-xl w-9 h-9 lg:h-11 lg:w-11 " src="{{ asset('assets/wirechat.svg') }}" alt="Alerts"> --}}
 
-           <svg class=" w-9 h-9 lg:h-11 lg:w-11" id="OBJECTS" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500">
+           
+          <svg class=" w-9 h-9 lg:h-11 lg:w-11" id="OBJECTS" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500">
             <defs>
               <style>
                 .cls-1 {
@@ -16,22 +17,26 @@
                 }
           
                 .cls-2 {
-                  fill: url(#linear-gradient-3);
+                  fill: #fff;
                 }
           
                 .cls-3 {
+                  fill: url(#linear-gradient-3);
+                }
+          
+                .cls-4 {
                   fill: url(#linear-gradient);
                 }
               </style>
-              <linearGradient id="linear-gradient" x1="209.91" y1="371.24" x2="212.31" y2="457.93" gradientUnits="userSpaceOnUse">
+              <linearGradient id="linear-gradient" x1="205.38" y1="385.01" x2="208.06" y2="481.49" gradientUnits="userSpaceOnUse">
                 <stop offset="0" stop-color="#3070f9"/>
                 <stop offset="1" stop-color="#00c0ee"/>
               </linearGradient>
-              <linearGradient id="linear-gradient-2" x1="209.91" y1="371.24" x2="212.31" y2="457.93" gradientUnits="userSpaceOnUse">
+              <linearGradient id="linear-gradient-2" x1="205.38" y1="385.01" x2="208.06" y2="481.49" gradientUnits="userSpaceOnUse">
                 <stop offset="0" stop-color="#3070f9"/>
                 <stop offset="1" stop-color="#00c2ee"/>
               </linearGradient>
-              <linearGradient id="linear-gradient-3" x1="310.43" y1="421.16" x2="187.02" y2="16.84" gradientUnits="userSpaceOnUse">
+              <linearGradient id="linear-gradient-3" x1="317.25" y1="440.57" x2="179.91" y2="-9.43" gradientUnits="userSpaceOnUse">
                 <stop offset="0" stop-color="#3dc2ec"/>
                 <stop offset=".13" stop-color="#40afee"/>
                 <stop offset=".34" stop-color="#4493f1"/>
@@ -40,9 +45,13 @@
                 <stop offset="1" stop-color="#4b70f5"/>
               </linearGradient>
             </defs>
-            <path class="cls-3" d="M353.96,360.5v86.07c0,9.98-10.33,16.61-19.4,12.47l-129.76-59.31-140.23-64.09,145.4,12.49c-.56,3.3.57,6.69,3.06,8.99,4.05,3.78,10.41,3.55,14.19-.5l6.06-6.5,120.68,10.37Z"/>
-            <path class="cls-1" d="M353.96,360.5v86.07c0,9.98-10.33,16.61-19.4,12.47l-129.76-59.31-140.23-64.09,145.4,12.49c-.56,3.3.57,6.69,3.06,8.99,4.05,3.78,10.41,3.55,14.19-.5l6.06-6.5,120.68,10.37Z"/>
-            <path class="cls-2" d="M449.45,103.03c-3.43-32.95-30.15-58.67-63.21-60.72-78.73-4.88-199.9-5.3-274.22-.62-33.98,2.13-61.28,28.99-63.59,62.95-5.29,78.06-5.74,154.28-.53,228.32,2.38,33.71,29.01,60.77,62.72,63.12,27.19,1.88,59.87,3.11,94.18,3.66,50.25.82,104.01.18,149.16-1.9,11.79-.55,22.99-1.2,33.38-1.94,32.67-2.32,58.99-27.8,62.49-60.35,8.21-76.49,7.77-154.04-.38-232.51ZM367.8,205.99l-134.53,144.14-6.06,6.5c-3.78,4.05-10.14,4.28-14.19.5-2.48-2.31-3.62-5.69-3.06-8.99.05-.34.13-.68.22-1.02l26.67-97.76h-97.31c-5.54,0-10.04-4.5-10.04-10.05,0-2.55.96-4.99,2.7-6.85l140.59-150.62c3.15-3.37,8.19-4.16,12.21-1.92,4.04,2.25,6.02,6.95,4.81,11.41l-26.67,97.78h97.31c5.54,0,10.04,4.5,10.04,10.04,0,2.55-.97,4.99-2.7,6.85Z"/>
+            <rect class="cls-2" fill="currentColor" x="101.66" y="59.36" width="321.49" height="321.49"/>
+            <g>
+              <path class="cls-4" d="M365.7,373.06v95.79c0,11.11-11.5,18.48-21.59,13.88l-144.42-66.01-156.07-71.32,161.83,13.9c-.62,3.67.64,7.44,3.4,10.01,4.51,4.21,11.58,3.95,15.79-.55l6.75-7.23,134.31,11.54Z"/>
+              <path class="cls-1" d="M365.7,373.06v95.79c0,11.11-11.5,18.48-21.59,13.88l-144.42-66.01-156.07-71.32,161.83,13.9c-.62,3.67.64,7.44,3.4,10.01,4.51,4.21,11.58,3.95,15.79-.55l6.75-7.23,134.31,11.54Z"/>
+              <path class="cls-3" d="M471.97,86.5c-3.81-36.67-33.55-65.3-70.34-67.58-87.63-5.43-222.48-5.9-305.2-.7C58.61,20.59,28.22,50.48,25.66,88.28c-5.88,86.88-6.39,171.71-.6,254.12,2.65,37.52,32.29,67.64,69.81,70.25,30.26,2.09,66.63,3.45,104.82,4.06,55.93.91,115.76.2,166.01-2.11,13.12-.61,25.58-1.33,37.15-2.15,36.35-2.58,65.65-30.94,69.55-67.17,9.14-85.13,8.65-171.44-.43-258.78ZM381.1,201.1l-149.72,160.42-6.74,7.23c-4.21,4.51-11.29,4.76-15.79.55-2.77-2.56-4.03-6.33-3.41-10.01.06-.38.14-.75.24-1.13l29.68-108.8h-108.3c-6.17,0-11.17-5-11.17-11.18,0-2.84,1.06-5.56,3.01-7.63L275.36,62.91c3.51-3.75,9.12-4.63,13.6-2.14,4.49,2.51,6.7,7.74,5.36,12.7l-29.69,108.83h108.31c6.16,0,11.17,5.01,11.17,11.17,0,2.84-1.08,5.56-3.01,7.63Z"/>
+              <path class="cls-2" d="M384.11,193.47c0,2.84-1.08,5.56-3.01,7.63l-149.72,160.42-6.74,7.23c-4.21,4.51-11.29,4.76-15.79.55-2.77-2.56-4.03-6.33-3.41-10.01.06-.38.14-.75.24-1.13l29.68-108.8h-108.3c-6.17,0-11.17-5-11.17-11.18,0-2.84,1.06-5.56,3.01-7.63L275.36,62.91c3.51-3.75,9.12-4.63,13.6-2.14,4.49,2.51,6.7,7.74,5.36,12.7l-29.69,108.83h108.31c6.16,0,11.17,5.01,11.17,11.17Z"/>
+            </g>
           </svg>
            Wirechat
        </a>
@@ -83,7 +92,7 @@
     {{-- small screen menu details --}}
    <div x-cloak x-show="sideBarFloating" class="flex lg:hidden flex-col gap-5 px-3 ">
     <a href="/" class="relative z-10 flex gap-2 items-center w-auto text-lg lg:text-2xl font-extrabold leading-none text-black dark:text-white  ">
-           <img class="rounded-xl w-9 h-9 lg:h-11 lg:w-11 " src="{{ asset('assets/wirechat.svg') }}" alt="Alerts">
+           <img class="rounded-xl w-9 h-9 lg:h-11 lg:w-11 " src="{{ asset('assets/wirechat-fill.svg') }}" alt="Alerts">
         
         Wirechat
     </a>
