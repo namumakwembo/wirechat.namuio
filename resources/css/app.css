@@ -2,5 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
- 
-  
+@layer components {
+  /* Custom styling for code blocks inside prose but excluding pre code blocks */
+  .prose code:not(pre code) {
+    @apply bg-gray-200/70 text-black px-2 py-0.5 rounded; /* Light mode styles */
+  }
+
+  /* Dark mode targeting */
+  .dark .prose code:not(pre code) {
+    @apply bg-slate-800 px-2 py-0.5 rounded text-slate-200; /* Dark mode styles */
+  }
+}

@@ -71,6 +71,14 @@
                         </x-sidebar-link>
 
                     </li>
+
+                    <li>
+                        <x-sidebar-link href="{{ route('usage.events') }}"
+                            active="{{ request()->routeIs('usage.events') }}">
+                            Events
+                        </x-sidebar-link>
+
+                    </li>
                 </ol>
             </section>
 

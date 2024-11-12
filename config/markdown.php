@@ -72,6 +72,7 @@ return [
      */
     'extensions' => [
         //
+        new \League\CommonMark\Extension\Table\TableExtension(),
     ],
 
     /*

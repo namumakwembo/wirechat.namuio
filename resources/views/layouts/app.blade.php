@@ -37,8 +37,8 @@
             display: none!important;
         }
         html {
-    scroll-behavior: smooth;
-}
+         scroll-behavior: smooth;
+      }
     </style>
     <!-- Styles / Scripts -->
     @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))

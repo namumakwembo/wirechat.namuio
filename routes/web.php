@@ -41,6 +41,11 @@ Route::prefix('docs')->group(function () {
         return view('docs.usage.groups');
     })->name('usage.groups');
 
+
+    Route::get('/events', function () {
+        return view('docs.usage.events');
+    })->name('usage.events');
+
      
     /**----------------
      * Customization
