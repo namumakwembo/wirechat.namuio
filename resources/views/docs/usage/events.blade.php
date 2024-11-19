@@ -7,7 +7,7 @@
 
 In the `WireChat` package, events are broadcasted to notify users in real-time when certain actions, such as message creation, occur. The events are used to update the chat interface or notify participants who might not be actively engaged in the conversation.
 
-### `MessageCreated` Event
+### MessageCreated Event
 
 When a message is created, the `MessageCreated` event is triggered and broadcasted over a private channel `private-conversation.{id}`, where `{id}` is the conversation's unique identifier. This event is used to quickly update the chat interface in real time for all participants within the conversation. The event is only available to users who are part of the conversation, and the channel is validated by checking if the authenticated user belongs to the conversation.
 
@@ -21,7 +21,7 @@ $message= $auth->sendMessageTo($otherUser);
 broadcast(new MessageCreated($message));
 ```
 
-### `NotifyParticipant` Event
+### NotifyParticipant Event
 
 In some cases, users may not be active in a conversation but still need to be notified about new messages. The `NotifyParticipant` event is broadcasted over a private channel `private-participant.{id}`, notifying all participants individually. This event can be used to notify participants about new messages, even if they are not currently viewing the conversation.
 
