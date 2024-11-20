@@ -22,7 +22,7 @@ To allow users to create groups in your application, ensure the following settin
 
 ### User-Specific Group Creation Permissions
 
-For granular control, models using the `Chatable` trait can override the `canCreateNewGroups()` method. This method determines whether a particular user is permitted to create new groups. 
+For granular control, models using the `Chatable` trait can override the `canCreateGroups()` method. This method determines whether a particular user is permitted to create new groups. 
 
 ```php
 
@@ -33,9 +33,9 @@ class User extends Authenticatable
     use Chatable;
     // ...
 
-    public static function canCreateNewGroups(): bool
+    public function canCreateGroups(): bool
     {
-        return true; // Default is true, allowing group creation.
+        return $this->hasVerifiedEmail()==true;
     }
 }
 

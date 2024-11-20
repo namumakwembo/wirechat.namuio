@@ -2,20 +2,82 @@
 <x-docs-layout>
 
 <x-markdown> 
-## Overview
 
-After intalling and setting up wirechat configurations it's time to now use it 
-You can now simply visit the url `http://127.0.0.1:8000/chats` in order to start chatting 
+# Overview  
+
+Once you’ve installed and configured WireChat, you're just a few steps away from creating engaging chat experiences.  
+
+To get started, visit the default chat interface at:  
+**`http://127.0.0.1:8000/chats`**
 
 ---
 
-### Getting started
+### Getting Started  
 
-Before you can start using Wirechat  you need to make sure you add the trait to your User model , Wirechat is polymorphic so you can 
-add the wirechat trait to any model you want to enable chating
+To begin using WireChat, ensure you integrate the **Chatable** trait into the models you want to enable for chatting. WireChat is polymorphic, so it can be added to any model, not just the User model.
 
-`Namu\WireChat\Traits\Chatable`
+#### Adding the Chatable Trait  
+
+Add the `Chatable` trait to your **User** model (or any other applicable model):  
+
+```php
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Namu\WireChat\Traits\Chatable;
+
+class User extends Authenticatable
+{
+      use Chatable;
+
+      ...
+}
 ```
+
+After this setup, your model will be ready to start conversations, send messages, and more.
+
+---
+
+### Starting a Chat  
+
+#### Using the WireChat UI:
+
+1. Navigate to the `/chats` route, defined in your [WireChat configuration]({{route('customization.config')}}).  
+2. Click the **Plus** icon in the chat list.  
+3. Search for and select a user to start a conversation with. _(The search results are customizable; see [Trait Customization]({{route('customization.trait')}}))_.  
+4. Click on the user’s name to initiate a chat.  
+
+> To enable the "New Chat" button in the UI, ensure the `show_new_chat_modal_button` setting is enabled in your WireChat configuration.
+
+
+#### Creating a Private Chat Programmatically:  
+
+**With another user:**  
+
+```php
+$otherUser = User::first();
+$auth = auth()->user();
+$conversation = $auth->createConversationWith($otherUser, 'Optional message');
+```
+
+**With yourself:**  
+
+```php
+$auth = auth()->user();
+$conversation = $auth->createConversationWith($auth, 'Optional message');
+```
+
+If a conversation already exists between the two participants, it will be returned instead of creating a new one.
+
+___
+
+### User-Specific Chat Creation Permissions  
+
+WireChat provides flexibility to control chat creation on a per-user basis. Models using the `Chatable` trait can override the `canCreateChats()` method to define custom logic for determining whether a user can initiate new chats.  
+
+#### Example: Restricting Chat Creation to Verified Users  
+
+Below is an example implementation in a `User` model, where only users with verified email addresses can create new chats.  
+
+```php
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Namu\WireChat\Traits\Chatable;
 
@@ -23,85 +85,140 @@ class User extends Authenticatable
 {
     use Chatable;
 
-    ...
+    // Custom logic for allowing chat creation
+    public function canCreateChats(): bool
+    {
+        return $this->hasVerifiedEmail();
+    }
 }
+```  
 
+#### Key Points  
+
+- **Returning `false`:**  
+  If the `canCreateChats()` method returns `false`, the user will be restricted from creating new chats.  
+
+- **Important Note:**  
+  Restricting chat creation does not prevent the user from:  
+  - Receiving new messages.  
+  - Participating in existing conversations.  
+
+By customizing this method, you can tailor WireChat to suit your application's specific requirements for user permissions and behavior.
+
+---
+
+### Sending a Message  
+
+**Sending via the WireChat UI** 
+
+1. Open a chat from your list.  
+2. Type your message in the message box.  
+3. Click **Send** or press Enter.
+
+**Sending Programmatically**
+
+**To a user:**  
+
+```php
+$otherUser = User::first();
+$auth = auth()->user();
+$message = $auth->sendMessageTo($otherUser, 'Your message here');
 ```
 
-### Extending functionality
+**To a conversation directly:**  
 
-Sometimes you may want to use the wirechat outside it's default interface , Here are the methods provided by the `WireChat` Trait
+```php
+$auth = auth()->user();
+$conversation = $auth->conversations()->first();
+$message = $auth->sendMessageTo($conversation, 'Your message here');
+```
 
-### Trait Methods
+WireChat will validate the user’s authorization to send messages to the conversation and create it if it doesn’t exist.
 
-1. **Get Conversations**
+---
 
-   Retrieves all conversations associated with the authenticated user.
-   ```php
-   //Returns Collection of Conversation models.
-   $conversations = $user->conversations()->get();
-   ```
+### Managing Conversations  
 
-2. **Send Message to a User**
+**Viewing Conversations**
 
-   Sends a message to another user. If no conversation exists between the two users, a new one will be created.
+Visit the `/chats` route to see your active conversations. Conversations you’ve deleted, groups you’ve exited, or blank conversations (no messages) will not appear in the list.
 
-   ```php
-   //Returns Created Message model
-   $user->sendMessageTo($anotherUser, 'message'); 
-   ```
+**Programmatically Fetching Conversations:**  
 
-3. **Send Message to a Conversation**
+```php
+$auth = auth()->user();
+$conversations = $auth->conversations()->get();
+```
 
-   Sends a message directly to an existing conversation or group. If the user is not a participant, no message is created.
- 
-   ```php
-   //Returns Created Message model
-   $user->sendMessageTo($conversation, 'message'); 
-   ```
+Applying Scopes  
 
-4. **Create or Retrieve Conversation with a User**
+1. **Exclude Blank Conversations:**  
 
-   Creates a new conversation with another user. If a conversation already exists, it returns the existing one.
+```php
+$conversations = $auth->conversations()->withoutBlanks()->get();
+```
 
-   ```php
-   //Returns The Conversation model (existing or newly created).
-   $user->createConversationWith($anotherUser, 'message'); 
-   ```
+2. **Exclude Deleted Conversations:**  
 
-5. **Check if User Belongs to a Conversation**
+```php
+$conversations = $auth->conversations()->withoutDeleted()->get();
+```
 
-   Determines if the authenticated user is a participant in a specified conversation.
+---
 
-   ```php
-   // Returns bool
-   $user->belongsToConversation($conversation); 
-   ```
+### Clearing Conversations  
 
-6. **Check if User Has a Conversation with Another User**
+Clearing a conversation removes all messages for you but keeps the conversation in the list.  
 
-   Checks whether the authenticated user has an existing conversation with a specified user.
+**UI Instructions:**  
 
-   ```php
-   // Returns bool
-   $user->hasConversationWith($anotherUser);
-   ```
+1. Open a chat.  
+2. Select **Clear Chat History** from the menu or **Chat Info**.
 
-7. **Delete Conversation**
+**Programmatically Clear a Conversation:**  
 
-   Deletes or hides a conversation for the authenticated user. Messages will remain accessible to other participants until they also delete the conversation.
+```php
+$auth = auth()->user();
+$conversation = $auth->conversations()->first();
+$conversation->clearFor($auth);
+```
 
-   ```php
-   $user->deleteConversation($conversation);
-   ```
+---
 
-8. **Exit a Group or Channel Conversation**
+### Deleting Conversations  
 
-   Allows the authenticated user to leave a group or channel conversation by marking their participant record as exited. After exiting, the user will no longer be able to send or receive messages in this conversation. Note: For private conversations, users cannot exit.
+Deleting a conversation removes it from your list and clears its messages. For private chats, it will remain deleted and excluded from list unless another message is sent or received.
 
-   ```php
-   $user->exitConversation($conversation);
-   ```
+**UI Instructions:**  
+
+1. Open a chat.  
+2. Select **Delete Chat** from the menu or **Chat Info**.
+
+**Programmatically Delete a Conversation:**  
+
+```php
+$auth = auth()->user();
+$conversation = $auth->conversations()->first();
+$conversation->deleteFor($auth);
+```
+
+> Conversations are permanently deleted if all participants delete them or if it's a self-chat.
+
+---
+
+### Additional Features  
+
+**Check User Membership in a Conversation:**  
+
+```php
+$user->belongsToConversation($conversation); // Returns bool
+```
+
+**Check Existing Conversations with Another User:**  
+
+```php
+$user->hasConversationWith($anotherUser); // Returns bool
+```
 
 
 </x-markdown>
