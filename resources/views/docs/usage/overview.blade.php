@@ -12,11 +12,11 @@ To get started, visit the default chat interface at:
 
 ---
 
-### Getting Started  
+## Getting Started  
 
 To begin using WireChat, ensure you integrate the **Chatable** trait into the models you want to enable for chatting. WireChat is polymorphic, so it can be added to any model, not just the User model.
 
-#### Adding the Chatable Trait  
+### Adding the Chatable Trait  
 
 Add the `Chatable` trait to your **User** model (or any other applicable model):  
 
@@ -36,7 +36,8 @@ After this setup, your model will be ready to start conversations, send messages
 
 ---
 
-### Starting a Chat  
+## Starting a Chat  
+
 
 #### Using the WireChat UI:
 
@@ -48,7 +49,7 @@ After this setup, your model will be ready to start conversations, send messages
 > To enable the "New Chat" button in the UI, ensure the `show_new_chat_modal_button` setting is enabled in your WireChat configuration.
 
 
-#### Creating a Private Chat Programmatically:  
+#### Creating a Private Chat Programmatically:
 
 With another user:
 
@@ -68,7 +69,7 @@ $conversation = $auth->createConversationWith($auth, 'Optional message');
 If a conversation already exists between the two participants, it will be returned instead of creating a new one.
 ___
 
-### User-Specific Chat Creation Permissions  
+## User-Specific Chat Creation Permissions  
 
 WireChat provides flexibility to control chat creation on a per-user basis. Models using the `Chatable` trait can override the `canCreateChats()` method to define custom logic for determining whether a user can initiate new chats.  
 
@@ -96,15 +97,15 @@ If the `canCreateChats()` method returns `false`, the user will be restricted fr
 
 ---
 
-### Sending a Message  
+## Sending a Message  
 
- **Via the WireChat UI** 
+#### Via the WireChat UI
 
 1. Open a chat from your list.  
 2. Type your message in the message box.  
 3. Click **Send** or press Enter.
 
-**Sending Programmatically**
+#### Sending Programmatically
 
 To a user:
 
@@ -125,20 +126,20 @@ WireChat will validate the user’s authorization to send messages to the conver
 
 ---
 
-### Managing Conversations  
+## Managing Conversations  
 
-**Viewing Conversations**
+####Viewing Conversations
 
 Visit the `/chats` route to see your active conversations. Conversations you’ve deleted, groups you’ve exited, or blank conversations (no messages) will not appear in the list.
 
-**Programmatically Fetching Conversations:**  
+#### Programmatically Fetching Conversations:  
 
 ```php
 $auth = auth()->user();
 $conversations = $auth->conversations()->get();
 ```
 
-**Applying Scopes**
+#### Applying Scopes
 
 1. Exclude Blank Conversations:
 
@@ -155,16 +156,16 @@ $conversations = $auth->conversations()->withoutDeleted()->get();
 
 ---
 
-### Clearing Conversations  
+## Clearing Conversations  
 
 Clearing a conversation removes all messages for you but keeps the conversation in the list.  
 
-**UI Instructions:**  
+#### UI Instructions:  
 
 1. Open a chat.  
 2. Select **Clear Chat History** from the menu or **Chat Info**.
 
-**Programmatically Clear a Conversation:**  
+#### Programmatically Clear a Conversation:  
 
 ```php
 $auth = auth()->user();
@@ -174,16 +175,16 @@ $conversation->clearFor($auth);
 
 ---
 
-### Deleting Conversations  
+## Deleting Conversations  
 
 Deleting a conversation removes it from your list and clears its messages. For private chats, it will remain deleted and excluded from list unless another message is sent or received.
 
-**UI Instructions:**  
+#### UI Instructions:  
 
 1. Open a chat.  
 2. Select **Delete Chat** from the menu or **Chat Info**.
 
-**Programmatically Delete a Conversation:**  
+#### Programmatically Delete a Conversation:  
 
 ```php
 $auth = auth()->user();
@@ -195,15 +196,15 @@ $conversation->deleteFor($auth);
 
 ---
 
-### Additional Features  
+## Additional Features  
 
-**Check User Membership in a Conversation:**  
+#### Check User Membership in a Conversation:  
 
 ```php
 $user->belongsToConversation($conversation); // Returns bool
 ```
 
-**Check Existing Conversations with Another User:**  
+#### Check Existing Conversations with Another User:  
 
 ```php
 $user->hasConversationWith($anotherUser); // Returns bool

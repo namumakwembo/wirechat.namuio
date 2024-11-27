@@ -3,13 +3,13 @@
 
 <x-markdown>
 
-## Groups
+# Groups
 
 WireChat's **Group** feature transforms simple messaging into a dynamic, multi-user conversation experience. Groups empower users to collaborate effectively by offering robust tools for managing members, assigning roles, and customizing permissions. Whether you're creating communities or coordinating projects, WireChat Groups provide the flexibility and control you need.
 
 ---
 
-### Enabling Group Creation
+## Enabling Group Creation
 
 To allow users to create groups in your application, ensure the following settings are enabled in the WireChat [configuration]({{route('customization.config')}}):
 
@@ -20,7 +20,7 @@ To allow users to create groups in your application, ensure the following settin
 
 ---
 
-### User-Specific Group Creation Permissions
+## User-Specific Group Creation Permissions
 
 For granular control, models using the `Chatable` trait can override the `canCreateGroups()` method. This method determines whether a particular user is permitted to create new groups. 
 
@@ -47,12 +47,12 @@ class User extends Authenticatable
 ---
     
 
-### Creating a Group
+## Creating a Group
 
 Creating a group allows users to set up a shared space where multiple participants can communicate. Group creators can define details, manage members, and configure roles for streamlined interactions.
 
 
-**Steps to Create a Group via UI:**
+#### Group creation via UI:
 
 1. Click the **Plus** icon in the Chats Component.
 2. Select **New Group**.
@@ -65,7 +65,7 @@ Creating a group allows users to set up a shared space where multiple participan
 6. Click **Create**.
 
 
-**To Create a Group Programmatically:**
+#### Programmatically:
 
 ```php
 // Create a group and get the Conversation model.
@@ -78,7 +78,7 @@ $conversation = $user->createGroup(
 
 ---
 
-### Group Participant Roles
+## Group Participant Roles
 
 WireChat supports hierarchical roles, enhancing group management:
 
@@ -101,11 +101,11 @@ The creator of a group is automatically assigned the `OWNER` role
 
 ---
 
-### Managing Group Members
+## Managing Group Members
 
 Groups support dynamic membership management, allowing admins and members (depending on permissions) to add or remove participants.
 
-### Adding Members +
+### Adding Members
 
 **To Add Members via UI:**
 
@@ -129,7 +129,7 @@ However you can also re-add members removed by Admin programatically by passing 
 $conversation->addParticipant($user, undoAdminRemovalAction: true);
 ```
 
-### Removing Members -
+### Removing Members
 
 Only admins can remove members, excluding the group owner.
 
@@ -145,17 +145,17 @@ Only admins can remove members, excluding the group owner.
 
 ---
 
-### Exiting a Group
+## Exiting a Group
 
 All members, except the owner, can exit a group.
 
-**To Exit a Group via UI:**
+#### Exit group via UI:
 
 1. Open the group chat.
 2. Click the three vertical **Dots** menu, then select **Exit Group**.
     - Alternatively, open the group name in **Group Info** and select **Exit Group**.
 
-**To Exit Programmatically:**
+#### Exit Programmatically:
 
 ```php
 // Exit a group conversation
@@ -166,7 +166,7 @@ $user->exitConversation($conversation);
 
 ---
 
-### Group Permissions
+## Group Permissions
 
 Group permissions allow owners to control who can perform specific actions, such as editing group information, sending messages, or adding members.
 

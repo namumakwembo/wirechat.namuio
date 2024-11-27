@@ -3,7 +3,7 @@
 
 <x-markdown>
 
-## Attachments
+# Attachments
 
 The **Attachments** feature allows users to seamlessly share files and media in conversations, enhancing the communication experience.
 

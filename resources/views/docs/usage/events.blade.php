@@ -3,7 +3,7 @@
 
 <x-markdown> 
  
-## Events
+# Events
 
 In the `WireChat` package, events are broadcasted to notify users in real-time when certain actions, such as message creation, occur. The events are used to update the chat interface or notify participants who might not be actively engaged in the conversation.
 
@@ -28,6 +28,7 @@ In some cases, users may not be active in a conversation but still need to be no
 The channel is validated by checking if the `id` in the route matches the authenticated user's ID, ensuring that notifications are sent to the correct participants.
 
 #### Example of Event Broadcasting:
+
 ```php
 ...
 $message= $auth->sendMessageTo($otherUser);
@@ -52,7 +53,7 @@ To update your application's UI or perform certain actions based on these events
 Echo.private('private-participant.${userId}')
       .listen('.Namu\\WireChat\\Events\\NotifyParticipant', (e) => {
          // Increment unread messages count or trigger a notification
-         console.log('New message from: ', e.message.id);
+         console.log('New message id: ', e.message.id);
       });
 ```
 
