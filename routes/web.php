@@ -41,6 +41,10 @@ Route::prefix('docs')->group(function () {
         return view('docs.usage.groups');
     })->name('usage.groups');
 
+    Route::get('/attachments', function () {
+        return view('docs.usage.attachments');
+    })->name('usage.attachments');
+
 
     Route::get('/events', function () {
         return view('docs.usage.events');

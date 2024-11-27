@@ -61,6 +61,15 @@
                     </li>
                     <li>
 
+
+                    <li>
+                        <x-sidebar-link href="{{ route('usage.attachments') }}"
+                            active="{{ request()->routeIs('usage.attachments') }}">
+                            Attachments
+                        </x-sidebar-link>
+                    </li>
+                    <li>
+
                         <x-sidebar-link href="{{ route('usage.aggregations') }}"
                             active="{{ request()->routeIs('usage.aggregations') }}">
                             Aggregates
