@@ -2,10 +2,6 @@
 
     <div class="flex-grow flex flex-col">
         <nav class="flex-1  px-2 space-y-1">
-            {{-- <a href="https://changelog.anystack.sh/wire-elements-pro"
-                class="text-gray-500 dark:text-gray-300 hover:bg-gray-50 hover:text-gray-900 group rounded-md py-2 px-2 flex items-center font-medium">
-                Changelog
-            </a> --}}
 
 
             {{-- Getting Started --}}

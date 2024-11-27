@@ -13,7 +13,7 @@ Wirechat is a simple yet robust chat package built with the TALL stack, making i
 Before you begin, ensure the following are installed:
 
 * PHP version 8.1 or later
-* Laravel version 10.47 or later
+* Laravel version 10 or later
 * Livewire version 3.2.3 or later
 
 ---
@@ -82,10 +82,21 @@ For more details, refer to the [Laravel Broadcasting Documentation](https://lara
 After configuring broadcasting, start a [queue worker](https://laravel.com/docs/11.x/queues#driver-prerequisites) to handle message broadcasting and other queued tasks:
 
 ```bash
-php artisan queue:work --queue=high,default
+php artisan queue:work --queue=messages,default
 ```
 
-Ensure your queue workers are running continuously to manage queued events, enabling proper real-time message broadcasting.
+#### Queue Prioritization
+
+Wirechat leverages two separate queues to ensure efficient delivery of messages and notifications:
+
+1. **High Priority**: The `messages` queue is used for broadcasting messages to users subscribed to a conversation. This ensures fast and near-instantaneous delivery for real-time communication.
+
+2. **Default Priority**: The `default` queue is used for broadcasting notifications about new messages to users outside the conversation, such as updating the chat list or showing unread message counts.
+
+#### Customizing Queues
+
+If your application already uses queues, you can integrate Wirechat seamlessly by customizing the queue names it uses. Refer to the [Wirechat Configuration]({{ route('customization.config') }}) section of the documentation for details on how to modify the default settings.
+
 
 #### Step 3: Run Migrations
 
