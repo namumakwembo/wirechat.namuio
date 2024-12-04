@@ -48,8 +48,8 @@ The following actions will be executed:
 To purge the CSS classes used by the package, add these lines to the `purge` array in `tailwind.config.js`:
 
 ```js
-   './wirechat/resources/views/**/*.blade.php',
-   './wirechat/src/Livewire/*.php',
+   './vendor/namu/wirechat/resources/views/**/*.blade.php',
+   './vendor/namu/wirechat/src/Livewire/*.php'
 ```
 
 ---

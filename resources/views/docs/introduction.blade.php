@@ -63,7 +63,7 @@
         <x-features-connector />
 
 
-        <x-features-item :reverse="false">
+        <x-features-item :reverse="true">
             <x-slot:title>   
                <span class="flex items-center gap-3 mex-w-fit ">
                   Group
@@ -84,7 +84,7 @@
         <x-features-connector />
 
         {{-- Share Media    --}}
-        <x-features-item :reverse="true">
+        <x-features-item :reverse="false">
             <x-slot:title >
 
                 <span class="flex items-center gap-3 mex-w-fit ">
@@ -116,7 +116,7 @@
                </span>
     
                <br>
-               & Search
+               And Search
                <br>
          </x-slot>
          <x-slot:description>
@@ -138,7 +138,7 @@
                                    
                </span>
              <br>
-              & Dark mode
+              Dark mode
          </x-slot>
          <x-slot:description>
              In order to match your brand , you can easily customize the theme in the config and to your brand color and wirechat also supports dark mode   </x-slot>
