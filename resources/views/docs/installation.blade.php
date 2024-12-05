@@ -41,6 +41,13 @@ The following actions will be executed:
    * Publish migration files
    * Create a storage symlink
 
+### 3. Run Migrations:
+
+Apply the necessary database migrations with:
+
+```bash
+php artisan migrate
+```
 ---
 
 ### Building Tailwind CSS for Production
@@ -48,8 +55,8 @@ The following actions will be executed:
 To purge the CSS classes used by the package, add these lines to the `purge` array in `tailwind.config.js`:
 
 ```js
-   './vendor/namu/wirechat/resources/views/**/*.blade.php',
-   './vendor/namu/wirechat/src/Livewire/*.php'
+'./vendor/namu/wirechat/resources/views/**/*.blade.php',
+'./vendor/namu/wirechat/src/Livewire/**/*.php'
 ```
 
 ---
@@ -66,8 +73,7 @@ In newer Laravel installations, broadcasting is disabled by default. To enable i
 php artisan install:broadcasting
 ```
 
-This command sets up the necessary broadcasting configurations for your application.
-> **Note**: This command will prompt you to install Laravel Reverb and necessary front-end packages such as Echo. Accept if you don’t yet have a WebSocket server set up.
+**Note**: This command will prompt you to install Laravel Reverb and necessary front-end packages such as Echo. Accept if you don’t yet have a WebSocket server set up.
 
 Then, start your Reverb server:
 
@@ -85,28 +91,20 @@ After configuring broadcasting, start a [queue worker](https://laravel.com/docs/
 php artisan queue:work --queue=messages,default
 ```
 
-#### Queue Prioritization
+<details class="my-9">
 
-Wirechat leverages two separate queues to ensure efficient delivery of messages and notifications:
+<summary> Queue Prioritization </summary>
 
-1. **High Priority**: The `messages` queue is used for broadcasting messages to users subscribed to a conversation. This ensures fast and near-instantaneous delivery for real-time communication.
+Wirechat uses two queues for efficient delivery:  
 
-2. **Default Priority**: The `default` queue is used for broadcasting notifications about new messages to users outside the conversation, such as updating the chat list or showing unread message counts.
+1. **High Priority (`messages`)**: For real-time broadcasting of messages to users in a conversation.  
+2. **Default Priority (`default`)**: For notifications like updating chat lists or showing unread message counts.  
 
-#### Customizing Queues
+You can customize these queue names in the [Wirechat Configuration]({{ route('customization.config') }}).  
 
-If your application already uses queues, you can integrate Wirechat seamlessly by customizing the queue names it uses. Refer to the [Wirechat Configuration]({{ route('customization.config') }}) section of the documentation for details on how to modify the default settings.
+</details>  
 
-
-#### Step 3: Run Migrations
-
-Apply the necessary database migrations with:
-
-```bash
-php artisan migrate
-```
-
-#### Step 4: Step Development Server
+#### Step 3: Step Development Server
 
 To start your development server, run:
 
