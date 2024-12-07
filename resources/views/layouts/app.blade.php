@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-    
+
     <script>
         // It's best to inline this in `head` to avoid FOUC (flash of unstyled content) when changing pages or themes
         if (
@@ -21,14 +21,38 @@
     </script>
 
     @production
-    
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-M2HKGXDV');</script>
-    <!-- End Google Tag Manager -->
+
+        <!-- Google Tag Manager -->
+        <script>
+            (function(w, d, s, l, i) {
+                w[l] = w[l] || [];
+                w[l].push({
+                    'gtm.start': new Date().getTime(),
+                    event: 'gtm.js'
+                });
+                var f = d.getElementsByTagName(s)[0],
+                    j = d.createElement(s),
+                    dl = l != 'dataLayer' ? '&l=' + l : '';
+                j.async = true;
+                j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+                f.parentNode.insertBefore(j, f);
+            })(window, document, 'script', 'dataLayer', 'GTM-M2HKGXDV');
+        </script>
+        <!-- End Google Tag Manager -->
+
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZMZ64GT4X8"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+
+            gtag('config', 'G-ZMZ64GT4X8');
+        </script>
     @endproduction
 
 
@@ -44,12 +68,13 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <style>
-        [x-cloak]{
-            display: none!important;
+        [x-cloak] {
+            display: none !important;
         }
+
         html {
-         scroll-behavior: smooth;
-      }
+            scroll-behavior: smooth;
+        }
     </style>
     <!-- Styles / Scripts -->
     @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
@@ -58,15 +83,15 @@
     @livewireStyles
 </head>
 
-<body  class="font-sans antialiased relative max-w-screen-2xl mx-auto w-full  dark:bg-gray-900 dark:text-white/50 ">
+<body class="font-sans antialiased relative max-w-screen-2xl mx-auto w-full  dark:bg-gray-900 dark:text-white/50 ">
     @production
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M2HKGXDV"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M2HKGXDV" height="0" width="0"
+                style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
     @endproduction
 
-      @yield('content'??$slot)
+    @yield('content' ?? $slot)
 
     <script>
         var themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
