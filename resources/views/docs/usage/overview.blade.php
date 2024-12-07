@@ -128,7 +128,7 @@ WireChat will validate the user’s authorization to send messages to the conver
 
 ## Managing Conversations  
 
-####Viewing Conversations
+#### Viewing Conversations
 
 Visit the `/chats` route to see your active conversations. Conversations you’ve deleted, groups you’ve exited, or blank conversations (no messages) will not appear in the list.
 
