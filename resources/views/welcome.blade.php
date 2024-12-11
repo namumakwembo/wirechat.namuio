@@ -190,7 +190,7 @@
                 <div class="relative w-full  px-6 lg:max-w-7xl">
 
                     <main class="mt-3">
-                      <div class="relative overflow-hidden  pt-[40px] sm:pt-[80px] ">
+                      <div class="relative overflow-hidden  pt-[40px]  ">
                         <div class="lg:container mx-auto">
                               <div class="flex flex-wrap items-center">
 
