@@ -28,6 +28,9 @@ Before installing, ensure that authentication is already set up in your applicat
 composer require namu/wirechat
 ```
 
+>⚠️ Beta Notice: Wirechat is currently in beta. While it may not yet be production-ready, we encourage you to explore and test it out. If you encounter any issues, your feedback will be invaluable in helping us refine and improve the package for a stable release.  
+
+
 ### 2. Run the installation command
 
 Run this command to install and publish the necessary files:
@@ -111,6 +114,8 @@ To start your development server, run:
 ```bash
 composer run dev
 ```
+
+
 
 If you're not running the latest Laravel version, you can run: `php artisan serve` && `npm run dev` seperately
 

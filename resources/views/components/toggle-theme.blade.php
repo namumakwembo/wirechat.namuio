@@ -1,5 +1,5 @@
 <button id="theme-toggle" type="button"
-            class="group flex max-w-[2.25rem] border border-gray-200/40 dark:border-gray-700/10 md:dark:border-gray-700/40 bg-gray-100/20 dark:bg-gray-800/20 rounded-lg h-9 w-9 items-center justify-center">
+            class="group flex max-w-[2.25rem] z-50 border border-gray-200/40 dark:border-gray-700/10 md:dark:border-gray-700/40 bg-gray-100/20 dark:bg-gray-800/20 rounded-lg h-9 w-9 items-center justify-center">
 
             <svg id="theme-toggle-light-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
                 class=" hidden w-5 h-5 text-white duration-300  group-hover:rotate-180">

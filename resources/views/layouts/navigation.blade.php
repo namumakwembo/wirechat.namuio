@@ -1,5 +1,5 @@
 
-<section x-data="{ sideBarFloating: false }"   class="  w-full px-8 text-gray-700 bg-white dark:bg-gray-900 body-font" >
+<section x-data="{ sideBarFloating: false }"   class=" z-50  w-full px-8 text-gray-700 bg-white dark:bg-gray-900 body-font" >
      {{-- small screen background overlay --}}
      <div @click="sideBarFloating=false" x-cloak x-show="sideBarFloating" class="absolute lg:hidden inset-0 bg-black/30"> </div>
 

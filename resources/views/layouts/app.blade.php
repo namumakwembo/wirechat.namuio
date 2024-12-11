@@ -1,11 +1,9 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="dark">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
 
     <script>
         // It's best to inline this in `head` to avoid FOUC (flash of unstyled content) when changing pages or themes
@@ -83,7 +81,7 @@
     @livewireStyles
 </head>
 
-<body class="font-sans antialiased relative max-w-screen-2xl mx-auto w-full  dark:bg-gray-900 dark:text-white/50 ">
+<body class="font-sans antialiased relative w-full  dark:bg-gray-900 dark:text-white/50 ">
     @production
         <!-- Google Tag Manager (noscript) -->
         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M2HKGXDV" height="0" width="0"
