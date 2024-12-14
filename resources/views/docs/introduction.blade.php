@@ -57,7 +57,7 @@
               
               </x-slot>
             <x-slot:description>
-                You can delete messages or chats and it won't intererupt the entirie conversation for other user ,
+                You can delete messages or chats and it won't interrupt the entire conversation for other users ,
                 For messages , you can choose to delete only for yourself or for everyone </x-slot>
         </x-features-item>
         <x-features-connector />
@@ -76,7 +76,7 @@
                 Conversations
                 </x-slot>
             <x-slot:description>
-                Easily create groups , edit members , add admins ,edit group permissions , title , descriptino
+                Easily create groups , edit members , add admins ,edit group permissions , title , description
                 avatar and many more
                 Convienient for teams or communities looking to create chat rooms </x-slot>
         </x-features-item>
@@ -120,7 +120,7 @@
                <br>
          </x-slot>
          <x-slot:description>
-            Not only will you be able to share send and receives messages in realtime , you will also be able to search for private conversation & group chats   </x-slot>
+            Not only will you be able to share send and receives messages in realtime , you will also be able to search for private conversations & group chats   </x-slot>
        </x-features-item>
 
        <x-features-connector />
@@ -169,7 +169,7 @@
               Feature
          </x-slot>
          <x-slot:description>
-             You can also reply to messages, files and attachments in the conversation making is convienient and easy to  following conversations just like modern chat apps   </x-slot>
+             You can also reply to messages, files and attachments in the conversation making it convenient and easy to  follow conversations just like modern chat apps   </x-slot>
       </x-features-item>
 
 
@@ -191,7 +191,7 @@
              Messages
          </x-slot>
          <x-slot:description>
-             You can also save messages by create a conversation with yourself as authenticated user  </x-slot>
+             You can also save messages by creating a conversation with yourself as an authenticated user  </x-slot>
       </x-features-item>
 
     </section>
