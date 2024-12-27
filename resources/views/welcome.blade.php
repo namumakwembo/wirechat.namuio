@@ -214,8 +214,8 @@
                                         </p>
 
                                         {{--  CTAs --}}
-                                        <div class="  my-6 justify-center items-center gap-9 flex  px-3 flex-col sm:flex-row mx-auto">
-                                            <a href="{{ route('docs') }}"class="w-full sm:w-[142px] z-10 h-12 ring flex relative bg-gradient-to-r from-[#4a75f4] to-[#3fb3ed] rounded-lg">
+                                        <div class="  my-6 justify-center items-center gap-9 flex max-w-xs sm:max-w-full  px-3 flex-col sm:flex-row mx-auto">
+                                            <a href="{{ route('docs') }}"class="w-full sm:w-[142px] z-10 h-12 ring ring-1 sm:ring-2 flex relative bg-gradient-to-r from-[#4a75f4] to-[#3fb3ed] rounded-lg">
 
                                                 <div class="w-full h-12 top-[16px] absolute opacity-60 bg-[#487bf3] rounded-[100px] blur-2xl">
                                                 </div>
