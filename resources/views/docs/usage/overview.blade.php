@@ -18,9 +18,9 @@ To begin using WireChat, ensure you integrate the **Chatable** trait into the mo
 
 ### Adding the Chatable Trait  
 
-Add the `Chatable` trait to your **User** model (or any other applicable model):  
+Add the `Chatable` trait to your **User** model:  
 
-```php
+```php{}{6}
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Namu\WireChat\Traits\Chatable;
 
@@ -73,7 +73,7 @@ ___
 
 WireChat provides flexibility to control chat creation on a per-user basis. Models using the `Chatable` trait can override the `canCreateChats()` method to define custom logic for determining whether a user can initiate new chats.  
 
-```php
+```php{}{8-12}
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Namu\WireChat\Traits\Chatable;
 

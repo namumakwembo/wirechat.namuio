@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
 @layer components {
   /* Custom styling for code blocks inside prose but excluding pre code blocks */
   .prose code:not(pre code) {
@@ -12,4 +14,29 @@
   .dark .prose code:not(pre code) {
     @apply bg-slate-800 px-2 py-0.5 rounded text-slate-200; /* Dark mode styles */
   }
+}
+.shiki .highlight {
+  background-color: #7dd4fc4f;
+  padding: 3px 0;
+}
+
+.shiki .add {
+  background-color: #22c55e7e ;
+  padding: 3px 0;
+}
+
+.shiki .del { 
+  background-color: #ef4444;
+  padding: 3px 0;
+}
+
+
+.shiki.focus .line:not(.focus) {
+  transition: all 250ms;
+  filter: blur(2px);
+}
+
+.shiki.focus:hover .line {
+  transition: all 250ms;
+  filter: blur(0);
 }

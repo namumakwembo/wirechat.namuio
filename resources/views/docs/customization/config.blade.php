@@ -2,12 +2,11 @@
 <x-docs-layout>
 
 <x-markdown>
-
 # Configuration
 
-You can customize the wirechat configuration file , in here you can customize options such as themse , routes  & features
+Wirechat offers a variety of customization options through its configuration file. You can adjust settings such as themes, routes, and features to better suit your needs.
 
-If you have not yet published the config , you can run the following command
+To publish the configuration file, run the following command:
 
 ```bash
 php artisan vendor:publish --tag=wirechat-config

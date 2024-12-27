@@ -4,7 +4,7 @@
 <x-markdown> 
 ## Installation
 
-Wirechat is a simple yet robust chat package built with the TALL stack, making it easy to integrate into your Laravel app with just a few commands.
+Wirechat is a simple yet robust chat package built with the [TALL Stack](https://tallstack.dev/), making it easy to integrate into your Laravel app with just a few commands.
 
 ---
 
@@ -55,7 +55,7 @@ php artisan migrate
 
 ### Building Tailwind CSS for Production
 
-To purge the CSS classes used by the package, add these lines to the `purge` array in `tailwind.config.js`:
+To purge the CSS classes used by the package, add these lines to the `content` array in `tailwind.config.js`:
 
 ```js
 './vendor/namu/wirechat/resources/views/**/*.blade.php',

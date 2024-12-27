@@ -54,7 +54,8 @@
           <div class="w-[931px] h-[931px] left-[14px] top-[433px] absolute bg-blue-500/50 rounded-full blur-[666.92px]"></div>
         </div> --}}
     </span>
-    <span class="absolute z-1 top-52 left-24 ">
+    {{-- Sparkles --}}
+    <span class="hidden md:block absolute z-1 top-52 left-24 ">
       <svg xmlns="http://www.w3.org/2000/svg" width="112" height="95" viewBox="0 0 112 95" fill="none">
         <g filter="url(#filter0_d_1_7998)">
         <ellipse cx="68.6417" cy="81.0184" rx="2.48163" ry="2.48163" fill="url(#paint0_radial_1_7998)"/>
@@ -197,7 +198,7 @@
                                   {{-- Hero info  --}}
                                     <div class=" mx-auto max-w-5xl text-center"
                                         style="visibility: visible; animation-delay: 0.2s;">
-                                        <h1 class="mb-6  text-5xl md:text-6xl lg:text-7xl   py-2 l font-bold font-manrope font-black leading-snug text-transparent bg-clip-text  bg-gradient-to-r from-blue-500 dark:from-blue-600  via-stone-40  dark:via-stone-1000 to-zinc-500 dark:to-zinc-200  ">
+                                        <h1 class="mb-6  text-3xl sm:text-5xl md:text-6xl lg:text-7xl   py-2 l font-bold font-manrope font-black leading-snug text-transparent bg-clip-text  bg-gradient-to-r from-blue-500 dark:from-blue-600  via-stone-40  dark:via-stone-1000 to-zinc-500 dark:to-zinc-200  ">
                                             Livewire-Powered, Scalable
                                             Chat
                                             Package
@@ -214,7 +215,7 @@
 
                                         {{--  CTAs --}}
                                         <div class="  my-6 justify-center items-center gap-9 flex  px-3 flex-col sm:flex-row mx-auto">
-                                            <a href="{{ route('docs') }}"class="w-full sm:w-[142px]  h-12 ring flex relative bg-gradient-to-r from-[#4a75f4] to-[#3fb3ed] rounded-lg">
+                                            <a href="{{ route('docs') }}"class="w-full sm:w-[142px] z-10 h-12 ring flex relative bg-gradient-to-r from-[#4a75f4] to-[#3fb3ed] rounded-lg">
 
                                                 <div class="w-full h-12 top-[16px] absolute opacity-60 bg-[#487bf3] rounded-[100px] blur-2xl">
                                                 </div>
@@ -225,7 +226,7 @@
                                             </a>
 
                                             <a href="https://github.com/namumakwembo/wirechat" target="_blank"
-                                                class=" h-12 px-4  shrink-0  w-full sm:w-auto   py-3 bg-gradient-to-b from-white to-white rounded-lg shadow border justify-center items-center flex">
+                                                class=" h-12 px-4  shrink-0  w-full sm:w-auto  z-10  py-3 bg-gradient-to-b from-white to-white rounded-lg shadow border justify-center items-center flex">
                                                     <div class="flex w-full justify-center gap-2 text-center text-[#0a0e18] text-base font-semibold font-['Manrope'] leading-normal">
                                                         <svg class="fill-current" width="24" height="24"
                                                             viewBox="0 0 24 24" fill="none"
