@@ -63,6 +63,10 @@
                 Documentation
            </a>
 
+           <a href="https://github.com/sponsors/namumakwembo" class="relative font-medium flex items-center gap-x-2  px-3 py-px rounded-xl text-gray-600 dark:text-gray-200 transition duration-150 ease-out hover:text-gray-900 hover:dark:text-gray-300">
+            <span>Sponser</span>
+            ❣️
+          </a>
             <a href="https://github.com/namumakwembo/wirechat" class="relative font-medium   px-3 py-px rounded-xl text-gray-600 dark:text-gray-200 transition duration-150 ease-out hover:text-gray-900 hover:dark:text-gray-300">
                 {{-- Github --}}
                 <span>
