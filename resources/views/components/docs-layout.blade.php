@@ -20,10 +20,9 @@
 
     <main class="w-full lg:grid lg:grid-cols-12 ">
 
-    <div class="lg:col-span-9 w-full pb-14 h-full px-5 md:px-10    overflow-y-auto" style="contain: conent">
+    <div class="lg:col-span-9 w-full pb-14 h-full px-8 md:px-10    overflow-y-auto" style="contain: conent">
 
         <x-prose class=" mx-auto w-full dark:text-white/90 rounded-lg text-gray-900">
-
             {{$slot}}
         </x-prose>
     </div>
