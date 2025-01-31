@@ -69,6 +69,12 @@ Route::prefix('docs')->group(function () {
         return view('docs.customization.trait');
     })->name('customization.trait');
 
+    Route::get('/authorization', function () {
+        Helper::seo('Authorization','Wirechat offers flexible integration with multiple guards and middleware configurations to secure your application’s routes and broadcasting channels');
+
+        return view('docs.customization.authorization');
+    })->name('customization.authorization');
+
     Route::get('/config', function () {
         Helper::seo('Configuration','Wirechat offers a variety of customization options through its configuration file. You can adjust settings such as themes, routes, and features to better suit your needs.');
         return view('docs.customization.config');

@@ -112,6 +112,14 @@
                         </x-sidebar-link>
 
                     </li>
+                    <li>
+
+                        <x-sidebar-link   href="{{ route('customization.authorization') }}"
+                        active="{{ request()->routeIs('customization.authorization') }}">
+                        Authorization
+                        </x-sidebar-link>
+
+                    </li>
                 </ol>
             </section>
 

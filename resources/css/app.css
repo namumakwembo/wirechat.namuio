@@ -5,27 +5,31 @@
 
 
 @layer components {
+
   /* Custom styling for code blocks inside prose but excluding pre code blocks */
   .prose code:not(pre code) {
-    @apply bg-gray-200/70 text-black px-2 py-0.5 rounded; /* Light mode styles */
+    @apply bg-gray-200/70 text-black px-2 py-0.5 rounded;
+    /* Light mode styles */
   }
 
   /* Dark mode targeting */
   .dark .prose code:not(pre code) {
-    @apply bg-slate-800 px-2 py-0.5 rounded text-slate-200; /* Dark mode styles */
+    @apply bg-slate-800 px-2 py-0.5 rounded text-slate-200;
+    /* Dark mode styles */
   }
 }
+
 .shiki .highlight {
   background-color: #7dd4fc4f;
   padding: 3px 0;
 }
 
 .shiki .add {
-  background-color: #22c55e7e ;
+  background-color: #22c55e7e;
   padding: 3px 0;
 }
 
-.shiki .del { 
+.shiki .del {
   background-color: #ef4444;
   padding: 3px 0;
 }
@@ -39,4 +43,66 @@
 .shiki.focus:hover .line {
   transition: all 250ms;
   filter: blur(0);
+}
+
+
+
+
+/* Styles for page sections and links  */
+
+/* styles.css */
+
+/* Ensure the section has relative positioning and padding */
+[data-page-section] {
+  margin-left: -23px;
+
+  display: flex;
+
+  gap: 7px;
+
+  align-items: center;
+  /*  transform: translateX(-30px); */
+}
+
+/* Style the <a> elements within data-page-section */
+[data-page-section] a {
+
+  text-decoration: none;
+  /* Remove underline by default */
+  color: #2196F3;
+  /* Set default link color to blue */
+
+  /* Initially hide the link */
+  opacity: 0.2;
+  /* Smooth transition for opacity, transform, and color */
+  transition: opacity 0.3s ease, transform 0.3s ease, color 0.3s ease, text-decoration 0.3s ease;
+
+  /* Optional: Add transform for sliding effect */
+  transform: translateX(-5px);
+}
+
+/* Show the link when the parent is hovered or the link itself is hovered */
+[data-page-section]:hover a,
+[data-page-section] a:hover {
+  opacity: 1;
+  color: #2196F3;
+  pointer-events: auto;
+
+
+  transform: translateX(0);
+  /* Slide into place */
+}
+
+/* Add underline and color change on hover of the link itself */
+[data-page-section] a:hover {
+  text-decoration: underline;
+  /* Underline on hover */
+  color: #2196F3;
+  opacity: 1;
+
+  pointer-events: auto;
+
+  /* Change color on hover */
+  transform: translateX(0);
+  /* Slide into place */
 }
