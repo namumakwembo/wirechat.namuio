@@ -12,7 +12,7 @@ Wirechat offers flexible integration with multiple guards and middleware configu
 ---
 
 
-<h2 data-page-section id="guards"> <a href="#guards">#</a>  Guards</h2>
+<h2 x-scroll-section="{id:'guards'}" data-page-section id="guards"> <a href="#guards">#</a>  Guards</h2>
 
 **Guards** determine how users are authenticated for each request. Laravel supports multiple guards, which you can configure in the `config/auth.php` file.
 
@@ -45,7 +45,7 @@ If your application uses multiple guards, such as `admin` and `web`, you can con
 ---
 
 
-<h2 data-page-section id="middleware"> <a href="#middleware">#</a>  Middleware</h2>
+<h2 x-scroll-section="{id:'middleware'}"  data-page-section id="middleware"> <a href="#middleware">#</a>  Middleware</h2>
 
 **Middleware** authenticates users when they subscribe to channels or access Wirechat routes, such as `/chats` or any other prefix defined in the `routes.prefix` configuration.
 
@@ -79,7 +79,9 @@ If your application requires support for multiple guards (e.g., `web` and `admin
 
 ---
 
-<h2 data-page-section id="broadcasting-middleware-configuration"> <a href="#broadcasting-middleware-configuration">#</a>  Broadcasting Middleware Configuration</h2>
+{{-- <h2 x-scroll-section="{id:'broadcasting-middleware-configuration'}"> <a href="#broadcasting-middleware-configuration">#</a>  Broadcasting Middleware Configuration</h2> --}}
+
+<h2  x-scroll-section="{id:'broadcasting-middleware-configuration'}" data-page-section id="broadcasting-middleware-configuration"> <a href="#broadcasting-middleware-configuration">#</a>  Broadcasting Middleware Configuration</h2>
 
 If you have custom `guards` or `middleware` defined for broadcasting in your `BroadcastServiceProvider`, ensure that these are also included in Wirechat's configuration. This synchronization is crucial because the settings in `BroadcastServiceProvider` take precedence over lower-level configurations. A mismatch between these configurations can lead to authentication issues when authorizing broadcast channels or accessing routes.
 
@@ -111,4 +113,13 @@ Broadcast::routes([
 By following this guide, you can effectively secure your Wirechat implementation, accommodating users with different authentication levels seamlessly.
 
 </x-markdown>
+
+
+<x-slot name="subNavigation">
+
+    <x-sub-navigation :items="['Guards','Middleware','Broadcasting Middleware Configuration']"/>
+
+</x-slot>
+    
+
 </x-docs-layout>

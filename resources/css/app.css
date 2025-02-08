@@ -19,14 +19,28 @@
   }
 }
 
+.shiki  {
+  /* background-color: #d1d5db!important;  */
+  /* padding: 2px 1px; */
+}
+
+.dark .shiki  {
+  /* background-color: #4b5563!important;  */
+  /* padding: 2px 1px; */
+}
+
+
 .shiki .highlight {
-  background-color: #7dd4fc4f;
-  padding: 3px 0;
+  background-color: #7dd4fc37;
+  padding: 2px 1px;
 }
 
 .shiki .add {
-  background-color: #22c55e7e;
-  padding: 3px 0;
+  background-color: #76d68643;
+  padding: 3px 2px;
+  width: 100%;
+  min-width: min-content;
+
 }
 
 .shiki .del {

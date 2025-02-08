@@ -14,7 +14,13 @@ return [
          *
          * More info: https://github.com/shikijs/shiki/blob/main/docs/themes.md
          */
-        'theme' => 'github-dark',
+        'theme' =>
+        //''
+        //'github-dark-low-contrast'
+        //'material-theme'
+       // 'catppuccin-mocha' 
+       // 'github-light-default',
+        'github-dark',
     ],
 
     /*

@@ -12,7 +12,7 @@
                     Getting Started
                 </h5>
 
-                <ol class="space-y-1  pl-8 ">
+                <ol class="  border-l dark:border-gray-700 ml-6 ">
 
                     <li>
 
@@ -43,7 +43,7 @@
                     Usage
                 </h5>
 
-                <ol class="space-y-1  pl-8 ">
+                <ol class="  border-l dark:border-gray-700 ml-6 ">
 
                     <li>
 
@@ -95,7 +95,7 @@
                     Customization
                 </h5>
 
-                <ol class="space-y-1  pl-8 ">
+                <ol class="  border-l dark:border-gray-700 ml-6 ">
 
                     <li>
 
@@ -120,6 +120,52 @@
                         </x-sidebar-link>
 
                     </li>
+
+                    <li>
+
+                        <x-sidebar-link   href="{{ route('customization.layout') }}"
+                        active="{{ request()->routeIs('customization.layout') }}">
+                        Layout                      
+                        </x-sidebar-link>
+
+                    </li>
+
+                    <li>
+
+                        <x-sidebar-link   href="{{ route('customization.views') }}"
+                        active="{{ request()->routeIs('customization.views') }}">
+                        Views
+                        </x-sidebar-link>
+
+                    </li>
+                </ol>
+            </section>
+
+
+            {{-- Diffing deeper --}}
+
+            <section class="space-y-1">
+
+                <h5 class="text-gray-950  dark:text-gray-300  py-2 px-2  font-medium">
+                    Digging Deeper
+                </h5>
+
+                <ol class="  border-l dark:border-gray-700 ml-6 ">
+
+                    <li>
+
+                        <x-sidebar-link class="flex gap-3 items-center"  href="https://github.com/namumakwembo/wirechat/blob/main/CHANGELOG.md">
+                            Embedding
+                        </x-sidebar-link>
+                    </li>
+                    <li>
+
+                        <x-sidebar-link   href="{{ route('more.contribution') }}"
+                        active="{{ request()->routeIs('more.contribution') }}">
+                            Contribution
+                        </x-sidebar-link>
+
+                    </li>
                 </ol>
             </section>
 
@@ -133,7 +179,7 @@
                         More
                     </h5>
     
-                    <ol class="space-y-1  pl-8 ">
+                    <ol class="  border-l dark:border-gray-700 ml-6 ">
     
                         <li>
     

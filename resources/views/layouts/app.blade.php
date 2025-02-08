@@ -74,11 +74,14 @@
             scroll-behavior: smooth;
         }
     </style>
+
+
     <!-- Styles / Scripts -->
+    @livewireStyles
+
     @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     @endif
-    @livewireStyles
 </head>
 
 <body class="font-sans antialiased relative w-full  dark:bg-gray-900 dark:text-white/50 ">
@@ -135,7 +138,8 @@
         });
     </script>
 
-    @livewireScripts
+
+@livewireScriptConfig 
 </body>
 
 </html>

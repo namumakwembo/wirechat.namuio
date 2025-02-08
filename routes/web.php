@@ -11,6 +11,13 @@ Route::get('/', function () {
 
 
 
+// Route::get('/', function () {
+
+//     Helper::seo('Home');
+//     return view('test');
+// });
+
+
 Route::prefix('docs')->group(function () {
     Route::get('/', function () {
         Helper::seo('Introduction');
@@ -74,6 +81,20 @@ Route::prefix('docs')->group(function () {
 
         return view('docs.customization.authorization');
     })->name('customization.authorization');
+
+
+    Route::get('/layout', function () {
+        Helper::seo( 'Layout', 'Customize Wirechat’s layout to seamlessly integrate with your application. Adjust UI components, themes, and structure to match your design requirements.' );
+        return view('docs.customization.layout');
+    })->name('customization.layout');
+    
+
+
+    Route::get('/views', function () {
+        Helper::seo('Views','Learn how to customize and publish wirechat views in order to best fit your application style ');
+
+        return view('docs.customization.views');
+    })->name('customization.views');
 
     Route::get('/config', function () {
         Helper::seo('Configuration','Wirechat offers a variety of customization options through its configuration file. You can adjust settings such as themes, routes, and features to better suit your needs.');
