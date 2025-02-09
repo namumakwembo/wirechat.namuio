@@ -90,16 +90,42 @@ Route::prefix('docs')->group(function () {
     
 
 
+    Route::get('/components', function () {
+        Helper::seo('Customizing Components','Learn how to customize wirechat components in order to extentend functionality for backend interaction');
+
+        return view('docs.customization.components');
+    })->name('customization.components');
+
     Route::get('/views', function () {
-        Helper::seo('Views','Learn how to customize and publish wirechat views in order to best fit your application style ');
+        Helper::seo('Customizing Views','Learn how to customize and publish wirechat views in order to best fit your application style ');
 
         return view('docs.customization.views');
     })->name('customization.views');
+
 
     Route::get('/config', function () {
         Helper::seo('Configuration','Wirechat offers a variety of customization options through its configuration file. You can adjust settings such as themes, routes, and features to better suit your needs.');
         return view('docs.customization.config');
     })->name('customization.config');
+
+
+
+     /**----------------
+     * Digging deeper
+     */
+
+     Route::get('/embedding', function () {
+        Helper::seo('Embedding','WireChat is designed with simplicity and flexibility in mind. Not only can you use the default <livewire:chats/> widget to embed a chat interface on any page of your application, but you can also integrate it into custom layouts.');
+
+        return view('docs.digging-deeper.embedding');
+    })->name('customization.embedding');
+
+
+    Route::get('/core-components', function () {
+        Helper::seo('Core-components','Here  is an overview table of WireChat’s Livewire components');
+
+        return view('docs.digging-deeper.core-components');
+    })->name('customization.core-components');
 
 
      /**----------------

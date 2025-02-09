@@ -4,95 +4,53 @@
 
 <x-markdown>
 
-# Customizing Views 
+# Customizing WireChat Views
 
-Sometimes you may want to tweak the user interface or add new behaviors without editing vendor files. With WireChat, you can easily customize both the UI and backend logic through published views and extended Livewire components.
+WireChat’s default Blade views are designed to give you a seamless real-time chat interface right out of the box. Sometimes, though, you need that extra layer of customization  like adding a button to start a new conversation, tweaking labels, or inserting custom UI elements. **Publishing** the views into your own `resources` directory allows you to make these modifications without editing vendor files directly.
 
 ---
 
-## Publishing Views
+## Publishing the Views
 
-If you'd like to modify the UI—maybe add extra buttons or change the layout—you can publish the package's Blade views into your project. This gives you full control over the design.
-
-**Publish the views by running:**
+Publishing WireChat’s views will copy them from the package into your application’s `resources/views/vendor/wirechat/` directory. Here’s how you do it:
 
 ```bash
 php artisan vendor:publish --tag=wirechat-views
 ```
 
-This copies the views to: `resources/views/vendor/wirechat/`
+Once you run this command, any view file in `resources/views/vendor/wirechat/` will automatically override the default files included with the WireChat package. 
 
-
-You can now edit these files to fit your needs.
-
----
-
-## Extending Livewire Components for Custom Behavior
-
-Sometimes, you need to extend the backend functionality. Instead of changing the package directly, you can extend its Livewire components.
-
-### Overriding WireChat Components
-
-For example,you may wish to add an extra method to `Chats` component
-
-1. **Create Your Custom Component**
-
-```php
-php artisan make:livewire Chats --inline
-```
-
-In your new component you need to extend the base component you wish to override;
-
-```php
-namespace App\Livewire\Chats;
-
-use Livewire\Component;
-use Namu\WireChat\Livewire\Chat\Chats as BaseChats;
-
-class Chats extends BaseChats
-{
-    // Add or override methods as needed
-    public function test()
-    {
-        dd('Custom behavior activated!');
-    }
-}
-```
-
-**Note:** You can omit the render method if you don't need to change the view
-
-
-2. **Register Your Custom Component**
-
-In the boot method your `AppServiceProvider`, register your component so it replaces the default:
-
-```php
-use Livewire\Livewire;
-
-public function boot(): void
-{
-    Livewire::component('chats', \App\Livewire\WireChat\Chats::class);
-}
-```
-
-so now in your published `chats` blade components you can add a button for method
-
-```php 
-<button wire:click="test">
-    test
-</button>
-```
-
-Now, when is rendered, your custom version will be used.
+> **💡 Why is this helpful?**  
+> Because you can make changes  like changing text labels, adding custom CSS classes, or rearranging HTML layouts  directly in your local files. That way, your changes won’t be lost during package updates.
 
 ---
 
-## Final Thoughts
+## Common Customization Examples
 
-WireChat makes it simple to adjust both the look and functionality of its components. Whether you’re enhancing the UI or extending component logic, these approaches help you build a tailored chat experience without worrying about vendor file modifications.
+1. **Adding Extra Buttons**  
+    You might need an extra custom button with specific functinality. With published views, you can insert these anywhere in the Blade markup.
 
+2. **Changing Layout or Classes**  
+    If your app already uses Tailwind, Bootstrap, or a custom CSS framework, you can adapt all of WireChat’s default class names to keep your design consistent.
+
+3. **Altering Text and Translations**  
+    Want to change the label for “Send Message” to “Send”? Once you publish the views, simply update the Blade file.
+
+Whenever you edit the published Blade files, **WireChat** will automatically load your customized version. No extra configuration needed!
 
 ---
+
+## **Next Steps**
+
+1. **Combine With Extended Components**  
+   If you’re also extending any WireChat Livewire components, you can integrate new logic (like custom methods or event handling) into your published views. Add buttons, forms, or UI elements that call methods in your custom components.
+
+2. **Keep Things Organized**  
+   Maintain a clear file structure for your customized views. This ensures that you can easily track changes, especially if you’re managing multiple custom Blade files across different parts of your application.
+
+3. **That’s It!**  
+   By **publishing and customizing** the WireChat views, you have **complete control** over the look and feel of your chat interface—without worrying about future package updates overwriting your changes.
+
 </x-markdown>
     
     

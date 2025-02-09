@@ -12,7 +12,7 @@ Wirechat offers flexible integration with multiple guards and middleware configu
 ---
 
 
-<h2 x-scroll-section="{id:'guards'}" data-page-section id="guards"> <a href="#guards">#</a>  Guards</h2>
+<x-section-heading label="Guards" />
 
 **Guards** determine how users are authenticated for each request. Laravel supports multiple guards, which you can configure in the `config/auth.php` file.
 
@@ -44,14 +44,15 @@ If your application uses multiple guards, such as `admin` and `web`, you can con
 
 ---
 
+<x-section-heading label="Middleware" />
 
-<h2 x-scroll-section="{id:'middleware'}"  data-page-section id="middleware"> <a href="#middleware">#</a>  Middleware</h2>
+**Middleware** authenticates users when they subscribe to channels or access WireChat routes, such as `/chats` or any other prefix defined in the `routes.prefix` configuration.
 
-**Middleware** authenticates users when they subscribe to channels or access Wirechat routes, such as `/chats` or any other prefix defined in the `routes.prefix` configuration.
 
-### Default Middleware Setup
+<x-sub-section-heading label="Default Middleware Setup" />
 
-Wirechat uses the `web` and `auth` middleware by default to secure its routes.
+
+WireChat uses the `web` and `auth` middleware by default to secure its routes:
 
 ```php{}{5-6}
 // config/wirechat.php
@@ -63,9 +64,12 @@ Wirechat uses the `web` and `auth` middleware by default to secure its routes.
 ],
 ```
 
-### Multi-Guard Authentication
+> **Note:** In addition to `web` and `auth`, WireChat automatically applies the `belongsToConversation` middleware whenever conversation-specific routes are accessed. This ensures users can only view or act on conversations they’re authorized to see, adding an extra layer of security.
 
-If your application requires support for multiple guards (e.g., `web` and `admin`), you should define the middleware to handle authentication for both guards. This ensures that Laravel checks authentication using either guard, granting access if the user is authenticated by any one of them.
+
+<x-sub-section-heading label="Multi-Guard Authentication" />
+
+If your application requires support for multiple guards (e.g., `web` and `admin`), you should define the middleware to handle authentication for both guards. This ensures that Laravel checks authentication using any one of them:
 
 ```php{}{5-6}
 // config/wirechat.php
@@ -77,11 +81,37 @@ If your application requires support for multiple guards (e.g., `web` and `admin
 ],
 ```
 
----
+With these configurations and WireChat’s **automatically applied** `belongsToConversation` middleware for conversation routes your chat system stays secure under a variety of authentication setups.
 
-{{-- <h2 x-scroll-section="{id:'broadcasting-middleware-configuration'}"> <a href="#broadcasting-middleware-configuration">#</a>  Broadcasting Middleware Configuration</h2> --}}
 
-<h2  x-scroll-section="{id:'broadcasting-middleware-configuration'}" data-page-section id="broadcasting-middleware-configuration"> <a href="#broadcasting-middleware-configuration">#</a>  Broadcasting Middleware Configuration</h2>
+<x-sub-section-heading label="Using the `belongsToConversation` Middleware"/>
+
+If you create **custom routes** or **embed WireChat components** that require a conversation parameter, you can explicitly apply `belongsToConversation` to ensure only authorized participants can access or interact with that conversation.
+
+For example, if you define a custom route for a chat page:
+
+```php
+use Illuminate\Support\Facades\Route;
+
+Route::get('/my-custom-chat/{conversation}', function ($conversation) {
+    return view('my-chat-page', ['conversationId' => $conversation]);
+})->middleware(['web', 'auth', 'belongsToConversation']);
+```
+
+Then, in your Blade view, you could load the conversation using the `chat` component:
+@verbatim
+    
+```blade
+<livewire:chat :conversation="$conversationId" />
+```
+@endverbatim
+
+
+By applying the `belongsToConversation` middleware, you ensure that only users who are actually part of the specified conversation can access or load it within your custom routes or pages.
+
+----
+
+<x-section-heading label="Broadcasting Middleware Configuration" />
 
 If you have custom `guards` or `middleware` defined for broadcasting in your `BroadcastServiceProvider`, ensure that these are also included in Wirechat's configuration. This synchronization is crucial because the settings in `BroadcastServiceProvider` take precedence over lower-level configurations. A mismatch between these configurations can lead to authentication issues when authorizing broadcast channels or accessing routes.
 
@@ -108,16 +138,18 @@ Broadcast::routes([
 - **Consistency**: Ensure that the `guards` and `middleware` defined in `BroadcastServiceProvider` match those in Wirechat's configuration.
 - **Avoid Conflicts**: Inconsistent settings can cause users to be improperly authenticated, leading to access issues.
 
----
-
-By following this guide, you can effectively secure your Wirechat implementation, accommodating users with different authentication levels seamlessly.
-
 </x-markdown>
 
 
 <x-slot name="subNavigation">
 
-    <x-sub-navigation :items="['Guards','Middleware','Broadcasting Middleware Configuration']"/>
+    <x-sub-navigation :items="['Guards',
+    'Middleware'=>[
+        'Default Middleware Setup',
+        'Multi-Guard Authentication',
+        'Using the belongsToConversation Middleware',
+    ],
+    'Broadcasting Middleware Configuration']"/>
 
 </x-slot>
     

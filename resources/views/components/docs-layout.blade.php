@@ -11,7 +11,7 @@
 
         <div class= "h-[calc(100vh_-_5.1rem)] overflow-y-hidden flex justify-between dark:bg-gray-900 ">
             <aside
-                class="w-[350px]    hidden lg:flex  flex-col gap-5 bg-white dark:bg-gray-900  h-full p-8 px-9 top-0  pt-10  inset-x-0 z-[50] px-6  py-4 transition-all duration-300 ease-in-out">
+                class="w-[350px]    hidden lg:flex  flex-col gap-5  h-full p-8 px-9 top-0  pt-10  inset-x-0 z-[50] px-6  py-4 duration-300 ease-in-out">
 
                 <x-sidebar />
             </aside>

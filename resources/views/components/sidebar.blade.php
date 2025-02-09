@@ -130,11 +130,21 @@
 
                     </li>
 
+
                     <li>
 
                         <x-sidebar-link   href="{{ route('customization.views') }}"
                         active="{{ request()->routeIs('customization.views') }}">
                         Views
+                        </x-sidebar-link>
+
+                    </li>
+
+                    <li>
+
+                        <x-sidebar-link   href="{{ route('customization.components') }}"
+                        active="{{ request()->routeIs('customization.components') }}">
+                        Components
                         </x-sidebar-link>
 
                     </li>
@@ -154,18 +164,20 @@
 
                     <li>
 
-                        <x-sidebar-link class="flex gap-3 items-center"  href="https://github.com/namumakwembo/wirechat/blob/main/CHANGELOG.md">
-                            Embedding
+                        <x-sidebar-link   href="{{ route('customization.embedding') }}"
+                        active="{{ request()->routeIs('customization.embedding') }}">
+                        Embedding
                         </x-sidebar-link>
                     </li>
+
+
                     <li>
-
-                        <x-sidebar-link   href="{{ route('more.contribution') }}"
-                        active="{{ request()->routeIs('more.contribution') }}">
-                            Contribution
+                        <x-sidebar-link   href="{{ route('customization.core-components') }}"
+                        active="{{ request()->routeIs('customization.core-components') }}">
+                        Core Components
                         </x-sidebar-link>
-
                     </li>
+                 
                 </ol>
             </section>
 
