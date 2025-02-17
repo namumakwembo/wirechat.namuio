@@ -65,9 +65,7 @@
 
            <a href="https://github.com/sponsors/namumakwembo" class="relative font-medium flex items-center gap-x-2  px-3 py-px rounded-xl text-gray-800 dark:text-gray-200 transition duration-150 ease-out hover:text-gray-900 hover:dark:text-gray-300">
             <span>Sponsors</span>
-            <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-6">
-              <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25" />
-            </svg>
+
             
           </a>
 

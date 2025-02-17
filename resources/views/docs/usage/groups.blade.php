@@ -18,31 +18,6 @@ To allow users to create groups in your application, ensure the following settin
 
 >**Note:** Disabling these settings will hide the action buttons required for group creation, preventing all users from initiating new groups.
 
----
-
-## User-Specific Group Creation Permissions
-
-For granular control, models using the `Chatable` trait can override the `canCreateGroups()` method. This method determines whether a particular user is permitted to create new groups. 
-
-```php
-
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Namu\WireChat\Traits\Chatable;
-class User extends Authenticatable
-{
-    use Chatable;
-    // ...
-
-    public function canCreateGroups(): bool
-    {
-        return $this->hasVerifiedEmail()==true;
-    }
-}
-
-```
-
-- **Return `false`**: The user will be restricted from any group creation actions, including access to the "New Group" button and the `NewGroup` component.  
-- **Note**: This restriction does not prevent users from being added to groups, joining existing groups, or participating in group conversations.
 
 ---
     

@@ -30,6 +30,11 @@ Route::prefix('docs')->group(function () {
         return view('docs.installation');
     })->name('installation');
 
+    Route::get('/setup', function () {
+        Helper::seo('Setup','To prepare your models for WireChat, you need to integrate the `Chatable` trait. Because WireChat is polymorphic, you can add this trait to any model—not just the User model');
+        return view('docs.setup');
+    })->name('setup');
+
 
     /**----------------
      * Usage

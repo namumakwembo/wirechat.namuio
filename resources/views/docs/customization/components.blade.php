@@ -30,9 +30,9 @@ php artisan make:livewire Chats --inline
 
 This will generate a file under your `app/Livewire` directory (adjust the namespace or path as needed).
 
-### 2. Extend the Base WireChat Component
+### 2. Extend the Base Chats Component
 
-Open your newly created component and have it extend the **WireChat** base class. In this example, we’re extending `Namu\WireChat\Livewire\Chats\Chats`:
+Open your newly created component and have it extend the **Chats** base class. In this example, we’re extending `Namu\WireChat\Livewire\Chats\Chats`:
 
 ```php
 namespace App\Livewire\Chats;
@@ -61,15 +61,15 @@ use Livewire\Livewire;
 
 public function boot(): void
 {
-    Livewire::component('chats', \App\Livewire\Chats\Chats::class);
+    Livewire::component('wirechat.chats', \App\Livewire\Chats\Chats::class);
 }
 ```
 
-From now on, whenever you use `@<livewire:chats />` in your Blade files, **your** custom class will be called.
+From now on, whenever you use @verbatim `<livewire:wirechat.chats />` @endverbatim in your Blade files, **your** custom class will be called.
 
 ### 4. Update the Blade View to Call Your New Method
 
-If you published the `chats.blade.php` file, you can add a button to invoke your new `test()` method:
+Now in your published chats blade file, you can add a button to invoke your new `test()` method:
 
 ```blade
 <button wire:click="test">
@@ -89,7 +89,7 @@ View a list of available [Wirechat components]({{route('customization.core-compo
 ## Next Steps
 
 1. **Explore Other WireChat Components**  
-   The approach you used for overriding one component applies to any other base component in WireChat (e.g., `chat`, `new-group`, etc.). Just extend the corresponding class and register it in your application’s service provider.
+   The approach you used for overriding one component applies to any other base component in WireChat (e.g., `wirechat.chat`, `wirechat.new-group`, etc.). Just extend the corresponding class and register it in your application’s service provider.
 
 2. **Combine With Custom Views**  
    If you published WireChat’s views, you can link your newly added methods directly to UI elements (buttons, links, or forms) in the Blade files. This way, your users can interact with the custom logic you’ve introduced.
@@ -99,7 +99,7 @@ View a list of available [Wirechat components]({{route('customization.core-compo
 
 4. **That’s It!**  
 
-By **extending WireChat’s Livewire components**, you gain full control over both the **frontend** and **backend** of your chat system—adding functionality without needing to modify the original package files, and ensuring updates won’t overwrite your work.
+By **extending WireChat’s Livewire components**, you gain full control over both the **frontend** and **backend** of your chat system adding functionality without needing to modify the original package files, and ensuring updates won’t overwrite your work.
 
 </x-markdown>
     

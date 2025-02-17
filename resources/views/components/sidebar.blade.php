@@ -31,6 +31,16 @@
                         </x-sidebar-link>
 
                     </li>
+
+                     
+                    <li>
+
+                        <x-sidebar-link href="{{ route('setup') }}"
+                            active="{{ request()->routeIs('setup') }}">
+                            Setup
+                        </x-sidebar-link>
+
+                    </li>
                 </ol>
             </section>
 
