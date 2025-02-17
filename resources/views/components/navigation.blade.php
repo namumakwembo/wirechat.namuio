@@ -105,7 +105,7 @@
     {{-- small screen menu details --}}
    <div x-cloak x-show="sideBarFloating" class="flex lg:hidden flex-col gap-5 px-3 ">
     <a href="/" class="relative z-10 flex gap-2 items-center w-auto text-lg lg:text-2xl font-extrabold leading-none text-black dark:text-white  ">
-           <img class="rounded-xl w-9 h-9 lg:h-11 lg:w-11 " src="{{ asset('assets/wirechat-fill.svg') }}" alt="Alerts">
+           <img class="rounded-xl w-9 h-9 lg:h-11 lg:w-11 " src="{{ asset('assets/Wirechat-fill.svg') }}" alt="Alerts">
         
         Wirechat
     </a>
