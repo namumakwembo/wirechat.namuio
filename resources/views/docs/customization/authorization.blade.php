@@ -102,7 +102,7 @@ Then, in your Blade view, you could load the conversation using the `chat` compo
 @verbatim
     
 ```blade
-<livewire:chat :conversation="$conversationId" />
+<livewire:wirechat.chat :conversation="$conversationId" />
 ```
 @endverbatim
 
