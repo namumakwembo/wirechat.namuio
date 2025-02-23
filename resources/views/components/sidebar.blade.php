@@ -143,16 +143,18 @@
 
                     <li>
 
-                        <x-sidebar-link   href="{{ route('customization.views') }}"
+                        <x-sidebar-link new href="{{ route('customization.views') }}"
                         active="{{ request()->routeIs('customization.views') }}">
                         Views
+
+
                         </x-sidebar-link>
 
                     </li>
 
                     <li>
 
-                        <x-sidebar-link   href="{{ route('customization.components') }}"
+                        <x-sidebar-link new  href="{{ route('customization.components') }}"
                         active="{{ request()->routeIs('customization.components') }}">
                         Components
                         </x-sidebar-link>
@@ -174,7 +176,7 @@
 
                     <li>
 
-                        <x-sidebar-link   href="{{ route('customization.embedding') }}"
+                        <x-sidebar-link new  href="{{ route('customization.embedding') }}"
                         active="{{ request()->routeIs('customization.embedding') }}">
                         Embedding
                         </x-sidebar-link>
@@ -182,7 +184,7 @@
 
 
                     <li>
-                        <x-sidebar-link   href="{{ route('customization.core-components') }}"
+                        <x-sidebar-link new  href="{{ route('customization.core-components') }}"
                         active="{{ request()->routeIs('customization.core-components') }}">
                         Core Components
                         </x-sidebar-link>

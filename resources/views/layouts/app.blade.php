@@ -84,7 +84,7 @@
     @endif
 </head>
 
-<body class="font-sans antialiased relative w-full  dark:bg-gray-900 dark:text-white/50 ">
+<body class="font-sans antialiased relative w-full  dark:bg-zinc-900 dark:text-white/50 ">
     @production
         <!-- Google Tag Manager (noscript) -->
         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M2HKGXDV" height="0" width="0"

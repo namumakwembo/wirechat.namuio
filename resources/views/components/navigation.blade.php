@@ -1,5 +1,5 @@
 
-<section x-data="{ sideBarFloating: false }"   {{$attributes->merge(['class'=>" z-50  w-full px-6 sm:px-8 border-b dark:border-gray-700 text-gray-700 bg-white dark:bg-gray-900 body-font"])}} >
+<section x-data="{ sideBarFloating: false }"   {{$attributes->merge(['class'=>" z-50  w-full px-6 sm:px-8 border-b dark:border-gray-700 text-gray-700 bg-white dark:bg-zinc-900 body-font"])}} >
     {{-- small screen background overlay --}}
     <div @click="sideBarFloating=false" x-cloak x-show="sideBarFloating" class="absolute z-10 lg:hidden inset-0 bg-black/30"> </div>
 

@@ -9,7 +9,7 @@
         </x-navigation>
 
 
-        <div class= "h-[calc(100vh_-_5.1rem)] overflow-y-hidden flex justify-between dark:bg-gray-900 ">
+        <div class= "h-[calc(100vh_-_5.1rem)] overflow-y-hidden flex justify-between ">
             <aside
                 class="w-[350px]    hidden lg:flex  flex-col gap-5  h-full p-8 px-9 top-0  pt-10  inset-x-0 z-[50] px-6  py-4 duration-300 ease-in-out">
 
@@ -42,7 +42,7 @@
 
 
                         <template x-teleport="body">
-                            <div x-data={show:false} class=" hidden md:grid space-y-2 dark:bg-gray-900 w-52 lg:w-72 bg-white fixed inset-x-auto bottom-10 right-10 z-[50] group">
+                            <div x-data={show:false} class=" hidden md:grid space-y-2  w-52 lg:w-72   fixed inset-x-auto bottom-10 right-10 z-[50] group">
                             
                               
                                 {{-- Content --}}
