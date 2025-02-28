@@ -7,7 +7,7 @@
     <div class="  flex items-center justify-between py-5 mx-auto ">
         <a href="/" class="flex items-center w-auto text-lg lg:text-2xl font-extrabold leading-none text-black dark:text-white  ">
             <img class="rounded-xl w-10 h-10 lg:h-12 lg:w-12" src="{{ asset('assets/wirechat-logo.png') }}" alt="Alerts">
-            Wirechat
+            Wirechat Bakici
         </a>
 
         <nav class=" gap-5 hidden lg:flex items-center justify-center w-full h-full">
