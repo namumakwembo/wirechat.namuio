@@ -2,7 +2,7 @@
 @props(['color' => 'default', 'shadow' => 'md', 'tag' => 'button'])
 
 @php
-    // Define color variations console
+    // Define color variations console   
     $colors = [
         'danger'  => 'border-red-500 dark:text-red-500   shadow-red-500 dark:shadow-red-800',
         'warning' => 'border-yellow-500 text-yellow-600 shadow-yellow-500 dark:shadow-yellow-800',
