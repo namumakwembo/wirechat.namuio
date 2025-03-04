@@ -61,7 +61,12 @@ Route::prefix('docs')->group(function () {
 
         return view('docs.usage.attachments');
     })->name('usage.attachments');
+    
+    Route::get('/notifications', function () {
+        Helper::seo('Notifications','Wirechat offers a simple and efficient way to handle real-time push notifications using the Service Worker API and the Web Notifications API');
 
+        return view('docs.usage.notifications');
+    })->name('usage.notifications');
 
     Route::get('/events', function () {
         Helper::seo('Events','Wirechat Events are used to notify users of changes in the chat application, such as new messages, group updates, and more.');

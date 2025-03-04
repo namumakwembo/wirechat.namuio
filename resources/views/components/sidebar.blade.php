@@ -87,6 +87,15 @@
 
                     </li>
 
+
+                    <li>
+                        <x-sidebar-link new href="{{ route('usage.notifications') }}"
+                            active="{{ request()->routeIs('usage.notifications') }}">
+                            Notifications
+                        </x-sidebar-link>
+
+                    </li>
+
                     <li>
                         <x-sidebar-link href="{{ route('usage.events') }}"
                             active="{{ request()->routeIs('usage.events') }}">
