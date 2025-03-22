@@ -11,7 +11,7 @@ Route::get('/', function () {
 
 
 
-// Route::get('/', function () {
+// Route::get('/test', function () {
 
 //     Helper::seo('Home');
 //     return view('test');

@@ -12,7 +12,6 @@ Alpine.plugin(ScrollHighlighter({
 
 // Must be BEFORE Alpine.start():
 
-
 Livewire.start()
 
 

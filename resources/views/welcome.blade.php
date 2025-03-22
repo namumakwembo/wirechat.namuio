@@ -181,11 +181,34 @@
         </svg>
     </span>
 
-    <div class="w-full max-w-screen-xl container mx-auto">
+  
+    <span class="absolute opacity-5 hidden inset-0 h-full w-full">
 
-        <x-navigation class="border-b border-blue-700/20 sticky top-0" />
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" viewBox="0 0 1422 800"><defs><linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="oooscillate-grad"><stop stop-color="hsl(206, 24%, 66%)" stop-opacity="1" offset="0%"></stop><stop stop-color="hsl(272, 29%, 24%)" stop-opacity="1" offset="100%"></stop></linearGradient></defs><g stroke-width="2" stroke="url(#oooscillate-grad)" fill="none" stroke-linecap="round"><path d="M 0 1419 Q 355.5 100 711 400 Q 1066.5 700 1422 1419" opacity="0.05"></path><path d="M 0 1386 Q 355.5 100 711 400 Q 1066.5 700 1422 1386" opacity="0.07"></path><path d="M 0 1353 Q 355.5 100 711 400 Q 1066.5 700 1422 1353" opacity="0.10"></path><path d="M 0 1320 Q 355.5 100 711 400 Q 1066.5 700 1422 1320" opacity="0.12"></path><path d="M 0 1287 Q 355.5 100 711 400 Q 1066.5 700 1422 1287" opacity="0.14"></path><path d="M 0 1254 Q 355.5 100 711 400 Q 1066.5 700 1422 1254" opacity="0.16"></path><path d="M 0 1221 Q 355.5 100 711 400 Q 1066.5 700 1422 1221" opacity="0.19"></path><path d="M 0 1188 Q 355.5 100 711 400 Q 1066.5 700 1422 1188" opacity="0.21"></path><path d="M 0 1155 Q 355.5 100 711 400 Q 1066.5 700 1422 1155" opacity="0.23"></path><path d="M 0 1122 Q 355.5 100 711 400 Q 1066.5 700 1422 1122" opacity="0.25"></path><path d="M 0 1089 Q 355.5 100 711 400 Q 1066.5 700 1422 1089" opacity="0.28"></path><path d="M 0 1056 Q 355.5 100 711 400 Q 1066.5 700 1422 1056" opacity="0.30"></path><path d="M 0 1023 Q 355.5 100 711 400 Q 1066.5 700 1422 1023" opacity="0.32"></path><path d="M 0 990 Q 355.5 100 711 400 Q 1066.5 700 1422 990" opacity="0.34"></path><path d="M 0 957 Q 355.5 100 711 400 Q 1066.5 700 1422 957" opacity="0.37"></path><path d="M 0 924 Q 355.5 100 711 400 Q 1066.5 700 1422 924" opacity="0.39"></path><path d="M 0 891 Q 355.5 100 711 400 Q 1066.5 700 1422 891" opacity="0.41"></path><path d="M 0 858 Q 355.5 100 711 400 Q 1066.5 700 1422 858" opacity="0.43"></path><path d="M 0 825 Q 355.5 100 711 400 Q 1066.5 700 1422 825" opacity="0.46"></path><path d="M 0 792 Q 355.5 100 711 400 Q 1066.5 700 1422 792" opacity="0.48"></path><path d="M 0 759 Q 355.5 100 711 400 Q 1066.5 700 1422 759" opacity="0.50"></path><path d="M 0 726 Q 355.5 100 711 400 Q 1066.5 700 1422 726" opacity="0.53"></path><path d="M 0 693 Q 355.5 100 711 400 Q 1066.5 700 1422 693" opacity="0.55"></path><path d="M 0 660 Q 355.5 100 711 400 Q 1066.5 700 1422 660" opacity="0.57"></path><path d="M 0 627 Q 355.5 100 711 400 Q 1066.5 700 1422 627" opacity="0.59"></path><path d="M 0 594 Q 355.5 100 711 400 Q 1066.5 700 1422 594" opacity="0.62"></path><path d="M 0 561 Q 355.5 100 711 400 Q 1066.5 700 1422 561" opacity="0.64"></path><path d="M 0 528 Q 355.5 100 711 400 Q 1066.5 700 1422 528" opacity="0.66"></path><path d="M 0 495 Q 355.5 100 711 400 Q 1066.5 700 1422 495" opacity="0.68"></path><path d="M 0 462 Q 355.5 100 711 400 Q 1066.5 700 1422 462" opacity="0.71"></path><path d="M 0 429 Q 355.5 100 711 400 Q 1066.5 700 1422 429" opacity="0.73"></path><path d="M 0 396 Q 355.5 100 711 400 Q 1066.5 700 1422 396" opacity="0.75"></path><path d="M 0 363 Q 355.5 100 711 400 Q 1066.5 700 1422 363" opacity="0.77"></path><path d="M 0 330 Q 355.5 100 711 400 Q 1066.5 700 1422 330" opacity="0.80"></path><path d="M 0 297 Q 355.5 100 711 400 Q 1066.5 700 1422 297" opacity="0.82"></path><path d="M 0 264 Q 355.5 100 711 400 Q 1066.5 700 1422 264" opacity="0.84"></path><path d="M 0 231 Q 355.5 100 711 400 Q 1066.5 700 1422 231" opacity="0.86"></path><path d="M 0 198 Q 355.5 100 711 400 Q 1066.5 700 1422 198" opacity="0.89"></path><path d="M 0 165 Q 355.5 100 711 400 Q 1066.5 700 1422 165" opacity="0.91"></path><path d="M 0 132 Q 355.5 100 711 400 Q 1066.5 700 1422 132" opacity="0.93"></path><path d="M 0 99 Q 355.5 100 711 400 Q 1066.5 700 1422 99" opacity="0.95"></path><path d="M 0 66 Q 355.5 100 711 400 Q 1066.5 700 1422 66" opacity="0.98"></path></g></svg>
+    </span>
 
-        <div >
+    <span class="absolute opacity-10 z-5 inset-0 h-full w-full">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" viewBox="0 0 800 800" opacity="0.76"><defs><linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="ggglitch-grad"><stop stop-color="hsla(184, 12%, 67%, 1.00)" stop-opacity="1" offset="45%"></stop><stop stop-color="hsla(242, 8%, 62%, 1.00)" stop-opacity="1" offset="100%"></stop></linearGradient><clipPath id="SvgjsClipPath1024"><rect width="66.66666666666667" height="800" x="0" y="0"></rect><rect width="66.66666666666667" height="800" x="133.33333333333334" y="0"></rect><rect width="66.66666666666667" height="800" x="266.6666666666667" y="0"></rect><rect width="66.66666666666667" height="800" x="400" y="0"></rect><rect width="66.66666666666667" height="800" x="533.3333333333334" y="0"></rect><rect width="66.66666666666667" height="800" x="666.6666666666667" y="0"></rect><rect width="66.66666666666667" height="800" x="800" y="0"></rect><rect width="66.66666666666667" height="800" x="933.3333333333334" y="0"></rect><rect width="66.66666666666667" height="800" x="1066.6666666666667" y="0"></rect><rect width="66.66666666666667" height="800" x="1200" y="0"></rect><rect width="66.66666666666667" height="800" x="1333.3333333333335" y="0"></rect><rect width="66.66666666666667" height="800" x="1466.6666666666667" y="0"></rect><rect width="66.66666666666667" height="800" x="1600" y="0"></rect></clipPath><clipPath id="SvgjsClipPath1025"><rect width="66.66666666666667" height="800" x="66.66666666666667" y="0"></rect><rect width="66.66666666666667" height="800" x="200" y="0"></rect><rect width="66.66666666666667" height="800" x="333.3333333333333" y="0"></rect><rect width="66.66666666666667" height="800" x="466.6666666666667" y="0"></rect><rect width="66.66666666666667" height="800" x="600.0000000000001" y="0"></rect><rect width="66.66666666666667" height="800" x="733.3333333333334" y="0"></rect><rect width="66.66666666666667" height="800" x="866.6666666666667" y="0"></rect><rect width="66.66666666666667" height="800" x="1000.0000000000001" y="0"></rect><rect width="66.66666666666667" height="800" x="1133.3333333333333" y="0"></rect><rect width="66.66666666666667" height="800" x="1266.6666666666667" y="0"></rect><rect width="66.66666666666667" height="800" x="1400" y="0"></rect><rect width="66.66666666666667" height="800" x="1533.3333333333333" y="0"></rect></clipPath></defs><g stroke-width="44" stroke="url(#ggglitch-grad)" fill="none"><polygon points="-22,22 22,-22 822,778 778,822" stroke="none" fill="url(#ggglitch-grad)" clip-path="url(&quot;#SvgjsClipPath1024&quot;)" opacity="0.25" transform="translate(0 -669)"></polygon><polygon points="-22,22 22,-22 822,778 778,822" stroke="none" fill="url(#ggglitch-grad)" clip-path="url(&quot;#SvgjsClipPath1025&quot;)" transform="translate(0 -694)"></polygon><polygon points="-22,22 22,-22 822,778 778,822" stroke="none" fill="url(#ggglitch-grad)" clip-path="url(&quot;#SvgjsClipPath1024&quot;)" opacity="0.25" transform="translate(0 -549)"></polygon><polygon points="-22,22 22,-22 822,778 778,822" stroke="none" fill="url(#ggglitch-grad)" clip-path="url(&quot;#SvgjsClipPath1025&quot;)" transform="translate(0 -574)"></polygon><polygon points="-22,22 22,-22 822,778 778,822" stroke="none" fill="url(#ggglitch-grad)" clip-path="url(&quot;#SvgjsClipPath1024&quot;)" opacity="0.25" transform="translate(0 -429)"></polygon><polygon points="-22,22 22,-22 822,778 778,822" stroke="none" fill="url(#ggglitch-grad)" clip-path="url(&quot;#SvgjsClipPath1025&quot;)" transform="translate(0 -454)"></polygon><polygon points="-22,22 22,-22 822,778 778,822" stroke="none" fill="url(#ggglitch-grad)" clip-path="url(&quot;#SvgjsClipPath1024&quot;)" opacity="0.25" transform="translate(0 -309)"></polygon><polygon points="-22,22 22,-22 822,778 778,822" stroke="none" fill="url(#ggglitch-grad)" clip-path="url(&quot;#SvgjsClipPath1025&quot;)" transform="translate(0 -334)"></polygon><polygon points="-22,22 22,-22 822,778 778,822" stroke="none" fill="url(#ggglitch-grad)" clip-path="url(&quot;#SvgjsClipPath1024&quot;)" opacity="0.25" transform="translate(0 -189)"></polygon><polygon points="-22,22 22,-22 822,778 778,822" stroke="none" fill="url(#ggglitch-grad)" clip-path="url(&quot;#SvgjsClipPath1025&quot;)" transform="translate(0 -214)"></polygon></g></svg>
+    </span>
+    <div 
+    x-data="{  scrolled: false}" 
+    x-init="
+        window.addEventListener('scroll', () => { 
+            scrolled = window.scrollY > 10;
+        });
+    "
+    :class="{ 'bg-white  dark:bg-zinc-900 border-b dark:border-gray-700 transition-all duration-200 z-50': scrolled }"
+    class=" sticky top-0 "
+    >
+
+    <x-navigation class="  w-full max-w-screen-xl   sm:px-14  container mx-auto  " />
+
+    </div>
+
+    <div class="w-full max-w-screen-xl container mx-auto relative z-10">
+        
+
+        <div>
             <div
                 class="relative min-h-screen flex flex-col items-center justify-center selection:bg-blue-500 selection:text-white">
                 <div class="relative w-full  px-6 lg:max-w-7xl">
@@ -218,13 +241,23 @@
                                           
 
 
-                                            <a href="https://github.com/namumakwembo/wirechat" class="border border-gray-600 flex hover:scale-105 w-full sm:w-auto justify-center transition-all items-center gap-3 px-3 p-2.5 -mb-1.5 rounded-lg dark:border-gray-700" target="_blank">
+                                            <x-button tag="a"  class=" w-full flex items-center gap-4 sm:w-auto px-4 dark:bg-zinc-800 " href="https://github.com/namumakwembo/wirechat">
+                                                Star on Github
+                                               
+                                                  <svg   xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github w-6 h-6" viewBox="0 0 16 16">
+                                                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
+                                                  </svg>
+                                                  
+                                            </x-button>
+                                          
+
+                                            {{-- <a href="https://github.com/namumakwembo/wirechat" class="border border-gray-600 flex hover:scale-105 w-full sm:w-auto justify-center transition-all items-center gap-3 px-3 p-2.5 -mb-1.5 rounded-lg dark:border-gray-700" target="_blank">
                                                 Star on Github
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 sm:size-6 ">
                                                     <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
                                                   </svg>
                                                   
-                                            </a>
+                                            </a> --}}
 
                                         </div>
 
@@ -232,7 +265,7 @@
                                     </div>
 
                                     {{-- Image previews --}}
-                                    <x-card shadow="lg" class="max-w-5xl w-full dark:ring    ring-gray-300/30  mt-10  dark:ring-gray-700/40 mx-auto z-10 rounded-xl overflow-hidden ">
+                                    <x-card shadow="lg" class="max-w-6xl w-full dark:ring     -z-10 ring-gray-300/30  mt-10  dark:ring-gray-700/40 mx-auto  rounded-xl overflow-hidden ">
 
                                       <img class="w-full h-full hidden dark:flex  " src="{{asset('/assets/preview-dark-2.png')}}" alt="preview">
                                       <img class="w-full h-full dark:hidden  " src="{{asset('/assets/preview-light.png')}}" alt="preview">
