@@ -1,5 +1,7 @@
 <?php
 
+use League\CommonMark\Extension\Table\TableExtension;
+
 return [
     'code_highlighting' => [
         /*
@@ -80,7 +82,7 @@ return [
      */
     'extensions' => [
         //
-      //  new \League\CommonMark\Extension\Table\TableExtension(),
+         TableExtension::class,
     ],
 
     /*
