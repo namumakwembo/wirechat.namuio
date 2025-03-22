@@ -9,8 +9,9 @@ WireChat is built on top of Laravel Livewire, providing a set of **core componen
 
 Below is an overview table of WireChat’s Livewire components. Each entry shows its **default Livewire identifier** (used in Blade), the **namespace** where you’ll find the class, and any **required parameters**  such as a `conversation` model  needed for proper functionality.
 
-| **Livewire Identifier**          | **Namespace / Class**                                     | **Parameters**    |
-|----------------------------------|-----------------------------------------------------------|-------------------|
+
+| **Livewire Identifier**          | **Namespace / Class**                                       | **Parameters**    |
+|----------------------------------|------------------------------------------------------------|-------------------|
 | wirechat                         | `Namu\WireChat\Livewire\Widgets\WireChat`                  | None   (No explicit param)  |
 | wirechat.chat                    | `Namu\WireChat\Livewire\Chat\Chat`                         | `conversation`    |
 | wirechat.chat.info               | `Namu\WireChat\Livewire\Chat\Info`                         | `conversation`    |

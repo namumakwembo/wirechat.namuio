@@ -92,7 +92,7 @@ When a conversation is clicked, an `open-chat` event is dispatched as a Livewire
 
 When a component is used as a widget by passing `widget="true"`, it will no longer redirect or reload the page after certain actions. Instead, it will trigger several browser and Livewire events during conversation transitions. These events let you hook into and extend chat functionality at various points in the user flow. Here are the most common ones:
 
-| **Event**     | **Parameter**        | **Description**                                                 |
+| **Event**     | **Parameter**        | **Description**                                            |
 |--------------|---------------------|--------------------------------------------------------------|
 | `open-chat`  | `conversation` (ID) | Fires when a chat is clicked in the `chats` component.       |
 | `close-chat` | `conversation` (ID) | Fires when a chat is closed (e.g., deleted, exited).         |
