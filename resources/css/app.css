@@ -1,20 +1,43 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
+@config '../../tailwind.config.js';
 
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
 
-@layer components {
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
 
+@utility prose {
   /* Custom styling for code blocks inside prose but excluding pre code blocks */
-  .prose code:not(pre code) {
-    @apply bg-gray-200/70 text-black px-2 py-0.5 rounded;
+  & code:not(pre code) {
+    @apply bg-gray-200/70 text-black px-2 py-0.5 rounded-sm;
     /* Light mode styles */
   }
 
   /* Dark mode targeting */
-  .dark .prose code:not(pre code) {
-    @apply bg-slate-800 px-2 py-0.5 rounded text-slate-200;
+  .dark & code:not(pre code) {
+    @apply bg-slate-800 px-2 py-0.5 rounded-sm text-slate-200;
+    /* Dark mode styles */
+  }
+}
+
+@utility dark {
+  /* Dark mode targeting */
+  & .prose code:not(pre code) {
+    @apply bg-slate-800 px-2 py-0.5 rounded-sm text-slate-200;
     /* Dark mode styles */
   }
 }

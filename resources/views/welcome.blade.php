@@ -2,7 +2,7 @@
 
     {{-- Boxed line --}}
     <svg
-        class="pointer-events-none z-10 absolute hidden -inset-px h-full w-full stroke-black/20 dark:stroke-white/10 stroke-[4] [mask-image:radial-gradient(white,transparent_70%)] [stroke-dasharray:5_6] [stroke-dashoffset:10]">
+        class="pointer-events-none z-10 absolute hidden -inset-px h-full w-full stroke-black/20 dark:stroke-white/10 stroke-4 [mask-image:radial-gradient(white,transparent_70%)] [stroke-dasharray:5_6] [stroke-dashoffset:10]">
         <defs>
             <pattern id="grid-pattern-215" viewBox="0 0 64 64" width="64" height="64" patternUnits="userSpaceOnUse"
                 x="0" y="0">
@@ -201,11 +201,11 @@
     class=" sticky top-0 "
     >
 
-    <x-navigation class="  w-full max-w-screen-xl   sm:px-14  container mx-auto  " />
+    <x-navigation class="  w-full max-w-(--breakpoint-xl)   sm:px-14  container mx-auto  " />
 
     </div>
 
-    <div class="w-full max-w-screen-xl container mx-auto relative z-10">
+    <div class="w-full max-w-(--breakpoint-xl) container mx-auto relative z-10">
         
 
         <div>
@@ -221,7 +221,7 @@
                                   {{-- Hero info  --}}
                                     <div class=" mx-auto max-w-5xl text-center"
                                         style="visibility: visible; animation-delay: 0.2s;">
-                                        <h1 class="mb-6 text-3xl  sm:text-6xl  max-w-xl mx-auto  py-2 font-bold font-manrope font-black leading-snug text-transparent bg-clip-text  bg-gradient-to-r from-blue-500 dark:from-blue-600  via-stone-40  dark:via-stone-1000 to-zinc-500 dark:to-zinc-200  ">
+                                        <h1 class="mb-6 text-3xl  sm:text-6xl  max-w-xl mx-auto  py-2 font-bold font-manrope font-black leading-snug text-transparent bg-clip-text  bg-linear-to-r from-blue-500 dark:from-blue-600  via-stone-40  dark:via-stone-1000 to-zinc-500 dark:to-zinc-200  ">
                                             A Scalable Livewire
                                             Chat
                                             Package
@@ -265,7 +265,7 @@
                                     </div>
 
                                     {{-- Image previews --}}
-                                    <x-card shadow="lg" class="max-w-6xl w-full dark:ring     -z-10 ring-gray-300/30  mt-10  dark:ring-gray-700/40 mx-auto  rounded-xl overflow-hidden ">
+                                    <x-card shadow="lg" class="max-w-6xl w-full dark:ring-3     -z-10 ring-gray-300/30  mt-10  dark:ring-gray-700/40 mx-auto  rounded-xl overflow-hidden ">
 
                                       <img class="w-full h-full hidden dark:flex  " src="{{asset('/assets/preview-dark-2.png')}}" alt="preview">
                                       <img class="w-full h-full dark:hidden  " src="{{asset('/assets/preview-light.png')}}" alt="preview">

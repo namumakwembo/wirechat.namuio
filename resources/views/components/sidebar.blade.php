@@ -1,6 +1,6 @@
-<div class="pb-4 flex flex-col flex-grow overflow-y-auto">
+<div class="pb-4 flex flex-col grow overflow-y-auto">
 
-    <div class="flex-grow flex flex-col">
+    <div class="grow flex flex-col">
         <nav class="flex-1  px-2 space-y-1">
 
 

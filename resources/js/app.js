@@ -26,7 +26,7 @@ Livewire.start()
 
             // Create the copy button
             let button = document.createElement("button");
-            button.className = "absolute top-2 right-2 bg-gray-300 dark:bg-zinc-600 z-10 text-black border border-zince-200 dark:border-gray-800 px-2 py-1 text-xs cursor-pointer rounded opacity-70 transition-opacity duration-200 hover:opacity-100";
+            button.className = "absolute top-2 right-2 bg-gray-300 dark:bg-zinc-600 z-10 text-black border border-zince-200 dark:border-gray-800 px-2 py-1 text-xs cursor-pointer rounded-sm opacity-70 transition-opacity duration-200 hover:opacity-100";
  
             const copyIcon= `
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 dark:text-white">

@@ -12,7 +12,7 @@ $activeClasses = ($active ?? false)
 
 @isset ($new)
     
-<span class="inline flex items-center border dark:border-gray-500 p-1 rounded-md justify-center font-medium text-xs max-h-fit px-1.5 bg-gradient-to-r from-blue-500 to-[#CD3BF6]  text-transparent bg-clip-text">
+<span class="inline flex items-center border dark:border-gray-500 p-1 rounded-md justify-center font-medium text-xs max-h-fit px-1.5 bg-linear-to-r from-blue-500 to-[#CD3BF6]  text-transparent bg-clip-text">
     New
 </span>
 
