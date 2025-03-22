@@ -6,9 +6,9 @@
     </x-markdown>
 
     <x-browser-mockup>
-        <img class="h-full w-full m-auto object-cover dark:hidden" src="{{ asset('assets/wirechat-preview.png') }}"
+        <img class="h-auto w-full  m-auto object-cover dark:hidden" src="{{ asset('assets/wirechat-preview.png') }}"
             alt="wirechat-preview">
-        <img class="h-full w-full m-auto object-cover hidden dark:flex"
+        <img class="h-auto w-full m-auto object-cover hidden dark:flex"
             src="{{ asset('assets/wirechat-preview-dark.png') }}" alt="wirechat-preview-dark">
     </x-browser-mockup>
 
