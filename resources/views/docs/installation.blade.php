@@ -12,7 +12,7 @@ Wirechat is a simple yet robust chat package built with the [TALL Stack](https:/
 
 Before you begin, ensure the following are installed:
 
-* PHP version 8.1 or later
+* PHP version 8.2 or later
 * Laravel version 10 or later
 * Livewire version 3.2.3 or later
 
@@ -20,7 +20,7 @@ Before you begin, ensure the following are installed:
 
 ## Installing
 
-### 1. Install the package via Composer
+### 1. Require the package via Composer
 
 Before installing, ensure that authentication is already set up in your application. For more information, check out [Laravel Breeze](https://laravel.com/docs/11.x/starter-kits#laravel-breeze)
 
@@ -31,7 +31,10 @@ composer require namu/wirechat
 >⚠️ Beta Notice: Wirechat is currently in beta. While it may not yet be production-ready, we encourage you to explore and test it out. If you encounter any issues, your feedback will be invaluable in helping us refine and improve the package for a stable release.  
 
 
-### 2. Run the installation command
+### 2. Install Wirechat
+
+<x-sub-section-heading tag='h5' label="Run the installation command" />
+
 
 Run this command to install and publish the necessary files:
 
@@ -44,6 +47,12 @@ The following actions will be executed:
    * Publish migration files
    * Create a storage symlink
 
+<x-sub-section-heading tag='h5' label="Publishing translations" />
+You can publish the language files for translations (if needed) with the following command:
+```php
+php artisan vendor:publish --tag=wirechat-translations
+```
+
 ### 3. Run Migrations:
 
 Apply the necessary database migrations with:
@@ -53,14 +62,29 @@ php artisan migrate
 ```
 ---
 
-### Building Tailwind CSS for Production
+### Optimizing Tailwind CSS for Production  
 
-To purge the CSS classes used by the package, add these lines to the `content` array in `tailwind.config.js`:
+To ensure Tailwind purges CSS classes from the package, add the following lines to your `/resources/css/app.css` file:  
+
+```css
+/* resources/css/app.css */
+
+@source '../../vendor/namu/wirechat/resources/views/**/*.blade.php';
+@source '../../vendor/namu/wirechat/src/Livewire/**/*.php';
+```
+
+<details class="my-9">  
+<summary>Using Tailwind CSS v3?</summary>  
+
+If you're using Tailwind CSS v3, update the `content` array in your `tailwind.config.js` file to include these paths:  
 
 ```js
-'./vendor/namu/wirechat/resources/views/**/*.blade.php',
-'./vendor/namu/wirechat/src/Livewire/**/*.php'
+content: [
+  './vendor/namu/wirechat/resources/views/**/*.blade.php',
+  './vendor/namu/wirechat/src/Livewire/**/*.php'
+]
 ```
+</details>  
 
 ---
 
