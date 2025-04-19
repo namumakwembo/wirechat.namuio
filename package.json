@@ -19,6 +19,7 @@
     },
     "dependencies": {
         "aos": "^2.3.4",
+        "highlight-scroll": "^0.0.3",
         "shiki": "^1.22.2"
     }
 }

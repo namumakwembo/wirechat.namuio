@@ -2,12 +2,12 @@ import './bootstrap';
 
 import { Livewire, Alpine } from '../../vendor/livewire/livewire/dist/livewire.esm';
 
-import ScrollHighlighter from './scroll-highlighter.js'
+import HighlightScroll from 'highlight-scroll'
 
 // Provide your own defaults
-Alpine.plugin(ScrollHighlighter({
+Alpine.plugin(HighlightScroll({
     offset: 120,
-    highlightClasses: 'scale-110 transition-colors text-blue-600 dark:text-blue-500'
+    highlightClasses: 'scale-110 transition-all font-bold text-slate-600 dark:text-white'
   }));
 
 // Must be BEFORE Alpine.start():

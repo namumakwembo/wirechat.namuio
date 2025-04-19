@@ -25,7 +25,7 @@
         @foreach ($items as $key => $value)
             @if (is_array($value)) 
                 <!-- Render Heading -->
-                <li class="dark:text-gray-200 text-[0.96rem] font-medium text-gray-600 hover:text-blue-500">
+                <li class="dark:text-gray-300 text-[0.96rem] font-medium dark:font-normal text-gray-600 hover:text-blue-500">
                     <a  x-scroll-item="{target:'{{ str()->slug($key) }}'}" href="#{{str()->slug($key)}}">
                         {{ $key }}
                     </a>
@@ -51,7 +51,7 @@
 
             @else
                 <!-- Render as Normal Item -->
-                <li class="dark:text-gray-200  text-[0.96rem] font-medium text-gray-600 hover:text-blue-500">
+                <li class="dark:text-gray-300  text-[0.96rem] font-medium dark:font-normal text-gray-600 hover:text-blue-500">
                     <a  x-scroll-item="{target:'{{str()->slug($value)}}',group:'default'}" href="#{{str()->slug($value)}}">
                         {{ $value }}
                     </a>
