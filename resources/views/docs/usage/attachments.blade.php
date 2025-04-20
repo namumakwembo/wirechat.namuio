@@ -41,6 +41,7 @@ Wirechat provides extensive customization options for handling attachments. Thes
 'attachments' => [
     'storage_folder' => 'attachments', 
     'storage_disk' => 'public', 
+    'disk_visibility' => 'public',
     'max_uploads' => 10,  
 
     // Media configuration
@@ -57,6 +58,7 @@ Wirechat provides extensive customization options for handling attachments. Thes
 
 - **`storage_folder`**: Directory where attachments will be stored.  
 - **`storage_disk`**: The storage disk (e.g., `public`, `s3`) used for attachments.  
+- **`disk_visibility`**: The visibility of the storage disk (e.g., `public`, `private`) - generates temporary urls for private storage disk. 
 - **`max_uploads`**: Maximum number of attachments allowed per request.  
 - **`media_mimes`**: Permitted MIME types for media files (photos, videos).  
 - **`media_max_upload_size`**: Maximum file size (in KB) for media uploads.  

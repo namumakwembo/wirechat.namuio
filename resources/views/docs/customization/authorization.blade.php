@@ -49,7 +49,7 @@ If your application uses multiple guards, such as `admin` and `web`, you can con
 **Middleware** authenticates users when they subscribe to channels or access WireChat routes, such as `/chats` or any other prefix defined in the `routes.prefix` configuration.
 
 
-<x-sub-section-heading label="Default Middleware Setup" />
+<x-sub-section-heading label="Default Middleware Setup" key="Default Middleware Setup" />
 
 
 WireChat uses the `web` and `auth` middleware by default to secure its routes:

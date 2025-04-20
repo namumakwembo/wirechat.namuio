@@ -41,8 +41,8 @@
                     $display = is_string($label)? $label : $scrollKey;
                 @endphp
 
-                <li class="dark:text-gray-300  text-sm  text-[0.89rem]  text-gray-700 hover:text-blue-500">
-                    <a class="font-normal" x-scroll-item="{target:'{{str()->slug($target)}}',group:'default'}" href="#{{str()->slug($target)}}">
+                <li class="dark:text-gray-300   text-[0.89rem]  text-gray-700 hover:text-blue-500">
+                    <a  x-scroll-item="{target:'{{str()->slug($target)}}',group:'default'}" href="#{{str()->slug($target)}}">
                         {{ $display }}
                     </a>
                 </li>

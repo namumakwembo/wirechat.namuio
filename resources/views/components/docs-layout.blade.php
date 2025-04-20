@@ -18,7 +18,7 @@
 
 
 
-            <main x-data x-scroll-group  class="w-full lg:grid lg:grid-cols-12 pt-10 ">
+            <main x-data x-scroll-group  class="w-full lg:grid lg:grid-cols-12 sm:pt-10 ">
 
                 <div x-scroll-container class="lg:col-span-9 w-full pb-14 h-full px-8 md:px-10    overflow-y-auto"
                     style="contain: conent">
