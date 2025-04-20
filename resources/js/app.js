@@ -5,9 +5,9 @@ import { Livewire, Alpine } from '../../vendor/livewire/livewire/dist/livewire.e
 import HighlightScroll from 'highlight-scroll';
 
   // Optionally, attach Livewire and Alpine to the window for global access
-  window.Livewire = Livewire;
-  window.Alpine = Alpine;
-  window.HighlightScroll = HighlightScroll;
+  // window.Livewire = Livewire;
+  // window.Alpine = Alpine;
+  // window.HighlightScroll = HighlightScroll;
   
 // Provide your own defaults
 
@@ -21,7 +21,7 @@ import HighlightScroll from 'highlight-scroll';
       Alpine.start()
 Livewire.start()
 
-console.log('Alpine:', window.Alpine)
+console.log('Alpine:', Alpine)
 
 
     document.addEventListener("DOMContentLoaded", function () {
