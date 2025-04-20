@@ -78,8 +78,6 @@
 
     <!-- Styles / Scripts -->
     @livewireStyles
-    <script defer src="https://unpkg.com/highlight-scroll@latest/dist/highlight-scroll.min.js"></script>
-
 
     @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
         @vite(['resources/css/app.css', 'resources/js/app.js'])
