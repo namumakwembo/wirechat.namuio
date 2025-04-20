@@ -18,8 +18,8 @@ import HighlightScroll from 'highlight-scroll';
         highlightClasses: 'scale-110 transition-all font-bold text-slate-600 dark:text-white'
       }));
 
-      Alpine.start()
-Livewire.start()
+      Alpine.start();
+Livewire.start();
 
 console.log('Alpine:', Alpine);
 
