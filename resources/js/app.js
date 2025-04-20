@@ -2,7 +2,7 @@ import './bootstrap';
 
 import { Livewire, Alpine } from '../../vendor/livewire/livewire/dist/livewire.esm';
 
-import HighlightScroll from 'highlight-scroll'
+import HighlightScroll from 'highlight-scroll';
 
   // Optionally, attach Livewire and Alpine to the window for global access
   window.Livewire = Livewire;
