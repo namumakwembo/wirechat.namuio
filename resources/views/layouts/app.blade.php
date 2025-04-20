@@ -140,7 +140,7 @@
     </script>
 
 
-@livewireScriptConfig 
+@livewireScripts
 </body>
 
 </html>
