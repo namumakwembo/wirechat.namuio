@@ -10,7 +10,7 @@ import HighlightScroll from 'highlight-scroll'
   window.HighlightScroll = HighlightScroll;
   
 // Provide your own defaults
-window.Alpine.plugin(window.HighlightScroll({
+Alpine.plugin(window.HighlightScroll({
     offset: 120,
     highlightClasses: 'scale-110 transition-all font-bold text-slate-600 dark:text-white'
   }));
