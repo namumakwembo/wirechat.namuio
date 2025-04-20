@@ -10,10 +10,14 @@ import HighlightScroll from 'highlight-scroll'
   window.HighlightScroll = HighlightScroll;
   
 // Provide your own defaults
-Alpine.plugin(window.HighlightScroll({
-    offset: 120,
-    highlightClasses: 'scale-110 transition-all font-bold text-slate-600 dark:text-white'
-  }));
+
+
+  document.addEventListener('alpine:init', () => {
+    Alpine.plugin(window.HighlightScroll({
+        offset: 120,
+        highlightClasses: 'scale-110 transition-all font-bold text-slate-600 dark:text-white'
+      }));
+})
 
 
 Livewire.start()
