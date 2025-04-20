@@ -11,11 +11,11 @@ Route::get('/', function () {
 
 
 
-// Route::get('/test', function () {
+Route::get('/test', function () {
 
-//     Helper::seo('Home');
-//     return view('test');
-// });
+    Helper::seo('Home');
+    return view('test');
+});
 
 
 Route::prefix('docs')->group(function () {
