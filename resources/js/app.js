@@ -21,6 +21,7 @@ import HighlightScroll from 'highlight-scroll';
       Alpine.start()
 Livewire.start()
 
+console.log('Alpine:', window.Alpine)
 
 
     document.addEventListener("DOMContentLoaded", function () {
