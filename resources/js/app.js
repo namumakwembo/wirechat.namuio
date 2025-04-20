@@ -7,6 +7,7 @@ import HighlightScroll from 'highlight-scroll';
   // Optionally, attach Livewire and Alpine to the window for global access
   window.Livewire = Livewire;
   window.Alpine = Alpine;
+  window.HighlightScroll = HighlightScroll;
   
 // Provide your own defaults
 
@@ -16,7 +17,6 @@ import HighlightScroll from 'highlight-scroll';
         offset: 120,
         highlightClasses: 'scale-110 transition-all font-bold text-slate-600 dark:text-white'
       }));
-
 
 
 Livewire.start()
