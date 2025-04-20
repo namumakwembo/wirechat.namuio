@@ -8,6 +8,7 @@ import HighlightScroll from 'highlight-scroll'
   window.Livewire = Livewire;
   window.Alpine = Alpine;
   window.HighlightScroll = HighlightScroll;
+  
 // Provide your own defaults
 Alpine.plugin(HighlightScroll({
     offset: 120,
@@ -15,6 +16,8 @@ Alpine.plugin(HighlightScroll({
   }));
 
 // Must be BEFORE Alpine.start():
+// Start Alpine
+Alpine.start();
 
 Livewire.start()
 
