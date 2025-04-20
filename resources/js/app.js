@@ -6,7 +6,8 @@ import HighlightScroll from 'highlight-scroll';
 
   // Optionally, attach Livewire and Alpine to the window for global access
   window.Livewire = Livewire;
-
+  window.Alpine = Alpine;
+  
 // Provide your own defaults
 
 
