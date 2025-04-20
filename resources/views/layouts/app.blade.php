@@ -139,7 +139,7 @@
 
         });
     </script>
-
+    @livewireScripts
 @livewireScriptConfig
 </body>
 
