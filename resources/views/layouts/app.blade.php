@@ -77,11 +77,13 @@
 
 
     <!-- Styles / Scripts -->
+    @livewireStyles
+    <script defer src="https://unpkg.com/highlight-scroll@latest/dist/highlight-scroll.min.js"></script>
+
+
     @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     @endif
-    @livewireStyles
-
 </head>
 
 <body class="font-sans antialiased relative w-full h-full  min-h-screen dark:bg-zinc-900 dark:text-white/50 ">
@@ -96,6 +98,7 @@
     @yield('content' ?? $slot)
 
 
+    @livewireScriptConfig
 
     <script>
         var themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
@@ -141,7 +144,19 @@
         });
     </script>
 
-@livewireScriptConfig
+
+  @livewireScripts
+
+
+  <script defer>
+    document.addEventListener('alpine:init', () => {
+        Alpine.plugin(HighlightScroll({
+            offset: 120,
+            highlightClasses: 'scale-110 transition-all font-bold text-slate-600 dark:text-white'
+        }));
+    });
+</script>
+
 </body>
 
 </html>
