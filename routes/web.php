@@ -119,6 +119,11 @@ Route::prefix('docs')->group(function () {
     })->name('customization.config');
 
 
+    Route::get('/theme', function () {
+        Helper::seo('Theme','WireChat supports full theme customization, allowing you to tailor the chat interface to match the look and feel of your application.');
+        return view('docs.customization.theme');
+    })->name('customization.theme');
+
 
      /**----------------
      * Digging deeper

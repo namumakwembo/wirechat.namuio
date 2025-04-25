@@ -169,6 +169,14 @@
                         </x-sidebar-link>
 
                     </li>
+                    <li>
+
+                        <x-sidebar-link new  href="{{ route('customization.theme') }}"
+                        active="{{ request()->routeIs('customization.theme') }}">
+                        Theme
+                        </x-sidebar-link>
+
+                    </li>
                 </ol>
             </section>
 

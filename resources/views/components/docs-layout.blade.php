@@ -46,7 +46,7 @@
                             
                               
                                 {{-- Content --}}
-                                <div x-cloak x-show="show"  class=" grid  gap-y-2 border dark:border-gray-700 p-5 shadow-xs rounded-lg">
+                                <div x-cloak x-show="show"  class=" bg-white dark:bg-zinc-900 grid  gap-y-2 border dark:border-gray-700 p-5 shadow-xs rounded-lg">
 
                                     <h5 class="dark:text-white">Need Help?</h5>
                                     <p class="text-sm">

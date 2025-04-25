@@ -78,9 +78,7 @@
 
     <!-- Styles / Scripts -->
     @livewireStyles
-    <script defer src="https://unpkg.com/highlight-scroll@latest/dist/highlight-scroll.min.js"></script>
-
-
+ 
     @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     @endif
@@ -145,17 +143,7 @@
     </script>
 
 
-  @livewireScripts
-
-
-  <script defer>
-    document.addEventListener('alpine:init', () => {
-        Alpine.plugin(HighlightScroll({
-            offset: 120,
-            highlightClasses: 'scale-110 transition-all font-bold text-slate-600 dark:text-white'
-        }));
-    });
-</script>
+  @livewireScriptConfig(['defer'=>true])
 
 </body>
 
