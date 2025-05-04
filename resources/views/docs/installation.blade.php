@@ -47,9 +47,21 @@ The following actions will be executed:
    * Publish migration files
    * Create a storage symlink
 
+
 <x-sub-section-heading   label="3. Run Migrations:" />
 
-Apply the necessary database migrations with:
+###  Enable UUIDs before running migrations (Optional)
+
+If you want Wirechat to use **UUIDs** instead of auto-incrementing integers for conversations, update the config **before running migrations**:
+
+```php
+// config/wirechat.php
+'uuids' => true,
+```
+
+> 🔶 **Important:** This setting should only be configured **during initial setup** and **before running any migrations**. Once the tables are created, switching between UUIDs and integers is not supported and may break existing data.
+
+**Finally** Apply the necessary database migrations with:
 
 ```bash
 php artisan migrate
