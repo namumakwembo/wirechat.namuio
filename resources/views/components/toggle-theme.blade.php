@@ -1,4 +1,4 @@
-<x-button shadow="sm" id="theme-toggle" type="button" class="group  shadow-none sm:shadow-lg p-2 px-3 flex items-center  rounded-lg">
+<x-button shadow="sm" id="theme-toggle" type="button" class="group  shadow-none  p-2 px-3 flex items-center  rounded-lg">
             <svg id="theme-toggle-light-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
                 class=" size-4 hidden  text-white duration-300  group-hover:rotate-180">
                 <path
