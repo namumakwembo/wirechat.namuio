@@ -11,6 +11,8 @@ Alpine.plugin(HighlightScroll({
 
 Livewire.start()
 
+Alpine.start();
+
     document.addEventListener("DOMContentLoaded", function () {
         document.querySelectorAll("pre").forEach((pre) => {
             // Wrap pre in a div to position the button
