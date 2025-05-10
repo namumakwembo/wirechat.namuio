@@ -152,3 +152,24 @@
   transform: translateX(0);
   /* Slide into place */
 }
+
+
+.marquee {
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.marquee-content {
+  display: inline-block;
+  padding-left: 100%;
+  animation: marquee 10s linear infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}

@@ -14,13 +14,13 @@
 
                 <ol class="  border-l dark:border-gray-700 ml-6 ">
 
-                    <li>
+                    {{-- <li>
 
                         <x-sidebar-link href="{{ route('docs') }}"
                             active="{{ request()->routeIs('docs') }}">
                             Introduction
                         </x-sidebar-link>
-                    </li>
+                    </li> --}}
 
                     
                     <li>

@@ -6,22 +6,21 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
 
     Helper::seo('Home');
-    return view('welcome');
+    return view('welcome.welcome');
 });
 
 
 
-Route::get('/test', function () {
+// Route::get('/test', function () {
 
-    Helper::seo('Home');
-    return view('test');
-});
+//     Helper::seo('Home');
+//     return view('test');
+// });
 
 
 Route::prefix('docs')->group(function () {
     Route::get('/', function () {
-        Helper::seo('Introduction');
-        return view('docs.introduction');
+        return redirect(route('installation'));
     })->name('docs');
 
 
