@@ -4,7 +4,7 @@
         <div class="relative w-full">
 
             <main class="mt-3">
-                <div class="relative   pt-[40px]  ">
+                <div class="relative  pt-5 sm:pt-10  ">
                     <div class=" mx-auto">
                         <div class="flex flex-col items-center">
 
@@ -12,7 +12,7 @@
                             <div class=" mx-auto max-w-5xl text-center"
                                 style="visibility: visible; animation-delay: 0.2s;">
                                 <h1
-                                    class="mb-6 text-3xl  sm:text-6xl  max-w-xl mx-auto  py-2 font-bold font-manrope font-black leading-snug text-transparent bg-clip-text  bg-linear-to-r from-blue-500 dark:from-blue-600  via-stone-40  dark:via-stone-1000 to-zinc-500 dark:to-zinc-200  ">
+                                    class="mb-6 text-4xl  sm:text-6xl  max-w-xl mx-auto  py-2 font-manrope font-black leading-snug text-transparent bg-clip-text  bg-linear-to-r from-blue-500 dark:from-blue-600  via-stone-40  dark:via-stone-1000 to-zinc-500 dark:to-zinc-200  ">
                                     A Scalable Livewire
                                     Chat
                                     Package
@@ -36,7 +36,7 @@
 
 
                                     <x-button tag="a"
-                                        class=" w-full flex items-center gap-4 sm:w-auto px-4 dark:bg-zinc-800 "
+                                        class=" w-full flex items-center justify-center gap-4 sm:w-auto px-4 dark:bg-zinc-800 "
                                         href="https://github.com/namumakwembo/wirechat">
                                         Star on Github
 

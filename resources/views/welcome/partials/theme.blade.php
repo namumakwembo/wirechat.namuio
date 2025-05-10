@@ -100,7 +100,7 @@
 
     <center class="pt-6">
 
-    <x-button tag="a" class=" w-full sm:w-fit px-4 flex items-center gap-4 dark:bg-zinc-800 " href="{{ route('customization.theme') }}">
+    <x-button tag="a" class=" w-full sm:w-fit px-4 flex items-center justify-center  gap-4 dark:bg-zinc-800 " href="{{ route('customization.theme') }}">
         Customize your theme
     </x-button>
 </center>

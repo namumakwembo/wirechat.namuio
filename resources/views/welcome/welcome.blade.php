@@ -2,8 +2,8 @@
     <div x-data="{ scrolled: false }" x-init="window.addEventListener('scroll', () => {
         scrolled = window.scrollY > 10;
     });"
-        :class="{ 'bg-white  dark:bg-zinc-900 border-b dark:border-gray-700 transition-all duration-200 z-50': scrolled }"
-        class=" sticky top-0 ">
+        :class="{ 'bg-white  dark:bg-zinc-900 border-b dark:border-gray-700 transition-all duration-200 ': scrolled }"
+        class=" sticky top-0 z-500 ">
 
         <x-navigation class="  w-full max-w-(--breakpoint-xl)   sm:px-14  container mx-auto  " />
 
