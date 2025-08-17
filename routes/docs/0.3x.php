@@ -10,11 +10,16 @@ $docs = new DocsVersion('0.3x'); // Route version '' = latest
 
 $routePrefix = $docs->getRouteVersion();
 
-Route::prefix('docs/'.$routePrefix) ->as($routePrefix ? $routePrefix.'.' : '') ->group(function () use ($docs) {
 
-    Route::get('/', function  () use ($docs) {
-        return redirect(route('installation'));
-    })->name('docs');
+Route::prefix('docs/'.$routePrefix)
+    ->as($routePrefix ? $routePrefix.'.' : '')
+    ->group(function () use ($docs, $routePrefix) {
+
+        Route::get('/', function () use ($routePrefix) {
+            // Build the route name properly
+            $routeName = $routePrefix ? $routePrefix.'.installation' : 'installation';
+            return redirect()->route($routeName);
+        })->name('docs');
 
     Route::get('/installation', function  () use ($docs) {
         Helper::seo('Installation','Add realtime chat to your Laravel-Livewire application in minutes with Wirechat');
