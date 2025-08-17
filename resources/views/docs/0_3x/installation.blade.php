@@ -1,7 +1,7 @@
 
 <x-docs-layout>
 
-<x-markdown> 
+<x-markdown>
 # Installation
 
 Wirechat is a simple yet robust chat package built with the [TALL Stack](https://tallstack.dev/), making it easy to integrate into your Laravel app with just a few commands.
@@ -30,7 +30,7 @@ Before installing, ensure that authentication is already set up in your applicat
 composer require namu/wirechat
 ```
 
->⚠️ Beta Notice: Wirechat is currently in beta. While it may not yet be production-ready, we encourage you to explore and test it out. If you encounter any issues, your feedback will be invaluable in helping us refine and improve the package for a stable release.  
+>⚠️ Beta Notice: Wirechat is currently in beta. While it may not yet be production-ready, we encourage you to explore and test it out. If you encounter any issues, your feedback will be invaluable in helping us refine and improve the package for a stable release.
 
 
 <x-sub-section-heading label="2. Install Wirechat" />
@@ -70,7 +70,7 @@ php artisan migrate
 
 <x-sub-section-heading   label="Optimizing Tailwind CSS for Production " />
 
-To ensure Tailwind purges CSS classes from the package, add the following lines to your `/resources/css/app.css` file:  
+To ensure Tailwind purges CSS classes from the package, add the following lines to your `/resources/css/app.css` file:
 
 ```css
 /* resources/css/app.css */
@@ -80,10 +80,10 @@ To ensure Tailwind purges CSS classes from the package, add the following lines 
 ```
 **Note:** This package requires the `@tailwindcss/forms` plugin. Make sure it is installed and included in your Tailwind config.
 
-<details class="my-9">  
-<summary>Using Tailwind CSS v3?</summary>  
+<details class="my-9">
+<summary>Using Tailwind CSS v3?</summary>
 
-If you're using Tailwind CSS v3, update the `content` array in your `tailwind.config.js` file to include these paths:  
+If you're using Tailwind CSS v3, update the `content` array in your `tailwind.config.js` file to include these paths:
 
 ```js
 content: [
@@ -91,7 +91,7 @@ content: [
   './vendor/namu/wirechat/src/Livewire/**/*.php'
 ]
 ```
-</details>  
+</details>
 
 ---
 
@@ -130,14 +130,15 @@ php artisan queue:work --queue=messages,default
 
 <summary> Queue Prioritization </summary>
 
-Wirechat uses two queues for efficient delivery:  
+Wirechat uses two queues for efficient delivery:
 
-1. **High Priority (`messages`)**: For real-time broadcasting of messages to users in a conversation.  
-2. **Default Priority (`default`)**: For notifications like updating chat lists or showing unread message counts.  
 
-You can customize these queue names in the [Wirechat Configuration]({{ route('customization.config') }}).  
+1. **High Priority (`messages`)**: For real-time broadcasting of messages to users in a conversation.
+2. **Default Priority (`default`)**: For notifications like updating chat lists or showing unread message counts.
 
-</details>  
+You can customize these queue names in the [Wirechat Configuration]({{ \App\Facades\Docs::route('customization.config')}}).
+
+</details>
 
 #### Step 3: Step Development Server
 
@@ -173,7 +174,7 @@ php artisan vendor:publish --tag=wirechat-views
 
 </x-markdown>
 
-    
+
 
 
 </x-docs-layout>
