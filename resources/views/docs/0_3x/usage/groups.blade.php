@@ -8,19 +8,26 @@
 WireChat's **Group** feature transforms simple messaging into a dynamic, multi-user conversation experience. Groups empower users to collaborate effectively by offering robust tools for managing members, assigning roles, and customizing permissions. Whether you're creating communities or coordinating projects, WireChat Groups provide the flexibility and control you need.
 
 ---
+<x-section-heading label="Enabling Group Creation" />
 
-## Enabling Group Creation
+To allow users to create groups in your application, enable the required actions in your Wirechat **panel**:
 
-To allow users to create groups in your application, ensure the following settings are enabled in the WireChat [configuration]({{route('customization.config')}}):
+```php
+use Namu\WireChat\Panel;
 
-- `show_new_group_modal_button`
-- `show_new_chat_modal_button`
+public function panel(Panel $panel): Panel
+{
+$panel
+    //..
+    ->newChatAction(true)   // must be enabled for group creation UI
+    ->newGroupAction(true); // enable "New Group" button
+}
+```
 
->**Note:** Disabling these settings will hide the action buttons required for group creation, preventing all users from initiating new groups.
-
+> **Note:** Disabling these actions will hide the buttons required for creating new groups in the UI.
 
 ---
-    
+
 
 ## Creating a Group
 
