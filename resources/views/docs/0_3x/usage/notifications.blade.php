@@ -1,11 +1,15 @@
 
 <x-docs-layout>
 
- <x-markdown> 
+ <x-markdown>
 
-# Notifications
+# Web Push Notifications
 
-Wirechat keeps you connected to your conversations even when you're not actively using the app. Unlike in-app alerts, these are global notifications that appear in your browser’s notification tray. By harnessing the power of [**Service Workers**](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API) and the [**Web Notifications API**](https://developer.mozilla.org/en-US/docs/Web/API/Notification), Wirechat ensures you never miss an important message, no matter which tab or application you're using.
+Wirechat keeps you connected to your conversations even when you're not actively using the app. Unlike in-app alerts, these are global
+notifications that appear in your browser’s notification tray. By harnessing the power of
+[**Service Workers**](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API)
+and the [**Web Notifications API**](https://developer.mozilla.org/en-US/docs/Web/API/Notification),
+Wirechat ensures you never miss an important message, no matter which tab or application you're using.
 
 <x-section-heading label="How It Works" />
 
@@ -38,16 +42,16 @@ importScripts('/js/wirechat/sw.js');
 
 <x-section-heading label="Enabling Notifications" />
 
-Update your Wirechat configuration file to enable notifications:
-
+Enable web push notifications in the your wirechat:panel
 ```php
-return [
-    //...
-    'notifications' => [
-        'enabled' => true,
-        'main_sw_script' => 'sw.js', // Relative to the public folder
-    ],
-];
+use Namu\WireChat\Panel;
+
+public function panel(Panel $panel): Panel
+{
+$panel
+    //..
+     ->webPushNotifications();
+}
 ```
 
 <x-section-heading label="Requesting Permissions" />
@@ -67,16 +71,16 @@ When a new message arrives while you’re away from the conversation, a notifica
 
 <x-sub-section-heading label="Notification API" />
 
-- **User Permissions & Settings:**  
+- **User Permissions & Settings:**
   Notifications require explicit permission, and users might need to enable them in their browser or system settings.
-- **Policy Constraints:**  
+- **Policy Constraints:**
   Notification behavior (such as sound, display duration, and interactions) is controlled by browser and OS policies.
 
 <x-sub-section-heading label="Service Worker API" />
 
-- **Secure Context:**  
+- **Secure Context:**
   Service Workers only run on HTTPS (except on localhost during development).
-- **Lifecycle & Support:**  
+- **Lifecycle & Support:**
   They’re event-driven and may be terminated when idle, with feature support varying across browsers.
 
 ---
@@ -86,9 +90,9 @@ When a new message arrives while you’re away from the conversation, a notifica
 Wirechat offers a streamlined solution for real-time notifications, ensuring your users stay informed with minimal setup. Enjoy a smart, unobtrusive notification system that keeps your conversations accessible at all times.
 
     </x-markdown>
-    
+
     <x-slot name="subNavigation">
-    
+
       <x-sub-navigation :items="[
             'How It Works',
             'Installation'=>['Importing Wirechat\'s Service Worker'],
@@ -102,10 +106,10 @@ Wirechat offers a streamlined solution for real-time notifications, ensuring you
             'Conclusion',
             ]
             "/>
-    
+
     </x-slot>
-    
-        
-    
-    
+
+
+
+
     </x-docs-layout>
