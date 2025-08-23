@@ -1,4 +1,3 @@
-
 <x-docs-layout>
 
 <x-markdown>
@@ -9,74 +8,202 @@ The **Attachments** feature allows users to seamlessly share files and media in 
 
 ---
 
-### Enabling Attachments
+<x-section-heading label="Enabling Attachments" />
 
-To enable attachments in your application, ensure the following options are set to `true` in the Wirechat [configuration]({{ route('customization.config') }}):
-
-- `allow_media_attachments`  
-- `allow_file_attachments`  
+Wirechat allows you to control how attachments are handled on a per-panel basis.
+You can enable **all attachments at once**, or selectively enable **file** or **media** attachments only.
 
 ---
 
-### Sending Attachments
+<x-sub-section-heading label="Enable Attachments" />
+
+Calling `attachments()` enables both file and media attachments.
+Setting this to `false` will completely disable attachments for the panel.
+
+```php
+use Namu\WireChat\Panel;
+
+public function panel(Panel $panel): Panel
+{
+return $panel
+    // ..
+    ->attachments();
+}
+````
+
+---
+
+<x-sub-section-heading label="Enable File Attachments Only" />
+
+Use `fileAttachments()` if you want to allow only document uploads such as PDFs, ZIPs, or text files.
+
+```php
+use Namu\WireChat\Panel;
+
+public function panel(Panel $panel): Panel
+{
+return $panel
+    // ..
+    ->fileAttachments();
+}
+```
+
+---
+
+<x-sub-section-heading label="Enable Media Attachments Only" />
+Use `mediaAttachments()` to allow users to upload images and videos while disabling file uploads.
+
+```php
+use Namu\WireChat\Panel;
+
+public function panel(Panel $panel): Panel
+{
+return $panel
+    // ..
+    ->mediaAttachments();
+}
+```
+
+---
+
+<x-section-heading label="Sending Attachments" />
 
 Users can share photos, videos, or documents in conversations by following these steps:
 
-1. Open an individual or group chat.  
-2. Click the **attachment icon**, then choose:  
-    - **Photos & Videos**: Select images or videos from your device.  
-    - **Files**: Select documents (e.g., PDFs, text files).  
-3. Preview attachments and add or remove files as needed.  
-4. Click **Send** to share.  
+1. Open an individual or group chat.
+2. Click the **attachment icon**, then choose:
+
+* **Photos & Videos**: Select images or videos from your device.
+* **Files**: Select documents (e.g., PDFs, text files).
+3. Preview attachments and add or remove files as needed.
+4. Click **Send** to share.
 
 ---
 
-### Customizing Attachment Settings
+<x-section-heading label="Customizing Attachment Settings" />
 
-Wirechat provides extensive customization options for handling attachments. These settings can be modified in the `wirechat.php` configuration file:
+Wirechat provides extensive customization options for handling attachments through the **panel**.
 
-#### Configuration Example
+#### Example
 
 ```php
-'attachments' => [
-    'storage_folder' => 'attachments', 
-    'storage_disk' => 'public', 
-    'disk_visibility' => 'public',
-    'max_uploads' => 10,  
+use Namu\WireChat\Panel;
 
-    // Media configuration
-    'media_mimes' => ['png', 'jpg', 'jpeg', 'gif', 'mov', 'mp4'],
-    'media_max_upload_size' => 12288, // 12 MB
+public function panel(Panel $panel): Panel
+{
+    return $panel
+        //..
+        ->attachments()
+        ->storageFolder('attachments')
+        ->storageDisk('public')
+        ->diskVisibility('public')
+        ->maxUploads(10)
 
-    // File configuration
-    'file_mimes' => ['zip', 'rar', 'txt', 'pdf'],
-    'file_max_upload_size' => 12288, // 12 MB
-],
+        // Media settings
+        ->mediaMimes(['png', 'jpg', 'jpeg', 'gif', 'mov', 'mp4'])
+        ->mediaMaxUploadSize(12288) // 12 MB
+
+        // File settings
+        ->fileMimes(['zip', 'rar', 'txt', 'pdf'])
+        ->fileMaxUploadSize(12288); // 12 MB
+}
 ```
-
-#### Key Settings  
-
-- **`storage_folder`**: Directory where attachments will be stored.  
-- **`storage_disk`**: The storage disk (e.g., `public`, `s3`) used for attachments.  
-- **`disk_visibility`**: The visibility of the storage disk (e.g., `public`, `private`) - generates temporary urls for private storage disk. 
-- **`max_uploads`**: Maximum number of attachments allowed per request.  
-- **`media_mimes`**: Permitted MIME types for media files (photos, videos).  
-- **`media_max_upload_size`**: Maximum file size (in KB) for media uploads.  
-- **`file_mimes`**: Permitted MIME types for documents (e.g., PDFs, ZIPs).  
-- **`file_max_upload_size`**: Maximum file size (in KB) for document uploads.  
 
 ---
 
-### Validation for Attachments
+<x-sub-section-heading label="Storage Folder" />
+
+Use **`storageFolder()`** to define where attachments will be stored inside your disk:
+
+```php
+$panel->storageFolder('attachments');
+```
+
+This will create an `attachments` folder inside the chosen disk.
+
+
+<x-sub-section-heading label="Storage Disk" />
+
+Use **`storageDisk()`** to set which Laravel filesystem disk should be used (`public`, `s3`, etc.):
+
+```php
+$panel->storageDisk('s3');
+```
+
+Wirechat will store files directly in the specified disk.
+
+
+<x-sub-section-heading label="Disk Visibility" />
+
+Use **`diskVisibility()`** to control whether files are publicly accessible or require signed URLs:
+
+```php
+$panel->diskVisibility('public');
+```
+
+With `private`, Wirechat generates **temporary URLs** for accessing files.
+
+
+<x-sub-section-heading label="Max Uploads" />
+
+Control how many files a user can attach per request using **`maxUploads()`**:
+
+```php
+$panel->maxUploads(5);
+```
+
+This limits the number of attachments allowed in a single message.
+
+
+<x-sub-section-heading label="Media MIME Types" />
+
+Define the allowed media file types that users can upload in conversations.
+```php
+$panel->mediaMimes(['png', 'jpg', 'jpeg', 'gif', 'mov', 'mp4']);
+````
+
+This ensures only the specified file formats are accepted for media attachments.
+
+<x-sub-section-heading label="Media Maximum Upload Size" />
+
+Set the maximum upload size (in KB) for media files.
+
+```php
+$panel->mediaMaxUploadSize(12288); // 12 MB
+```
+
+Uploads exceeding this size will be rejected by the system.
+
+<x-sub-section-heading label="File MIME Types" />
+
+Define the allowed document types that users can attach in conversations.
+
+```php
+$panel->fileMimes(['zip', 'rar', 'txt', 'pdf']);
+```
+
+Only these file types are permitted for file attachments.
+
+<x-section-heading label="File Maximum Upload Size" />
+
+Set the maximum upload size (in KB) for document attachments.
+
+```php
+$panel->fileMaxUploadSize(12288); // 12 MB
+```
+
+Any file larger than this will be blocked from upload.
+
+---
+
+<x-section-heading label="Validation for Attachments" />
 
 Wirechat validates attachments at two levels:
 
-1. **Client-Side Validation**: Ensures users only upload files that meet the defined rules before the request is sent.  
-2. **Server-Side Validation**: Uses Laravel and Livewire backend validation for additional security and accuracy.  
+1. **Client-Side Validation** – Ensures users only upload files that meet the defined rules.
+2. **Server-Side Validation** – Uses Laravel and Livewire backend validation for additional security.
 
-#### Synchronizing Validation Rules
-
-When customizing attachment validation rules, ensure the client-side rules are synchronized with the backend by updating the settings in your Livewire configuration.  
+> 💡 When customizing validation rules, ensure client-side rules are synchronized with your **panel** settings.
 
 </x-markdown>
 

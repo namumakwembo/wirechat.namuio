@@ -4,8 +4,6 @@
 
         <nav class="flex-1  px-2 space-y-1">
 
-
-
             {{-- Getting Started --}}
             <section class="space-y-1">
 
@@ -46,9 +44,7 @@
                 </ol>
             </section>
 
-
             {{-- Usage --}}
-
             <section class="space-y-1">
 
                 <h5 class="text-gray-950  dark:text-gray-300  py-2 px-2  font-medium">

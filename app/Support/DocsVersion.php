@@ -17,16 +17,10 @@ class DocsVersion
      */
     public function getRouteVersion(): string
     {
-        $versions = array_keys(config('docs.versions', []));
+        $versions = array_values(config('docs.versions', []));
         if (empty($versions)) return $this->routeVersion;
 
-        $latest = $versions[0];
-        foreach ($versions as $v) {
-            if (version_compare(str_replace('x','', $v), str_replace('x','', $latest), '>')) {
-                $latest = $v;
-            }
-        }
-
+        $latest = end($versions); // last added version as latest
         return $this->routeVersion === $latest ? '' : $this->routeVersion;
     }
 
@@ -35,6 +29,16 @@ class DocsVersion
      */
     public function getViewFolder(): string
     {
-        return config("docs.versions.{$this->routeVersion}", '0_3x'); // fallback to latest folder
+        $versions = config('docs.versions', []);
+
+        // array_search returns the key (folder) for the route version
+        $folder = array_search($this->routeVersion, $versions);
+
+        // fallback to latest folder if not found
+        if (!$folder) {
+            $folder = array_key_first($versions);
+        }
+
+        return $folder;
     }
 }

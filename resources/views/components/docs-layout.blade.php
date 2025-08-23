@@ -12,7 +12,7 @@
 
         <div class="h-[calc(100vh_-_5.1rem)] overflow-y-hidden flex justify-between ">
             <aside
-                class="w-[350px]    hidden lg:flex  flex-col gap-5  h-full p-8 px-9 top-0    inset-x-0 z-50 px-6  py-4 duration-300 ease-in-out">
+                class="w-[390px]    hidden lg:flex  flex-col gap-5  h-full p-8 px-9 top-0    inset-x-0 z-50 px-6  py-4 duration-300 ease-in-out">
                 <div class="max-w-2xs">
                     <select id="versions"
                             onchange="if (this.value) window.location.href = this.value"
@@ -22,7 +22,7 @@
                dark:bg-inherit dark:border-gray-600 dark:placeholder-gray-400
                dark:text-white dark:focus:ring-none dark:focus:border-none">
 
-                        @foreach (docs()->versions() as $routeVersion => $viewFolder)
+                        @foreach (docs()->versions() as $viewFolder => $routeVersion)
                             <option
                                 value="{{ url('docs/' . ($routeVersion === docs()->latest() ? '' : $routeVersion)) }}"
                                 @if ($routeVersion === docs()->current()) selected @endif>

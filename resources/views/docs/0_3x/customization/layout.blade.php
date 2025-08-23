@@ -1,68 +1,66 @@
-
-
 <x-docs-layout>
 
 <x-markdown>
 
 # Layout
 
-WireChat is designed to fit seamlessly into **any** Laravel application. By default, when you visit the `/chats` route, WireChat uses its own built-in layout. However, you may want to keep the look and feel of your existing site. Perhaps you already have a branded header, footer, or navigation bar that you’d like to retain. In that case, you can easily override WireChat’s default layout to match your application’s style.
+The chat system is designed to fit seamlessly into **any** Laravel application. By default, when you visit the panel index route, it uses its built-in layout. However, you may want to keep your existing header, footer, or navigation bar. You can easily override the default layout to match your application’s style.
 
 <x-section-heading label="Overriding the Default Layout" />
 
-To replace the standard WireChat layout with your own, open the WireChat configuration file and update the `layout` key:
+By default, WireChat uses the package layout `wirechat::layouts.app`.
+You can replace this layout by defining your own via the panel:
 
 ```php
-return [
-    // ...
-    'layout' => 'wirechat::layouts.app',
-];
-```
+use Namu\WireChat\Panel;
 
-Here, `'wirechat::layouts.app'` is just an example. Feel free to use **any** layout path that exists in your application  just make sure you keep the syntax correct.
+public function panel(Panel $panel): Panel
+{
+    return $panel
+        ->id('chats')
+        ->layout('layouts.app'); // Your custom Blade layout
+}
+```
 
 ---
 
 <x-section-heading label="Setting Up Your Layout" />
 
-Before WireChat can use your custom layout, you need to include **WireChat styles** and **assets**. These files power global styling and modals across WireChat’s components. You can add them directly to your Blade layout so that they’re always loaded.
-
-Here’s a basic layout structure:
+For the chat system to work properly, you’ll need to include the **required styles and assets**.
+These files handle global styling, modals, and Livewire functionality. Add them directly to your Blade layout so they’re always available.
 
 ```blade{3,6,9}
 <html>
 <head>
-    @@wirechatStyles
+@@wirechatStyles
 </head>
 <body>
-    <div class="h-[calc(100vh_-_20.0rem)]">
-        @{{ $slot }}
-    </div>
-    @@wirechatAssets
+<div class="h-[calc(100vh_-_20rem)]">
+    @{{ $slot }}
+</div>
+@@wirechatAssets(panel:'chats')
 </body>
 </html>
 ```
 
-1. **`@@wirechatStyles`** injects the necessary CSS and style definitions for WireChat.  
-2. **`@{{ $slot }}`** is where your main page content (or in this case, your chat interface) will appear.  
-3. **`@@wirechatAssets`** loads the essential JavaScript files and Livewire directives that power real-time chat updates.
+1. **`@@wirechatStyles`** injects the necessary CSS for the chat.
+2. **`@{{ $slot }}`** is where your main page content or chat interface will appear.
+3. **`@@wirechatAssets`** loads the JavaScript and Livewire directives for real-time updates.
 
-> **Tip:** Make sure to wrap the chat area in a container with a **fixed height**. WireChat dynamically inserts and updates chat messages in real time, so having a stable height prevents layout issues and keeps your UI looking neat.
+By default, the main panel will be used.
+You can also pass your own panel ID to the WireChat assets directive like this:
+`@@wirechatAssets(panel:'app')`
 
-With everything set, just navigate to the `/chats` route in your browser. WireChat should now display in **your** custom layout rather than the default one. This way, your users will have a consistent experience  whether they’re reading a blog post, browsing products, or chatting with others in your application.
+> **Tip:** Wrap the chat area in a container with a **fixed height**. This ensures messages display correctly and keeps your UI consistent.
 
----
+Once everything is set up, visiting `/chats` will show the chat within your custom layout, giving users a seamless experience across your site.
 
-Once you’ve overridden the layout, you’re ready to take full advantage of WireChat’s features, all without sacrificing your site’s unique branding or style. If you need more fine grained control  such as embedding WireChat widgets into specific pages or sections  check out the additional configuration options in the  [Embedding]({{route('customization.embedding')}}) section.
+For embedding chat components on specific pages or sections, see the [Embedding]({{ docs()->route('customization.embedding') }}) section for more advanced options.
 
 </x-markdown>
-    
 
 <x-slot name="subNavigation">
-
-    <x-sub-navigation :items="['Overriding the default Layout','Setting up your layout']"/>
-
+<x-sub-navigation :items="['Overriding the Default Layout','Setting Up Your Layout']"/>
 </x-slot>
-    
-    
+
 </x-docs-layout>

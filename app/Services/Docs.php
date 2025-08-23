@@ -5,7 +5,7 @@ namespace App\Services;
 class Docs
 {
     /**
-     * Get all versions (route => view folder)
+     * Get all versions (view folder => route version)
      */
     public static function versions(): array
     {
@@ -13,54 +13,39 @@ class Docs
     }
 
     /**
-     * Get the latest version (route key)
+     * Get the latest route version
      */
     public static function latest(): string
     {
-        $versions = array_keys(self::versions());
-        if (empty($versions)) return '';
-
-        $latest = $versions[0];
-        foreach ($versions as $v) {
-            if (version_compare(str_replace('x','', $v), str_replace('x','', $latest), '>')) {
-                $latest = $v;
-            }
-        }
-
-        return $latest;
+        $versions = array_values(self::versions());
+        return end($versions) ?: '';
     }
 
     /**
-     * Get the current version based on the URL segment
+     * Get the current route version from URL
      */
     public static function current(): string
     {
         $segment = request()->segment(2); // /docs/{version}/...
-
-        return array_key_exists($segment, self::versions())
+        return in_array($segment, array_values(self::versions()))
             ? $segment
             : self::latest();
     }
 
     /**
-     * Generate a route for the current version automatically.
-     * If it's the latest version, no prefix is added.
+     * Generate a route respecting version
      */
     public static function route(string $name, array $params = []): string
     {
         $current = self::current();
-
-        // Latest version does not need a prefix
         $routePrefix = $current === self::latest() ? '' : $current;
-
-        $routeName = $routePrefix ? "$routePrefix.$name" : $name;
-
-        return route($routeName, $params);
+        return $routePrefix ? route("$routePrefix.$name", $params) : route($name, $params);
     }
 
 
     /**
-     * Check if the current route name matches a given Docs route name
+     * Check if the current route matches a given docs route name.
+     * Automatically respects versioning.
      */
     public static function routeIs(string $name): bool
     {
@@ -74,14 +59,12 @@ class Docs
         return request()->routeIs($expected);
     }
 
-
     /**
-     * Get the view folder for the current version
+     * Get the view folder for a route version
      */
     public static function viewFolder(string $version = null): string
     {
         $version = $version ?? self::current();
-
-        return self::versions()[$version] ?? self::versions()[self::latest()] ?? '';
+        return array_search($version, self::versions()) ?: array_key_first(self::versions());
     }
 }
