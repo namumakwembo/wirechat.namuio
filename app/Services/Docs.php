@@ -2,6 +2,8 @@
 
 namespace App\Services;
 
+use Illuminate\Support\Facades\Route;
+
 class Docs
 {
     /**
@@ -39,9 +41,11 @@ class Docs
     {
         $current = self::current();
         $routePrefix = $current === self::latest() ? '' : $current;
-        return $routePrefix ? route("$routePrefix.$name", $params) : route($name, $params);
-    }
 
+        return $routePrefix
+            ? route("$routePrefix.$name", $params)
+            : route($name, $params);
+    }
 
     /**
      * Check if the current route matches a given docs route name.
@@ -50,13 +54,22 @@ class Docs
     public static function routeIs(string $name): bool
     {
         $current = self::current();
-
-        // Latest version has no prefix
         $routePrefix = $current === self::latest() ? '' : $current;
-
         $expected = $routePrefix ? "$routePrefix.$name" : $name;
 
         return request()->routeIs($expected);
+    }
+
+    /**
+     * Check if a docs route exists (respects versioning).
+     */
+    public static function hasRoute(string $name): bool
+    {
+        $current = self::current();
+        $routePrefix = $current === self::latest() ? '' : $current;
+        $routeName = $routePrefix ? "$routePrefix.$name" : $name;
+
+        return Route::has($routeName);
     }
 
     /**

@@ -83,6 +83,26 @@ public function panel(Panel $panel): Panel
             ->guards(['web', 'admin']);
 }
 ```
+---
+<x-sub-section-heading label="Chat Middleware" />
+
+By default, the `belongsToConversation` middleware is automatically applied to the `/chats/{conversation}` route.
+This ensures that only authorized users, such as conversation members, can access the chat.
+
+If you want to adjust or extend how chats are viewed or accessed, you may register additional middleware here:
+
+```php
+use Namu\WireChat\Panel;
+
+public function panel(Panel $panel): Panel
+{
+    return $panel
+        // ...
+        ->chatMiddleware([
+            // Your custom middleware
+        ]);
+}
+````
 
 With this setup, your conversation routes remain secure under a variety of authentication setups.
 
@@ -139,6 +159,7 @@ Broadcast::routes([
 'Middleware'=>[
 'Default Middleware Setup',
 'Multi-Guard Authentication',
+'Chat Middleware',
 'Using the belongsToConversation Middleware',
 ],
 'Broadcasting Middleware Configuration']"/>

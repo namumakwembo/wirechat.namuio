@@ -17,11 +17,10 @@
                     <select id="versions"
                             onchange="if (this.value) window.location.href = this.value"
                             class="bg-inherit border border-gray-300
-                text-gray-900 text-sm
-                 rounded-lg focus:border-none block w-full p-1.5
-               dark:bg-inherit dark:border-gray-600 dark:placeholder-gray-400
-               dark:text-white dark:focus:ring-none dark:focus:border-none">
-
+                                    text-gray-900 text-sm
+                                     rounded-lg focus:border-none block w-full p-1.5 px-5
+                                     dark:bg-inherit dark:border-gray-600 dark:placeholder-gray-400
+                                   dark:text-white dark:focus:ring-none dark:focus:border-none">
                         @foreach (docs()->versions() as $viewFolder => $routeVersion)
                             <option
                                 value="{{ url('docs/' . ($routeVersion === docs()->latest() ? '' : $routeVersion)) }}"

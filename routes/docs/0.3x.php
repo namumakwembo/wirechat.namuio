@@ -69,6 +69,13 @@ Route::prefix('docs/'.$routePrefix)
     })->name('usage.events');
 
 
+   Route::get('/panels', function  () use ($docs) {
+        Helper::seo('Panels',"WireChat panel unifies a variety of high-level package behavior settings that were previously scattered throughout your application's file structure. From this panel, you may now customize your package's routing, middleware, features, searches, and more.");
+
+        return view('docs.'.$docs->getViewFolder().'.panels');
+    })->name('panels');
+
+
     /**----------------
      * Customization
      */
@@ -78,6 +85,11 @@ Route::prefix('docs/'.$routePrefix)
         Helper::seo('Trait','WireChat Chatable Trait lets you customize user attributes like avatar URLs, profile links, and display names to better fit your application\'s needs.');
         return view('docs.'.$docs->getViewFolder().'.customization.trait');
     })->name('customization.trait');
+
+    Route::get('/search', function () use ($docs) {
+        Helper::seo('Search', 'WireChat provides flexible search customization, allowing you to define searchable attributes or completely override the default search logic.');
+        return view('docs.' . $docs->getViewFolder() . '.customization.search');
+    })->name('customization.search');
 
     Route::get('/authorization', function  () use ($docs) {
         Helper::seo('Authorization','Wirechat offers flexible integration with multiple guards and middleware configurations to secure your application’s routes and broadcasting channels');

@@ -48,9 +48,9 @@ use Namu\WireChat\Panel;
 
 public function panel(Panel $panel): Panel
 {
-$panel
-    //..
-     ->webPushNotifications();
+    $panel
+        //..
+         ->webPushNotifications();
 }
 ```
 

@@ -41,6 +41,15 @@
                         </x-sidebar-link>
 
                     </li>
+                    <li>
+                        @if(docs()->hasRoute('panels'))
+                            <x-sidebar-link href="{{ docs()->route('panels') }}"
+                                            active="{{ request()->routeIs('panels') }}">
+                                Panels
+                            </x-sidebar-link>
+
+                        @endif
+                    </li>
                 </ol>
             </section>
 
@@ -121,6 +130,16 @@
                             Trait
                         </x-sidebar-link>
                     </li>
+
+
+                    @if(docs()->hasRoute('customization.search'))
+                    <li>
+                        <x-sidebar-link new href="{{ docs()->route('customization.search') }}"
+                                        active="{{docs()->routeIs('customization.search') }}">
+                            Search
+                        </x-sidebar-link>
+                    </li>
+                    @endif
                     <li>
 
                         <x-sidebar-link href="{{ docs()->route('customization.config') }}"

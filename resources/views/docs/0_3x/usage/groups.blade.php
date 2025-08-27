@@ -17,14 +17,38 @@ use Namu\WireChat\Panel;
 
 public function panel(Panel $panel): Panel
 {
-$panel
-    //..
-    ->newChatAction(true)   // must be enabled for group creation UI
-    ->newGroupAction(true); // enable "New Group" button
+    $panel
+        //...
+        ->newChatAction(true)
+        ->newGroupAction(true);
 }
 ```
 
 > **Note:** Disabling these actions will hide the buttons required for creating new groups in the UI.
+
+
+
+---
+
+<x-section-heading label="Group Settings" />
+
+Panels let you configure **group settings**, so you can define different rules and limits for each panel.
+
+<x-sub-section-heading label="Maximum Group Members" />
+
+This option controls how many members a group can have within the panel.
+
+```php
+use Namu\WireChat\Panel;
+
+public function panel(Panel $panel): Panel
+{
+    return $panel
+        //...
+        ->maxGroupMembers(1000);
+}
+```
+
 
 ---
 

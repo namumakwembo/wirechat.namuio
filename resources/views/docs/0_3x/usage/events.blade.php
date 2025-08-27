@@ -92,9 +92,10 @@ This ensures model types are correctly encoded in an alphanumeric format for use
 
 ```js
 // JavaScript
+
 userId = @js(auth()->id());
 encodedType = @js(\Namu\WireChat\Helpers\MorphClassResolver::encode(auth()->user()->getMorphClass()));
-panel = 'chats'; // or set your custom panel
+panel = 'panel-id'; // or set your custom panel
 
 Echo.private(`${panel}.participant.${encodedType}.${userId}`)
 .listen('.Namu\\WireChat\\Events\\NotifyParticipant', (e) => {
