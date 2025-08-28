@@ -14,7 +14,7 @@ as needed.
 
 ```php
 
-use App\Traits\Chatable;
+use Namu\WireChat\Traits\Chatable;
 use Illuminate\Database\Eloquent\Collection;
 
 class User extends Model

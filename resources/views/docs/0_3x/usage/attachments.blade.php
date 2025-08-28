@@ -26,14 +26,14 @@ use Namu\WireChat\Panel;
 public function panel(Panel $panel): Panel
 {
     return $panel
-        // ..
+        //..
         ->attachments();
 }
 ````
 
 ---
 
-<x-sub-section-heading label="Enable File Attachments Only" />
+<x-sub-section-heading label="File Attachments Only" />
 
 Use `fileAttachments()` if you want to allow only document uploads such as PDFs, ZIPs, or text files.
 
@@ -43,14 +43,14 @@ use Namu\WireChat\Panel;
 public function panel(Panel $panel): Panel
 {
     return $panel
-        // ..
+        //..
         ->fileAttachments();
 }
 ```
 
 ---
 
-<x-sub-section-heading label="Enable Media Attachments Only" />
+<x-sub-section-heading label="Media Attachments Only" />
 
 Use `mediaAttachments()` to allow users to upload images and videos while disabling file uploads.
 
@@ -60,7 +60,7 @@ use Namu\WireChat\Panel;
 public function panel(Panel $panel): Panel
 {
     return $panel
-        // ..
+        //..
         ->mediaAttachments();
 }
 ```
@@ -81,35 +81,27 @@ Users can share photos, videos, or documents in conversations by following these
 
 ---
 
-<x-section-heading label="Storage Configuration" />
+<x-section-heading label="File System Configuration" />
 
-Wirechat separates **storage configuration** into two layers to keep things consistent:
+WireChat separates **storage configuration** into two layers for consistency and easier maintenance.
 
-* **Global storage settings (config/wirechat.php)**
-These are always used by models, jobs, observers, and URL generation.
-You must define:
-
-* `attachments.storage_disk` (e.g., `public`, `s3`)
-* `attachments.storage_folder` (default `attachments`)
-* `attachments.visibility` (`public` or `private`)
+The global WireChat filesystem settings are defined in the `wirechat` config file.
+This ensures that storage behavior remains consistent across models, jobs, observers, and URL generation.
 
 ```php
 // config/wirechat.php
-    return [
+return [
     'attachments' => [
-        'storage_disk'   => 'public',
-        'storage_folder' => 'attachments',
-        'visibility'     => 'public',
+        'storage_disk'   => 'public',    // e.g., 'public', 's3'
+        'storage_folder' => 'attachments', // or '/'
+        'visibility'     => 'public',    // 'public' or 'private'
     ],
 ];
 ```
 
-* **Panel-level overrides (UI only)**
-Panels can optionally customize the **storage folder** to organize uploads differently,
-but **disk and visibility must always come from config** for consistency.
-
 ---
 
+<x-section-heading label="Upload  Settings" />
 
 <x-sub-section-heading label="Max Uploads" />
 

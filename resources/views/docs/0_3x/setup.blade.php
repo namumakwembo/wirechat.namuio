@@ -4,19 +4,19 @@
 
 # Setup
 
-To prepare your models for WireChat, implement the **`WireChatUser` interface** and use the **`Chatable` trait**.
+To prepare your models for WireChat, implement the **`WireChatUser` interface** and use the **`InteractsWithWireChat` trait**.
 This setup equips your model to start conversations, send messages, and interact with WireChat features.
 
 Example with a **User** model:
 
-```php
+```php{}{5-23}
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Namu\WireChat\Traits\Chatable;
+use Namu\WireChat\Traits\InteractsWithWireChat;
 use Namu\WireChat\Contracts\WireChatUser;
 
 class User extends Authenticatable implements WireChatUser
 {
-    use Chatable;
+    use InteractsWithWireChat;
 
     /**
     * Determine if the user can create new chats.

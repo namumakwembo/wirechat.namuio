@@ -83,26 +83,9 @@ When clicked, this button will trigger the `test()` method in your custom Chats 
 
 View a list of available [Wirechat components]({{route('customization.core-components')}})
 
----
-
-
-## Next Steps
-
-1. **Explore Other WireChat Components**  
-   The approach you used for overriding one component applies to any other base component in WireChat (e.g., `wirechat.chat`, `wirechat.new-group`, etc.). Just extend the corresponding class and register it in your application’s service provider.
-
-2. **Combine With Custom Views**  
-   If you published WireChat’s views, you can link your newly added methods directly to UI elements (buttons, links, or forms) in the Blade files. This way, your users can interact with the custom logic you’ve introduced.
-
-3. **Keep Things Organized**  
-   Use clear namespaces and folder structures for any extended components, especially if you plan to override multiple classes. This will keep your codebase maintainable and easy to update.
-
-4. **That’s It!**  
-
-By **extending WireChat’s Livewire components**, you gain full control over both the **frontend** and **backend** of your chat system adding functionality without needing to modify the original package files, and ensuring updates won’t overwrite your work.
 
 </x-markdown>
-    
-    
-    
+
+
+
     </x-docs-layout>

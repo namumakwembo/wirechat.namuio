@@ -39,7 +39,8 @@ use Namu\WireChat\Panel;
 public function panel(Panel $panel): Panel
 {
     return $panel
-        ->id('chats');
+          //...
+          ->id('chats');
 }
 ```
 
@@ -53,7 +54,8 @@ use Namu\WireChat\Panel;
 public function panel(Panel $panel): Panel
 {
     return $panel
-        ->path('chats');
+          //...
+          ->path('chats');
 }
 ```
 
@@ -65,7 +67,8 @@ use Namu\WireChat\Panel;
 public function panel(Panel $panel): Panel
 {
     return $panel
-        ->path('');
+          //...
+          ->path('');
 }
 ```
 
@@ -81,7 +84,8 @@ use Namu\WireChat\Panel;
 public function panel(Panel $panel): Panel
 {
     return $panel
-        ->middleware(['web', 'auth']);
+          //...
+          ->middleware(['web', 'auth']);
 }
 ```
 
@@ -95,7 +99,8 @@ use Namu\WireChat\Panel;
 public function panel(Panel $panel): Panel
 {
     return $panel
-        ->chatMiddleware([
+          //...
+          ->chatMiddleware([
             // Additional middleware
         ]);
 }
@@ -111,7 +116,8 @@ use Namu\WireChat\Panel;
 public function panel(Panel $panel): Panel
 {
     return $panel
-        ->chatsSearch();
+          //...
+          ->chatsSearch();
 }
 ```
 
@@ -127,7 +133,8 @@ use Namu\WireChat\Panel;
 public function panel(Panel $panel): Panel
 {
     return $panel
-        ->webPushNotifications();
+          //...
+          ->webPushNotifications();
 }
 ```
 
@@ -143,7 +150,8 @@ use Namu\WireChat\Panel;
 public function panel(Panel $panel): Panel
 {
     return $panel
-        ->layout('layouts.app');
+          //...
+          ->layout('layouts.app');
 }
 ```
 
@@ -157,7 +165,8 @@ use Namu\WireChat\Panel;
 public function panel(Panel $panel): Panel
 {
     return $panel
-        ->attachments();
+          //...
+          ->attachments();
 }
 ```
 
@@ -173,7 +182,8 @@ use Namu\WireChat\Panel;
 public function panel(Panel $panel): Panel
 {
     return $panel
-        ->fileAttachments();
+          //...
+          ->fileAttachments();
 }
 ```
 
@@ -187,7 +197,8 @@ use Namu\WireChat\Panel;
 public function panel(Panel $panel): Panel
 {
     return $panel
-        ->mediaAttachments();
+          //...
+          ->mediaAttachments();
 }
 ```
 
@@ -201,9 +212,69 @@ use Namu\WireChat\Panel;
 public function panel(Panel $panel): Panel
 {
     return $panel
-        ->heading('Chats');
+          //...
+          ->heading('Chats');
 }
 ```
+
+<x-section-heading label="New Chat Action" />
+
+Make the create new chat button action visible on WireChat UI
+```php
+use Namu\WireChat\Panel;
+
+public function panel(Panel $panel): Panel
+{
+    return $panel
+          //...
+          ->newChatAction();
+}
+```
+
+<x-section-heading label="New Group Action" />
+
+Show the create new group action
+```php
+use Namu\WireChat\Panel;
+
+public function panel(Panel $panel): Panel
+{
+    return $panel
+          //...
+          ->newGroupAction();
+}
+```
+
+<x-section-heading label="Redirect To Home Action" />
+
+Show the create new group action
+```php
+use Namu\WireChat\Panel;
+
+public function panel(Panel $panel): Panel
+{
+    return $panel
+          //...
+          ->redirectToHomeAction();
+}
+```
+
+<x-section-heading label="HomeUrl" />
+
+Set the redirect url when the home action is clicked
+
+```php
+use Namu\WireChat\Panel;
+
+public function panel(Panel $panel): Panel
+{
+    return $panel
+          //...
+          ->homeUrl('/dashboard');
+}
+```
+
+
 
 </x-markdown>
 

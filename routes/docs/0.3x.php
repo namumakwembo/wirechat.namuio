@@ -27,11 +27,18 @@ Route::prefix('docs/'.$routePrefix)
     })->name('installation');
 
     Route::get('/setup', function  () use ($docs) {
-        Helper::seo('Setup','To prepare your models for WireChat, you need to integrate the `Chatable` trait. Because WireChat is polymorphic, you can add this trait to any model—not just the User model');
+        Helper::seo('Setup','To prepare your models for WireChat, you need to integrate the `InteractsWithWireChat` trait. Because WireChat is polymorphic, you can add this trait to any model—not just the User model');
         return view('docs.'.$docs->getViewFolder().'.setup');
     })->name('setup');
 
-    /**----------------
+
+    Route::get('/panels', function  () use ($docs) {
+        Helper::seo('Panels',"WireChat panel unifies a variety of high-level package behavior settings that were previously scattered throughout your application's file structure. From this panel, you may now customize your package's routing, middleware, features, searches, and more.");
+
+        return view('docs.'.$docs->getViewFolder().'.panels');
+    })->name('panels');
+
+        /**----------------
      * Usage
      */
     Route::get('/overview', function  () use ($docs) {
@@ -69,27 +76,16 @@ Route::prefix('docs/'.$routePrefix)
     })->name('usage.events');
 
 
-   Route::get('/panels', function  () use ($docs) {
-        Helper::seo('Panels',"WireChat panel unifies a variety of high-level package behavior settings that were previously scattered throughout your application's file structure. From this panel, you may now customize your package's routing, middleware, features, searches, and more.");
-
-        return view('docs.'.$docs->getViewFolder().'.panels');
-    })->name('panels');
-
 
     /**----------------
      * Customization
      */
 
 
-    Route::get('/trait', function  () use ($docs) {
-        Helper::seo('Trait','WireChat Chatable Trait lets you customize user attributes like avatar URLs, profile links, and display names to better fit your application\'s needs.');
-        return view('docs.'.$docs->getViewFolder().'.customization.trait');
-    })->name('customization.trait');
-
-    Route::get('/search', function () use ($docs) {
-        Helper::seo('Search', 'WireChat provides flexible search customization, allowing you to define searchable attributes or completely override the default search logic.');
-        return view('docs.' . $docs->getViewFolder() . '.customization.search');
-    })->name('customization.search');
+    Route::get('/users', function () use ($docs) {
+        Helper::seo('Users', 'WireChat allows you to define how users are represented within your application.');
+        return view('docs.' . $docs->getViewFolder() . '.customization.users');
+    })->name('customization.users');
 
     Route::get('/authorization', function  () use ($docs) {
         Helper::seo('Authorization','Wirechat offers flexible integration with multiple guards and middleware configurations to secure your application’s routes and broadcasting channels');

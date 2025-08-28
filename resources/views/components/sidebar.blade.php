@@ -43,7 +43,7 @@
                     </li>
                     <li>
                         @if(docs()->hasRoute('panels'))
-                            <x-sidebar-link href="{{ docs()->route('panels') }}"
+                            <x-sidebar-link new href="{{ docs()->route('panels') }}"
                                             active="{{ request()->routeIs('panels') }}">
                                 Panels
                             </x-sidebar-link>
@@ -96,7 +96,7 @@
 
 
                     <li>
-                        <x-sidebar-link new href="{{ docs()->route('usage.notifications') }}"
+                        <x-sidebar-link  href="{{ docs()->route('usage.notifications') }}"
                                         active="{{docs()->routeIs('usage.notifications') }}">
                             Notifications
                         </x-sidebar-link>
@@ -123,20 +123,22 @@
 
                 <ol class="  border-l dark:border-gray-700 ml-6 ">
 
-                    <li>
+                    @if(docs()->hasRoute('customization.trait'))
 
+                    <li>
                         <x-sidebar-link href="{{ docs()->route('customization.trait') }}"
                                         active="{{docs()->routeIs('customization.trait') }}">
                             Trait
                         </x-sidebar-link>
                     </li>
+                    @endif
 
 
-                    @if(docs()->hasRoute('customization.search'))
+                    @if(docs()->hasRoute('customization.users'))
                     <li>
-                        <x-sidebar-link new href="{{ docs()->route('customization.search') }}"
-                                        active="{{docs()->routeIs('customization.search') }}">
-                            Search
+                        <x-sidebar-link new href="{{ docs()->route('customization.users') }}"
+                                        active="{{docs()->routeIs('customization.users') }}">
+                            Users
                         </x-sidebar-link>
                     </li>
                     @endif
@@ -169,7 +171,7 @@
 
                     <li>
 
-                        <x-sidebar-link new href="{{ docs()->route('customization.views') }}"
+                        <x-sidebar-link   href="{{ docs()->route('customization.views') }}"
                                         active="{{docs()->routeIs('customization.views') }}">
                             Views
 
@@ -180,7 +182,7 @@
 
                     <li>
 
-                        <x-sidebar-link new href="{{ docs()->route('customization.components') }}"
+                        <x-sidebar-link   href="{{ docs()->route('customization.components') }}"
                                         active="{{docs()->routeIs('customization.components') }}">
                             Components
                         </x-sidebar-link>
@@ -210,7 +212,7 @@
 
                     <li>
 
-                        <x-sidebar-link new href="{{ docs()->route('customization.embedding') }}"
+                        <x-sidebar-link  href="{{ docs()->route('customization.embedding') }}"
                                         active="{{docs()->routeIs('customization.embedding') }}">
                             Embedding
                         </x-sidebar-link>
@@ -218,7 +220,7 @@
 
 
                     <li>
-                        <x-sidebar-link new href="{{ docs()->route('customization.core-components') }}"
+                        <x-sidebar-link  href="{{ docs()->route('customization.core-components') }}"
                                         active="{{docs()->routeIs('customization.core-components') }}">
                             Core Components
                         </x-sidebar-link>

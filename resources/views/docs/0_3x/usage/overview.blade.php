@@ -8,18 +8,30 @@ Once you’ve installed and configured WireChat, you’re ready to create engagi
 Before you begin, ensure your models are prepared for chat functionality. If you haven’t already, visit the [**Setup**]({{ route('setup') }})  page to integrate the necessary trait.
 <x-section-heading label="Chat Interface" />
 
-To start exploring WireChat, navigate to the default chat interface at: `/chats`.
-You can also customize the route prefix by editing the `routes.prefix` in your published Wirechat [configuration file]({{ route('customization.config') }}) .
+To start exploring WireChat, navigate to the path defined in your panel. If you dont have a panel you can learn more about panels in
+the  [Panels Configuration]({{ docs()->route('panels') }}) .
 
+<x-section-heading label="Enable Chat Action" />
+
+To enable the "New Chat" modal button in the WireChat UI, ensure the `->newChatAction()` method  is enabled in your WireChat panel.
+
+```php
+use Namu\WireChat\Panel;
+
+public function panel(Panel $panel): Panel
+{
+    $panel
+        //...
+        ->newChatAction();
+}
+```
 <x-section-heading label="Starting a Chat" />
 
 -  **Using the WireChat UI**
 
     1. Click the **Plus** icon in the chat list.
-    2. Search for and select a user to start a conversation with. _(Customize Search; see [Trait Customization]({{ route('customization.trait') }}))_.
+    2. Search for and select a user to start a conversation with. [Customize Search]({{ docs()->route('customization.users') }}).
     3. Click on the user’s name to initiate a chat.
-
-> To enable the "New Chat" button in the UI, ensure the `show_new_chat_modal_button` setting is enabled in your WireChat configuration.
 
 - **Creating a Private Chat Programmatically**
 
@@ -173,6 +185,7 @@ $message->ownedBy($user); // Returns bool
     <x-slot name="subNavigation">
         <x-sub-navigation :items="[
             'Chat Interface',
+            'Enable Chat Action',
             'Starting a Chat',
             'Sending a Message',
             'Managing Conversations ',

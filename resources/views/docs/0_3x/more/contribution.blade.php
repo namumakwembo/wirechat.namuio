@@ -1,6 +1,6 @@
 <x-docs-layout>
 <x-markdown>
-    
+
 # Contribution Guide
 
 Thanks for contributing to Wirechat! We're excited to have you help improve the project. Here's how to get started:
@@ -100,15 +100,15 @@ php artisan migrate
 './vendor/namu/wirechat/src/Livewire/**/*.php'
 ```
 
-6.Finally add the `Chatable` trait to your **User** model:  
+6.Finally add the `InteractsWithWireChat` trait to your **User** model:
 
 ```php{}{6}
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Namu\WireChat\Traits\Chatable;
+use Namu\WireChat\Traits\InteractsWithWireChat;
 
 class User extends Authenticatable
 {
-      use Chatable;
+      use InteractsWithWireChat;
 
       ...
 }
@@ -124,14 +124,14 @@ After this setup, you can visit the route `/chats` to start conversations, send 
 
 ```
 cd wirechat
-git checkout -b fix/your-branch-name 
+git checkout -b fix/your-branch-name
 ```
 
 
 2. After you're done making chanages , Run tests to make sure everything works as expected:
 ```bash
 composer install
-composer test 
+composer test
 ```
 
 3. Commit your changes and push to your branch:
@@ -141,7 +141,7 @@ git commit -m "Your descriptive commit message"
 git push origin fix/your-branch-name
 ```
 
- 
+
 4. Lastly  Create the pull request on GitHub. Provide a clear title and detailed description of your changes. Reference any related issues.
 
 ---
@@ -152,8 +152,7 @@ If you've found a bug or have a suggestion for a new feature, please open an iss
 
 
 Thank you for contributing!
-    
+
     </x-markdown>
-    
+
     </x-docs-layout>
-    
