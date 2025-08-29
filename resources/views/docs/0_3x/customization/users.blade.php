@@ -9,6 +9,64 @@ You can configure attributes such as display names, profile avatars, and profile
 
 ---
 
+<x-section-heading label="Panel access" />
+
+To decide which users can open a WireChat panel, you may implement your own authorization logic inside the `User` model.
+WireChat will call the `canAccessWireChatPanel()` method whenever a panel is being accessed via a route.
+
+```php{}{11-16}
+namespace App\Models;
+
+use Namu\WireChat\Panel;
+use Namu\WireChat\Traits\InteractsWithWireChat;
+use Namu\WireChat\Contracts\WireChatUser;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
+class User extends Authenticatable implements WireChatUser
+{
+    use InteractsWithWireChat;
+    // ...
+
+    public function canAccessWireChatPanel(Panel $panel): bool
+    {
+        return $this->hasVerifiedEmail();
+    }
+}
+
+````
+
+The `canAccessWireChatPanel()` method should return `true` or `false` depending on whether the user is allowed to enter the given `$panel`.
+In this example, access is restricted to users who have verified their email address.
+
+Because the current `$panel` is available, you can apply different rules for each panel.
+For instance, you may require stricter checks for an **admin chat panel**, while keeping other panels open to all users:
+
+```php{}{14-22}
+
+namespace App\Models;
+
+use Namu\WireChat\Panel;
+use Namu\WireChat\Traits\InteractsWithWireChat;
+use Namu\WireChat\Contracts\WireChatUser;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
+class User extends Authenticatable implements WireChatUser
+{
+    use InteractsWithWireChat;
+    // ...
+
+    public function canAccessWireChatPanel(Panel $panel): bool
+    {
+        if ($panel->getId() === 'admin') {
+            return $this->is_admin && $this->hasVerifiedEmail();
+        }
+
+        return true;
+    }
+}
+```
+---
+
 <x-section-heading label="Action Permissions" />
 
 You may configure which features a user has access to by defining permission methods on the `User` model.
@@ -18,6 +76,8 @@ You may configure which features a user has access to by defining permission met
 Determine if the "create chat" action should be visible to the current user:
 
 ```php
+namespace App\Models;
+
 use Namu\WireChat\Traits\InteractsWithWireChat;
 use Namu\WireChat\Contracts\WireChatUser;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -43,6 +103,8 @@ such as checking subscriptions, roles, or other permissions.
 Determine if the "create group" action should be visible to the current user:
 
 ```php
+namespace App\Models;
+
 use Namu\WireChat\Traits\InteractsWithWireChat;
 use Namu\WireChat\Contracts\WireChatUser;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -91,6 +153,8 @@ class User extends Authenticatable implements WireChatUser
 Set the URL that should be used for the user’s avatar across chats, member lists, and chat info:
 
 ```php
+namespace App\Models;
+
 use Namu\WireChat\Traits\InteractsWithWireChat;
 use Namu\WireChat\Contracts\WireChatUser;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -201,6 +265,7 @@ Once configured, all user searches whether starting chats, creating groups, or a
 <x-slot name="subNavigation">
     <x-sub-navigation :items="[
     'Introduction',
+    'Panel access',
     'Action Permissions' => [
         'Allow Users to Create Chats',
         'Allow Users to Create Groups',

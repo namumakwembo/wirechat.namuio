@@ -211,9 +211,9 @@ use Namu\WireChat\Panel;
 
 public function panel(Panel $panel): Panel
 {
-    return $panel
-          //...
-          ->heading('Chats');
+   return $panel
+      //...
+      ->heading('Chats');
 }
 ```
 

@@ -1,48 +1,73 @@
 <x-docs-layout>
 
 <x-markdown>
-
 # Setup
 
-To prepare your models for WireChat, implement the **`WireChatUser` interface** and use the **`InteractsWithWireChat` trait**.
-This setup equips your model to start conversations, send messages, and interact with WireChat features.
+Before your application can interact with WireChat, your user model needs to be “WireChat-aware.”
+This is done in two parts:
 
-Example with a **User** model:
+1. **Implement the `WireChatUser` contract**
+   This contract tells WireChat that the model is eligible to participate in chats.
+   It also defines key methods (such as panel authorization) that you may customize.
 
-```php{}{5-23}
-use Illuminate\Foundation\Auth\User as Authenticatable;
+2. **Use the `InteractsWithWireChat` trait**
+   This trait provides ready-made methods for starting conversations, sending messages, and working with groups.
+   You can use it as-is or override specific behaviors to suit your application.
+
+---
+
+<x-section-heading label="Model Setup" />
+This shows how to implement the WireChatUser contract and use the InteractsWithWireChat trait in your user model, enabling chat, group creation, and panel access. You can customize permissions by overriding the provided methods to control who can access panels or create chats and groups.
+```php
+namespace App\Models;
+
+use Namu\WireChat\Panel\Panel;
 use Namu\WireChat\Traits\InteractsWithWireChat;
 use Namu\WireChat\Contracts\WireChatUser;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable implements WireChatUser
 {
     use InteractsWithWireChat;
 
     /**
-    * Determine if the user can create new chats.
-    */
-    public function canCreateChats(): bool
+     * Decide if this user may access the given panel.
+     * Here, only users with verified emails are allowed.
+     */
+    public function canAccessWireChatPanel(Panel $panel): bool
     {
-      return $this->hasVerifiedEmail();
+        return $this->hasVerifiedEmail();
     }
 
     /**
-    * Determine if the user can create new groups.
-    */
+     * Control whether this user is allowed to create 1-to-1 chats.
+     */
+    public function canCreateChats(): bool
+    {
+        return true;
+    }
+
+    /**
+     * Control whether this user can create group conversations.
+     */
     public function canCreateGroups(): bool
     {
-      return $this->hasVerifiedEmail();
+        return true;
     }
 }
 ````
 
-With this setup, your model is fully prepared for WireChat, including built-in chat and group creation logic.
+---
+
+With both the interface and the trait in place, your model is fully integrated with WireChat:
+it can create and join chats, send messages, and respect whatever rules you define for panel and group access.
 
 </x-markdown>
 
 <x-slot name="subNavigation">
 <x-sub-navigation :items="[
 'Setup',
+'Model Setup'
 ]"/>
 </x-slot>
 
