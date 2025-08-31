@@ -121,6 +121,21 @@ public function panel(Panel $panel): Panel
 }
 ```
 
+<x-section-heading label="Enable Emoji Picker" />
+
+Enable Emoji Picker element in Chat
+
+```php
+use Namu\WireChat\Panel;
+
+public function panel(Panel $panel): Panel
+{
+    return $panel
+          //...
+          ->emojiPicker();
+}
+```
+
 **Note:** Disable search by passing `false`: `->chatsSearch(false)`.
 
 <x-section-heading label="Web Push Notifications" />
@@ -201,6 +216,22 @@ public function panel(Panel $panel): Panel
           ->mediaAttachments();
 }
 ```
+<x-section-heading label="Color theme" />
+
+Easily update the panel’s primary color so it aligns with your brand colors.
+```php
+use Namu\WireChat\Panel;
+use Namu\WireChat\Support\Color;
+
+public function panel(Panel $panel): Panel
+{
+return $panel
+    // ...
+    ->colors([
+        'primary' => Color::Blue
+    ]);
+}
+````
 
 <x-section-heading label="Heading" />
 
@@ -217,9 +248,25 @@ public function panel(Panel $panel): Panel
 }
 ```
 
+<x-section-heading label="Favicon" />
+
+Customize the chat panel with a favicon that reflects your brand.
+
+```php
+use Namu\WireChat\Panel;
+
+public function panel(Panel $panel): Panel
+{
+   return $panel
+      //...
+      ->favicon(url:asset('favicon.ico'));
+}
+```
+
 <x-section-heading label="New Chat Action" />
 
-Make the create new chat button action visible on WireChat UI
+Make the create new chat button action visible on WireChat UI.
+
 ```php
 use Namu\WireChat\Panel;
 
@@ -233,7 +280,8 @@ public function panel(Panel $panel): Panel
 
 <x-section-heading label="New Group Action" />
 
-Show the create new group action
+Show the create new group action.
+
 ```php
 use Namu\WireChat\Panel;
 
@@ -248,6 +296,7 @@ public function panel(Panel $panel): Panel
 <x-section-heading label="Redirect To Home Action" />
 
 Show the create new group action
+
 ```php
 use Namu\WireChat\Panel;
 
