@@ -13,7 +13,7 @@ the  [Panels Configuration]({{ docs()->route('panels') }}) .
 
 <x-section-heading label="Enable Chat Action" />
 
-To enable the "New Chat" modal button in the WireChat UI, ensure the `->newChatAction()` method  is enabled in your WireChat panel.
+To enable the "Create Chat" modal button in the WireChat UI, ensure the `->createChatAction()` method  is enabled in your WireChat panel.
 
 ```php
 use Namu\WireChat\Panel;
@@ -22,7 +22,7 @@ public function panel(Panel $panel): Panel
 {
     $panel
         //...
-        ->newChatAction();
+        ->createChatAction();
 }
 ```
 <x-section-heading label="Starting a Chat" />

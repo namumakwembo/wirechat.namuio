@@ -7,20 +7,23 @@ return [
          *
          * More info: https://spatie.be/docs/laravel-markdown/v1/installation-setup
          */
-        'enabled' => true,
+        'enabled' => false,
 
         /*
          * The name of or path to a Shiki theme
          *
          * More info: https://github.com/shikijs/shiki/blob/main/docs/themes.md
          */
-        'theme' =>
-        
+        'theme' =>[
+            'light'=>'catppuccin-mocha',
+            'dark'=>'nord'
+        ],
+
       //  'github-light-high-contrast'
         //''
         //'github-dark-low-contrast'
         //'nord'
-        'catppuccin-mocha' 
+       // 'catppuccin-mocha'
         //'github-light-default',
         //'github-dark',
     ],

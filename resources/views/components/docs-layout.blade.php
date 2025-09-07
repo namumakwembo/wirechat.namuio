@@ -1,11 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class=" max-w-(--breakpoint-xl) mx-auto container    ">
+    <div class=" max-w-(--breakpoint-xl) mx-auto container  scrollbar-thumb-sky-700 scrollbar-track-sky-300  ">
 
 
         <x-navigation>
-
             <x-sidebar/>
         </x-navigation>
 
@@ -16,9 +15,10 @@
                 <div class="max-w-2xs">
                     <select id="versions"
                             onchange="if (this.value) window.location.href = this.value"
-                            class="bg-inherit border border-gray-300
+                            class="bg-inherit   border-gray-300
                                     text-gray-900 text-sm
                                      rounded-lg focus:border-none block w-full p-1.5 px-5
+                                     pr-2
                                      dark:bg-inherit dark:border-gray-600 dark:placeholder-gray-400
                                    dark:text-white dark:focus:ring-none dark:focus:border-none">
                         @foreach (docs()->versions() as $viewFolder => $routeVersion)

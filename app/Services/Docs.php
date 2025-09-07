@@ -15,6 +15,18 @@ class Docs
     }
 
     /**
+     * Get the current version (view folder version) based on route/segment
+     */
+    public static function version(): string
+    {
+        $current = self::current(); // route version, e.g. "v2"
+
+        return array_search($current, self::versions(), true)
+            ?: array_key_first(self::versions());
+    }
+
+
+    /**
      * Get the latest route version
      */
     public static function latest(): string

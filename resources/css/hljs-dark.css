@@ -1,0 +1,9 @@
+.dark pre code.hljs,
+.dark code.hljs {
+
+}
+
+/* Reapply GitHub Dark styles scoped under .dark */
+.dark {
+    @import "highlight.js/styles/nord.css";
+}

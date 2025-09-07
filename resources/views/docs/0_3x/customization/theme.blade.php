@@ -115,9 +115,9 @@ This ensures your overrides take precedence over the default styles.
             --wc-brand-primary: '#f59e0b';
 
             --wc-light-primary: #fff;  /* white */
-            --wc-light-secondary: oklch(0.985 0.002 247.839);/* --color-gray-100 */
-            --wc-light-accent: oklch(0.985 0.002 247.839);/* --color-gray-50 */
-            --wc-light-border: oklch(0.928 0.006 264.531);/* --color-gray-200 */
+            --wc-light-secondary: oklch(0.967 0.001 286.375);/* --color-zinc-100 */
+            --wc-light-accent: oklch(0.985 0 0);/* --color-zinc-50 */
+            --wc-light-border: oklch(0.92 0.004 286.32);/* --color-zinc-200 */
 
             --wc-dark-primary: oklch(0.21 0.006 285.885); /* --color-zinc-900 */
             --wc-dark-secondary: oklch(0.274 0.006 286.033);/* --color-zinc-800 */

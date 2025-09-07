@@ -1,7 +1,4 @@
 <x-docs-layout>
-    {{--    @php--}}
-    {{--        dd(\Laravel\Folio\Folio::mountPaths(),request()->segment(2));--}}
-    {{--    @endphp--}}
 
 
 
@@ -33,7 +30,7 @@ Before installing, ensure that authentication is already set up in your applicat
 starter kit or explore [Laravel Breeze](https://laravel.com/docs/11.x/starter-kits#laravel-breeze) for a simple
 authentication setup.
 
-```bash
+```sh
 composer require namu/wirechat
 ```
 
@@ -47,7 +44,7 @@ improve the package for a stable release.
 
 Run this command to install and publish the necessary files:
 
-```bash
+```sh
 php artisan wirechat:install
 ```
 
@@ -75,12 +72,12 @@ existing data.
 
 **Finally** Apply the necessary database migrations with:
 
-```bash
+```sh
 php artisan migrate
 ```
 ---
 
-<x-sub-section-heading label="Optimizing Tailwind CSS for Production "/>
+<x-section-heading label="Setup Tailwind CSS"/>
 
 To ensure Tailwind purges CSS classes from the package, add the following lines to your `/resources/css/app.css`
 file:
@@ -95,17 +92,17 @@ file:
 Tailwind config.
 
 <details class="my-9">
-    <summary>Using Tailwind CSS v3?</summary>
+<summary>Using Tailwind CSS v3?</summary>
 
-    If you're using Tailwind CSS v3, update the `content` array in your `tailwind.config.js` file to include
-    these paths:
+If you're using Tailwind CSS v3, update the `content` array in your `tailwind.config.js` file to include
+these paths:
 
-    ```js
-    content: [
-    './vendor/namu/wirechat/resources/views/**/*.blade.php',
-    './vendor/namu/wirechat/src/Livewire/**/*.php'
-    ]
-    ```
+```js
+content: [
+'./vendor/namu/wirechat/resources/views/**/*.blade.php',
+'./vendor/namu/wirechat/src/Livewire/**/*.php'
+]
+```
 </details>
 
 ---
@@ -119,7 +116,7 @@ Wirechat uses WebSockets to broadcast messages in real-time to conversations and
 
 In newer Laravel installations, broadcasting is disabled by default. To enable it, run:
 
-```bash
+```sh
 php artisan install:broadcasting
 ```
 
@@ -128,7 +125,7 @@ Accept if you don’t yet have a WebSocket server set up.
 
 Then, start your Reverb server:
 
-```bash
+```sh
 php artisan reverb:start
 ```
 
@@ -141,21 +138,21 @@ After configuring broadcasting, start a [queue
 worker](https://laravel.com/docs/11.x/queues#driver-prerequisites) to handle message broadcasting and other
 queued tasks:
 
-```bash
+```sh
 php artisan queue:work --queue=messages,default
 ```
 
 <details class="my-9">
 
-    <summary> Queue Prioritization</summary>
+<summary> Queue Prioritization</summary>
 
-    Wirechat uses two queues for efficient delivery:
+Wirechat uses two queues for efficient delivery:
 
-    1. **High Priority (`messages`)**: For real-time broadcasting of messages to users in a conversation.
-    2. **Default Priority (`default`)**: For notifications like updating chat lists or showing unread message
-    counts.
+1. **High Priority (`messages`)**: For real-time broadcasting of messages to users in a conversation.
+2. **Default Priority (`default`)**: For notifications like updating chat lists or showing unread message
+counts.
 
-    You can customize these queue names in the [Wirechat Configuration]({{ route('customization.config') }}).
+You can customize these queue names in the [Wirechat Configuration]({{ route('customization.config') }}).
 
 </details>
 
@@ -163,7 +160,7 @@ php artisan queue:work --queue=messages,default
 
 To start your development server, run:
 
-```bash
+```sh
 composer run dev
 ```
 
@@ -193,5 +190,18 @@ php artisan vendor:publish --tag=wirechat-views
 
 </x-markdown>
 
-
+    <x-slot name="subNavigation">
+        <x-sub-navigation :items="[
+      'Prerequisites',
+        'Installing'=>[
+                         '1. Require the package via Composer',
+                         '2.Install Wirechat:',
+                         '3. Run Migrations:',
+                        ],
+    'Setup Tailwind CSS',
+    'WebSockets and Queue Setup',
+    'Publishing Translations',
+    'Publishing Views',
+        ]" />
+    </x-slot>
 </x-docs-layout>

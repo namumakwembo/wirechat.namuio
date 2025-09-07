@@ -5,11 +5,11 @@
 
 WireChat panels centralize configuration for routing, middleware, features, and search functionality in a single file, streamlining package setup.
 
-## Default Panel Setup
+<x-section-heading label="Default Panel Setup" />
 
 When you install WireChat, a default panel is created at `/chats`, defined in `app/Providers/WireChat/ChatsPanelProvider.php`.
 
-<x-section-heading label="Creating Additional Panels" />
+<x-section-heading label="Creating Panels" />
 
 You can create multiple panels to support different user roles, such as:
 - Admins accessing exclusive features at `/admin`.
@@ -29,12 +29,14 @@ After creating a panel, register its service provider:
 
 WireChat attempts automatic registration, but if the panel is inaccessible, verify the provider registration.
 
-<x-section-heading label="Panel ID" />
+<x-section-heading label="Methods" />
+
+<x-sub-section-heading label="Panel ID" />
 
 The panel ID identifies the panel across the application. Set it using the `id()` method:
 
 ```php
-use Namu\WireChat\Panel;
+use Wirechat\Wirechat\Panel;
 
 public function panel(Panel $panel): Panel
 {
@@ -44,12 +46,12 @@ public function panel(Panel $panel): Panel
 }
 ```
 
-<x-section-heading label="Path" />
+<x-sub-section-heading label="Path" />
 
 Customize the panel’s URL path using the `path()` method:
 
 ```php
-use Namu\WireChat\Panel;
+use Wirechat\Wirechat\Panel;
 
 public function panel(Panel $panel): Panel
 {
@@ -62,7 +64,7 @@ public function panel(Panel $panel): Panel
 To use the root URL (no prefix), set an empty path:
 
 ```php
-use Namu\WireChat\Panel;
+use Wirechat\Wirechat\Panel;
 
 public function panel(Panel $panel): Panel
 {
@@ -74,12 +76,12 @@ public function panel(Panel $panel): Panel
 
 **Note**: Ensure `routes/web.php` does not define a conflicting `''` or `'/'` route, as it takes precedence.
 
-<x-section-heading label="Middleware" />
+<x-sub-section-heading label="Middleware" />
 
 Apply additional middleware to WireChat routes using the `middleware()` method:
 
 ```php
-use Namu\WireChat\Panel;
+use Wirechat\Wirechat\Panel;
 
 public function panel(Panel $panel): Panel
 {
@@ -89,12 +91,12 @@ public function panel(Panel $panel): Panel
 }
 ```
 
-<x-section-heading label="Chat Middleware" />
+<x-sub-section-heading label="Chat Middleware" />
 
 The `belongsToConversation` middleware is automatically applied to `/chats/{conversation}` to restrict access to authorized users, such as conversation members. Add custom middleware to modify chat access:
 
 ```php
-use Namu\WireChat\Panel;
+use Wirechat\Wirechat\Panel;
 
 public function panel(Panel $panel): Panel
 {
@@ -106,12 +108,12 @@ public function panel(Panel $panel): Panel
 }
 ```
 
-<x-section-heading label="Enable Chats Search" />
+<x-sub-section-heading label="Enable Chats Search" />
 
 Enable the chat search field in the WireChat UI:
 
 ```php
-use Namu\WireChat\Panel;
+use Wirechat\Wirechat\Panel;
 
 public function panel(Panel $panel): Panel
 {
@@ -121,12 +123,12 @@ public function panel(Panel $panel): Panel
 }
 ```
 
-<x-section-heading label="Enable Emoji Picker" />
+<x-sub-section-heading label="Enable Emoji Picker" />
 
 Enable Emoji Picker element in Chat
 
 ```php
-use Namu\WireChat\Panel;
+use Wirechat\Wirechat\Panel;
 
 public function panel(Panel $panel): Panel
 {
@@ -136,14 +138,28 @@ public function panel(Panel $panel): Panel
 }
 ```
 
+By default the emoji picker has position  `floating`. You can change it to `docked` using the enum:
+
+```php
+use Wirechat\Wirechat\Panel;
+use Wirechat\Wirechat\Support\Enums\EmojiPickerPosition;
+
+public function panel(Panel $panel): Panel
+{
+    return $panel
+          //...
+          ->emojiPicker(position:EmojiPickerPosition::Docked);
+}
+```
+
 **Note:** Disable search by passing `false`: `->chatsSearch(false)`.
 
-<x-section-heading label="Web Push Notifications" />
+<x-sub-section-heading label="Web Push Notifications" />
 
 WireChat web push notifications keep you connected to conversations via browser notifications, even when the app is not active:
 
 ```php
-use Namu\WireChat\Panel;
+use Wirechat\Wirechat\Panel;
 
 public function panel(Panel $panel): Panel
 {
@@ -153,14 +169,42 @@ public function panel(Panel $panel): Panel
 }
 ```
 
+<x-sub-section-heading label="Messages Queue" />
+
+High Priority (`messages`): For real-time broadcasting of messages to users in a conversation.
+
+```php
+use Wirechat\Wirechat\Panel;
+
+public function panel(Panel $panel): Panel
+{
+    return $panel
+          //...
+          ->messagesQueue('messages');
+}
+```
+<x-sub-section-heading label="Events Queue" />
+
+Default Priority (`default`): For notifications like updating chat lists or showing unread message counts.
+```php
+use Wirechat\Wirechat\Panel;
+
+public function panel(Panel $panel): Panel
+{
+    return $panel
+          //...
+          ->eventsQueue('default');
+}
+```
+
 **Note:** Disable notifications by passing `false`: `->webPushNotifications(false)`.
 
-<x-section-heading label="Layout" />
+<x-sub-section-heading label="Layout" />
 
 WireChat uses the default layout `wirechat::layouts.app`. Override it with a custom layout:
 
 ```php
-use Namu\WireChat\Panel;
+use Wirechat\Wirechat\Panel;
 
 public function panel(Panel $panel): Panel
 {
@@ -170,12 +214,12 @@ public function panel(Panel $panel): Panel
 }
 ```
 
-<x-section-heading label="Attachments" />
+<x-sub-section-heading label="Attachments" />
 
 Enable both file and media attachments:
 
 ```php
-use Namu\WireChat\Panel;
+use Wirechat\Wirechat\Panel;
 
 public function panel(Panel $panel): Panel
 {
@@ -187,12 +231,12 @@ public function panel(Panel $panel): Panel
 
 Setting to `false` disables attachments entirely: `->attachments(false)`.
 
-<x-section-heading label="File Attachments" />
+<x-sub-section-heading label="File Attachments" />
 
 Allow only document uploads (e.g., PDFs, ZIPs, text files):
 
 ```php
-use Namu\WireChat\Panel;
+use Wirechat\Wirechat\Panel;
 
 public function panel(Panel $panel): Panel
 {
@@ -202,12 +246,12 @@ public function panel(Panel $panel): Panel
 }
 ```
 
-<x-section-heading label="Media Attachments" />
+<x-sub-section-heading label="Media Attachments" />
 
 Allow only image and video uploads:
 
 ```php
-use Namu\WireChat\Panel;
+use Wirechat\Wirechat\Panel;
 
 public function panel(Panel $panel): Panel
 {
@@ -216,12 +260,12 @@ public function panel(Panel $panel): Panel
           ->mediaAttachments();
 }
 ```
-<x-section-heading label="Color theme" />
+<x-sub-section-heading label="Color theme" />
 
 Easily update the panel’s primary color so it aligns with your brand colors.
 ```php
-use Namu\WireChat\Panel;
-use Namu\WireChat\Support\Color;
+use Wirechat\Wirechat\Panel;
+use Wirechat\Wirechat\Support\Color;
 
 public function panel(Panel $panel): Panel
 {
@@ -233,12 +277,12 @@ return $panel
 }
 ````
 
-<x-section-heading label="Heading" />
+<x-sub-section-heading label="Heading" />
 
 Set a custom heading for the chat panel:
 
 ```php
-use Namu\WireChat\Panel;
+use Wirechat\Wirechat\Panel;
 
 public function panel(Panel $panel): Panel
 {
@@ -248,12 +292,12 @@ public function panel(Panel $panel): Panel
 }
 ```
 
-<x-section-heading label="Favicon" />
+<x-sub-section-heading label="Favicon" />
 
 Customize the chat panel with a favicon that reflects your brand.
 
 ```php
-use Namu\WireChat\Panel;
+use Wirechat\Wirechat\Panel;
 
 public function panel(Panel $panel): Panel
 {
@@ -263,12 +307,12 @@ public function panel(Panel $panel): Panel
 }
 ```
 
-<x-section-heading label="New Chat Action" />
+<x-sub-section-heading label="New Chat Action" />
 
 Make the create new chat button action visible on WireChat UI.
 
 ```php
-use Namu\WireChat\Panel;
+use Wirechat\Wirechat\Panel;
 
 public function panel(Panel $panel): Panel
 {
@@ -278,12 +322,12 @@ public function panel(Panel $panel): Panel
 }
 ```
 
-<x-section-heading label="New Group Action" />
+<x-sub-section-heading label="New Group Action" />
 
 Show the create new group action.
 
 ```php
-use Namu\WireChat\Panel;
+use Wirechat\Wirechat\Panel;
 
 public function panel(Panel $panel): Panel
 {
@@ -293,12 +337,12 @@ public function panel(Panel $panel): Panel
 }
 ```
 
-<x-section-heading label="Redirect To Home Action" />
+<x-sub-section-heading label="Redirect To Home Action" />
 
 Show the create new group action
 
 ```php
-use Namu\WireChat\Panel;
+use Wirechat\Wirechat\Panel;
 
 public function panel(Panel $panel): Panel
 {
@@ -308,12 +352,12 @@ public function panel(Panel $panel): Panel
 }
 ```
 
-<x-section-heading label="HomeUrl" />
+<x-sub-section-heading label="HomeUrl" />
 
 Set the redirect url when the home action is clicked
 
 ```php
-use Namu\WireChat\Panel;
+use Wirechat\Wirechat\Panel;
 
 public function panel(Panel $panel): Panel
 {
@@ -326,5 +370,35 @@ public function panel(Panel $panel): Panel
 
 
 </x-markdown>
+    <x-slot name="subNavigation">
+        <x-sub-navigation :items="[
+            'Default Panel Setup',
+            'Creating Panels',
+            'Methods' => [
+                'Panel ID',
+                'Path',
+                'Middleware',
+                'Chat Middleware',
+                'Enable Chats Search',
+                'Enable Emoji Picker',
+                'Web Push Notifications',
+                'Messages Queue',
+                'Events Queue',
+                'Layout',
+                'Attachments',
+                'File Attachments',
+                'Media Attachments',
+                'Color theme',
+                'Heading',
+                'Favicon',
+                'New Chat Action',
+                'New Group Action',
+                'Redirect To Home Action',
+                'HomeUrl',
+            ],
+
+
+        ]" />
+    </x-slot>
 
 </x-docs-layout>
