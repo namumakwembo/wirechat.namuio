@@ -12,15 +12,15 @@ Below is an overview table of WireChat’s Livewire components. Each entry shows
 
 | **Livewire Identifier**          | **Namespace / Class**                                       | **Parameters**    |
 |----------------------------------|------------------------------------------------------------|-------------------|
-| wirechat                         | `Namu\WireChat\Livewire\Widgets\WireChat`                  | None   (No explicit param)  |
-| wirechat.chat                    | `Namu\WireChat\Livewire\Chat\Chat`                         | `conversation`    |
-| wirechat.chat.info               | `Namu\WireChat\Livewire\Chat\Info`                         | `conversation`    |
-| wirechat.chat.group.add-members  | `Namu\WireChat\Livewire\Chat\Group\AddMembers`             | `conversation`    |
-| wirechat.chat.group.members      | `Namu\WireChat\Livewire\Chat\Group\Members`                | `conversation`    |
-| wirechat.chat.group.permissions  | `Namu\WireChat\Livewire\Chat\Group\Permissions`            | `conversation`    |
-| wirechat.chats                   | `Namu\WireChat\Livewire\Chats\Chats`                       | None (No explicit param)  |
-| wirechat.new.chat                | `Namu\WireChat\Livewire\New\Chat`                          | None (No explicit param)  |
-| wirechat.new.group               | `Namu\WireChat\Livewire\New\Group`                         | None              |
+| wirechat                         | `Wirechat\Wirechat\Livewire\Widgets\WireChat`                  | None   (No explicit param)  |
+| wirechat.chat                    | `Wirechat\Wirechat\Livewire\Chat\Chat`                         | `conversation`    |
+| wirechat.chat.info               | `Wirechat\Wirechat\Livewire\Chat\Info`                         | `conversation`    |
+| wirechat.chat.group.add-members  | `Wirechat\Wirechat\Livewire\Chat\Group\AddMembers`             | `conversation`    |
+| wirechat.chat.group.members      | `Wirechat\Wirechat\Livewire\Chat\Group\Members`                | `conversation`    |
+| wirechat.chat.group.permissions  | `Wirechat\Wirechat\Livewire\Chat\Group\Permissions`            | `conversation`    |
+| wirechat.chats                   | `Wirechat\Wirechat\Livewire\Chats\Chats`                       | None (No explicit param)  |
+| wirechat.new.chat                | `Wirechat\Wirechat\Livewire\New\Chat`                          | None (No explicit param)  |
+| wirechat.new.group               | `Wirechat\Wirechat\Livewire\New\Group`                         | None              |
 
 
 <x-section-heading label="Notes & Tips" key="Notes & Tips" />

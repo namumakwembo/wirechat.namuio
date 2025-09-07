@@ -13,7 +13,7 @@ WireChat's **Group** feature transforms simple messaging into a dynamic, multi-u
 To allow users to create groups in your application, enable the required actions in your Wirechat **panel**:
 
 ```php
-use Namu\WireChat\Panel;
+use Wirechat\Wirechat\Panel;
 
 public function panel(Panel $panel): Panel
 {
@@ -39,7 +39,7 @@ Panels let you configure **group settings**, so you can define different rules a
 This option controls how many members a group can have within the panel.
 
 ```php
-use Namu\WireChat\Panel;
+use Wirechat\Wirechat\Panel;
 
 public function panel(Panel $panel): Panel
 {
@@ -53,12 +53,11 @@ public function panel(Panel $panel): Panel
 ---
 
 
-## Creating a Group
+<x-section-heading label="Creating a Group" />
 
 Creating a group allows users to set up a shared space where multiple participants can communicate. Group creators can define details, manage members, and configure roles for streamlined interactions.
 
-
-#### Group creation via UI:
+<x-sub-section-heading label="Group creation via UI" />
 
 1. Click the **Plus** icon in the Chats Component.
 2. Select **New Group**.
@@ -71,7 +70,7 @@ Creating a group allows users to set up a shared space where multiple participan
 6. Click **Create**.
 
 
-#### Programmatically:
+<x-sub-section-heading label="Programmatically" />
 
 ```php
 // Create a group and get the Conversation model.
@@ -83,8 +82,7 @@ $conversation = $user->createGroup(
 ```
 
 ---
-
-## Group Participant Roles
+<x-section-heading label="Group Participant Roles" />
 
 WireChat supports hierarchical roles, enhancing group management:
 
@@ -107,11 +105,12 @@ The creator of a group is automatically assigned the `OWNER` role
 
 ---
 
-## Managing Group Members
+<x-section-heading label="Managing Group Members" />
 
 Groups support dynamic membership management, allowing admins and members (depending on permissions) to add or remove participants.
 
-### Adding Members
+
+<x-sub-section-heading label="Adding Members" />
 
 **To Add Members via UI:**
 
@@ -135,7 +134,7 @@ However you can also re-add members removed by Admin programatically by passing 
 $conversation->addParticipant($user, undoAdminRemovalAction: true);
 ```
 
-### Removing Members
+<x-sub-section-heading label="Removing Members" />
 
 Only admins can remove members, excluding the group owner.
 
@@ -151,17 +150,19 @@ Only admins can remove members, excluding the group owner.
 
 ---
 
-## Exiting a Group
+<x-section-heading label="Exiting a Group" />
 
 All members, except the owner, can exit a group.
 
-#### Exit group via UI:
+
+<x-sub-section-heading label="Exit group via UI:" />
 
 1. Open the group chat.
 2. Click the three vertical **Dots** menu, then select **Exit Group**.
     - Alternatively, open the group name in **Group Info** and select **Exit Group**.
 
-#### Exit Programmatically:
+
+<x-sub-section-heading label="Exit Programmatically:" />
 
 ```php
 // Exit a group conversation
@@ -172,7 +173,7 @@ $user->exitConversation($conversation);
 
 ---
 
-## Group Permissions
+<x-section-heading label="Group Permissions" />
 
 Group permissions allow owners to control who can perform specific actions, such as editing group information, sending messages, or adding members.
 
@@ -181,7 +182,8 @@ By default:
 - All members can send messages and add others.
 - Only admins can edit group information (e.g., name, icon, and description).
 
-#### Editing Group Permissions
+
+<x-sub-section-heading label="Editing Group Permissions" />
 
 1. Open the group chat and click the group name.
 2. Select **Group Permissions**.
@@ -191,5 +193,38 @@ By default:
     - **Edit Group Info**: Allow all members or only admins to edit the group's details.
 
 </x-markdown>
+    <x-slot name="subNavigation">
+        <x-sub-navigation
+          :items="[
+                'Enabling Group Creation',
 
+                'Group Settings' => [
+                'Maximum Group Members',
+                ],
+
+                'Creating a Group' => [
+                    'Group creation via UI',
+                    'Programmatically',
+                ],
+
+                'Group Participant Roles',
+
+                'Managing Group Members' => [
+                    'Adding Members',
+                    'Removing Members',
+                ],
+
+                'Exiting a Group' => [
+                    'Exit group via UI:',
+                    'Exit Programmatically:',
+                ],
+
+                'Group Permissions' => [
+                    'Editing Group Permissions',
+                ],
+        ]"
+
+        />
+
+    </x-slot>
 </x-docs-layout>

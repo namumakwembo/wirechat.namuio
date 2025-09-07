@@ -21,7 +21,7 @@ Calling `attachments()` enables both file and media attachments.
 Setting this to `false` will completely disable attachments for the panel.
 
 ```php
-use Namu\WireChat\Panel;
+use Wirechat\Wirechat\Panel;
 
 public function panel(Panel $panel): Panel
 {
@@ -38,7 +38,7 @@ public function panel(Panel $panel): Panel
 Use `fileAttachments()` if you want to allow only document uploads such as PDFs, ZIPs, or text files.
 
 ```php
-use Namu\WireChat\Panel;
+use Wirechat\Wirechat\Panel;
 
 public function panel(Panel $panel): Panel
 {
@@ -55,7 +55,7 @@ public function panel(Panel $panel): Panel
 Use `mediaAttachments()` to allow users to upload images and videos while disabling file uploads.
 
 ```php
-use Namu\WireChat\Panel;
+use Wirechat\Wirechat\Panel;
 
 public function panel(Panel $panel): Panel
 {

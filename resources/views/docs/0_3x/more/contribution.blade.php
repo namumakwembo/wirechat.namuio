@@ -82,7 +82,7 @@ git clone https://github.com/namumakwembo/wirechat.git
 ```php{}{3}
 'providers' => [
     // Other service providers...
-    Namu\WireChat\WireChatServiceProvider::class,
+    Wirechat\Wirechat\WireChatServiceProvider::class,
 ],
 ```
 
@@ -104,7 +104,7 @@ php artisan migrate
 
 ```php{}{6}
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Namu\WireChat\Traits\InteractsWithWireChat;
+use Wirechat\Wirechat\Traits\InteractsWithWireChat;
 
 class User extends Authenticatable
 {

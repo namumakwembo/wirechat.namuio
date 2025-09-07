@@ -138,17 +138,17 @@ Route::prefix('docs/' . $routePrefix)
          * ----------------------
          */
 
-        Route::prefix('conversations')->group(function () use ($docs) {
+        Route::prefix('rooms')->group(function () use ($docs) {
 
             Route::get('/chats', function () use ($docs) {
                 Helper::seo('Chats', 'Learn how to manage , create and edit chats');
-                return view('docs.' . $docs->getViewFolder() . '.conversations.chats');
-            })->name('conversations.chats');
+                return view('docs.' . $docs->getViewFolder() . '.rooms.chats');
+            })->name('rooms.chats');
 
             Route::get('/groups', function () use ($docs) {
                 Helper::seo('Groups', 'Learn how to manage , create and edit groups');
-                return view('docs.' . $docs->getViewFolder() . '.conversations.groups');
-            })->name('conversations.groups');
+                return view('docs.' . $docs->getViewFolder() . '.rooms.groups');
+            })->name('rooms.groups');
 
         });
 

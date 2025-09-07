@@ -14,8 +14,8 @@ In the configuration, you can easily change the colors that are used. WireChat s
 They are customizable as follows:
 
 ```php
-use Namu\WireChat\Panel;
-use Namu\WireChat\Support\Color;
+use Wirechat\Wirechat\Panel;
+use Wirechat\Wirechat\Support\Color;
 
 public function panel(Panel $panel): Panel
 {
@@ -45,7 +45,7 @@ You don’t need to redefine every color — just provide your own palette for `
 WireChat works best with modern color formats like `oklch()`, which Tailwind also uses in its official palettes. This ensures better contrast handling and consistency in both light and dark themes.
 
 ```php
-use Namu\WireChat\Panel;
+use Wirechat\Wirechat\Panel;
 
 public function panel(Panel $panel): Panel
 {

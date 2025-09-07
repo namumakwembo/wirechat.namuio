@@ -44,7 +44,7 @@ importScripts('/js/wirechat/sw.js');
 
 Enable web push notifications in the your wirechat:panel
 ```php
-use Namu\WireChat\Panel;
+use Wirechat\Wirechat\Panel;
 
 public function panel(Panel $panel): Panel
 {

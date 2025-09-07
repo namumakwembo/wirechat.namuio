@@ -18,7 +18,7 @@ Panels offer flexible integration with multiple guards and middleware configurat
 A panel can define a single guard:
 
 ```php
-use Namu\WireChat\Panel;
+use Wirechat\Wirechat\Panel;
 
 public function panel(Panel $panel): Panel
 {
@@ -35,7 +35,7 @@ No additional setup is needed if you are using the default `web` guard.
 If your application uses multiple guards, such as `admin` and `web`, you can chain them in the panel:
 
 ```php
-use Namu\WireChat\Panel;
+use Wirechat\Wirechat\Panel;
 
 public function panel(Panel $panel): Panel
 {
@@ -58,7 +58,7 @@ This allows users authenticated via any listed guard to access the panel’s rou
 Panels automatically apply the `belongsToConversation` middleware to conversation routes. You can also define additional middleware for the panel:
 
 ```php
-use Namu\WireChat\Panel;
+use Wirechat\Wirechat\Panel;
 
 public function panel(Panel $panel): Panel
 {
@@ -73,7 +73,7 @@ public function panel(Panel $panel): Panel
 For multiple guards, the middleware should handle all of them:
 
 ```php
-use Namu\WireChat\Panel;
+use Wirechat\Wirechat\Panel;
 
 public function panel(Panel $panel): Panel
 {
@@ -92,7 +92,7 @@ This ensures that only authorized users, such as conversation members, can acces
 If you want to adjust or extend how chats are viewed or accessed, you may register additional middleware here:
 
 ```php
-use Namu\WireChat\Panel;
+use Wirechat\Wirechat\Panel;
 
 public function panel(Panel $panel): Panel
 {

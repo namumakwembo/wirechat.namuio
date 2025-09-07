@@ -31,7 +31,7 @@ Leverage the `withCount()` method to get the count of related models.
 
 ```php
 
-namespace Namu\WireChat\Models\Conversation;
+namespace Wirechat\Wirechat\Models\Conversation;
 
 $conversations = Conversation::withCount('messages','participants')->get();
 

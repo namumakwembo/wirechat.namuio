@@ -12,7 +12,7 @@ By default, WireChat uses the package layout `wirechat::layouts.app`.
 You can replace this layout by defining your own via the panel:
 
 ```php
-use Namu\WireChat\Panel;
+use Wirechat\Wirechat\Panel;
 
 public function panel(Panel $panel): Panel
 {
@@ -29,17 +29,17 @@ public function panel(Panel $panel): Panel
 For the chat system to work properly, you’ll need to include the **required styles and assets**.
 These files handle global styling, modals, and Livewire functionality. Add them directly to your Blade layout so they’re always available.
 
-```blade{3,6,9}
+```html{3,6,9}
 <html>
-<head>
-@@wirechatStyles
-</head>
-<body>
-<div class="h-[calc(100vh_-_20rem)]">
-    @{{ $slot }}
-</div>
-@@wirechatAssets(panel:'chats')
-</body>
+   <head>
+    @@wirechatStyles
+   </head>
+  <body>
+    <div class="h-[calc(100vh_-_20rem)]">
+        @{{ $slot }}
+    </div>
+   @@wirechatAssets(panel:'chats')
+  </body>
 </html>
 ```
 

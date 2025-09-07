@@ -50,15 +50,15 @@
 </section>
 
 {{-- Conversation --}}
-<x-collapse label="Conversations" :open="docs()->routeIs('conversations.groups')||docs()->routeIs('conversations.chats')">
+<x-collapse label="Rooms" :open="true">
     <ol class="ml-3">
         <li>
-            <x-sidebar-link href="{{ docs()->route('conversations.chats') }}" active="{{docs()->routeIs('conversations.chats') }}">
+            <x-sidebar-link href="{{ docs()->route('rooms.chats') }}" active="{{docs()->routeIs('rooms.chats') }}">
                 Chats
             </x-sidebar-link>
         </li>
         <li>
-            <x-sidebar-link href="{{ docs()->route('conversations.groups') }}" active="{{docs()->routeIs('conversations.groups') }}">
+            <x-sidebar-link href="{{ docs()->route('rooms.groups') }}" active="{{docs()->routeIs('rooms.groups') }}">
                 Groups
             </x-sidebar-link>
         </li>

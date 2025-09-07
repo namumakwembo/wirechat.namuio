@@ -122,6 +122,8 @@ public function panel(Panel $panel): Panel
           ->chatsSearch();
 }
 ```
+ **Note:** Disable search by passing `false`: `->chatsSearch(false)`.
+
 
 <x-sub-section-heading label="Enable Emoji Picker" />
 
@@ -152,7 +154,6 @@ public function panel(Panel $panel): Panel
 }
 ```
 
-**Note:** Disable search by passing `false`: `->chatsSearch(false)`.
 
 <x-sub-section-heading label="Web Push Notifications" />
 
@@ -168,6 +169,7 @@ public function panel(Panel $panel): Panel
           ->webPushNotifications();
 }
 ```
+**Note:** Disable notifications by passing `false`: `->webPushNotifications(false)`.
 
 <x-sub-section-heading label="Messages Queue" />
 
@@ -197,7 +199,6 @@ public function panel(Panel $panel): Panel
 }
 ```
 
-**Note:** Disable notifications by passing `false`: `->webPushNotifications(false)`.
 
 <x-sub-section-heading label="Layout" />
 
@@ -307,9 +308,9 @@ public function panel(Panel $panel): Panel
 }
 ```
 
-<x-sub-section-heading label="New Chat Action" />
+<x-sub-section-heading label="Create Chat Action" />
 
-Make the create new chat button action visible on WireChat UI.
+Make the create create chat button action visible on WireChat UI.
 
 ```php
 use Wirechat\Wirechat\Panel;
@@ -318,13 +319,13 @@ public function panel(Panel $panel): Panel
 {
     return $panel
           //...
-          ->newChatAction();
+          ->createChatAction();
 }
 ```
 
-<x-sub-section-heading label="New Group Action" />
+<x-sub-section-heading label="Create Group Action" />
 
-Show the create new group action.
+Show the create create group action.
 
 ```php
 use Wirechat\Wirechat\Panel;
@@ -333,7 +334,7 @@ public function panel(Panel $panel): Panel
 {
     return $panel
           //...
-          ->newGroupAction();
+          ->createGroupAction();
 }
 ```
 
@@ -391,8 +392,8 @@ public function panel(Panel $panel): Panel
                 'Color theme',
                 'Heading',
                 'Favicon',
-                'New Chat Action',
-                'New Group Action',
+                'Create Chat Action',
+                'Create Group Action',
                 'Redirect To Home Action',
                 'HomeUrl',
             ],

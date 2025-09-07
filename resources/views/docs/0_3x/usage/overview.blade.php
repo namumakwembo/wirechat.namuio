@@ -16,7 +16,7 @@ the  [Panels Configuration]({{ docs()->route('panels') }}) .
 To enable the "Create Chat" modal button in the WireChat UI, ensure the `->createChatAction()` method  is enabled in your WireChat panel.
 
 ```php
-use Namu\WireChat\Panel;
+use Wirechat\Wirechat\Panel;
 
 public function panel(Panel $panel): Panel
 {

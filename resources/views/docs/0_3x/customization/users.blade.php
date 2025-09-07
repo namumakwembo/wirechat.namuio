@@ -17,9 +17,9 @@ WireChat will call the `canAccessWireChatPanel()` method whenever a panel is bei
 ```php{}{11-16}
 namespace App\Models;
 
-use Namu\WireChat\Panel;
-use Namu\WireChat\Traits\InteractsWithWireChat;
-use Namu\WireChat\Contracts\WireChatUser;
+use Wirechat\Wirechat\Panel;
+use Wirechat\Wirechat\Traits\InteractsWithWireChat;
+use Wirechat\Wirechat\Contracts\WireChatUser;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable implements WireChatUser
@@ -45,9 +45,9 @@ For instance, you may require stricter checks for an **admin chat panel**, while
 
 namespace App\Models;
 
-use Namu\WireChat\Panel;
-use Namu\WireChat\Traits\InteractsWithWireChat;
-use Namu\WireChat\Contracts\WireChatUser;
+use Wirechat\Wirechat\Panel;
+use Wirechat\Wirechat\Traits\InteractsWithWireChat;
+use Wirechat\Wirechat\Contracts\WireChatUser;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable implements WireChatUser
@@ -78,8 +78,8 @@ Determine if the "create chat" action should be visible to the current user:
 ```php
 namespace App\Models;
 
-use Namu\WireChat\Traits\InteractsWithWireChat;
-use Namu\WireChat\Contracts\WireChatUser;
+use Wirechat\Wirechat\Traits\InteractsWithWireChat;
+use Wirechat\Wirechat\Contracts\WireChatUser;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable implements WireChatUser
@@ -105,8 +105,8 @@ Determine if the "create group" action should be visible to the current user:
 ```php
 namespace App\Models;
 
-use Namu\WireChat\Traits\InteractsWithWireChat;
-use Namu\WireChat\Contracts\WireChatUser;
+use Wirechat\Wirechat\Traits\InteractsWithWireChat;
+use Wirechat\Wirechat\Contracts\WireChatUser;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable implements WireChatUser
@@ -131,8 +131,8 @@ By default, WireChat uses the `name` attribute from your `User` model.
 You may override this by defining the `getWirechatNameAttribute()` method:
 
 ```php
-use Namu\WireChat\Traits\InteractsWithWireChat;
-use Namu\WireChat\Contracts\WireChatUser;
+use Wirechat\Wirechat\Traits\InteractsWithWireChat;
+use Wirechat\Wirechat\Contracts\WireChatUser;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable implements WireChatUser
@@ -155,8 +155,8 @@ Set the URL that should be used for the user’s avatar across chats, member lis
 ```php
 namespace App\Models;
 
-use Namu\WireChat\Traits\InteractsWithWireChat;
-use Namu\WireChat\Contracts\WireChatUser;
+use Wirechat\Wirechat\Traits\InteractsWithWireChat;
+use Wirechat\Wirechat\Contracts\WireChatUser;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable implements WireChatUser
@@ -178,8 +178,8 @@ When a user’s name or avatar is clicked, WireChat will use the `getWirechatPro
 to determine where to redirect:
 
 ```php
-use Namu\WireChat\Traits\InteractsWithWireChat;
-use Namu\WireChat\Contracts\WireChatUser;
+use Wirechat\Wirechat\Traits\InteractsWithWireChat;
+use Wirechat\Wirechat\Contracts\WireChatUser;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable implements WireChatUser
@@ -208,7 +208,7 @@ By default, a simple search is performed on your `User` model, but you can fully
 If no custom callback is defined, WireChat will search your `User` model using the attributes you specify:
 
 ```php
-use Namu\WireChat\Panel;
+use Wirechat\Wirechat\Panel;
 
 public function panel(Panel $panel): Panel
 {
@@ -228,8 +228,8 @@ To fully control the search logic, define a callback using `searchUsersUsing()`.
 Always wrap your results in `WireChatUserResource` to maintain a consistent structure:
 
 ```php
-use Namu\WireChat\Panel;
-use Namu\WireChat\Http\Resources\WireChatUserResource;
+use Wirechat\Wirechat\Panel;
+use Wirechat\Wirechat\Http\Resources\WireChatUserResource;
 
 public function panel(Panel $panel): Panel
 {

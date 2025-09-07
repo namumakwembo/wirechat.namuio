@@ -32,13 +32,13 @@ This will generate a file under your `app/Livewire` directory (adjust the namesp
 
 ### 2. Extend the Base Chats Component
 
-Open your newly created component and have it extend the **Chats** base class. In this example, we’re extending `Namu\WireChat\Livewire\Chats\Chats`:
+Open your newly created component and have it extend the **Chats** base class. In this example, we’re extending `Wirechat\Wirechat\Livewire\Chats\Chats`:
 
 ```php
 namespace App\Livewire\Chats;
 
 use Livewire\Component;
-use Namu\WireChat\Livewire\Chats\Chats as BaseChats;
+use Wirechat\Wirechat\Livewire\Chats\Chats as BaseChats;
 
 class Chats extends BaseChats
 {

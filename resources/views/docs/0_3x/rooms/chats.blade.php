@@ -98,5 +98,20 @@ public function panel(Panel $panel): Panel
 ---
 
 </x-markdown>
+<x-slot name="subNavigation">
+    <x-sub-navigation :items="[
+    'Enabling Chat Creation',
+    'Deleting Chats'=>[
+        'Enable Delete Action',
+        'How to Delete'
+          ],
+        'Clearing Chats'=>[
+            'Enable Clear Action',
+            'How to Clear'
+      ],
+   ]
+"/>
+
+    </x-slot>
 
 </x-docs-layout>

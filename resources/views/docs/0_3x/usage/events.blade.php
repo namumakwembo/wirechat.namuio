@@ -60,8 +60,8 @@ broadcast(new NotifyParticipant(participant: $otherUser, message: $message, pane
 
 | **Event**                                | **Description**                                                                                                   |
 | ---------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| `Namu\WireChat\Events\MessageCreated`    | Broadcasts to `private-{panel}.conversation.{id}` when a message is sent, updating the conversation in real-time. |
-| `Namu\WireChat\Events\NotifyParticipant` | Broadcasts to `private-{panel}.participant.{type}.{id}` to notify a specific participant of a new message.        |
+| `Wirechat\Wirechat\Events\MessageCreated`    | Broadcasts to `private-{panel}.conversation.{id}` when a message is sent, updating the conversation in real-time. |
+| `Wirechat\Wirechat\Events\NotifyParticipant` | Broadcasts to `private-{panel}.participant.{type}.{id}` to notify a specific participant of a new message.        |
 
 ---
 
@@ -84,7 +84,7 @@ Before listening for events, ensure Laravel Echo and Pusher (or another broadcas
 **Example: Listening for `NotifyParticipant`**
 
 WireChat provides a helper function to standardize morph class serialization:
-`Namu\WireChat\Helpers\MorphClassResolver::encode()`.
+`Wirechat\Wirechat\Helpers\MorphClassResolver::encode()`.
 
 This ensures model types are correctly encoded in an alphanumeric format for use in private channels.
 
@@ -94,7 +94,7 @@ This ensures model types are correctly encoded in an alphanumeric format for use
 // JavaScript
 
 userId = @js(auth()->id());
-encodedType = @js(\Namu\WireChat\Helpers\MorphClassResolver::encode(auth()->user()->getMorphClass()));
+encodedType = @js(\Wirechat\Wirechat\Helpers\MorphClassResolver::encode(auth()->user()->getMorphClass()));
 panel = 'panel-id'; // or set your custom panel
 
 Echo.private(`${panel}.participant.${encodedType}.${userId}`)
@@ -126,7 +126,7 @@ In your `AppServiceProvider`, map the `MessageCreated` event to a listener:
 public function boot(): void
 {
     Event::listen(
-      \Namu\WireChat\Events\MessageCreated::class,
+      \Wirechat\Wirechat\Events\MessageCreated::class,
       SendEmailNotification::class,
     );
 }
