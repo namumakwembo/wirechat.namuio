@@ -248,7 +248,7 @@ public function panel(Panel $panel): Panel
 ```
 
 > **Important:** Always return results using `WireChatUserResource`.
-> This ensures a consistent structure with `id`, `type`, `display_name`, and `cover_url` across both Livewire and API responses.
+> This ensures a consistent structure with `id`, `type`, `wirechat_name`, and `wirechat_avatar_url` across both Livewire and API responses.
 
 **In this example:**
 
@@ -256,9 +256,60 @@ public function panel(Panel $panel): Panel
 * The search is limited to the `name` field.
 * Using `WireChatUserResource` guarantees standardized responses.
 
----
 
 Once configured, all user searches whether starting chats, creating groups, or adding members will follow your defined logic and return standardized results.
+
+---
+
+<x-section-heading label="Conversations" />
+
+You can access a user's conversations i.e the conversations they are a member of , either through the Wirechat UI or programmatically.
+
+- **Via Wirechat UI**
+
+Navigate to the `/chats` route to view your active conversations. Conversations that you have deleted, groups you have exited, or conversations without any messages will not appear in the list.
+
+- **Programmatically**
+
+```php
+$auth = auth()->user();
+$conversations = $auth->conversations()->get();
+````
+
+You can also apply scopes to filter conversations:
+
+**Exclude Blank Conversations**
+
+```php
+$conversations = $auth->conversations()->withoutBlanks()->get();
+```
+
+**Exclude Deleted Conversations**
+
+```php
+$conversations = $auth->conversations()->withoutDeleted()->get();
+```
+
+> **Note:** Scopes only take effect when the user is authenticated.
+
+---
+
+<x-sub-section-heading label="Conversation Membership" />
+
+Check whether a user is part of a conversation using the `belongsToConversation()` method:
+
+```php
+$conversation = Wirechat\Wirechat\Models\Conversation::first();
+$user->belongsToConversation($conversation); // Returns a boolean
+```
+
+<x-sub-section-heading label="Check if a Conversation Exists Between Users" />
+
+```php
+$anotherUser = User::first();
+$user->hasConversationWith($anotherUser); // Returns a boolean
+```
+
 
 </x-markdown>
 
@@ -279,6 +330,10 @@ Once configured, all user searches whether starting chats, creating groups, or a
         'Searchable Attributes',
         'Customizing the Search',
     ],
+    'Conversations'=>[
+        'Conversation membership',
+        'Check conversation between users'
+         ]
 ]"/>
 </x-slot>
 

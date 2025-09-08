@@ -8,7 +8,7 @@ Wirechat allows you to create private 1-on-1 chats, manage settings from the pan
 
 ---
 
-<x-section-heading label="Enabling Chat Creation" />
+<x-section-heading label="Creating Chats" />
 
 To allow users to create new chats, enable the action in your Wirechat **panel**:
 
@@ -25,7 +25,33 @@ public function panel(Panel $panel): Panel
 
 > **Note:** If disabled, users won’t see the option to create new chats in the UI.
 
----
+
+-  **Create Using the WireChat UI**
+
+    1. Click the **Plus** icon in the chat list.
+    2. Search for and select a user to start a conversation with. [Customize Search]({{ docs()->route('customization.users',['#searching-users']) }}).
+    3. Click on the user’s name to initiate a chat.
+
+- **Creating a Private Chat Programmatically**
+
+With another user:
+
+```php
+$otherUser = User::first();
+$auth = auth()->user();
+$conversation = $auth->createConversationWith($otherUser, 'Optional message');
+```
+
+With yourself:
+
+```php
+$auth = auth()->user();
+$conversation = $auth->createConversationWith($auth, 'Optional message');
+```
+
+**Note:** If a conversation already exists between the two participants, it will be returned instead of creating a new
+one.
+___
 
 <x-section-heading label="Deleting Chats" />
 
@@ -100,7 +126,7 @@ public function panel(Panel $panel): Panel
 </x-markdown>
 <x-slot name="subNavigation">
     <x-sub-navigation :items="[
-    'Enabling Chat Creation',
+    'Creating Chats',
     'Deleting Chats'=>[
         'Enable Delete Action',
         'How to Delete'

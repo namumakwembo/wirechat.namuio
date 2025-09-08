@@ -3,26 +3,26 @@
 
 # Embedding Components
 
-Building a real-time chat system in a Laravel application often means juggling complex JavaScript frameworks, event broadcasting, and layout constraints. **WireChat** solves these headaches by providing a collection of Livewire-powered chat components that seamlessly integrate into your existing Blade templates, delivering a single-page, real-time conversation experience without full-page refreshes.
+Building a real-time chat system in a Laravel application often means juggling complex JavaScript frameworks, event broadcasting, and layout constraints. **Wirechat** solves these headaches by providing a collection of Livewire-powered chat components that seamlessly integrate into your existing Blade templates, delivering a single-page, real-time conversation experience without full-page refreshes.
 
-In this guide, we’ll walk through preparing your layouts and embedding WireChat’s components like `wirechat`, `chats`, or `chat` directly into any Blade view. By staying within the familiar boundaries of Laravel and Livewire, you’ll save development time, reduce complexity, and ensure your in-app chat remains consistent with the rest of your application’s UI.
+In this guide, we’ll walk through preparing your layouts and embedding Wirechat’s components like `wirechat`, `chats`, or `chat` directly into any Blade view. By staying within the familiar boundaries of Laravel and Livewire, you’ll save development time, reduce complexity, and ensure your in-app chat remains consistent with the rest of your application’s UI.
 
 ---
 
 ## Preparing Your Custom Layout
 
-Before embedding any WireChat components, confirm that your layout includes the required styles and assets. This step is key to ensuring proper functionality and a consistent look and feel across your app:
+Before embedding any Wirechat components, confirm that your layout includes the required styles and assets. This step is key to ensuring proper functionality and a consistent look and feel across your app:
 
-```blade{3,8}
+```{3,8}
 <html>
-<head>
-    @@wirechatStyles
-</head>
-<body>
-    ...
+    <head>
+        @@wirechatStyles
+    </head>
+    <body>
+        ...
 
-    @@wirechatAssets
-</body>
+        @@wirechatAssets
+    </body>
 </html>
 ```
 
@@ -32,27 +32,27 @@ Before embedding any WireChat components, confirm that your layout includes the 
 
 <x-section-heading label="Standalone Wirechat Widget"/>
 
-With your layout set, you can embed the all-in-one `wirechat` component, which serves as a widget by default. This widget merges both `chats` and `chat` components into a cohesive conversation experience. Unlike accessing WireChat from its default route, embedding it in your own layout provides a standalone SPA-like flow—meaning transitions between chats are handled dynamically without forcing a full-page reload.
+With your layout set, you can embed the all-in-one `wirechat` component, which serves as a widget by default. This widget merges both `chats` and `chat` components into a cohesive conversation experience. Unlike accessing Wirechat from its default route, embedding it in your own layout provides a standalone SPA-like flow—meaning transitions between chats are handled dynamically without forcing a full-page reload.
 
 @verbatim
-```blade
+```
 <div class="h-[calc(100vh_-_10.0rem)]">
     <livewire:wirechat/>
 </div>
 ```
 @endverbatim
 
-> **Important:**  
-> Always wrap WireChat in a container with a **fixed height**. Otherwise, new messages and chats may overflow or render incorrectly.
+> **Important:**
+> Always wrap Wirechat in a container with a **fixed height**. Otherwise, new messages and chats may overflow or render incorrectly.
 
 ---
 
 <x-section-heading label="Components"/>
 
-WireChat offers a range of flexible, standalone Livewire components that you can embed anywhere in your application. Whether you need a full chat panel, a compact chat widget, or advanced group features, these components adapt seamlessly to your existing layout and styles.
+Wirechat offers a range of flexible, standalone Livewire components that you can embed anywhere in your application. Whether you need a full chat panel, a compact chat widget, or advanced group features, these components adapt seamlessly to your existing layout and styles.
 
-If you'd like to extend or override any of these components, refer to the  
-[**Available WireChat Components**]({{ route('customization.core-components') }}). Below is a quick example of how you can embed the `chats` widget on a custom page:
+If you'd like to extend or override any of these components, refer to the
+[**Available Wirechat Components**]({{ route('customization.core-components') }}). Below is a quick example of how you can embed the `chats` widget on a custom page:
 
 ---
 
@@ -64,7 +64,8 @@ Sometimes, you only want a list of available conversations in a specific area—
 
 @verbatim
 ```blade
-<div class="h-[calc(100vh_-_10.0rem)]"> {{-- Ensure a fixed-height parent --}}
+{{-- Ensure a fixed-height parent --}}
+<div class="h-[calc(100vh_-_10.0rem)]">
     <livewire:wirechat.chats/>
 </div>
 ```
@@ -77,8 +78,8 @@ In “traditional” mode, clicking on a conversation sends the user to the defa
 For a completely dynamic experience, pass `widget="true"` to the `chats` component:
 
 @verbatim
-```blade
-<div class="h-[calc(100vh_-_10.0rem)]"> {{-- Ensure a fixed-height parent --}}
+```
+<div class="h-[calc(100vh_-_10.0rem)]">
     <livewire:wirechat.chats widget="true" />
 </div>
 ```
@@ -98,9 +99,8 @@ When a component is used as a widget by passing `widget="true"`, it will no long
 | `close-chat` | `conversation` (ID) | Fires when a chat is closed (e.g., deleted, exited).         |
 | `chat-opened`| `conversation` (ID) | Fires once a chat is fully loaded as a widget.               |
 
-By leveraging these events, you can customize the chat experience at every step—without ever disrupting WireChat’s seamless SPA like environment.
+By leveraging these events, you can customize the chat experience at every step—without ever disrupting Wirechat’s seamless SPA like environment.
 
 ---
 </x-markdown>
 </x-docs-layout>
-        

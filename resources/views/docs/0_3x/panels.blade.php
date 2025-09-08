@@ -7,7 +7,7 @@ WireChat panels centralize configuration for routing, middleware, features, and 
 
 <x-section-heading label="Default Panel Setup" />
 
-When you install WireChat, a default panel is created at `/chats`, defined in `app/Providers/WireChat/ChatsPanelProvider.php`.
+When you install WireChat, a default panel is created at `app/Providers/WireChat/ChatsPanelProvider.php` and the wirechat can accessed at route `'/chats'`.
 
 <x-section-heading label="Creating Panels" />
 
@@ -21,7 +21,7 @@ To create a new panel, run:
 php artisan make:wirechat-panel panel-name
 ```
 
-For example, `php artisan make:wirechat-panel app` generates a panel named "app" with its configuration in `app/Providers/WireChat/AppPanelProvider.php`. The panel is accessible at `/app` by default, but you can customize the path (see [Changing the Panel Path](#path)).
+For example, `php artisan make:wirechat-panel app` generates a panel named "app" with its configuration in `app/Providers/WireChat/AppPanelProvider.php`. The panel is accessible at `'/app'` by default, but you can customize the path (see [Changing the Panel Path](#path)).
 
 After creating a panel, register its service provider:
 - Laravel 11+: Add to `bootstrap/providers.php`.

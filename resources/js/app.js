@@ -11,13 +11,26 @@ Alpine.plugin(HighlightScroll({
 }));
 
 Livewire.start()
+import hljs from 'highlight.js/lib/core';
 
-import hljs from 'highlight.js/lib/common';
-// import 'highlight.js/styles/github.css';       // light theme
-// import 'highlight.js/styles/github-dark.css';  // dark theme
+// Import only what you need
+import javascript from 'highlight.js/lib/languages/javascript';
+import php from 'highlight.js/lib/languages/php';
+import css from 'highlight.js/lib/languages/css';
+import xml from 'highlight.js/lib/languages/xml'; // for html/blade
+import bash from 'highlight.js/lib/languages/bash';
+import shell from 'highlight.js/lib/languages/shell';
 
-// Run highlight after DOM content is loaded
+// Register them
+hljs.registerLanguage('javascript', javascript);
+hljs.registerLanguage('php', php);
+hljs.registerLanguage('css', css);
+hljs.registerLanguage('html', xml);
+hljs.registerLanguage('blade', xml); // alias blade -> html
+hljs.registerLanguage('bash', bash);
+hljs.registerLanguage('sh', shell);
+
+// Highlight after DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
     hljs.highlightAll();
 });
-

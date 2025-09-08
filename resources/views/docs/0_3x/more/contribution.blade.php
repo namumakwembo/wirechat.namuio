@@ -71,7 +71,7 @@ git clone https://github.com/namumakwembo/wirechat.git
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/",
-            "Namu\\WireChat\\": "wirechat/src/"
+            "Wirechat\\Wirechat\\": "wirechat/src/"
         }
     }
 }
@@ -128,7 +128,7 @@ git checkout -b fix/your-branch-name
 ```
 
 
-2. After you're done making chanages , Run tests to make sure everything works as expected:
+2. After you're done making changes , Run tests to make sure everything works as expected:
 ```bash
 composer install
 composer test

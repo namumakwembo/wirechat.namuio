@@ -98,7 +98,7 @@ encodedType = @js(\Wirechat\Wirechat\Helpers\MorphClassResolver::encode(auth()->
 panel = 'panel-id'; // or set your custom panel
 
 Echo.private(`${panel}.participant.${encodedType}.${userId}`)
-.listen('.Namu\\WireChat\\Events\\NotifyParticipant', (e) => {
+.listen('.Wirechat\\Wirechat\\Events\\NotifyParticipant', (e) => {
 console.log(e);
 });
 ```

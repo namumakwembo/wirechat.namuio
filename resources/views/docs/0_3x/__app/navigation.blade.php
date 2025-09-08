@@ -20,6 +20,24 @@
 
 
         <li>
+            <x-sidebar-link class="flex gap-3 items-center"
+                            href="https://github.com/namumakwembo/wirechat/blob/main/CHANGELOG.md">
+                Upgrade Guide
+
+                <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                         class="bi bi-box-arrow-up-right" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                              d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5"/>
+                        <path fill-rule="evenodd"
+                              d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0z"/>
+                      </svg>
+                </span>
+            </x-sidebar-link>
+        </li>
+
+
+        <li>
 
             <x-sidebar-link href="{{ docs()->route('installation') }}"
                             active="{{ request()->routeIs('installation') }}">
@@ -37,34 +55,19 @@
             </x-sidebar-link>
 
         </li>
-        <li>
-            @if(docs()->hasRoute('panels'))
-                <x-sidebar-link new href="{{ docs()->route('panels') }}"
-                                active="{{ request()->routeIs('panels') }}">
-                    Panels
-                </x-sidebar-link>
 
-            @endif
+        <li>
+
+            <x-sidebar-link href="{{ docs()->route('usage.overview') }}"
+                            active="{{docs()->routeIs('usage.overview') }}">
+                Overview
+            </x-sidebar-link>
         </li>
+
     </ol>
 </section>
 
-{{-- Conversation --}}
-<x-collapse label="Rooms" :open="true">
-    <ol class="ml-3">
-        <li>
-            <x-sidebar-link href="{{ docs()->route('rooms.chats') }}" active="{{docs()->routeIs('rooms.chats') }}">
-                Chats
-            </x-sidebar-link>
-        </li>
-        <li>
-            <x-sidebar-link href="{{ docs()->route('rooms.groups') }}" active="{{docs()->routeIs('rooms.groups') }}">
-                Groups
-            </x-sidebar-link>
-        </li>
 
-    </ol>
-</x-collapse>
 
 {{-- Usage --}}
 <section class="space-y-1">
@@ -76,12 +79,15 @@
     <ol class="  border-l dark:border-gray-700 ml-6 ">
 
         <li>
+            @if(docs()->hasRoute('panels'))
+                <x-sidebar-link new href="{{ docs()->route('panels') }}"
+                                active="{{ request()->routeIs('panels') }}">
+                    Panels
+                </x-sidebar-link>
 
-            <x-sidebar-link href="{{ docs()->route('usage.overview') }}"
-                            active="{{docs()->routeIs('usage.overview') }}">
-                Overview
-            </x-sidebar-link>
+            @endif
         </li>
+
 
         <li>
 
@@ -120,6 +126,22 @@
     </ol>
 </section>
 
+{{-- Rooms --}}
+<x-collapse label="Rooms" :open="true">
+    <ol class="ml-3">
+        <li>
+            <x-sidebar-link href="{{ docs()->route('rooms.chats') }}" active="{{docs()->routeIs('rooms.chats') }}">
+                Chats
+            </x-sidebar-link>
+        </li>
+        <li>
+            <x-sidebar-link href="{{ docs()->route('rooms.groups') }}" active="{{docs()->routeIs('rooms.groups') }}">
+                Groups
+            </x-sidebar-link>
+        </li>
+
+    </ol>
+</x-collapse>
 {{-- Customizations --}}
 
 <section class="space-y-1">
