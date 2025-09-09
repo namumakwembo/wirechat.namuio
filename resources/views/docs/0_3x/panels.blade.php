@@ -369,6 +369,27 @@ public function panel(Panel $panel): Panel
 ```
 
 
+<x-sub-section-heading label="Delete Message Actions" />
+
+**Delete Message actions** are enabled by default:
+
+- Delete message for me
+- Delete message for everyone
+
+You can disable these actions in the panel.
+
+```php
+use Wirechat\Wirechat\Panel;
+
+public function panel(Panel $panel): Panel
+{
+    return $panel
+          //...
+          ->deleteMessageActions(false)
+}
+```
+
+
 
 </x-markdown>
     <x-slot name="subNavigation">
@@ -396,6 +417,7 @@ public function panel(Panel $panel): Panel
                 'Create Group Action',
                 'Redirect To Home Action',
                 'HomeUrl',
+                'Delete Message Actions'
             ],
 
 

@@ -66,8 +66,10 @@ return [
      */
     'storage' => [
         'disk' => 'public',
-        'directory' => 'attachments',
         'visibility' => 'public',
+        'directories' => [
+          'attachments' => 'attachments',
+        ],
     ],
 
 ];

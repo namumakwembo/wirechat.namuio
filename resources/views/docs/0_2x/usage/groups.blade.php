@@ -20,7 +20,7 @@ To allow users to create groups in your application, ensure the following settin
 
 
 ---
-    
+
 
 ## Creating a Group
 
@@ -36,7 +36,7 @@ Creating a group allows users to set up a shared space where multiple participan
     - **Description**: Optional.
     - **Group Icon**: Add an image by clicking the camera icon. Once set, this icon will appear alongside the group in the chats list.
 4. Click **Next** after entering the details.
-5. Select members by searching or choosing from the list. _(Customize the returned users; see [Trait Customization]({{route('customization.trait')}}))_
+5. Select members by searching or choosing from the list.
 6. Click **Create**.
 
 
@@ -86,7 +86,7 @@ Groups support dynamic membership management, allowing admins and members (depen
 
 1. Open the group chat and click the group name.
 2. In **Group Info**, click **Add Members**.
-3. Search or select users to add. _(Customize the returned users; see [Trait Customization]({{route('customization.trait')}}))_
+3. Search or select users to add.
 4. Click **Save**.
 
 **To Add Members Programmatically:**
