@@ -1,4 +1,4 @@
-<div class="pb-4 flex flex-col grow overflow-y-auto">
+<div class="pb-4 flex flex-col grow overflow-y-auto scrollbar-theme">
 
     <nav class="grow flex flex-col flex-1  px-2 space-y-1">
 

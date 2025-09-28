@@ -9,7 +9,7 @@
         </x-navigation>
 
 
-        <div class="h-[calc(100vh_-_5.1rem)] overflow-y-hidden flex justify-between ">
+        <div class="h-[calc(100vh_-_5.1rem)] overflow-y-hidden scrollbar-theme flex justify-between ">
             <aside
                 class="w-[390px]    hidden lg:flex  flex-col gap-5  h-full p-8 px-9 top-0    inset-x-0 z-50 px-6  py-4 duration-300 ease-in-out">
                 <div class="max-w-2xs">
@@ -36,9 +36,9 @@
             </aside>
 
 
-            <main x-data x-scroll-group class="w-full lg:grid lg:grid-cols-12 sm:pt-10 ">
+            <main x-data x-scroll-group class="w-full lg:grid lg:grid-cols-12 sm:pt-10  ">
 
-                <div x-scroll-container class="lg:col-span-9 w-full pb-14 h-full px-8 md:px-10    overflow-y-auto"
+                <div x-scroll-container class="lg:col-span-9 w-full pb-14 h-full px-8 md:px-10 scrollbar-theme   overflow-y-auto"
                      style="contain: conent">
 
                     <x-prose class=" mx-auto w-full dark:text-white/90 rounded-lg text-gray-900">
@@ -46,7 +46,7 @@
                     </x-prose>
                 </div>
 
-                <aside class="hidden lg:grid lg:col-span-3   h-full grid overflow-y-auto p-4">
+                <aside class="hidden lg:grid lg:col-span-3 scrollbar-theme   h-full grid overflow-y-auto p-4">
 
 
                     @if ($subNavigation ?? false)

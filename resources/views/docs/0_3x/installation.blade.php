@@ -27,10 +27,8 @@ Before you begin, ensure the following are installed:
 Before installing, ensure that authentication is already set up in your application. You may use any starter kit or explore [Laravel Breeze](https://laravel.com/docs/11.x/starter-kits#laravel-breeze) for a simple authentication setup.
 
 ```php
-composer require wirechat/wirechat
+composer require wirechat/wirechat:"^0.3.0-beta"
 ```
-
->⚠️ Beta Notice: Wirechat is currently in beta. While it may not yet be production-ready, we encourage you to explore and test it out. If you encounter any issues, your feedback will be invaluable in helping us refine and improve the package for a stable release.
 
 
 <x-sub-section-heading label="2.Install Wirechat:" />
@@ -61,7 +59,7 @@ If you want Wirechat to use **UUIDs** instead of auto-incrementing integers for 
 
 ```php
 // config/wirechat.php
-'uuids' => true,
+'uses_uuid_for_conversations' => true,
 ```
 
 > 🔶 **Important:** This setting should only be configured **during initial setup** and **before running any
@@ -123,20 +121,6 @@ handle message broadcasting and other queued tasks:
 php artisan queue:listen --queue=messages,default
 ```
 
-Navigate to your panel and set up queues
-
-```php
-use Wirechat\Wirechat\Panel;
-
-public function panel(Panel $panel): Panel
-{
-return $panel
-    //...
-    ->messagesQueue('messages')
-    ->eventsQueue('default');
-}
-```
-
 
 <details class="my-9">
 
@@ -149,8 +133,19 @@ Wirechat uses two queues for efficient delivery:
 2. **Default Priority (`default`)**: For notifications like updating chat lists or showing unread message
 counts.
 
-You can customize these queue names in the [Wirechat
-Configuration]({{ \App\Facades\Docs::route('customization.config')}}).
+To customize these queue names Navigate to your panel and set up queues
+
+```php
+use Wirechat\Wirechat\Panel;
+
+public function panel(Panel $panel): Panel
+{
+return $panel
+    //...
+    ->messagesQueue('messages')
+    ->eventsQueue('default');
+}
+```
 
 </details>
 
