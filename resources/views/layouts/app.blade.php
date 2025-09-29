@@ -110,8 +110,6 @@
     @yield('content' ?? $slot)
 
 
-    @livewireScriptConfig
-
     <script>
         var themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
         var themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
@@ -157,7 +155,7 @@
     </script>
 
 
-  @livewireScriptConfig(['defer'=>true])
+  @livewireScriptConfig()
 
 </body>
 
