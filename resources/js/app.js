@@ -1,9 +1,9 @@
 import './bootstrap';
 import { Livewire, Alpine } from '../../vendor/livewire/livewire/dist/livewire.esm';
-
 import HighlightScroll from 'highlight-scroll'
-// Provide your own defaults
 import './copycode.js';
+import hljs from 'highlight.js/lib/core';
+
 
 Alpine.plugin(HighlightScroll({
     offset: 120,
@@ -11,7 +11,6 @@ Alpine.plugin(HighlightScroll({
 }));
 
 Livewire.start()
-import hljs from 'highlight.js/lib/core';
 
 // Import only what you need
 import javascript from 'highlight.js/lib/languages/javascript';
