@@ -10,3 +10,17 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
  */
 
 import './echo';
+
+
+
+if (!window.Alpine) {
+    import('../../vendor/livewire/livewire/dist/livewire.esm').then(module => {
+        const { Livewire, Alpine } = module
+        // Optionally, attach Livewire and Alpine to the window for global access
+        window.Livewire = Livewire
+        window.Alpine = Alpine
+        Livewire.start()
+    }).catch(error => {
+        console.error('Failed to load Livewire and Alpine:', error)
+    })
+}
