@@ -9,8 +9,8 @@ Alpine.plugin(HighlightScroll({
     offset: 120,
     highlightClasses: 'scale-110 transition-all font-bold text-slate-600 dark:text-white'
 }));
-
-Livewire.start()
+Alpine.start();
+Livewire.start();
 
 // Import only what you need
 import javascript from 'highlight.js/lib/languages/javascript';
