@@ -15,7 +15,7 @@ Before you begin, ensure the following are installed:
 * PHP version 8.2 or later
 * Laravel version 10 or later
 * Livewire version 3.2.3 or later
-* Tailwindcss 4.x
+* Tailwindcss 4.x+
 
 ---
 
@@ -24,10 +24,24 @@ Before you begin, ensure the following are installed:
 
 <x-sub-section-heading label="1. Require composer package" />
 
-Before installing, ensure that authentication is already set up in your application. You may use any starter kit or explore [Laravel Breeze](https://laravel.com/docs/11.x/starter-kits#laravel-breeze) for a simple authentication setup.
+Before installing, ensure that authentication is already set up in your application. You may use built in laravel authenticated
 
+Since wirechat v0.3+ is still in beta, make sure your `composer.json` allows beta packages by setting `minimum-stability` to `beta`. You can do this manually or via the CLI:
+```
+composer config minimum-stability beta
+```
+
+Your `composer.json` should now include:
+
+```
+{
+    "minimum-stability": "beta"
+}
+```
+
+**Require the package**
 ```php
-composer require wirechat/wirechat:"^0.3.0-beta"
+composer require wirechat/wirechat:"^0.3"
 ```
 
 
