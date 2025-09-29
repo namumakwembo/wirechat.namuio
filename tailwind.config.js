@@ -11,7 +11,7 @@ export default {
         './resources/**/*.vue',
     ],
     theme: {
-   
+
         extend: {
             fontFamily: {
                 sans: ['sans', ...defaultTheme.fontFamily.sans],
@@ -31,7 +31,7 @@ export default {
                         //     color: '#e2e8f0', // Optional: adjust text color for dark mode
                         //   },
                         // },
-                      
+
                       'code::before': {
                         content: '',
                       },
@@ -40,7 +40,7 @@ export default {
                       },
                     },
                   }
-                  
+
               },
         },
     },
@@ -49,5 +49,5 @@ export default {
         require('@tailwindcss/typography'),
         // ...
       ],
-    
+
 };

@@ -21,17 +21,14 @@ Below is an overview table of WireChat’s Livewire components. Each entry shows
 | wirechat.chats                   | `Namu\WireChat\Livewire\Chats\Chats`                       | None (No explicit param)  |
 | wirechat.new.chat                | `Namu\WireChat\Livewire\New\Chat`                          | None (No explicit param)  |
 | wirechat.new.group               | `Namu\WireChat\Livewire\New\Group`                         | None              |
-| wirechat.pages.index             | `Namu\WireChat\Livewire\Pages\Chats`                       | None   (No explicit param)  |
-| wirechat.pages.view              | `Namu\WireChat\Livewire\Pages\Chat`                        | `conversation`    |
-
 
 <x-section-heading label="Notes & Tips" key="Notes & Tips" />
 
-- **Overriding or Extending Components**  
+- **Overriding or Extending Components**
     If you want to customize a component (e.g., to add extra methods or modify its behavior), create a new class that extends the original namespace and register it under the same **Livewire identifier** in your service provider.
     [**Available WireChat Components**]({{ route('customization.components') }})
-- **Parameters**  
-    Some components (like `wirechat.chat` or `wirechat.pages.view`) rely on a `conversation` model instance to function. Make sure to pass the relevant data to these components whenever you instantiate them or navigate to their routes.
+- **Parameters**
+    Some components (like `wirechat.chat`) rely on a `conversation` model instance to function. Make sure to pass the relevant data to these components whenever you instantiate them or navigate to their routes.
 
 
 </x-markdown>
@@ -43,8 +40,7 @@ Below is an overview table of WireChat’s Livewire components. Each entry shows
           'Available Wirechat Livewire Components',
           'Notes & Tips'
            ]"/>
-  
+
   </x-slot>
 
 </x-docs-layout>
-            

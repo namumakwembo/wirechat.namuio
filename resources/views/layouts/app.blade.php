@@ -72,19 +72,33 @@
 
         html {
             scroll-behavior: smooth;
+            /*font-family: var(--Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace);*/
         }
-    </style>
 
+        .quicksand-font {
+                        font-family: "Quicksand", sans-serif;
+                        font-optical-sizing: auto;
+                        font-weight: 500;
+                        font-style: normal;
+                    }
+
+
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
 
     <!-- Styles / Scripts -->
     @livewireStyles
- 
+    <!-- If dark mode, use this -->
+
+
     @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     @endif
 </head>
 
-<body class="font-sans antialiased relative w-full h-full  min-h-screen dark:bg-zinc-900 dark:text-white/50 ">
+<body class="quicksand-font antialiased relative w-full h-full  min-h-screen dark:bg-zinc-900 dark:text-white/50 ">
 
     @production
         <!-- Google Tag Manager (noscript) -->

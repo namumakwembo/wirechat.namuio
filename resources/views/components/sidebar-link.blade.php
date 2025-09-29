@@ -3,7 +3,7 @@
 
 @php
 $activeClasses = ($active ?? false)
-            ? 'border-gray-400 border-l-2 rounded-l-none border-l-3 font-bold text-black  dark:text-gray-400 ' 
+            ? 'border-gray-400 border-l-2 rounded-l-none border-l-3 font-bold text-black  dark:text-gray-400 '
             : ' dark:text-gray-200 font-medium text-zinc-600 ';
 @endphp
 
@@ -11,7 +11,7 @@ $activeClasses = ($active ?? false)
 {{$slot}}
 
 @isset ($new)
-    
+
 <span class="inline flex items-center border dark:border-gray-500 p-1 rounded-md justify-center font-medium text-xs max-h-fit px-1.5 bg-linear-to-r from-blue-500 to-[#CD3BF6]  text-transparent bg-clip-text">
     New
 </span>

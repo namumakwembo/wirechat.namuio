@@ -3,7 +3,6 @@
     <div @click="sideBarFloating=false" x-cloak x-show="sideBarFloating"
         class="absolute z-10 lg:hidden inset-0 bg-black/30"> </div>
 
-
     <div class="  flex items-center justify-between py-5 mx-auto ">
         <a href="/"
             class="flex items-center gap-2 w-auto text-lg lg:text-2xl font-extrabold leading-none text-black dark:text-white  ">

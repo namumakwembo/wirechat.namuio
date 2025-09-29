@@ -1,7 +1,20 @@
 @import 'tailwindcss';
+/* resources/css/app.css */
+
+/* --- Default light theme --- */
+/* Default = Light theme */
+@import "highlight.js/styles/github.css";
+
+/* Force Dark theme when .dark is on <html> */
+@import "hljs-dark.css";
+
 
 @config '../../tailwind.config.js';
 
+@theme {
+    --font-sans: Inter, ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
+@plugin 'tailwind-scrollbar';
 /*
   The default border color has changed to `currentColor` in Tailwind CSS v4,
   so we've added these compatibility styles to make sure everything still
@@ -20,32 +33,49 @@
   }
 }
 
-@utility prose {
-  /* Custom styling for code blocks inside prose but excluding pre code blocks */
-  & code:not(pre code) {
-    @apply bg-gray-200/70 text-black px-2 py-0.5 rounded-sm;
-    /* Light mode styles */
-  }
-
-  /* Dark mode targeting */
-  .dark & code:not(pre code) {
-    @apply bg-zinc-700 px-2 py-0.5 rounded-sm text-slate-200;
-    /* Dark mode styles */
-  }
+pre{
+   @apply m-0 p-0 overflow-hidden;
+.hljs{
+   @apply bg-zinc-50 dark:bg-zinc-800 border dark:border-zinc-700 ;
+}
 }
 
-@utility dark {
-  /* Dark mode targeting */
-  & .prose code:not(pre code) {
-    @apply bg-zinc-700 px-2 py-0.5 rounded-sm text-slate-200;
-    /* Dark mode styles */
-  }
-}
+/*@utility prose {*/
+/*  !* Custom styling for code blocks inside prose but excluding pre code blocks *!*/
+/*  & code:not(pre code) {*/
+/*    @apply bg-gray-200/70 text-black px-2 py-0.5 rounded-sm;*/
+/*    !* Light mode styles *!*/
+/*  }*/
 
-.shiki  {
+/*  !* Dark mode targeting *!*/
+/*  .dark & code:not(pre code) {*/
+/*    @apply bg-zinc-700 px-2 py-0.5 rounded-sm text-slate-200;*/
+/*    !* Dark mode styles *!*/
+/*  }*/
+/*}*/
+
+/*@utility dark {*/
+/*  !* Dark mode targeting *!*/
+/*  & .prose code:not(pre code) {*/
+/*    @apply bg-zinc-700 px-2 py-0.5 rounded-sm text-slate-200;*/
+/*    !* Dark mode styles *!*/
+/*  }*/
+/*}*/
+
+.hljs  {
   /* background-color: #fafafa!important;  */
   /* border : 1px solid #fafafa; */
   /* padding: 2px 1px; */
+    scrollbar-width: none !important; /* Firefox */
+
+}
+
+.hljs::-webkit-scrollbar {
+  /* background-color: #fafafa!important;  */
+  /* border : 1px solid #fafafa; */
+  /* padding: 2px 1px; */
+    scrollbar-width: none !important; /* Firefox */
+
 }
 
 
@@ -58,6 +88,24 @@
   /* border : none; */
   /* padding: 2px 1px; */
 }
+
+
+
+/*:root {*/
+/*    --shiki-color-text: #c9d1d9;*/
+/*    --shiki-color-background: #0d1117;*/
+/*    --shiki-token-constant: #79c0ff;*/
+/*    --shiki-token-string: #a5d6ff;*/
+/*    --shiki-token-comment: #8b949e;*/
+/*    --shiki-token-keyword: #ff7b72;*/
+/*    --shiki-token-parameter: #c9d1d9;*/
+/*    --shiki-token-function: #d2a8ff;*/
+/*    --shiki-token-string-expression: #a5d6ff;*/
+/*    --shiki-token-punctuation: #c9d1d9;*/
+/*    --shiki-token-link: #000012;*/
+/*}*/
+
+
 
 
 .shiki .highlight {
@@ -90,7 +138,7 @@
 }
 
 
- 
+
 
 
 
@@ -173,3 +221,64 @@
     transform: translateX(-100%);
   }
 }
+
+
+
+
+
+/* =========================
+* THEMED SCROLLBAR
+* ========================= */
+.scrollbar-theme {
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: var(--color-zinc-200) transparent;
+
+}
+.dark .scrollbar-theme {
+    scrollbar-color: var(--color-zinc-700) transparent;
+}
+
+.scrollbar-theme::-webkit-scrollbar {
+    width: 3px;
+    height: 8px;
+}
+
+/* =========================
+ * TRACK
+ * ========================= */
+.scrollbar-theme::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+.dark .scrollbar-theme::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+/* =========================
+ * SCROLLBAR BUTTONS
+ * ========================= */
+.scrollbar-theme::-webkit-scrollbar-button{
+    display: none;
+}
+
+/* =========================
+ * THUMB
+ * ========================= */
+.scrollbar-theme::-webkit-scrollbar-thumb {
+    background-color: var(--color-zinc-500);
+    border-radius: 6px;
+}
+.dark .scrollbar-theme::-webkit-scrollbar-thumb {
+    background-color: var(--color-zinc-500);
+
+}
+
+/* =========================
+ * HIDE SCROLLBAR
+ * ========================= */
+ .scrollbar-hide {
+    scrollbar-width: none !important; /* Firefox */
+}
+.scrollbar-hide::-webkit-scrollbar {
+    display: none; /* WebKit */
+}
+

@@ -3,11 +3,11 @@
      {{-- small screen background overlay --}}
      <div @click="sideBarFloating=false" x-cloak x-show="sideBarFloating" class="absolute lg:hidden inset-0 bg-black/30"> </div>
 
-    
+
     <div class="  flex items-center justify-between py-5 mx-auto ">
         <a href="/" class="flex items-center w-auto text-lg lg:text-2xl font-extrabold leading-none text-black dark:text-white  ">
-            <img class="rounded-xl w-10 h-10 lg:h-12 lg:w-12" src="{{ asset('assets/wirechat-logo.png') }}" alt="Alerts">
-            Wirechat 
+            <img class="rounded-xl  w-10 h-10 lg:h-12 lg:w-12" src="{{ asset('assets/wirechat-logo.png') }}" alt="Alerts">
+            Wirechat
         </a>
 
         <nav class=" gap-5 hidden lg:flex items-center justify-center w-full h-full">
@@ -18,8 +18,8 @@
              <a href="https://github.com/namumakwembo/wirechat" class="relative font-medium   px-3 py-px rounded-xl text-gray-600 dark:text-gray-200 transition duration-150 ease-out hover:text-gray-900 dark:hover:text-gray-300">
                  Github
             </a>
-            
-           
+
+
         </nav>
 
         {{-- Dark mode --}}
@@ -30,13 +30,13 @@
                 <svg x-show="!sideBarFloating" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M4 8h16M4 16h16" />
                 </svg>
-        
+
                 <svg x-show="sideBarFloating" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
             </button>
         </div>
-             
+
         </div>
     </div>
 
@@ -71,5 +71,5 @@
 </aside>
 
 
-   
+
 </section>

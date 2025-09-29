@@ -5,18 +5,18 @@
 
 Once you’ve installed and configured WireChat, you’re ready to create engaging chat experiences. Whether you’re starting conversations using the intuitive UI, initiating chats programmatically, or managing private conversations, WireChat offers a flexible solution for every need.
 
-Before you begin, ensure your models are prepared for chat functionality. If you haven’t already, visit the [**Setup**]({{ route('setup') }})  page to integrate the necessary trait.
+Before you begin, ensure your models are prepared for chat functionality. If you haven’t already, visit the [**Setup**]({{ docs()->route('setup') }})  page to integrate the necessary trait.
 <x-section-heading label="Chat Interface" />
 
 To start exploring WireChat, navigate to the default chat interface at: `/chats`.
-You can also customize the route prefix by editing the `routes.prefix` in your published Wirechat [configuration file]({{ route('customization.config') }}) .
+You can also customize the route prefix by editing the `routes.prefix` in your published Wirechat [configuration file]({{ docs()->route('customization.config') }}) .
 
 <x-section-heading label="Starting a Chat" />
 
 -  **Using the WireChat UI**
 
     1. Click the **Plus** icon in the chat list.
-    2. Search for and select a user to start a conversation with. _(Customize Search; see [Trait Customization]({{ route('customization.trait') }}))_.
+    2. Search for and select a user to start a conversation with. _(Customize Search; see [Trait Customization]({{ docs()->route('customization.trait') }}))_.
     3. Click on the user’s name to initiate a chat.
 
 > To enable the "New Chat" button in the UI, ensure the `show_new_chat_modal_button` setting is enabled in your WireChat configuration.

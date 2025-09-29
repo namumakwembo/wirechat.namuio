@@ -9,17 +9,17 @@ your application's needs.
 
 ### Customizing the User Model
 
-To enable these customizations, add the `Chatable` trait to your `User` model and override the following methods
+To enable these customizations, add the `InteractsWithWireChat` trait to your `User` model and override the following methods
 as needed.
 
 ```php
 
-use App\Traits\Chatable;
+use App\Traits\InteractsWithWireChat;
 use Illuminate\Database\Eloquent\Collection;
 
 class User extends Model
  {
-    use Chatable;
+    use InteractsWithWireChat;
 
     /**
     * Returns the URL for the user's cover image (avatar).
@@ -48,21 +48,6 @@ class User extends Model
       return $this->name ?? 'user';
     }
 
-    /**
-    * Search for users when creating a new chat or adding members to a group.
-    * Customize the search logic to limit results, such as restricting to friends or eligible users only.
-    */
-    public function searchChatables(string $query): ?Collection
-    {
-     $searchableFields = ['name'];
-     return User::where(function ($queryBuilder) use ($searchableFields, $query) {
-        foreach ($searchableFields as $field) {
-                $queryBuilder->orWhere($field, 'LIKE', '%'.$query.'%');
-        }
-      })
-        ->limit(20)
-        ->get();
-    }
 
     /**
     * Determine if the user can create new groups.
