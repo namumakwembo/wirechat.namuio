@@ -158,6 +158,7 @@
     @livewireScripts
 {{--  @livewireScriptConfig()--}}
 
+<livewire:initializer/>
 </body>
 
 </html>
