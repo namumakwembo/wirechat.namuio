@@ -1,7 +1,8 @@
 
 <article {{$attributes->merge(['class'=> "
         prose prose-sm md:prose-base 2xl:prose-md
-        prose-a:text-blue-500  prose-code:text-[0.9rem]    prose-pre:m-0 !prose-pre:p-0 !prose-code:my-0  prose-code:font-normal
+        prose-a:text-blue-500
+
         prose-code:text-gray-500 prose-code:dark:text-gray-400/70 prose-code:text-italic dark:prose-code:text-white prose-img:rounded-xl dark:prose-ol:text-white
         dark:prose-li:text-gray-300  prose-li:text-gray-900/90 dark:prose-ul:text-gray-200
         prose-li:marker:text-gray-500/80   dark:prose-li:marker:text-gray-400 dark:prose-strong:text-white
@@ -17,3 +18,7 @@
         even:prose-td:bg-grey-50 dark:prose-tr:border-gray-700"])}}>
     {{$slot}}
 </article>
+
+{{--
+     prose-code:text-[0.9rem] prose-pre:m-0 prose-pre:p-0 prose-code:my-0  prose-code:font-normal
+--}}
