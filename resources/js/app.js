@@ -1,16 +1,16 @@
 import './bootstrap';
-import { Livewire, Alpine } from '../../vendor/livewire/livewire/dist/livewire.esm';
-import HighlightScroll from 'highlight-scroll'
+//import { Livewire, Alpine } from '../../vendor/livewire/livewire/dist/livewire.esm';
+//import HighlightScroll from 'highlight-scroll'
 import './copycode.js';
 import hljs from 'highlight.js/lib/core';
 
 
-Alpine.plugin(HighlightScroll({
-    offset: 120,
-    highlightClasses: 'scale-110 transition-all font-bold text-slate-600 dark:text-white'
-}));
-Alpine.start();
-Livewire.start();
+// Alpine.plugin(HighlightScroll({
+//     offset: 120,
+//     highlightClasses: 'scale-110 transition-all font-bold text-slate-600 dark:text-white'
+// }));
+// Livewire.start();
+// Alpine.start();
 
 // Import only what you need
 import javascript from 'highlight.js/lib/languages/javascript';

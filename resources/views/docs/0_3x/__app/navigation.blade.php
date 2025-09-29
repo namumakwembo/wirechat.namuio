@@ -21,7 +21,7 @@
 
         <li>
             <x-sidebar-link class="flex gap-3 items-center"
-                            href="https://github.com/namumakwembo/wirechat/blob/main/CHANGELOG.md">
+                            href="https://github.com/wirechat/wirechat/discussions/126">
                 Upgrade Guide
 
                 <span>

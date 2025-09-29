@@ -89,7 +89,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
 
     <!-- Styles / Scripts -->
-    @livewireStyles
+{{--    @livewireStyles--}}
     <!-- If dark mode, use this -->
 
 
@@ -155,7 +155,7 @@
     </script>
 
 
-  @livewireScriptConfig()
+{{--  @livewireScriptConfig()--}}
 
 </body>
 
