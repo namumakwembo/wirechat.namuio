@@ -1,8 +1,8 @@
 import './bootstrap';
 //import { Livewire, Alpine } from '../../vendor/livewire/livewire/dist/livewire.esm';
 //import HighlightScroll from 'highlight-scroll'
-// import './copycode.js';
-// import hljs from 'highlight.js/lib/core';
+import './copycode.js';
+import hljs from 'highlight.js/lib/core';
 
 
 // Alpine.plugin(HighlightScroll({
@@ -19,7 +19,7 @@ import css from 'highlight.js/lib/languages/css';
 import xml from 'highlight.js/lib/languages/xml'; // for html/blade
 import bash from 'highlight.js/lib/languages/bash';
 import shell from 'highlight.js/lib/languages/shell';
-import hljs from "highlight.js";
+// import hljs from "highlight.js";
 
 // Register them
 hljs.registerLanguage('javascript', javascript);
@@ -33,22 +33,13 @@ hljs.registerLanguage('sh', shell);
 // Highlight after DOM is ready
 
 console.log("✅ app.js loaded");
-hljs.highlightAll();
-
-document.addEventListener('DOMContentLoaded', () => {
-    console.log("✅ DOMContentLoaded fired");
-});
 
 document.addEventListener('DOMContentLoaded', () => {
     hljs.highlightAll();
 
-    console.log('DOMContentLoaded reached');
+    console.log('✅ DOMContentLoaded reached');
+    console.log('✅ Highlight js loaded');
 });
 
 
-
-document.addEventListener('turbo:load', () => {
-    console.log("✅ turbo:load triggered");
-    hljs.highlightAll();
-});
 
