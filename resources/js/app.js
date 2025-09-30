@@ -1,8 +1,8 @@
 import './bootstrap';
 //import { Livewire, Alpine } from '../../vendor/livewire/livewire/dist/livewire.esm';
 //import HighlightScroll from 'highlight-scroll'
-import './copycode.js';
-import hljs from 'highlight.js/lib/core';
+// import './copycode.js';
+// import hljs from 'highlight.js/lib/core';
 
 
 // Alpine.plugin(HighlightScroll({
@@ -13,25 +13,25 @@ import hljs from 'highlight.js/lib/core';
 // Alpine.start();
 
 // Import only what you need
-import javascript from 'highlight.js/lib/languages/javascript';
-import php from 'highlight.js/lib/languages/php';
-import css from 'highlight.js/lib/languages/css';
-import xml from 'highlight.js/lib/languages/xml'; // for html/blade
-import bash from 'highlight.js/lib/languages/bash';
-import shell from 'highlight.js/lib/languages/shell';
-
-// Register them
-hljs.registerLanguage('javascript', javascript);
-hljs.registerLanguage('php', php);
-hljs.registerLanguage('css', css);
-hljs.registerLanguage('html', xml);
-hljs.registerLanguage('blade', xml); // alias blade -> html
-hljs.registerLanguage('bash', bash);
-hljs.registerLanguage('sh', shell);
-
-// Highlight after DOM is ready
-document.addEventListener('DOMContentLoaded', () => {
-    hljs.highlightAll();
-
-    console.log('DOMContentLoaded reached');
-});
+// import javascript from 'highlight.js/lib/languages/javascript';
+// import php from 'highlight.js/lib/languages/php';
+// import css from 'highlight.js/lib/languages/css';
+// import xml from 'highlight.js/lib/languages/xml'; // for html/blade
+// import bash from 'highlight.js/lib/languages/bash';
+// import shell from 'highlight.js/lib/languages/shell';
+//
+// // Register them
+// hljs.registerLanguage('javascript', javascript);
+// hljs.registerLanguage('php', php);
+// hljs.registerLanguage('css', css);
+// hljs.registerLanguage('html', xml);
+// hljs.registerLanguage('blade', xml); // alias blade -> html
+// hljs.registerLanguage('bash', bash);
+// hljs.registerLanguage('sh', shell);
+//
+// // Highlight after DOM is ready
+// document.addEventListener('DOMContentLoaded', () => {
+//     hljs.highlightAll();
+//
+//     console.log('DOMContentLoaded reached');
+// });
