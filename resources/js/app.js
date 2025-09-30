@@ -32,4 +32,6 @@ hljs.registerLanguage('sh', shell);
 // Highlight after DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
     hljs.highlightAll();
+
+    console.log('DOMContentLoaded reached');
 });
