@@ -31,8 +31,24 @@ hljs.registerLanguage('bash', bash);
 hljs.registerLanguage('sh', shell);
 
 // Highlight after DOM is ready
+
+console.log("✅ app.js loaded");
+hljs.highlightAll();
+
+document.addEventListener('DOMContentLoaded', () => {
+    console.log("✅ DOMContentLoaded fired");
+});
+
 document.addEventListener('DOMContentLoaded', () => {
     hljs.highlightAll();
 
     console.log('DOMContentLoaded reached');
 });
+
+
+
+document.addEventListener('turbo:load', () => {
+    console.log("✅ turbo:load triggered");
+    hljs.highlightAll();
+});
+
