@@ -19,8 +19,8 @@ public function panel(Panel $panel): Panel
 {
     $panel
         //...
-        ->newChatAction()
-        ->newGroupAction();
+        ->createChatAction()
+        ->createGroupAction();
 }
 ```
 
