@@ -91,10 +91,22 @@ This ensures that storage behavior remains consistent across models, jobs, obser
 ```php
 // config/wirechat.php
 return [
-    'attachments' => [
-        'storage_disk'   => 'public',    // e.g., 'public', 's3'
-        'storage_folder' => 'attachments', // or '/'
-        'visibility'     => 'public',    // 'public' or 'private'
+    //..
+    /*
+    |--------------------------------------------------------------------------
+    | Storage
+    |--------------------------------------------------------------------------
+    |
+    | Global configuration for WireChat file storage. Defines the disk,
+    | directory, and visibility used for saving attachments.
+    |
+    */
+    'storage' => [
+        'disk' => 'public',
+        'visibility' => 'public',
+        'directories' => [
+            'attachments' => 'attachments',
+        ],
     ],
 ];
 ```
