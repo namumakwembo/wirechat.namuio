@@ -14,7 +14,7 @@
             <g id="🔍-Product-Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                 <g id="ic_fluent_dark_theme_24_regular" fill="currentColor" fill-rule="nonzero">
                     <path d="M12,22 C17.5228475,22 22,17.5228475 22,12 C22,6.4771525 17.5228475,2 12,2 C6.4771525,2 2,6.4771525 2,12 C2,17.5228475 6.4771525,22 12,22 Z M12,20.5 L12,3.5 C16.6944204,3.5 20.5,7.30557963 20.5,12 C20.5,16.6944204 16.6944204,20.5 12,20.5 Z" id="🎨-Color">
-        
+
         </path>
                 </g>
             </g>
@@ -43,66 +43,61 @@
                 look and function great both in dark mode and on mobile devices.</div>
         </div>
 
-     
+
     </div>
 </div>
 
 
+<article class=" ring-3 ring-zinc-200/30   dark:ring-zinc-700/40 rounded-xl grid md:grid-cols-2 lg:overflow-hidden">
 
-    <article class=" ring-3 ring-zinc-200/30   dark:ring-zinc-700/40 rounded-xl grid sm:grid-cols-2 lg:overflow-hidden">
-
-        <aside class=" overflow-scroll">
+<aside class=" overflow-scroll">
 
 <x-markdown class="text-sm w-full overflow-x-scroll ">
-```html
+```php
+use Wirechat\Wirechat\Panel;
+use Wirechat\Wirechat\Support\Color;
 
-  <head>
-    ... 
-    @wirechatStyles
-    <style>
-     :root {
-     --wc-brand-primary:'#f59e0b';       
-
-     --wc-light-primary: #fff;  /* white */
-     --wc-light-secondary: oklch(0.985 0.002 247.839);/* gray-100 */
-     --wc-light-accent: oklch(0.985 0.002 247.839);/* gray-50 */
-     --wc-light-border: oklch(0.928 0.006 264.531);/* gray-200 */
-
-     --wc-dark-primary: oklch(0.21 0.006 285.885); /* zinc-900 */
-     --wc-dark-secondary: oklch(0.274 0.006 286.033);/* zinc-800 */
-     --wc-dark-accent: oklch(0.37 0.013 285.805);/* zinc-700 */
-     --wc-dark-border: oklch(0.37 0.013 285.805);/* zinc-700 */
-     }
-    </style>
-  </head>
-
+public function panel(Panel $panel): Panel
+{
+    return $panel
+        // ...
+        ->colors([
+              'primary' => Color::Blue
+          ]);
+}
 ```
 </x-markdown>
 
-        </aside>
-
-        {{-- Theme gif --}}
-        <aside class="relative w-full  ">
-
-            <img class=" h-full    w-full" src="{{ asset('assets/previews/themes.gif') }}" alt="">
-            <span class="absolute hover:opacity-0 transition-all ease-in-out inset-0 bg-black opacity-20"></span>
-
-        </aside>
+</aside>
 
 
+<aside>
+<x-markdown>
+```php
+Color list
+    'slate' => static::Slate,
+    'gray' => static::Gray,
+    'zinc' => static::Zinc,
+    'neutral' => static::Neutral,
+    'stone' => static::Stone,
+    'red' => static::Red,
+    'orange' => static::Orange,
+    //...
+```
+</x-markdown>
+</aside>
 
 
 
-
-    </article>
-
+</article>
 
 
-    <center class="pt-6">
 
-    <x-button tag="a" class=" w-full sm:w-fit px-4 flex items-center justify-center  gap-4 dark:bg-zinc-800 " href="{{ route('customization.theme') }}">
-        Customize your theme
-    </x-button>
-</center>
+<div class="pt-6" style="text-align: center;">
+
+<x-button tag="a" class=" w-full sm:w-fit px-4 flex items-center justify-center  gap-4 dark:bg-zinc-800 " href="{{ route('customization.theme') }}">
+Customize your theme
+</x-button>
+</div>
 
 </section>
