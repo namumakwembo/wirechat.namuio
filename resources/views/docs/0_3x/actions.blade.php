@@ -53,10 +53,10 @@ public function panel(Panel $panel): Panel
 {
     return $panel
         ->createChatAction(
-            condition: fn () => auth()->check(),
+            condition: fn () => auth()->user()?->hasVerifiedEmail() ?? false,
         )
         ->deleteMessageActions(
-            condition: fn () => (bool) config('chat.actions.delete_messages', true),
+            condition: fn () => auth()->user()?->hasVerifiedEmail() ?? false,
         );
 }
 ```

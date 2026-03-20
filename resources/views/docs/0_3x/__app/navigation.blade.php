@@ -80,7 +80,7 @@
 
         <li>
             @if(docs()->hasRoute('panels'))
-                <x-sidebar-link new href="{{ docs()->route('panels') }}"
+                <x-sidebar-link  href="{{ docs()->route('panels') }}"
                                 active="{{ request()->routeIs('panels') }}">
                     Panels
                 </x-sidebar-link>
@@ -170,7 +170,7 @@
 
         @if(docs()->hasRoute('customization.users'))
             <li>
-                <x-sidebar-link new href="{{ docs()->route('customization.users') }}"
+                <x-sidebar-link  href="{{ docs()->route('customization.users') }}"
                                 active="{{docs()->routeIs('customization.users') }}">
                     Users
                 </x-sidebar-link>
@@ -224,7 +224,7 @@
         </li>
         <li>
 
-            <x-sidebar-link new href="{{ docs()->route('customization.theme') }}"
+            <x-sidebar-link  href="{{ docs()->route('customization.theme') }}"
                             active="{{docs()->routeIs('customization.theme') }}">
                 Theme
             </x-sidebar-link>
