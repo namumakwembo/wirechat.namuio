@@ -88,9 +88,14 @@
             @endif
         </li>
 
-
         <li>
-
+            @if(docs()->hasRoute('actions'))
+                <x-sidebar-link new href="{{ docs()->route('actions') }}"
+                                active="{{ request()->routeIs('actions') }}">
+                    Actions
+                </x-sidebar-link>
+            @endif
+        </li>
 
         <li>
             <x-sidebar-link href="{{ docs()->route('usage.attachments') }}"
@@ -296,4 +301,3 @@
         </li>
     </ol>
 </section>
-

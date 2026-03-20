@@ -25,6 +25,7 @@ public function panel(Panel $panel): Panel
 ```
 
 > **Note:** Disabling these actions will hide the buttons required for creating new groups in the UI.
+> `createGroupAction()` is typically paired with `createChatAction()` because the group option appears inside the new-chat modal. See the [Actions]({{ docs()->route('actions') }}) page for the full action API.
 
 
 

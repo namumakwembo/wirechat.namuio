@@ -308,24 +308,11 @@ public function panel(Panel $panel): Panel
 }
 ```
 
-<x-sub-section-heading label="Create Chat Action" />
+<x-sub-section-heading label="Actions" />
 
-Make the create create chat button action visible on WireChat UI.
+Wirechat panel actions let you control shortcuts such as creating chats, creating groups, clearing chats, deleting chats, returning home, and deleting messages.
 
-```php
-use Wirechat\Wirechat\Panel;
-
-public function panel(Panel $panel): Panel
-{
-    return $panel
-          //...
-          ->createChatAction();
-}
-```
-
-<x-sub-section-heading label="Create Group Action" />
-
-Show the create create group action.
+For full action documentation, including `icon` and icon-attribute configuration, see the [Actions]({{ docs()->route('actions') }}) page.
 
 ```php
 use Wirechat\Wirechat\Panel;
@@ -333,59 +320,13 @@ use Wirechat\Wirechat\Panel;
 public function panel(Panel $panel): Panel
 {
     return $panel
-          //...
-          ->createGroupAction();
-}
-```
-
-<x-sub-section-heading label="Redirect To Home Action" />
-
-Show the create new group action
-
-```php
-use Wirechat\Wirechat\Panel;
-
-public function panel(Panel $panel): Panel
-{
-    return $panel
-          //...
-          ->redirectToHomeAction();
-}
-```
-
-<x-sub-section-heading label="HomeUrl" />
-
-Set the redirect url when the home action is clicked
-
-```php
-use Wirechat\Wirechat\Panel;
-
-public function panel(Panel $panel): Panel
-{
-    return $panel
-          //...
-          ->homeUrl('/dashboard');
-}
-```
-
-
-<x-sub-section-heading label="Delete Message Actions" />
-
-**Delete Message actions** are enabled by default:
-
-- Delete message for me
-- Delete message for everyone
-
-You can disable these actions in the panel.
-
-```php
-use Wirechat\Wirechat\Panel;
-
-public function panel(Panel $panel): Panel
-{
-    return $panel
-          //...
-          ->deleteMessageActions(false)
+        //...
+        ->createChatAction()
+        ->createGroupAction()
+        ->clearChatAction()
+        ->deleteChatAction()
+        ->redirectToHomeAction(url: '/dashboard')
+        ->deleteMessageActions();
 }
 ```
 
@@ -413,11 +354,7 @@ public function panel(Panel $panel): Panel
                 'Color theme',
                 'Heading',
                 'Favicon',
-                'Create Chat Action',
-                'Create Group Action',
-                'Redirect To Home Action',
-                'HomeUrl',
-                'Delete Message Actions'
+                'Actions'
             ],
 
 

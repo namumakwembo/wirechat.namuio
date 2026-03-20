@@ -24,6 +24,7 @@ public function panel(Panel $panel): Panel
 ````
 
 > **Note:** If disabled, users won’t see the option to create new chats in the UI.
+> Customize the header action icon and attributes on the [Actions]({{ docs()->route('actions') }}) page.
 
 
 -  **Create Using the WireChat UI**
@@ -70,6 +71,8 @@ public function panel(Panel $panel): Panel
 }
 ```
 
+> **Note:** Icon customization for this action is documented on the [Actions]({{ docs()->route('actions') }}) page.
+
 <x-sub-section-heading label="How to Delete" />
 
 * **UI Instructions**
@@ -105,6 +108,8 @@ public function panel(Panel $panel): Panel
         ->clearChatAction();
 }
 ```
+
+> **Note:** `clearChatAction()` can be enabled from the panel, and the broader action API is documented on the [Actions]({{ docs()->route('actions') }}) page.
 
 <x-sub-section-heading label="How to Clear" />
 

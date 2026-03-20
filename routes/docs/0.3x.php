@@ -38,6 +38,12 @@ Route::prefix('docs/' . $routePrefix)
             return view('docs.' . $docs->getViewFolder() . '.panels');
         })->name('panels');
 
+        Route::get('/actions', function () use ($docs) {
+            Helper::seo('Actions', "Learn how to configure WireChat panel actions, including chat actions, home navigation actions, message deletion options, and action icon customization.");
+
+            return view('docs.' . $docs->getViewFolder() . '.actions');
+        })->name('actions');
+
         /**----------------
          * Usage
          */
