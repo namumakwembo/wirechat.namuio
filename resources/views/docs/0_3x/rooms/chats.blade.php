@@ -6,6 +6,8 @@
 
 Wirechat allows you to create private 1-on-1 chats, manage settings from the panel, send messages, and perform actions such as deleting or clearing chats.
 
+Need to organize the chats list into focused views such as unread or groups? See the [Tabs]({{ docs()->route('usage.tabs') }}) page. Conversation tabs are available in Wirechat Pro.
+
 ---
 
 <x-section-heading label="Creating Chats" />

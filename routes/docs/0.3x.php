@@ -64,6 +64,12 @@ Route::prefix('docs/' . $routePrefix)
             return view('docs.' . $docs->getViewFolder() . '.usage.attachments');
         })->name('usage.attachments');
 
+        Route::get('/tabs', function () use ($docs) {
+            Helper::seo('Conversation Tabs', 'Learn how to configure conversation tabs in WireChat Pro to organize the chats list into focused views such as all, unread, groups, or custom segments.');
+
+            return view('docs.' . $docs->getViewFolder() . '.usage.tabs');
+        })->name('usage.tabs');
+
         Route::get('/notifications', function () use ($docs) {
             Helper::seo('Notifications', 'Wirechat offers a simple and efficient way to handle real-time push notifications using the Service Worker API and the Web Notifications API');
 

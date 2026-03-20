@@ -65,7 +65,7 @@
 
             {{-- <span
                 class="border p-1 px-3 dark:text-gray-300 dark:font-medium dark:border-gray-700  max-w-fit max-h-fit rounded-lg text-xs">
-                Beta</span> --}}
+                Pro</span> --}}
         </a>
 
         <nav class=" gap-5 hidden lg:flex items-center justify-center ml-auto pr-10">

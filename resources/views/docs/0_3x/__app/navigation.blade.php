@@ -104,6 +104,14 @@
             </x-sidebar-link>
         </li>
         <li>
+            @if(docs()->hasRoute('usage.tabs'))
+                <x-sidebar-link pro href="{{ docs()->route('usage.tabs') }}"
+                                active="{{docs()->routeIs('usage.tabs') }}">
+                    Tabs
+                </x-sidebar-link>
+            @endif
+        </li>
+        <li>
 
             <x-sidebar-link href="{{ docs()->route('usage.aggregations') }}"
                             active="{{docs()->routeIs('usage.aggregations') }}">

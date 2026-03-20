@@ -124,6 +124,28 @@ public function panel(Panel $panel): Panel
 ```
  **Note:** Disable search by passing `false`: `->chatsSearch(false)`.
 
+<x-sub-section-heading label="Conversation Tabs" />
+
+Organize the chats list into focused views such as **All**, **Unread**, or **Groups**.
+
+**Pro:** Conversation tabs are available in Wirechat Pro. See the [Tabs]({{ docs()->route('usage.tabs') }}) page for the full API and examples.
+
+```php
+use Wirechat\Wirechat\Panel;
+use Wirechat\Wirechat\Support\Tabs\Tab;
+
+public function panel(Panel $panel): Panel
+{
+    return $panel
+          //...
+          ->tabs(
+              Tab::make('all'),
+              Tab::make('groups')->count(),
+          )
+          ->defaultTab('all');
+}
+```
+
 
 <x-sub-section-heading label="Enable Emoji Picker" />
 
@@ -343,6 +365,7 @@ public function panel(Panel $panel): Panel
                 'Middleware',
                 'Chat Middleware',
                 'Enable Chats Search',
+                'Conversation Tabs',
                 'Enable Emoji Picker',
                 'Web Push Notifications',
                 'Messages Queue',

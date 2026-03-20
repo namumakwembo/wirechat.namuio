@@ -16,10 +16,18 @@
  --}}
 
 
-@props(['items' => []])
+@props(['items' => [], 'pro' => false])
 
 <nav class="flex flex-col gap-3" x-data> 
-    <h5 class="font-bold dark:text-gray-400 text-slate-600/50 dark:font-normal">On This Page</h5>
+    <div class="flex items-center gap-2">
+        <h5 class="font-bold dark:text-gray-400 text-slate-600/50 dark:font-normal">On This Page</h5>
+
+        @if ($pro)
+            <span class="border border-zinc-200 dark:border-gray-700 px-2 py-0.5 dark:text-gray-300 max-w-fit max-h-fit rounded-lg text-[11px] font-medium text-zinc-700">
+                Pro
+            </span>
+        @endif
+    </div>
 
     <ul class="flex  flex-col gap-3">
         @foreach ($items as $key => $value)

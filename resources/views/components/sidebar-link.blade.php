@@ -1,5 +1,5 @@
 
-@props(['active','new'])
+@props(['active','new','pro'])
 
 @php
 $activeClasses = ($active ?? false)
@@ -14,6 +14,14 @@ $activeClasses = ($active ?? false)
 
 <span class="inline flex items-center border dark:border-gray-500 p-1 rounded-md justify-center font-medium text-xs max-h-fit px-1.5 bg-linear-to-r from-blue-500 to-[#CD3BF6]  text-transparent bg-clip-text">
     New
+</span>
+
+@endisset
+
+@isset ($pro)
+
+<span class="inline flex items-center border border-zinc-200 dark:border-gray-700 p-1 rounded-md justify-center font-medium text-xs max-h-fit px-2 text-zinc-700 dark:text-gray-300">
+    Pro
 </span>
 
 @endisset
