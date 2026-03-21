@@ -95,15 +95,23 @@ Wirechat uses that collection to calculate the unread summary and recent convers
 
 <x-section-heading label="Customizing The Tray" />
 
-Use `class` to add custom classes to the Tray root element:
+Use `class` to add custom classes to the opened tray panel:
 
 @verbatim
 ```blade
-<livewire:wirechat.tray class="bottom-3 right-3" />
+<livewire:wirechat.tray class="bottom-3 right-3 w-[28rem]" />
 ```
 @endverbatim
 
-Use `heading` to change the label shown in the closed tray trigger:
+Use `launcherClass` to customize the closed tray launcher:
+
+@verbatim
+```blade
+<livewire:wirechat.tray launcherClass="rounded-full px-4 py-2 shadow-lg" />
+```
+@endverbatim
+
+Use `heading` to change the label shown in the launcher and the tray chats header:
 
 @verbatim
 ```blade
@@ -111,11 +119,15 @@ Use `heading` to change the label shown in the closed tray trigger:
 ```
 @endverbatim
 
-You may combine both when you need custom positioning and a custom label:
+You may combine them when you need to adjust both the tray panel and the launcher:
 
 @verbatim
 ```blade
-<livewire:wirechat.tray class="bottom-3 right-3" heading="Inbox" />
+<livewire:wirechat.tray
+    class="bottom-3 right-3 w-[28rem]"
+    launcherClass="rounded-full px-4 py-2 shadow-lg"
+    heading="Inbox"
+/>
 ```
 @endverbatim
 
