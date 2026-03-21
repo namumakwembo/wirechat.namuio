@@ -112,6 +112,14 @@
             @endif
         </li>
         <li>
+            @if(docs()->hasRoute('usage.tray'))
+                <x-sidebar-link new href="{{ docs()->route('usage.tray') }}"
+                                active="{{docs()->routeIs('usage.tray') }}">
+                    Tray
+                </x-sidebar-link>
+            @endif
+        </li>
+        <li>
             @if(docs()->hasRoute('usage.tabs'))
                 <x-sidebar-link new href="{{ docs()->route('usage.tabs') }}"
                                 active="{{docs()->routeIs('usage.tabs') }}">

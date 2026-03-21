@@ -89,6 +89,12 @@ When a conversation is clicked, an `open-chat` event is dispatched as a Livewire
 
 ---
 
+<x-section-heading label="Tray Widget" />
+
+If you want chat to stay available as a floating entry point across your layout instead of occupying page content, see the Pro [Tray Widget]({{ docs()->route('usage.tray') }}) guide.
+
+---
+
 <x-sub-section-heading label="Widget Events"/>
 
 When a component is used as a widget by passing `widget="true"`, it will no longer redirect or reload the page after certain actions. Instead, it will trigger several browser and Livewire events during conversation transitions. These events let you hook into and extend chat functionality at various points in the user flow. Here are the most common ones:

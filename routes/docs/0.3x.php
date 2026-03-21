@@ -70,6 +70,12 @@ Route::prefix('docs/' . $routePrefix)
             return view('docs.' . $docs->getViewFolder() . '.usage.content-viewer');
         })->name('usage.content-viewer');
 
+        Route::get('/tray', function () use ($docs) {
+            Helper::seo('Tray Widget', 'Learn how to add the Wirechat Pro tray widget to your layout for floating access to conversations across the application.');
+
+            return view('docs.' . $docs->getViewFolder() . '.usage.tray');
+        })->name('usage.tray');
+
         Route::get('/tabs', function () use ($docs) {
             Helper::seo('Conversation Tabs', 'Learn how to configure conversation tabs in WireChat Pro to organize the chats list into focused views such as all, unread, groups, or custom segments.');
 
