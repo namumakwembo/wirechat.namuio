@@ -105,7 +105,7 @@
         </li>
         <li>
             @if(docs()->hasRoute('usage.tabs'))
-                <x-sidebar-link pro href="{{ docs()->route('usage.tabs') }}"
+                <x-sidebar-link new href="{{ docs()->route('usage.tabs') }}"
                                 active="{{docs()->routeIs('usage.tabs') }}">
                     Tabs
                 </x-sidebar-link>
