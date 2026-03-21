@@ -103,11 +103,19 @@ Use `class` to add custom classes to the Tray root element:
 ```
 @endverbatim
 
-Use `title` to change the label shown in the closed tray trigger:
+Use `heading` to change the label shown in the closed tray trigger:
 
 @verbatim
 ```blade
-<livewire:wirechat.tray " title="Inbox" />
+<livewire:wirechat.tray heading="Inbox" />
+```
+@endverbatim
+
+You may combine both when you need custom positioning and a custom label:
+
+@verbatim
+```blade
+<livewire:wirechat.tray class="bottom-3 right-3" heading="Inbox" />
 ```
 @endverbatim
 
