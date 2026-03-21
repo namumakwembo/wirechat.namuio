@@ -104,6 +104,14 @@
             </x-sidebar-link>
         </li>
         <li>
+            @if(docs()->hasRoute('usage.content-viewer'))
+                <x-sidebar-link new href="{{ docs()->route('usage.content-viewer') }}"
+                                active="{{docs()->routeIs('usage.content-viewer') }}">
+                    Content Viewer
+                </x-sidebar-link>
+            @endif
+        </li>
+        <li>
             @if(docs()->hasRoute('usage.tabs'))
                 <x-sidebar-link new href="{{ docs()->route('usage.tabs') }}"
                                 active="{{docs()->routeIs('usage.tabs') }}">

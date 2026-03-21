@@ -283,6 +283,26 @@ public function panel(Panel $panel): Panel
           ->mediaAttachments();
 }
 ```
+
+<x-sub-section-heading label="Content Viewer" />
+
+Browse shared media, documents, and links from a conversation-level viewer inside the chat details panel.
+
+**Pro:** Content Viewer is available in Wirechat Pro. See the [Content Viewer]({{ docs()->route('usage.content-viewer') }}) page for the full guide.
+
+```php
+use Wirechat\Wirechat\Panel;
+
+public function panel(Panel $panel): Panel
+{
+    return $panel
+          //...
+          ->contentViewer();
+}
+```
+
+Pass `false` to disable it: `->contentViewer(false)`.
+
 <x-sub-section-heading label="Color theme" />
 
 Easily update the panel’s primary color so it aligns with your brand colors.
@@ -374,6 +394,7 @@ public function panel(Panel $panel): Panel
                 'Attachments',
                 'File Attachments',
                 'Media Attachments',
+                'Content Viewer',
                 'Color theme',
                 'Heading',
                 'Favicon',

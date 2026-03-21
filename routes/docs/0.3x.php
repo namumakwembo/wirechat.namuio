@@ -64,6 +64,12 @@ Route::prefix('docs/' . $routePrefix)
             return view('docs.' . $docs->getViewFolder() . '.usage.attachments');
         })->name('usage.attachments');
 
+        Route::get('/content-viewer', function () use ($docs) {
+            Helper::seo('Content Viewer', 'Learn how to enable the Wirechat Pro content viewer to browse shared media, documents, and links inside the conversation interface.');
+
+            return view('docs.' . $docs->getViewFolder() . '.usage.content-viewer');
+        })->name('usage.content-viewer');
+
         Route::get('/tabs', function () use ($docs) {
             Helper::seo('Conversation Tabs', 'Learn how to configure conversation tabs in WireChat Pro to organize the chats list into focused views such as all, unread, groups, or custom segments.');
 

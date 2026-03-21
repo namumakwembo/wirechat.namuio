@@ -81,6 +81,26 @@ Users can share photos, videos, or documents in conversations by following these
 
 ---
 
+<x-section-heading label="Content Viewer" />
+
+If you want users to browse shared media, documents, and links from inside the conversation interface, enable the Pro [Content Viewer]({{ docs()->route('usage.content-viewer') }}) feature on your panel:
+
+```php
+use Wirechat\Wirechat\Panel;
+
+public function panel(Panel $panel): Panel
+{
+    return $panel
+        //..
+        ->attachments()
+        ->contentViewer();
+}
+```
+
+`attachments()` controls uploads. `contentViewer()` adds the in-chat browsing experience for content that has already been shared.
+
+---
+
 <x-section-heading label="File System Configuration" />
 
 WireChat separates **storage configuration** into two layers for consistency and easier maintenance.

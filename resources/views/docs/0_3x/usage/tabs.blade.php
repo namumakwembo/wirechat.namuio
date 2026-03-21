@@ -43,11 +43,11 @@ use Wirechat\Wirechat\Support\Tabs\Tab;
 public function panel(Panel $panel): Panel
 {
     return $panel
-        ->tabs(
+        ->tabs([
             Tab::make('all'),
             Tab::make('unread'),
             Tab::make('groups'),
-        )
+        ])
         ->defaultTab('all');
 }
 ```
@@ -90,9 +90,7 @@ Tab::make('groups')
 
 <x-sub-section-heading label="Query Scope Note" />
 
-Your callback receives the conversations query that Wirechat is already using for the current user.
-
-Because of that, the callback should usually add conditions to the given query instead of starting a brand new one.
+Your callback receives the conversations query that Wirechat is already using for the current user, so in most cases you should narrow that query instead of replacing it.
 
 <x-section-heading label="Visibility" />
 
