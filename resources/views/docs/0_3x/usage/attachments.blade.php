@@ -92,12 +92,11 @@ public function panel(Panel $panel): Panel
 {
     return $panel
         //..
-        ->attachments()
         ->contentViewer();
 }
 ```
 
-`attachments()` controls uploads. `contentViewer()` adds the in-chat browsing experience for content that has already been shared.
+`contentViewer()` adds the in-chat browsing experience for shared media, documents, and links. See the Content Viewer page for the full guide.
 
 ---
 

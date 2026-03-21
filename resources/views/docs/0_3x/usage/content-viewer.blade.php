@@ -6,7 +6,7 @@
 
 Content Viewer gives each conversation a dedicated place to browse shared media, documents, and links without leaving the chat interface.
 
-When it is enabled, Wirechat adds a content preview section to the conversation details panel and opens a built-in viewer for that conversation.
+When it is enabled, Wirechat adds a content preview section to the conversation details panel and opens a built-in viewer for that conversation. If your panel also supports attachments, the viewer gives users a built-in way to browse them alongside shared links.
 
 <x-pro-feature-banner />
 
@@ -20,12 +20,9 @@ use Wirechat\Wirechat\Panel;
 public function panel(Panel $panel): Panel
 {
     return $panel
-        ->attachments()
         ->contentViewer();
 }
 ```
-
-In most applications, you will enable it alongside `attachments()` so users can browse files that were already shared in the conversation.
 
 <x-section-heading label="Where It Appears" />
 
@@ -69,17 +66,16 @@ public function panel(Panel $panel): Panel
         ->id('chats')
         ->path('chats')
         ->middleware(['web', 'auth'])
-        ->attachments()
         ->contentViewer();
 }
 ```
 
 <x-section-heading label="Notes" />
 
-- `contentViewer()` enables browsing. Upload limits, MIME rules, and storage settings are still configured through the panel's attachments options.
+- `contentViewer()` enables browsing for the conversation viewer.
+- If your application also accepts uploads, configure attachment rules separately on the [Attachments]({{ docs()->route('usage.attachments') }}) page.
 - The viewer only loads content from the current conversation.
 - Access follows the conversation itself, so users must be able to open that conversation before they can use the viewer.
-- For upload configuration, see the [Attachments]({{ docs()->route('usage.attachments') }}) page.
 
 </x-markdown>
 
