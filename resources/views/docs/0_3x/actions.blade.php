@@ -167,7 +167,7 @@ public function panel(Panel $panel): Panel
         condition: true,
         url: '/dashboard',
         icon: 'wirechat::icons.logout',
-        attributes: [
+        iconAttributes: [
             'class' => 'size-5 text-zinc-500 hover:text-zinc-700',
             'title' => 'Back to dashboard',
             'aria-hidden' => 'true',
@@ -176,8 +176,7 @@ public function panel(Panel $panel): Panel
 }
 ```
 
-Unlike the other icon-capable action methods, `redirectToHomeAction()` names its fourth argument `attributes`.
-Those attributes are still applied to the icon element.
+`redirectToHomeAction()` uses the same `iconAttributes` argument as the other icon-capable action methods.
 
 If you prefer, `homeUrl()` is also available, but for most setups passing `url:` directly to `redirectToHomeAction()` is simpler.
 
@@ -221,9 +220,12 @@ For anything else, you may use your own Blade component name or pass trusted raw
 
 <x-section-heading label="Icon Attributes" />
 
-When you pass a Blade component name string as the icon, Wirechat merges your attributes into the component and appends its default icon classes.
+When the icon is rendered as a Blade component, Wirechat merges your attributes into that component and appends its default icon classes.
 
-This is the easiest way to adjust sizing, color, titles, or ARIA attributes without touching the package views.
+This works out of the box with the package's built-in default icons.
+If you replace the icon with your own Blade component, that component must forward `$attributes` for those icon attributes to show up.
+
+This is the easiest way to adjust sizing, color, titles, or ARIA attributes without touching the package views:
 
 ```php
 use Wirechat\Wirechat\Panel;
@@ -240,6 +242,9 @@ public function panel(Panel $panel): Panel
     );
 }
 ```
+
+If you replace the icon with raw SVG or `HtmlString`, `iconAttributes` are not applied to that markup.
+In that case, put the classes and accessibility attributes directly inside the SVG itself.
 
 <x-section-heading label="Using Raw SVG" />
 
