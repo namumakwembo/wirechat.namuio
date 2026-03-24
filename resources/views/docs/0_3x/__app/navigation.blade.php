@@ -200,6 +200,14 @@
                 </x-sidebar-link>
             </li>
         @endif
+        @if(docs()->hasRoute('customization.models'))
+            <li>
+                <x-sidebar-link href="{{ docs()->route('customization.models') }}"
+                                active="{{docs()->routeIs('customization.models') }}">
+                    Models
+                </x-sidebar-link>
+            </li>
+        @endif
         <li>
 
             <x-sidebar-link href="{{ docs()->route('customization.config') }}"

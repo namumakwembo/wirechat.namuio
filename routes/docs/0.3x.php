@@ -105,6 +105,11 @@ Route::prefix('docs/' . $routePrefix)
             return view('docs.' . $docs->getViewFolder() . '.customization.users');
         })->name('customization.users');
 
+        Route::get('/models', function () use ($docs) {
+            Helper::seo('Models', 'Learn how Wirechat core models are structured, how they relate to each other, and how to safely replace them with your own subclasses.');
+            return view('docs.' . $docs->getViewFolder() . '.customization.models');
+        })->name('customization.models');
+
         Route::get('/authorization', function () use ($docs) {
             Helper::seo('Authorization', 'Wirechat offers flexible integration with multiple guards and middleware configurations to secure your application’s routes and broadcasting channels');
             return view('docs.' . $docs->getViewFolder() . '.customization.authorization');

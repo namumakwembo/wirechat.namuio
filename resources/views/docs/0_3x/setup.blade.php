@@ -21,9 +21,9 @@ This shows how to implement the WirechatUser contract and use the InteractsWithW
 ```php
 namespace App\Models;
 
-use Wirechat\Wirechat\Panel\Panel;
-use Wirechat\Wirechat\Traits\InteractsWithWirechat;
 use Wirechat\Wirechat\Contracts\WirechatUser;
+use Wirechat\Wirechat\Panel;
+use Wirechat\Wirechat\Traits\InteractsWithWirechat;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable implements WirechatUser
@@ -55,12 +55,15 @@ class User extends Authenticatable implements WirechatUser
         return true;
     }
 }
-````
+```
 
 ---
 
 With both the interface and the trait in place, your model is fully integrated with Wirechat:
 it can create and join chats, send messages, and respect whatever rules you define for panel and group access.
+
+If you also plan to replace or extend Wirechat's internal Eloquent models, continue with the
+[Models]({{ docs()->route('customization.models') }}) and [Configuration]({{ docs()->route('customization.config') }}) pages.
 
 </x-markdown>
 
@@ -72,4 +75,3 @@ it can create and join chats, send messages, and respect whatever rules you defi
 </x-slot>
 
 </x-docs-layout>
-```
