@@ -111,14 +111,7 @@
                 </x-sidebar-link>
             @endif
         </li>
-        <li>
-            @if(docs()->hasRoute('usage.tray'))
-                <x-sidebar-link new href="{{ docs()->route('usage.tray') }}"
-                                active="{{docs()->routeIs('usage.tray') }}">
-                    Tray
-                </x-sidebar-link>
-            @endif
-        </li>
+ 
         <li>
             @if(docs()->hasRoute('usage.tabs'))
                 <x-sidebar-link new href="{{ docs()->route('usage.tabs') }}"
@@ -135,7 +128,14 @@
             </x-sidebar-link>
 
         </li>
-
+       <li>
+            @if(docs()->hasRoute('usage.tray'))
+                <x-sidebar-link new href="{{ docs()->route('usage.tray') }}"
+                                active="{{docs()->routeIs('usage.tray') }}">
+                    Tray
+                </x-sidebar-link>
+            @endif
+        </li>
 
         <li>
             <x-sidebar-link  href="{{ docs()->route('usage.notifications') }}"
@@ -202,7 +202,7 @@
         @endif
         @if(docs()->hasRoute('customization.models'))
             <li>
-                <x-sidebar-link href="{{ docs()->route('customization.models') }}"
+                <x-sidebar-link new href="{{ docs()->route('customization.models') }}"
                                 active="{{docs()->routeIs('customization.models') }}">
                     Models
                 </x-sidebar-link>

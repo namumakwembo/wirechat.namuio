@@ -15,7 +15,7 @@ Wirechat ships with six core models:
 
 Together they handle threads, membership, message delivery, uploads, group metadata, and action history.
 
-As of `0.3.x`, Wirechat resolves these model classes from config, which means you can extend them in your app without forking the package.
+As of `0.5.1`, Wirechat resolves these model classes from config, which means you can extend them in your app without forking the package.
 
 ---
 
