@@ -1,9 +1,10 @@
 
 <article {{$attributes->merge(['class'=> "
+        docs-prose
         prose prose-sm md:prose-base 2xl:prose-md
         prose-a:text-blue-500
 
-        prose-code:text-gray-500 prose-code:dark:text-gray-400/70 prose-code:text-italic dark:prose-code:text-white prose-img:rounded-xl dark:prose-ol:text-white
+        prose-img:rounded-xl dark:prose-ol:text-white
         dark:prose-li:text-gray-300  prose-li:text-gray-900/90 dark:prose-ul:text-gray-200
         prose-li:marker:text-gray-500/80   dark:prose-li:marker:text-gray-400 dark:prose-strong:text-white
         prose-strong:font-medium prose-strong:text-gray-900   prose-h1:text-2xl prose-h2:text-xl
@@ -18,6 +19,32 @@
         even:prose-td:bg-grey-50 dark:prose-tr:border-gray-700"])}}>
     {{$slot}}
 </article>
+
+@once
+    <style>
+        .docs-prose :where(:not(pre) > code) {
+            font-weight: 650;
+            color: rgb(82 82 91);
+            background: rgb(244 244 245);
+            border: 1px solid rgb(228 228 231);
+            padding: 0.18rem 0.45rem;
+            border-radius: 0.5rem;
+            white-space: normal;
+        }
+
+        .dark .docs-prose :where(:not(pre) > code) {
+            color: rgb(228 228 231);
+            background: rgba(63, 63, 70, 0.72);
+            border-color: rgba(82, 82, 91, 0.95);
+        }
+
+        .docs-prose :where(:not(pre) > code)::before,
+        .docs-prose :where(:not(pre) > code)::after {
+            content: none;
+        }
+
+    </style>
+@endonce
 
 {{--
      prose-code:text-[0.9rem] prose-pre:m-0 prose-pre:p-0 prose-code:my-0  prose-code:font-normal

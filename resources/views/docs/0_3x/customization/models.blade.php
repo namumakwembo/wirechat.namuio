@@ -114,53 +114,236 @@ Core fields:
 | `created_at` | Thread creation timestamp. |
 | `updated_at` | Latest activity timestamp used by unread and delete/clear logic. |
 
-Important relationships:
+### Important relationships
 
-| Relationship | Returns | Purpose |
-| --- | --- | --- |
-| `participants()` | `HasMany<Participant>` | Membership rows for everyone in the conversation. |
-| `messages()` | `HasMany<Message>` | Messages inside the thread. |
-| `lastMessage()` | `HasOne<Message>` | Latest message for previews and ordering. |
-| `group()` | `HasOne<Group>` | Group metadata for group conversations. |
-| `attachments()` | `Builder<Attachment>` | Attachment records belonging to messages in this conversation. |
-| `actions()` | `MorphMany<Action>` | Actions performed on the conversation itself. |
+#### `participants(): HasMany`
+Returns the membership rows for everyone in the conversation.
 
-Important helpers:
+```php
+$conversation->participants()->with('participantable')->get();
+```
 
-| Method | Params | Purpose |
-| --- | --- | --- |
-| `participant()` | `user, withoutGlobalScopes = false` | Resolve the participant row for a given app model. |
-| `addParticipant()` | `user, role = participant, undoAdminRemovalAction = false` | Add a participant while enforcing private/self limits and admin-removal rules. |
-| `peerParticipant()` | `reference` | Get the other participant in a private chat, or the same participant in a self chat. |
-| `peerParticipants()` | `reference` | Get every participant except the given model. |
-| `getReceiver()` | `None` | Resolve the other side of a private chat for UI usage. |
-| `markAsRead()` | `user = auth user` | Update `conversation_read_at` for a participant. |
-| `readBy()` | `user or participant` | Check whether the conversation is fully read for that member. |
-| `unreadMessages()` | `user` | Return unread messages not owned by that user. |
-| `getUnreadCountFor()` | `model` | Count unread messages for a given app model. |
-| `hasDisappearingTurnedOn()` | `None` | Boolean check for disappearing-message mode. |
-| `turnOnDisappearing()` | `durationInSeconds` | Enable disappearing messages; requires at least one hour. |
-| `turnOffDisappearing()` | `None` | Disable disappearing messages. |
-| `deleteFor()` | `user` | Delete the conversation for one participant and fully delete it when package rules allow. |
-| `hasBeenDeletedBy()` | `user` | Check whether delete-for-user is still active for that participant. |
-| `clearFor()` | `user` | Clear the conversation history for one participant without fully deleting the thread. |
-| `isSelfConversation()` | `None` | Alias for `isSelf()`. |
-| `isPrivate()` | `None` | Boolean check for private conversations. |
-| `isSelf()` | `None` | Boolean check for self conversations. |
-| `isGroup()` | `None` | Boolean check for group conversations. |
-| `isOwner()` | `model` | Check whether the given participant is the owner. |
-| `isAdmin()` | `model` | Check whether the given participant is owner or admin. |
+#### `messages(): HasMany`
+Returns the messages that belong to the conversation.
 
-Important query helpers:
+```php
+$conversation->messages()->latest()->get();
+```
 
-| Query helper | Params | Purpose |
-| --- | --- | --- |
-| `->whereParticipantable()` | `participantable model` | Filter conversations that contain a given model as participant. |
-| `->whereHasParticipant()` | `userId, userType` | Filter by raw participant id and morph type. |
-| `->withoutBlanks()` | `None` | Hide conversations that have no visible messages for the authenticated user. |
-| `->withoutCleared()` | `None` | Hide conversations cleared by the authenticated participant until new activity appears. |
-| `->withoutDeleted()` | `None` | Hide conversations deleted by the authenticated participant until new activity appears. |
-| `->withDeleted()` | `None` | Include conversations even if the authenticated participant has deleted them. |
+#### `lastMessage(): HasOne`
+Returns the latest message in the conversation, which is useful for conversation lists and previews.
+
+```php
+$lastMessage = $conversation->lastMessage;
+```
+
+#### `group(): HasOne`
+Returns the group metadata row when the conversation is a group thread.
+
+```php
+$group = $conversation->group;
+```
+
+#### `attachments(): Builder`
+Builds an attachment query for all message attachments inside the conversation.
+
+```php
+$attachments = $conversation->attachments()->latest()->get();
+```
+
+### Important helpers
+
+#### `participant(Model|Authenticatable $user, bool $withoutGlobalScopes = false): ?Participant`
+Resolves the participant row for a given app model inside this conversation.
+
+```php
+$participant = $conversation->participant(auth()->user());
+```
+
+#### `addParticipant(Model $user, ParticipantRole $role = ParticipantRole::PARTICIPANT, bool $undoAdminRemovalAction = false): Participant`
+Adds a participant while enforcing Wirechat's private, self, and admin-removal rules.
+
+```php
+$conversation->addParticipant($user);
+```
+
+#### `peerParticipant(Model|Authenticatable $reference): ?Participant`
+Returns the other participant in a private conversation. In a self conversation, it resolves the same participant row for the reference model.
+
+```php
+$peer = $conversation->peerParticipant(auth()->user());
+```
+
+#### `peerParticipants(Model $reference): Collection`
+Returns every participant except the given reference model. This is useful for group notifications and participant lists.
+
+```php
+$others = $conversation->peerParticipants(auth()->user());
+```
+
+#### `markAsRead(?Model $user = null): void`
+Updates `conversation_read_at` for the given user, or the authenticated user when no model is passed.
+
+```php
+$conversation->markAsRead();
+```
+
+#### `readBy(Model|Participant $user): bool`
+Checks whether the conversation is fully read for a participant.
+
+```php
+if ($conversation->readBy(auth()->user())) {
+    // Conversation is fully read for this user.
+}
+```
+
+#### `getUnreadCountFor(Model $model): int`
+Counts unread messages for a given participantable model.
+
+```php
+$count = $conversation->getUnreadCountFor(auth()->user());
+```
+
+#### `hasDisappearingTurnedOn(): bool`
+Returns `true` when disappearing mode is active and properly configured.
+
+```php
+if ($conversation->hasDisappearingTurnedOn()) {
+    // Show disappearing-message UI.
+}
+```
+
+#### `turnOnDisappearing(int $durationInSeconds): void`
+Enables disappearing messages for the conversation. The package currently requires at least one hour.
+
+```php
+$conversation->turnOnDisappearing(86400);
+```
+
+#### `turnOffDisappearing(): void`
+Disables disappearing messages for the conversation.
+
+```php
+$conversation->turnOffDisappearing();
+```
+
+#### `deleteFor(Model|Authenticatable $user): ?bool`
+Deletes the conversation for one participant. Depending on conversation type and other members' state, Wirechat may fully delete the conversation record as well.
+
+```php
+$conversation->deleteFor(auth()->user());
+```
+
+#### `hasBeenDeletedBy(Model|Authenticatable $user): bool`
+Checks whether delete-for-user is still active for the given participant.
+
+```php
+$conversation->hasBeenDeletedBy(auth()->user());
+```
+
+#### `clearFor(Model|Authenticatable $user): void`
+Clears the conversation history for one participant without fully deleting the thread.
+
+```php
+$conversation->clearFor(auth()->user());
+```
+
+#### `isPrivate(): bool`
+Returns `true` when the conversation type is private.
+
+```php
+if ($conversation->isPrivate()) {
+    // Private thread logic.
+}
+```
+
+#### `isSelf(): bool`
+Returns `true` when the conversation is a self chat.
+
+```php
+if ($conversation->isSelf()) {
+    // Notes-to-self style behavior.
+}
+```
+
+#### `isGroup(): bool`
+Returns `true` when the conversation is a group thread.
+
+```php
+if ($conversation->isGroup()) {
+    // Group-specific UI or permissions.
+}
+```
+
+#### `isOwner(Model|Authenticatable $model): bool`
+Checks whether the given participantable model is the conversation owner.
+
+```php
+$conversation->isOwner(auth()->user());
+```
+
+#### `isAdmin(Model|Authenticatable $model): bool`
+Checks whether the given participantable model is owner or admin.
+
+```php
+$conversation->isAdmin(auth()->user());
+```
+
+### Important query helpers
+
+#### `whereParticipantable(Model $participantable)`
+Filters conversations that contain a specific model as participant.
+
+```php
+$conversations = Conversation::query()
+    ->whereParticipantable(auth()->user())
+    ->get();
+```
+
+#### `whereHasParticipant($userId, $userType)`
+Filters conversations by raw participantable id and morph type.
+
+```php
+$conversations = Conversation::query()
+    ->whereHasParticipant($user->getKey(), $user->getMorphClass())
+    ->get();
+```
+
+#### `withoutBlanks()`
+Hides conversations with no visible messages for the authenticated user.
+
+```php
+$conversations = Conversation::query()
+    ->withoutBlanks()
+    ->get();
+```
+
+#### `withoutCleared()`
+Hides conversations cleared by the authenticated participant until new activity happens.
+
+```php
+$conversations = Conversation::query()
+    ->withoutCleared()
+    ->get();
+```
+
+#### `withoutDeleted()`
+Hides conversations deleted by the authenticated participant until new activity happens.
+
+```php
+$conversations = Conversation::query()
+    ->withoutDeleted()
+    ->get();
+```
+
+#### `withDeleted()`
+Includes conversations even if the authenticated participant has deleted them.
+
+```php
+$conversations = Conversation::query()
+    ->withDeleted()
+    ->get();
+```
 
 Legacy helpers `receiverParticipant()` and `authParticipant()` still exist, but new code should prefer `peerParticipant()` and `participant()`.
 
@@ -194,36 +377,121 @@ Core fields:
 | `conversation_cleared_at` | Last clear-history marker. |
 | `conversation_deleted_at` | Last delete-for-user marker. |
 
-Important relationships:
+### Important relationships
 
-| Relationship | Returns | Purpose |
-| --- | --- | --- |
-| `participantable()` | `MorphTo` | The actual app model participating in the conversation. |
-| `conversation()` | `BelongsTo<Conversation>` | Parent conversation. |
-| `messages()` | `HasMany<Message>` | Messages sent by this participant. |
-| `latestMessage()` | `HasOne<Message>` | Most recent message sent by this participant. |
-| `actions()` | `MorphMany<Action>` | Actions performed on this participant row. |
-| `performedActions()` | `MorphMany<Action>` | Actions this participant performed as an actor. |
+#### `participantable(): MorphTo`
+Returns the real app model behind the participant row.
 
-Important helpers:
+```php
+$user = $participant->participantable;
+```
 
-| Method | Params | Purpose |
-| --- | --- | --- |
-| `isAdmin()` | `None` | True when the participant is owner or admin. |
-| `isOwner()` | `None` | True when the participant is the owner. |
-| `exitConversation()` | `None` | Mark the participant as exited, while enforcing package rules. |
-| `hasExited()` | `None` | Check whether the participant already left. |
-| `isRemovedByAdmin()` | `None` | Check whether an admin-removal action exists for this member. |
-| `removeByAdmin()` | `admin` | Record an admin-removal action and downgrade the role to participant. |
-| `hasDeletedConversation()` | `checkDeletionExpired = false` | Check whether delete-for-user is active for this member. |
+#### `conversation(): BelongsTo`
+Returns the parent conversation for this participant.
 
-Important query helpers:
+```php
+$conversation = $participant->conversation;
+```
 
-| Query helper | Params | Purpose |
-| --- | --- | --- |
-| `->whereParticipantable()` | `model` | Filter participants for a given app model. |
-| `->withExited()` | `None` | Include participants that were hidden by the default exited scope. |
-| `->withoutParticipantable()` | `user` | Exclude a specific participantable model. |
+#### `messages(): HasMany`
+Returns messages sent by this participant.
+
+```php
+$messages = $participant->messages()->latest()->get();
+```
+
+#### `performedActions(): MorphMany`
+Returns actions performed by this participant as an actor.
+
+```php
+$actions = $participant->performedActions()->latest()->get();
+```
+
+### Important helpers
+
+#### `isAdmin(): bool`
+Returns `true` when the participant role is owner or admin.
+
+```php
+if ($participant->isAdmin()) {
+    // Elevated participant permissions.
+}
+```
+
+#### `isOwner(): bool`
+Returns `true` when the participant is the owner.
+
+```php
+if ($participant->isOwner()) {
+    // Owner-only flow.
+}
+```
+
+#### `exitConversation(): bool`
+Marks the participant as exited while enforcing package rules such as blocking owners from leaving their own group.
+
+```php
+$participant->exitConversation();
+```
+
+#### `hasExited(): bool`
+Checks whether the participant has already left the conversation.
+
+```php
+$participant->hasExited();
+```
+
+#### `isRemovedByAdmin(): bool`
+Checks whether an admin-removal action exists for this participant.
+
+```php
+if ($participant->isRemovedByAdmin()) {
+    // Member was removed by an admin or owner.
+}
+```
+
+#### `removeByAdmin(Model|Authenticatable $admin): void`
+Records the admin-removal action using the admin's participant row as the actor, then downgrades the removed member's role back to `participant`.
+
+```php
+$participant->removeByAdmin(auth()->user());
+```
+
+#### `hasDeletedConversation(bool $checkDeletionExpired = false): bool`
+Checks whether the participant has deleted the conversation, with an optional freshness check against the conversation's latest update timestamp.
+
+```php
+$participant->hasDeletedConversation(true);
+```
+
+### Important query helpers
+
+#### `whereParticipantable(Model|Authenticatable $model)`
+Filters participant rows for a specific app model.
+
+```php
+$participant = Participant::query()
+    ->whereParticipantable(auth()->user())
+    ->first();
+```
+
+#### `withExited()`
+Includes participants hidden by the default exited scope.
+
+```php
+$participants = Participant::query()
+    ->withExited()
+    ->get();
+```
+
+#### `withoutParticipantable(Model|Authenticatable $user)`
+Excludes a specific participantable model from the query.
+
+```php
+$others = $conversation->participants()
+    ->withoutParticipantable(auth()->user())
+    ->get();
+```
 
 Typical safe customizations:
 
@@ -252,43 +520,150 @@ Core fields:
 | `kept_at` | Timestamp used to preserve a disappearing message. |
 | `deleted_at` | Soft-delete timestamp for delete-for-everyone flows. |
 
-Important relationships:
+### Important relationships
 
-| Relationship | Returns | Purpose |
-| --- | --- | --- |
-| `conversation()` | `BelongsTo<Conversation>` | Parent thread. |
-| `participant()` | `BelongsTo<Participant>` | Sender participant. |
-| `attachment()` | `MorphOne<Attachment>` | Uploaded file attached to the message. |
-| `parent()` | `BelongsTo<Message>` | The message this one replies to. |
-| `reply()` | `HasOne<Message>` | A reply sent to this message. |
-| `actions()` | `MorphMany<Action>` | Actions recorded against the message, including delete-for-user. |
+#### `conversation(): BelongsTo`
+Returns the parent conversation for the message.
 
-Important helpers and accessors:
+```php
+$conversation = $message->conversation;
+```
 
-| Method or accessor | Params | Purpose |
-| --- | --- | --- |
-| `$message->user` | `None` | Accessor that returns the underlying app model behind the sender participant. |
-| `$message->sendable` | `None` | Legacy accessor alias for `$message->user`. |
-| `$message->sendable_id` | `None` | Legacy accessor for the participantable id. |
-| `$message->sendable_type` | `None` | Legacy accessor for the participantable morph class. |
-| `$message->resolved_link` | `None` | Accessor that normalizes naked links to a full URL. |
-| `hasAttachment()` | `None` | Check whether the message currently has an attachment. |
-| `isAttachment()` | `None` | Check whether the message type is attachment. |
-| `isLink()` | `None` | Check whether the message type is link. |
-| `readBy()` | `user or participant` | Check whether the message is effectively read for a member. |
-| `ownedBy()` | `user` | Check whether the given app model owns the message. |
-| `belongsToAuth()` | `None` | Check whether the authenticated user owns the message. |
-| `hasReply()` | `None` | Check whether this message has a reply. |
-| `hasParent()` | `None` | Check whether this message is itself a reply. |
-| `deleteFor()` | `user` | Delete the message only for one participant and fully delete when package rules allow. |
-| `deleteForEveryone()` | `user` | Delete the message globally if the actor is allowed to do so. |
-| `isEmoji()` | `None` | Check whether the body contains only emoji characters. |
+#### `participant(): BelongsTo`
+Returns the sender participant row.
 
-Important query helpers:
+```php
+$participant = $message->participant;
+```
 
-| Query helper | Params | Purpose |
-| --- | --- | --- |
-| `->whereIsNotOwnedBy()` | `user` | Filter out messages owned by the given participantable model. |
+#### `attachment(): MorphOne`
+Returns the attachment model when the message is an attachment message.
+
+```php
+$attachment = $message->attachment;
+```
+
+#### `parent(): BelongsTo`
+Returns the message that this message replies to.
+
+```php
+$parent = $message->parent;
+```
+
+#### `reply(): HasOne`
+Returns a reply to this message when one exists.
+
+```php
+$reply = $message->reply;
+```
+
+### Important accessors and helpers
+
+#### `$message->user`
+Returns the underlying app model behind the sender participant.
+
+```php
+$sender = $message->user;
+```
+
+#### `$message->resolved_link`
+Normalizes naked links into full URLs when the message type is `link`.
+
+```php
+$url = $message->resolved_link;
+```
+
+#### `hasAttachment(): bool`
+Checks whether the message currently has an attachment record.
+
+```php
+if ($message->hasAttachment()) {
+    // Render file preview.
+}
+```
+
+#### `isAttachment(): bool`
+Checks whether the message type is attachment.
+
+```php
+$message->isAttachment();
+```
+
+#### `isLink(): bool`
+Checks whether the message type is link.
+
+```php
+$message->isLink();
+```
+
+#### `readBy(Model|Participant $user): bool`
+Checks whether the message is effectively read for a given participant or app model.
+
+```php
+$message->readBy(auth()->user());
+```
+
+#### `ownedBy(Model $user): bool`
+Checks whether the given app model owns the message.
+
+```php
+if ($message->ownedBy(auth()->user())) {
+    // Show owner actions.
+}
+```
+
+#### `belongsToAuth(): bool`
+Checks whether the authenticated user owns the message.
+
+```php
+$message->belongsToAuth();
+```
+
+#### `hasReply(): bool`
+Checks whether this message already has a reply.
+
+```php
+$message->hasReply();
+```
+
+#### `hasParent(): bool`
+Checks whether this message is itself a reply.
+
+```php
+$message->hasParent();
+```
+
+#### `deleteFor(Model|Authenticatable $user): ?bool`
+Deletes the message only for one participant, and may fully delete the message once package rules are satisfied.
+
+```php
+$message->deleteFor(auth()->user());
+```
+
+#### `deleteForEveryone(Model $user): void`
+Deletes the message globally when the actor owns it, or when a group admin is allowed to do it.
+
+```php
+$message->deleteForEveryone(auth()->user());
+```
+
+#### `isEmoji(): bool`
+Checks whether the message body contains only emoji characters.
+
+```php
+$message->isEmoji();
+```
+
+### Important query helpers
+
+#### `whereIsNotOwnedBy(Model|Authenticatable $user)`
+Filters out messages owned by the given participantable model.
+
+```php
+$messages = $conversation->messages()
+    ->whereIsNotOwnedBy(auth()->user())
+    ->get();
+```
 
 New code should prefer `$message->user` over the legacy `$message->sendable` accessor.
 
@@ -314,23 +689,69 @@ Core fields:
 | `allow_members_to_edit_group_info` | Permission flag for editing name and description. |
 | `admins_must_approve_new_members` | Approval flag used during join flows. |
 
-Important relationships:
+### Important relationships
 
-| Relationship | Returns | Purpose |
-| --- | --- | --- |
-| `conversation()` | `BelongsTo<Conversation>` | Parent conversation. |
-| `cover()` | `MorphOne<Attachment>` | Optional group cover attachment. |
+#### `conversation(): BelongsTo`
+Returns the parent conversation for the group.
 
-Important helpers and accessors:
+```php
+$conversation = $group->conversation;
+```
 
-| Method or accessor | Params | Purpose |
-| --- | --- | --- |
-| `$group->cover_url` | `None` | Accessor that returns the cover attachment URL when present. |
-| `isOwnedBy()` | `user` | Check whether the given app model is the owner of the group conversation. |
-| `allowsMembersToSendMessages()` | `None` | Boolean helper for `allow_members_to_send_messages`. |
-| `allowsMembersToAddOthers()` | `None` | Boolean helper for `allow_members_to_add_others`. |
-| `allowsMembersToEditGroupInfo()` | `None` | Boolean helper for `allow_members_to_edit_group_info`. |
-| `$group->admins_must_approve_new_members` | `None` | Raw flag for approval flows; there is currently no dedicated helper method. |
+#### `cover(): MorphOne`
+Returns the cover attachment model when the group has one.
+
+```php
+$cover = $group->cover;
+```
+
+### Important accessors and helpers
+
+#### `$group->cover_url`
+Returns the resolved URL for the cover attachment when it exists.
+
+```php
+$url = $group->cover_url;
+```
+
+#### `isOwnedBy(Model|Authenticatable $user): bool`
+Checks whether the given app model is the owner of the group conversation.
+
+```php
+$group->isOwnedBy(auth()->user());
+```
+
+#### `allowsMembersToSendMessages(): bool`
+Checks whether regular members are allowed to send messages in this group.
+
+```php
+if ($group->allowsMembersToSendMessages()) {
+    // Members can chat without admin-only restrictions.
+}
+```
+
+#### `allowsMembersToAddOthers(): bool`
+Checks whether regular members are allowed to invite other users.
+
+```php
+$group->allowsMembersToAddOthers();
+```
+
+#### `allowsMembersToEditGroupInfo(): bool`
+Checks whether regular members can update the group name or description.
+
+```php
+$group->allowsMembersToEditGroupInfo();
+```
+
+#### `$group->admins_must_approve_new_members`
+This is a stored flag rather than a dedicated helper method. Use it when building join-request or approval flows.
+
+```php
+if ($group->admins_must_approve_new_members) {
+    // Route new members through approval.
+}
+```
 
 Typical safe customizations:
 
@@ -360,21 +781,51 @@ Core fields:
 | `mime_type` | Stored MIME type. |
 | `url` | Computed URL accessor based on storage config. |
 
-Important relationships:
+### Important relationships
 
-| Relationship | Returns | Purpose |
-| --- | --- | --- |
-| `attachable()` | `MorphTo` | The model this attachment belongs to, usually a message or group. |
+#### `attachable(): MorphTo`
+Returns the model this attachment belongs to, usually a `Message` or `Group`.
 
-Important helpers and accessors:
+```php
+$parent = $attachment->attachable;
+```
 
-| Method or accessor | Params | Purpose |
-| --- | --- | --- |
-| `$attachment->url` | `None` | Computed URL; returns a public URL or temporary private URL depending on storage config. |
-| `$attachment->size` | `None` | File size in bytes, if the stored file still exists. |
-| `$attachment->formatted_size` | `None` | Human-readable version of `size`. |
-| `$attachment->extension` | `None` | MIME-derived extension-like value. |
-| `$attachment->clean_mime_type` | `None` | MIME subtype such as `png`, `pdf`, or `zip`. |
+### Important accessors
+
+#### `$attachment->url`
+Returns a public URL or a temporary private URL depending on the global Wirechat storage configuration.
+
+```php
+$url = $attachment->url;
+```
+
+#### `$attachment->size`
+Returns file size in bytes if the file still exists on the configured disk.
+
+```php
+$bytes = $attachment->size;
+```
+
+#### `$attachment->formatted_size`
+Returns a human-readable file size.
+
+```php
+$label = $attachment->formatted_size;
+```
+
+#### `$attachment->extension`
+Returns an extension-like value derived from the MIME type.
+
+```php
+$attachment->extension;
+```
+
+#### `$attachment->clean_mime_type`
+Returns the MIME subtype, such as `png`, `pdf`, or `zip`.
+
+```php
+$attachment->clean_mime_type;
+```
 
 If you customize this model, preserve the filesystem cleanup behavior unless you are intentionally replacing it with your own storage lifecycle.
 
@@ -396,19 +847,41 @@ Core fields:
 | `type` | Action enum such as delete or removed-by-admin. |
 | `data` | Optional extra payload for the action. |
 
-Important relationships:
+### Important relationships
 
-| Relationship | Returns | Purpose |
-| --- | --- | --- |
-| `actionable()` | `MorphTo` | The model the action was performed on. |
-| `actor()` | `MorphTo` | The model that performed the action. In package flows this is often a `Participant`. |
+#### `actionable(): MorphTo`
+Returns the model the action was performed on.
 
-Important query helpers:
+```php
+$target = $action->actionable;
+```
 
-| Query helper | Params | Purpose |
-| --- | --- | --- |
-| `->whereActor()` | `actor` | Filter actions created by a specific actor. |
-| `->withoutActor()` | `model` | Exclude actions created by a specific actor. |
+#### `actor(): MorphTo`
+Returns the model that performed the action. In package flows this is often a `Participant`.
+
+```php
+$actor = $action->actor;
+```
+
+### Important query helpers
+
+#### `whereActor(Model $actor)`
+Filters actions created by a specific actor.
+
+```php
+$actions = Action::query()
+    ->whereActor($participant)
+    ->get();
+```
+
+#### `withoutActor(Model $model)`
+Excludes actions created by a specific actor.
+
+```php
+$actions = Action::query()
+    ->withoutActor($participant)
+    ->get();
+```
 
 Common package uses:
 
