@@ -23,7 +23,10 @@
 @once
     <style>
         .docs-prose :where(:not(pre) > code) {
-            font-weight: 650;
+            font-weight: inherit;
+            font-size: inherit;
+            line-height: inherit;
+            font-family: inherit;
             color: rgb(82 82 91);
             background: rgb(244 244 245);
             border: 1px solid rgb(228 228 231);
