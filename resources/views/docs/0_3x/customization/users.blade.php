@@ -4,30 +4,30 @@
 
 # Introduction
 
-WireChat allows you to define how users are represented within your application.
+Wirechat allows you to define how users are represented within your application.
 You can configure attributes such as display names, profile avatars, and profile URLs to provide a consistent experience across conversations and components.
 
 ---
 
 <x-section-heading label="Panel access" />
 
-To decide which users can open a WireChat panel, you may implement your own authorization logic inside the `User` model.
-WireChat will call the `canAccessWireChatPanel()` method whenever a panel is being accessed via a route.
+To decide which users can open a Wirechat panel, you may implement your own authorization logic inside the `User` model.
+Wirechat will call the `canAccessWirechatPanel()` method whenever a panel is being accessed via a route.
 
 ```php{}{11-16}
 namespace App\Models;
 
 use Wirechat\Wirechat\Panel;
-use Wirechat\Wirechat\Traits\InteractsWithWireChat;
-use Wirechat\Wirechat\Contracts\WireChatUser;
+use Wirechat\Wirechat\Traits\InteractsWithWirechat;
+use Wirechat\Wirechat\Contracts\WirechatUser;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable implements WireChatUser
+class User extends Authenticatable implements WirechatUser
 {
-    use InteractsWithWireChat;
+    use InteractsWithWirechat;
     // ...
 
-    public function canAccessWireChatPanel(Panel $panel): bool
+    public function canAccessWirechatPanel(Panel $panel): bool
     {
         return $this->hasVerifiedEmail();
     }
@@ -35,7 +35,7 @@ class User extends Authenticatable implements WireChatUser
 
 ````
 
-The `canAccessWireChatPanel()` method should return `true` or `false` depending on whether the user is allowed to enter the given `$panel`.
+The `canAccessWirechatPanel()` method should return `true` or `false` depending on whether the user is allowed to enter the given `$panel`.
 In this example, access is restricted to users who have verified their email address.
 
 Because the current `$panel` is available, you can apply different rules for each panel.
@@ -46,16 +46,16 @@ For instance, you may require stricter checks for an **admin chat panel**, while
 namespace App\Models;
 
 use Wirechat\Wirechat\Panel;
-use Wirechat\Wirechat\Traits\InteractsWithWireChat;
-use Wirechat\Wirechat\Contracts\WireChatUser;
+use Wirechat\Wirechat\Traits\InteractsWithWirechat;
+use Wirechat\Wirechat\Contracts\WirechatUser;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable implements WireChatUser
+class User extends Authenticatable implements WirechatUser
 {
-    use InteractsWithWireChat;
+    use InteractsWithWirechat;
     // ...
 
-    public function canAccessWireChatPanel(Panel $panel): bool
+    public function canAccessWirechatPanel(Panel $panel): bool
     {
         if ($panel->getId() === 'admin') {
             return $this->is_admin && $this->hasVerifiedEmail();
@@ -78,13 +78,13 @@ Determine if the "create chat" action should be visible to the current user:
 ```php
 namespace App\Models;
 
-use Wirechat\Wirechat\Traits\InteractsWithWireChat;
-use Wirechat\Wirechat\Contracts\WireChatUser;
+use Wirechat\Wirechat\Traits\InteractsWithWirechat;
+use Wirechat\Wirechat\Contracts\WirechatUser;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable implements WireChatUser
+class User extends Authenticatable implements WirechatUser
 {
-    use InteractsWithWireChat;
+    use InteractsWithWirechat;
 
     public function canCreateChats(): bool
     {
@@ -105,13 +105,13 @@ Determine if the "create group" action should be visible to the current user:
 ```php
 namespace App\Models;
 
-use Wirechat\Wirechat\Traits\InteractsWithWireChat;
-use Wirechat\Wirechat\Contracts\WireChatUser;
+use Wirechat\Wirechat\Traits\InteractsWithWirechat;
+use Wirechat\Wirechat\Contracts\WirechatUser;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable implements WireChatUser
+class User extends Authenticatable implements WirechatUser
 {
-    use InteractsWithWireChat;
+    use InteractsWithWirechat;
 
     public function canCreateGroups(): bool
     {
@@ -127,17 +127,17 @@ User attributes define how names, avatars, and profile links appear throughout c
 
 <x-sub-section-heading label="User’s Name" />
 
-By default, WireChat uses the `name` attribute from your `User` model.
+By default, Wirechat uses the `name` attribute from your `User` model.
 You may override this by defining the `getWirechatNameAttribute()` method:
 
 ```php
-use Wirechat\Wirechat\Traits\InteractsWithWireChat;
-use Wirechat\Wirechat\Contracts\WireChatUser;
+use Wirechat\Wirechat\Traits\InteractsWithWirechat;
+use Wirechat\Wirechat\Contracts\WirechatUser;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable implements WireChatUser
+class User extends Authenticatable implements WirechatUser
 {
-    use InteractsWithWireChat;
+    use InteractsWithWirechat;
 
     public function getWirechatNameAttribute(): string
     {
@@ -155,13 +155,13 @@ Set the URL that should be used for the user’s avatar across chats, member lis
 ```php
 namespace App\Models;
 
-use Wirechat\Wirechat\Traits\InteractsWithWireChat;
-use Wirechat\Wirechat\Contracts\WireChatUser;
+use Wirechat\Wirechat\Traits\InteractsWithWirechat;
+use Wirechat\Wirechat\Contracts\WirechatUser;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable implements WireChatUser
+class User extends Authenticatable implements WirechatUser
 {
-    use InteractsWithWireChat;
+    use InteractsWithWirechat;
 
     public function getWirechatAvatarUrlAttribute(): string
     {
@@ -174,17 +174,17 @@ class User extends Authenticatable implements WireChatUser
 
 <x-sub-section-heading label="Profile URL" />
 
-When a user’s name or avatar is clicked, WireChat will use the `getWirechatProfileUrlAttribute()` method
+When a user’s name or avatar is clicked, Wirechat will use the `getWirechatProfileUrlAttribute()` method
 to determine where to redirect:
 
 ```php
-use Wirechat\Wirechat\Traits\InteractsWithWireChat;
-use Wirechat\Wirechat\Contracts\WireChatUser;
+use Wirechat\Wirechat\Traits\InteractsWithWirechat;
+use Wirechat\Wirechat\Contracts\WirechatUser;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable implements WireChatUser
+class User extends Authenticatable implements WirechatUser
 {
-    use InteractsWithWireChat;
+    use InteractsWithWirechat;
 
     public function getWirechatProfileUrlAttribute(): string
     {
@@ -197,7 +197,7 @@ class User extends Authenticatable implements WireChatUser
 
 <x-section-heading label="Searching Users" />
 
-WireChat provides a flexible way to control how users are searched when starting new conversations
+Wirechat provides a flexible way to control how users are searched when starting new conversations
 or adding members to a group.
 
 By default, a simple search is performed on your `User` model, but you can fully customize this behavior.
@@ -205,7 +205,7 @@ By default, a simple search is performed on your `User` model, but you can fully
 
 <x-section-heading label="Customizing Searchable Attributes" key="Searchable Attributes" />
 
-If no custom callback is defined, WireChat will search your `User` model using the attributes you specify:
+If no custom callback is defined, Wirechat will search your `User` model using the attributes you specify:
 
 ```php
 use Wirechat\Wirechat\Panel;
@@ -225,18 +225,18 @@ In this example, a query like `"john"` will match users where the `name`, `email
 <x-section-heading label="Customizing the Search" />
 
 To fully control the search logic, define a callback using `searchUsersUsing()`.
-Always wrap your results in `WireChatUserResource` to maintain a consistent structure:
+Always wrap your results in `WirechatUserResource` to maintain a consistent structure:
 
 ```php
 use Wirechat\Wirechat\Panel;
-use Wirechat\Wirechat\Http\Resources\WireChatUserResource;
+use Wirechat\Wirechat\Http\Resources\WirechatUserResource;
 
 public function panel(Panel $panel): Panel
 {
     return $panel
         // ...
         ->searchUsersUsing(function (string $needle) {
-            return WireChatUserResource::collection(
+            return WirechatUserResource::collection(
                 \App\Models\User::query()
                     ->where('is_active', true)
                     ->where('name', 'like', "%{$needle}%")
@@ -247,14 +247,14 @@ public function panel(Panel $panel): Panel
 }
 ```
 
-> **Important:** Always return results using `WireChatUserResource`.
+> **Important:** Always return results using `WirechatUserResource`.
 > This ensures a consistent structure with `id`, `type`, `wirechat_name`, and `wirechat_avatar_url` across both Livewire and API responses.
 
 **In this example:**
 
 * Only active users are returned.
 * The search is limited to the `name` field.
-* Using `WireChatUserResource` guarantees standardized responses.
+* Using `WirechatUserResource` guarantees standardized responses.
 
 
 Once configured, all user searches whether starting chats, creating groups, or adding members will follow your defined logic and return standardized results.
