@@ -29,6 +29,54 @@ After creating a panel, register its service provider:
 
 WireChat attempts automatic registration, but if the panel is inaccessible, verify the provider registration.
 
+<x-section-heading label="Panel Methods Overview" />
+
+Panels are the main configuration surface for Wirechat. Instead of scattering package setup across multiple files, you can keep routing, access rules, visual settings, chat-list behavior, and feature flags in one provider.
+
+Common panel method groups include:
+
+- **Identity and routing:** `id()`, `path()`, `default()`
+- **Access and middleware:** `middleware()`, `chatMiddleware()`
+- **Chats list behavior:** `chatsSearch()`, `unreadIndicator()`
+- **Uploads and media:** `attachments()`, `fileAttachments()`, `mediaAttachments()`
+- **Appearance:** `layout()`, `colors()`, `heading()`, `favicon()`, `emojiPicker()`
+- **Actions:** `createChatAction()`, `createGroupAction()`, `clearChatAction()`, `deleteChatAction()`, `redirectToHomeAction()`, `deleteMessageActions()`
+- **Pro features:** `tabs()`, `defaultTab()`, `contentViewer()`
+
+Use the methods below when you want fine-grained control, or start with a broader provider example and refine it over time.
+
+<x-section-heading label="Quick Example" />
+
+Here is a realistic panel provider example that combines some of the most commonly used panel methods:
+
+```php
+use Wirechat\Wirechat\Panel;
+use Wirechat\Wirechat\Support\Color;
+use Wirechat\Wirechat\Support\Enums\EmojiPickerPosition;
+use Wirechat\Wirechat\Support\Enums\UnreadIndicatorType;
+
+public function panel(Panel $panel): Panel
+{
+    return $panel
+        ->id('support')
+        ->path('support')
+        ->default()
+        ->middleware(['web', 'auth'])
+        ->chatMiddleware(['verified'])
+        ->chatsSearch()
+        ->unreadIndicator(type: UnreadIndicatorType::Count)
+        ->emojiPicker(position: EmojiPickerPosition::Docked)
+        ->attachments()
+        ->colors([
+            'primary' => Color::Blue,
+        ])
+        ->heading('Support Chat')
+        ->createChatAction()
+        ->createGroupAction()
+        ->redirectToHomeAction(url: '/dashboard');
+}
+```
+
 <x-section-heading label="Methods" />
 
 <x-sub-section-heading label="Panel ID" />
@@ -123,6 +171,54 @@ public function panel(Panel $panel): Panel
 }
 ```
  **Note:** Disable search by passing `false`: `->chatsSearch(false)`.
+
+<x-sub-section-heading label="Unread Messages Indicator" />
+
+Use `unreadIndicator()` to control how unread conversations are highlighted in the chats list.
+
+By default, Wirechat uses a small unread dot, so existing panels keep the current behavior without needing any changes:
+
+```php
+use Wirechat\Wirechat\Panel;
+
+public function panel(Panel $panel): Panel
+{
+    return $panel
+          //...
+          ->unreadIndicator();
+}
+```
+
+If you prefer a numeric unread badge, pass the `UnreadIndicatorType` enum:
+
+```php
+use Wirechat\Wirechat\Panel;
+use Wirechat\Wirechat\Support\Enums\UnreadIndicatorType;
+
+public function panel(Panel $panel): Panel
+{
+    return $panel
+          //...
+          ->unreadIndicator(type: UnreadIndicatorType::Count);
+}
+```
+
+You may also disable the unread indicator completely:
+
+```php
+use Wirechat\Wirechat\Panel;
+
+public function panel(Panel $panel): Panel
+{
+    return $panel
+          //...
+          ->unreadIndicator(false);
+}
+```
+
+This setting affects the chats list in both full-page and widget mode.
+
+If you are upgrading from earlier panel examples, `unReadMessages()` still works as a backward-compatible alias, but `unreadIndicator()` is now the preferred name.
 
 <x-sub-section-heading label="Conversation Tabs" />
 
@@ -318,7 +414,7 @@ return $panel
         'primary' => Color::Blue
     ]);
 }
-````
+```
 
 <x-sub-section-heading label="Heading" />
 
@@ -379,12 +475,15 @@ public function panel(Panel $panel): Panel
         <x-sub-navigation :items="[
             'Default Panel Setup',
             'Creating Panels',
+            'Panel Methods Overview',
+            'Quick Example',
             'Methods' => [
                 'Panel ID',
                 'Path',
                 'Middleware',
                 'Chat Middleware',
                 'Enable Chats Search',
+                'Unread Messages Indicator',
                 'Conversation Tabs',
                 'Enable Emoji Picker',
                 'Web Push Notifications',
