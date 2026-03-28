@@ -7,7 +7,7 @@ $activeClasses = ($active ?? false)
             : ' dark:text-gray-200 font-medium text-zinc-600 ';
 @endphp
 
-<a {{$attributes->merge(['class'=>'group w-full flex items-center flex items-center gap-2  py-1 text-base font-medium  rounded-md hover:text-gray-900 dark:hover:text-gray-300 px-3 hover:bg-gray-50 dark:hover:bg-gray-800 '.$activeClasses])}} >
+<a {{$attributes->merge(['class'=>'group w-full flex items-center flex items-center gap-2  py-1 text-base font-normal  rounded-md hover:text-gray-900 dark:hover:text-gray-300 px-3 hover:bg-gray-50 dark:hover:bg-gray-800 '.$activeClasses])}} >
 {{$slot}}
 
 @isset ($new)

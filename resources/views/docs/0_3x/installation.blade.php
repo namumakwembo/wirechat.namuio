@@ -130,8 +130,8 @@ php artisan queue:listen --queue=messages,default
 Wirechat uses two queues for efficient delivery:
 
 
-1. **High Priority (`messages`)**: For real-time broadcasting of messages to users in a conversation.
-2. **Default Priority (`default`)**: For notifications like updating chat lists or showing unread message
+1. **High Priority `messages`**: For real-time broadcasting of messages to users in a conversation.
+2. **Default Priority `default`**: For notifications like updating chat lists or showing unread message
 counts.
 
 To customize these queue names, configure them in your panel:

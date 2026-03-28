@@ -57,8 +57,6 @@ public function panel(Panel $panel): Panel
 {
     return $panel
         // ...
-        ->createChatAction()
-        ->createGroupAction()
         ->groupInvitations();
 }
 ```

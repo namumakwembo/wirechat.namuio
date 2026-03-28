@@ -145,7 +145,7 @@
         </aside>
 
         {{-- Aside --}}
-        <aside class="w-full  col-span-2  flex flex-col gap-8">
+        <aside class="w-full col-span-full sm:col-span-2  flex flex-col gap-8">
             <div class="  w-full">
                 <div 
                     class="ring-3   min-w-full  -z-10 ring-zinc-200/30   dark:ring-zinc-700/40 rounded-xl overflow-hidden ">
@@ -184,7 +184,6 @@
 
                 </div>
             </div>
-
         </aside>
     </div>
 

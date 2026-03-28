@@ -9,6 +9,129 @@ Panels offer flexible integration with multiple guards and middleware configurat
 
 ---
 
+<x-section-heading label="Panel Access Authorization" />
+
+Control which users can access specific panels by implementing the `canAccessWirechatPanel()` method in your User model.
+
+### Basic Implementation
+
+```php
+namespace App\Models;
+
+use Wirechat\Wirechat\Contracts\WirechatUser;
+use Wirechat\Wirechat\Panel;
+
+class User extends Authenticatable implements WirechatUser
+{
+    public function canAccessWirechatPanel(Panel $panel): bool
+    {
+        // Example: Only verified users can access
+        return $this->hasVerifiedEmail();
+    }
+}
+```
+
+### Checking by Panel ID
+
+When using multiple panels, check access based on the panel's ID in your Model:
+
+```php
+public function canAccessWirechatPanel(Panel $panel): bool
+{
+    $panelId = $panel->getId();
+
+    return match($panelId) {
+        'admin' => $this->is_admin,
+        'support' => $this->hasRole('support'),
+        default => $this->hasVerifiedEmail(),
+    };
+}
+```
+
+You set the panel ID when registering your panel:
+
+```php
+use Wirechat\Wirechat\Panel;
+
+public function panel(Panel $panel): Panel
+{
+    return $panel
+         ->id('admin') // Define panel ID here
+         ->path('admin/chat')
+}
+```
+
+<x-section-heading label="Model Authorization" />
+
+Beyond panel access, you can fine-tune who gets to create chats and groups. Think of these as the bouncers at the door of your chat features.
+
+<x-sub-section-heading label="Controlling 1-to-1 Chat Creation" />
+
+Want to prevent spam or limit who can start conversations? This is your friend:
+
+```php
+public function canCreateChats(): bool
+{
+    // Only verified users can slide into DMs
+    return $this->hasVerifiedEmail();
+}
+```
+
+Or get creative with your business logic:
+
+```php
+public function canCreateChats(): bool
+{
+    // Prevent users from creating too many chats
+    if ($this->conversations()->count() >= 100) {
+        return false; // Slow down there, chatty!
+    }
+
+    // New users need to wait 24 hours (anti-spam measure)
+    if ($this->created_at->gt(now()->subDay())) {
+        return false;
+    }
+
+    return $this->hasVerifiedEmail();
+}
+```
+
+<x-sub-section-heading label="Controlling Group Creation" />
+
+Groups are where the magic happens—but they're also a premium feature opportunity:
+
+```php
+public function canCreateGroups(): bool
+{
+    // Premium feature: only paid users can create groups
+    return $this->subscription?->active === true;
+}
+```
+
+Mix and match your requirements:
+
+```php
+public function canCreateGroups(): bool
+{
+    // Must be verified AND either premium or admin
+    return $this->hasVerifiedEmail() && 
+           ($this->is_premium || $this->hasRole('admin'));
+}
+```
+
+Or implement reputation-based access:
+
+```php
+public function canCreateGroups(): bool
+{
+    // Trusted users with good reputation can create groups
+    return $this->reputation_score >= 50 && 
+           $this->account_age_days >= 30;
+}
+```
+
+---
+
 <x-section-heading label="Guards" />
 
 **Guards** determine how users are authenticated for each request. Laravel supports multiple guards, which you can configure via panels.
@@ -155,14 +278,21 @@ Broadcast::routes([
 <x-slot name="subNavigation">
 
 
-<x-sub-navigation :items="['Guards',
+<x-sub-navigation :items="[
+'Panel Access Authorization',
+'Model Authorization'=>[
+'Controlling 1-to-1 Chat Creation',
+'Controlling Group Creation',
+],
+'Guards',
 'Middleware'=>[
 'Default Middleware Setup',
 'Multi-Guard Authentication',
 'Chat Middleware',
 'Using the belongsToConversation Middleware',
 ],
-'Broadcasting Middleware Configuration']"/>
+'Broadcasting Middleware Configuration',
+]"/>
 
 
 </x-slot>
