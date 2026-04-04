@@ -91,8 +91,11 @@ return [
         // Allow domains like "example.com" without http/https.
         'allow_bare_domains' => true,
 
-        // Limit recognized TLDs for bare domains. Set to null to use Wirechat's defaults.
-        'allowed_tlds' => null,
+        // Limit recognized TLDs for bare domains.
+        'allowed_tlds' => [
+            'com', 'net', 'org', 'io', 'co', 'me', 'app', 'dev', 'ai', 'gg', 'tv',
+            'info', 'biz', 'xyz', 'site', 'store', 'shop', 'pro', 'cloud',
+        ],
     ],
 ];
 ```
@@ -219,13 +222,16 @@ These settings control how URLs and bare domains are recognized.
 ```php
 'links' => [
     'allow_bare_domains' => true,
-    'allowed_tlds' => null,
+    'allowed_tlds' => [
+        'com', 'net', 'org', 'io', 'co', 'me', 'app', 'dev', 'ai', 'gg', 'tv',
+        'info', 'biz', 'xyz', 'site', 'store', 'shop', 'pro', 'cloud',
+    ],
 ],
 ```
 
 Use `allow_bare_domains` to let `example.com` be recognized without `http://` or `https://`.
-Use `allowed_tlds` to restrict recognized bare domains. Set it to an array like `['com', 'net', 'org']`,
-or leave it as `null` to use Wirechat's built-in list.
+Use `allowed_tlds` to restrict recognized bare domains. Override the array with your own list
+to tighten or expand what counts as a link.
 
 </x-markdown>
 
