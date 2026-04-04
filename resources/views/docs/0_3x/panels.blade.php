@@ -184,7 +184,7 @@ public function panel(Panel $panel): Panel
 {
     return $panel
           //...
-          ->resolveUrlMessages();
+          ->linkifyMessages();
 }
 ```
 
