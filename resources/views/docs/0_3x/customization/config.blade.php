@@ -77,6 +77,23 @@ return [
             'attachments' => 'attachments',
         ],
     ],
+
+    /*
+     |--------------------------------------------------------------------------
+     | Links
+     |--------------------------------------------------------------------------
+     |
+     | Controls how message links are detected and normalized. These settings
+     | power linkified message rendering and link-type detection.
+     |
+     */
+    'links' => [
+        // Allow domains like "example.com" without http/https.
+        'allow_bare_domains' => true,
+
+        // Limit recognized TLDs for bare domains. Set to null to use Wirechat's defaults.
+        'allowed_tlds' => null,
+    ],
 ];
 ```
 
@@ -192,6 +209,24 @@ Use these values to define:
 
 This configuration is package-wide rather than panel-specific so background jobs, model accessors, downloads, and cleanup all behave consistently.
 
+---
+
+<x-section-heading label="Links" />
+
+Wirechat can linkify message bodies and mark messages as link-type based on their content.
+These settings control how URLs and bare domains are recognized.
+
+```php
+'links' => [
+    'allow_bare_domains' => true,
+    'allowed_tlds' => null,
+],
+```
+
+Use `allow_bare_domains` to let `example.com` be recognized without `http://` or `https://`.
+Use `allowed_tlds` to restrict recognized bare domains. Set it to an array like `['com', 'net', 'org']`,
+or leave it as `null` to use Wirechat's built-in list.
+
 </x-markdown>
 
 <x-slot name="subNavigation">
@@ -201,6 +236,7 @@ This configuration is package-wide rather than panel-specific so background jobs
         'Table Prefix',
         'Models',
         'Storage',
+        'Links',
     ]"/>
 </x-slot>
 

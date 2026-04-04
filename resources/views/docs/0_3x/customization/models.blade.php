@@ -567,6 +567,10 @@ Core fields:
 | `kept_at` | Timestamp used to preserve a disappearing message. |
 | `deleted_at` | Soft-delete timestamp for delete-for-everyone flows. |
 
+Wirechat will automatically keep the `type` aligned with the message body.
+If the body contains a recognized URL, the message is marked as `link`. If the body no longer contains a URL,
+the type falls back to `text`. Attachment messages remain `attachment` regardless of body changes.
+
 <x-sub-section-heading label="Important Relationships" key="Message Relationships" />
 
 
@@ -655,7 +659,7 @@ Legacy accessor for the underlying participantable morph type. New code should u
 
   **`$message->resolved_link`**
 
-Normalizes naked links into full URLs when the message type is `link`.<br>
+Normalizes the message body into a full URL when it is a standalone link. Returns `null` for mixed-content messages.<br>
 
   ```php
   $url = $message->resolved_link
@@ -679,7 +683,7 @@ Checks whether the message type is `attachment`.<br>
 
   **`isLink(): bool`**
 
-Checks whether the message type is `link`.<br>
+Checks whether the message type is `link`. This is set automatically when the message body contains a URL.<br>
 
   ```php
   $message->isLink()

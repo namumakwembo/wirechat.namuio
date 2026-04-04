@@ -40,6 +40,7 @@ Common panel method groups include:
 - **Chats list behavior:** `chatsSearch()`, `unreadIndicator()`
 - **Uploads and media:** `attachments()`, `fileAttachments()`, `mediaAttachments()`
 - **Appearance:** `layout()`, `colors()`, `heading()`, `favicon()`, `emojiPicker()`
+- **Message rendering:** `linkifyMessages()`
 - **Actions:** `createChatAction()`, `createGroupAction()`, `clearChatAction()`, `deleteChatAction()`, `redirectToHomeAction()`, `deleteMessageActions()`
 - **Pro features:** `tabs()`, `defaultTab()`, `contentViewer()`
 
@@ -171,6 +172,29 @@ public function panel(Panel $panel): Panel
 }
 ```
  **Note:** Disable search by passing `false`: `->chatsSearch(false)`.
+
+<x-sub-section-heading label="Linkify Messages" />
+
+Enable message link parsing so URLs and recognized bare domains (like `example.com`) render as clickable links inside chat bubbles:
+
+```php
+use Wirechat\Wirechat\Panel;
+
+public function panel(Panel $panel): Panel
+{
+    return $panel
+          //...
+          ->linkifyMessages();
+}
+```
+
+Disable it explicitly by passing `false`:
+
+```php
+->linkifyMessages(false);
+```
+
+This feature is off by default. It only wraps the URL segments, leaving the rest of the message body unchanged. Link recognition respects the `wirechat.links` config settings.
 
 <x-sub-section-heading label="Unread Messages Indicator" />
 
