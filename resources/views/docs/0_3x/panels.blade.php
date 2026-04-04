@@ -1,13 +1,13 @@
 <x-docs-layout>
 
 <x-markdown>
-# WireChat Panel Configuration
+# Wirechat Panel Configuration
 
-WireChat panels centralize configuration for routing, middleware, features, and search functionality in a single file, streamlining package setup.
+Wirechat panels centralize configuration for routing, middleware, features, and search functionality in a single file, streamlining package setup.
 
 <x-section-heading label="Default Panel Setup" />
 
-When you install WireChat, a default panel is created at `app/Providers/WireChat/ChatsPanelProvider.php` and the wirechat can accessed at route `'/chats'`.
+When you install Wirechat, a default panel is created at `app/Providers/Wirechat/ChatsPanelProvider.php` and the wirechat can accessed at route `'/chats'`.
 
 <x-section-heading label="Creating Panels" />
 
@@ -21,13 +21,13 @@ To create a new panel, run:
 php artisan make:wirechat-panel panel-name
 ```
 
-For example, `php artisan make:wirechat-panel app` generates a panel named "app" with its configuration in `app/Providers/WireChat/AppPanelProvider.php`. The panel is accessible at `'/app'` by default, but you can customize the path (see [Changing the Panel Path](#path)).
+For example, `php artisan make:wirechat-panel app` generates a panel named "app" with its configuration in `app/Providers/Wirechat/AppPanelProvider.php`. The panel is accessible at `'/app'` by default, but you can customize the path (see [Changing the Panel Path](#path)).
 
 After creating a panel, register its service provider:
 - Laravel 11+: Add to `bootstrap/providers.php`.
 - Laravel 10 or below: Add to `config/app.php`.
 
-WireChat attempts automatic registration, but if the panel is inaccessible, verify the provider registration.
+Wirechat attempts automatic registration, but if the panel is inaccessible, verify the provider registration.
 
 <x-section-heading label="Panel Methods Overview" />
 
@@ -61,7 +61,6 @@ public function panel(Panel $panel): Panel
     return $panel
         ->id('support')
         ->path('support')
-        ->default()
         ->middleware(['web', 'auth'])
         ->chatMiddleware(['verified'])
         ->chatsSearch()
@@ -74,7 +73,8 @@ public function panel(Panel $panel): Panel
         ->heading('Support Chat')
         ->createChatAction()
         ->createGroupAction()
-        ->redirectToHomeAction(url: '/dashboard');
+        ->redirectToHomeAction(url: '/dashboard')
+        ->default();
 }
 ```
 
@@ -127,7 +127,7 @@ public function panel(Panel $panel): Panel
 
 <x-sub-section-heading label="Middleware" />
 
-Apply additional middleware to WireChat routes using the `middleware()` method:
+Apply additional middleware to Wirechat routes using the `middleware()` method:
 
 ```php
 use Wirechat\Wirechat\Panel;
@@ -159,7 +159,7 @@ public function panel(Panel $panel): Panel
 
 <x-sub-section-heading label="Enable Chats Search" />
 
-Enable the chat search field in the WireChat UI:
+Enable the chat search field in the Wirechat UI:
 
 ```php
 use Wirechat\Wirechat\Panel;
@@ -195,6 +195,18 @@ Disable it explicitly by passing `false`:
 ```
 
 This feature is off by default. It only wraps the URL segments, leaving the rest of the message body unchanged. Link recognition respects the `wirechat.links` config settings.
+
+You can tune link recognition globally in `config/wirechat.php`:
+
+```php
+'links' => [
+    // Allow domains like "example.com" without http/https.
+    'allow_bare_domains' => true,
+
+    // Limit recognized TLDs for bare domains. Set to null to use Wirechat's defaults.
+    'allowed_tlds' => null,
+],
+```
 
 <x-sub-section-heading label="Unread Messages Indicator" />
 
@@ -299,7 +311,7 @@ public function panel(Panel $panel): Panel
 
 <x-sub-section-heading label="Web Push Notifications" />
 
-WireChat web push notifications keep you connected to conversations via browser notifications, even when the app is not active:
+Wirechat web push notifications keep you connected to conversations via browser notifications, even when the app is not active:
 
 ```php
 use Wirechat\Wirechat\Panel;
@@ -344,7 +356,7 @@ public function panel(Panel $panel): Panel
 
 <x-sub-section-heading label="Layout" />
 
-WireChat uses the default layout `wirechat::layouts.app`. Override it with a custom layout:
+Wirechat uses the default layout `wirechat::layouts.app`. Override it with a custom layout:
 
 ```php
 use Wirechat\Wirechat\Panel;
