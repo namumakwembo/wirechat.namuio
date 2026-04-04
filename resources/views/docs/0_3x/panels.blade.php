@@ -184,7 +184,7 @@ public function panel(Panel $panel): Panel
 {
     return $panel
           //...
-          ->linkifyMessages();
+          ->resolveUrlMessages();
 }
 ```
 
@@ -194,12 +194,12 @@ Disable it explicitly by passing `false`:
 ->linkifyMessages(false);
 ```
 
-This feature is off by default. It only wraps the URL segments, leaving the rest of the message body unchanged. Link recognition respects the `wirechat.links` config settings.
+This feature is off by default. It only wraps the URL segments, leaving the rest of the message body unchanged. Link recognition respects the `wirechat.message_links` config settings.
 
 You can tune link recognition globally in `config/wirechat.php`:
 
 ```php
-'links' => [
+'message_links' => [
     // Allow domains like "example.com" without http/https.
     'allow_bare_domains' => true,
 

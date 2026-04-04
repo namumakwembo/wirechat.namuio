@@ -87,7 +87,7 @@ return [
      | power linkified message rendering and link-type detection.
      |
      */
-    'links' => [
+    'message_links' => [
         // Allow domains like "example.com" without http/https.
         'allow_bare_domains' => true,
 
@@ -220,7 +220,7 @@ Wirechat can linkify message bodies and mark messages as link-type based on thei
 These settings control how URLs and bare domains are recognized.
 
 ```php
-'links' => [
+'message_links' => [
     'allow_bare_domains' => true,
     'allowed_tlds' => [
         'com', 'net', 'org', 'io', 'co', 'me', 'app', 'dev', 'ai', 'gg', 'tv',
