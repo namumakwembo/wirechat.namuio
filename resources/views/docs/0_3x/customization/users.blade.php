@@ -65,6 +65,9 @@ class User extends Authenticatable implements WirechatUser
     }
 }
 ```
+
+Refer to [authorization]({{ docs()->route('customization.authorization') }}) documentation for more details on controlling access to panels and features.
+
 ---
 
 <x-section-heading label="Action Permissions" />
@@ -119,6 +122,9 @@ class User extends Authenticatable implements WirechatUser
     }
 }
 ```
+
+Refer to [authorization]({{ docs()->route('customization.authorization') }}) documentation for more details on controlling access to actions and features.
+
 
 ---
 <x-section-heading label="Attributes" />

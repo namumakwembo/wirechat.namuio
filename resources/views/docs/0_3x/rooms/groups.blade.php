@@ -85,6 +85,24 @@ public function panel(Panel $panel): Panel
 
 Use a layout that does **not** assume your normal chat shell, admin dashboard layout, or any route that requires authenticated panel access. The invite preview page is intentionally public-facing, while the actual join is finalized inside the chat application.
 
+<x-sub-section-heading label="Invite Join Redirects (Widget Support)" />
+
+Invite joins normally redirect users into the panel's chat index. If your app hosts WireChat as a **widget** on a dedicated page, you can override that redirect so invite joins land on the page that actually renders the widget.
+
+```php
+use Wirechat\Wirechat\Panel;
+
+public function panel(Panel $panel): Panel
+{
+    return $panel
+        // ...
+        ->groupInvitations()
+        ->inviteJoinRedirect(fn () => route('wirechat.widget'));
+}
+```
+
+When the invite lobby opens inside a widget, it opens the joined group inside the widget and closes the modal instead of redirecting the browser.
+
 ---
 <x-section-heading label="Creating a Group" />
 
@@ -347,6 +365,8 @@ From there, WireChat stages the invite token in session and redirects the user i
 
 This handoff pattern avoids mutating membership state on a `GET` request and gives the application one final chance to re-check the user's current participant history.
 
+If you override the invite join redirect for widget support, the same handoff still applies. The only difference is the redirect target, which should point to the page that renders the widget.
+
 <x-sub-section-heading label="Sending Invite Links Through Chat" />
 
 Admins can send invite links into one-to-one chats using the share modal. This is useful when you want to invite someone without forcing them into the group immediately.
@@ -428,6 +448,7 @@ Finally, invite tokens are generated as unique random strings through `Invite::g
                 'Maximum Group Members',
                 'Enabling Group Invitations',
                 'Customizing the Invite Page Layout',
+                'Invite Join Redirects (Widget Support)',
             ],
 
             'Creating a Group' => [

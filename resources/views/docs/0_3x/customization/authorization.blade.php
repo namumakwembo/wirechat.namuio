@@ -11,7 +11,7 @@ Panels offer flexible integration with multiple guards and middleware configurat
 
 <x-section-heading label="Panel Access Authorization" />
 
-Control which users can access specific panels by implementing the `canAccessWirechatPanel()` method in your User model.
+Control which users can access specific panels by implementing the `canAccessWirechatPanel()` method in your User model. Users who fail this authorization check will be denied access to the panel's routes and features.
 
 ### Basic Implementation
 
@@ -33,7 +33,7 @@ class User extends Authenticatable implements WirechatUser
 
 ### Checking by Panel ID
 
-When using multiple panels, check access based on the panel's ID in your Model:
+When using multiple panels, check access based on the panel's ID:
 
 ```php
 public function canAccessWirechatPanel(Panel $panel): bool
@@ -63,31 +63,40 @@ public function panel(Panel $panel): Panel
 
 <x-section-heading label="Model Authorization" />
 
-Beyond panel access, you can fine-tune who gets to create chats and groups. Think of these as the bouncers at the door of your chat features.
+Wirechat provides additional authorization methods to control chat and group creation capabilities. These methods affect both the user interface and backend enforcement.
 
 <x-sub-section-heading label="Controlling 1-to-1 Chat Creation" />
 
-Want to prevent spam or limit who can start conversations? This is your friend:
+The `canCreateChats()` method determines whether a user can initiate one-to-one conversations through the Wirechat interface. When this method returns `false`:
+
+- The "New Chat" button will be hidden from the interface
+- UI-based chat creation will be blocked
+- Existing conversations remain accessible
+
+
+**Basic Implementation**
 
 ```php
 public function canCreateChats(): bool
 {
-    // Only verified users can slide into DMs
+    // Only verified users can create chats via UI
     return $this->hasVerifiedEmail();
 }
 ```
 
-Or get creative with your business logic:
+**Advanced Use Cases**
+
+Implement business logic to enforce limits or prevent spam:
 
 ```php
 public function canCreateChats(): bool
 {
-    // Prevent users from creating too many chats
+    // Prevent users from exceeding chat limits
     if ($this->conversations()->count() >= 100) {
-        return false; // Slow down there, chatty!
+        return false;
     }
 
-    // New users need to wait 24 hours (anti-spam measure)
+    // Enforce waiting period for new accounts
     if ($this->created_at->gt(now()->subDay())) {
         return false;
     }
@@ -95,40 +104,67 @@ public function canCreateChats(): bool
     return $this->hasVerifiedEmail();
 }
 ```
+**Important:** This method only controls the Wirechat UI. Programmatic chat creation using methods like `createConversationWith()` will **not** be blocked:
+
+```php
+// This will work regardless of canCreateChats() return value
+$conversation = $user->createConversationWith($otherUser, 'Optional message');
+```
+
+If you need to enforce authorization for programmatic creation, implement that logic separately in your application code.
+
 
 <x-sub-section-heading label="Controlling Group Creation" />
 
-Groups are where the magic happens—but they're also a premium feature opportunity:
+The `canCreateGroups()` method determines whether a user can create group conversations through the Wirechat interface. When this method returns `false`:
+
+- The "New Group" button will be hidden from the interface
+- UI-based group creation will be blocked
+- Users can still participate in groups they have been added to
+
+
+**Subscription-Based Access**
 
 ```php
 public function canCreateGroups(): bool
 {
-    // Premium feature: only paid users can create groups
+    // Restrict group creation to active subscribers
     return $this->subscription?->active === true;
 }
 ```
 
-Mix and match your requirements:
+**Combined Requirements**
 
 ```php
 public function canCreateGroups(): bool
 {
-    // Must be verified AND either premium or admin
+    // Require verification and premium status or admin role
     return $this->hasVerifiedEmail() && 
            ($this->is_premium || $this->hasRole('admin'));
 }
 ```
 
-Or implement reputation-based access:
+**Reputation-Based Access**
 
 ```php
 public function canCreateGroups(): bool
 {
-    // Trusted users with good reputation can create groups
+    // Require minimum reputation and account age
     return $this->reputation_score >= 50 && 
            $this->account_age_days >= 30;
 }
 ```
+**Important:** This method only controls the Wirechat UI. Programmatic group creation using methods like `createGroup()` will **not** be blocked:
+```php
+// This will work regardless of canCreateGroups() return value
+$conversation = $user->createGroup(
+    name: 'Product Launch',
+    description: 'Cross-team launch room',
+    photo: $photo,
+);
+```
+
+If you need to enforce authorization for programmatic creation, implement that logic separately in your application code.
 
 ---
 
