@@ -194,7 +194,7 @@ Disable it explicitly by passing `false`:
 ->linkifyMessages(false);
 ```
 
-This feature is off by default. It only wraps the URL segments, leaving the rest of the message body unchanged. Link recognition respects the `wirechat.message_links` config settings.
+This feature only wraps the URL segments, leaving the rest of the message body unchanged. Link recognition respects the `wirechat.message_links` config settings.
 
 You can tune link recognition globally in `config/wirechat.php`:
 
