@@ -522,6 +522,7 @@ public function panel(Panel $panel): Panel
                 'Middleware',
                 'Chat Middleware',
                 'Enable Chats Search',
+                'Linkify Messages',
                 'Unread Messages Indicator',
                 'Conversation Tabs',
                 'Enable Emoji Picker',
