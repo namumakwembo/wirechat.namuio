@@ -40,7 +40,7 @@ Common panel method groups include:
 - **Chats list behavior:** `chatsSearch()`, `unreadIndicator()`
 - **Uploads and media:** `attachments()`, `fileAttachments()`, `mediaAttachments()`
 - **Appearance:** `layout()`, `colors()`, `heading()`, `favicon()`, `emojiPicker()`
-- **Message rendering:** `linkifyMessages()`
+- **Message rendering:** `parseUrls()`
 - **Actions:** `createChatAction()`, `createGroupAction()`, `clearChatAction()`, `deleteChatAction()`, `redirectToHomeAction()`, `deleteMessageActions()`
 - **Pro features:** `tabs()`, `defaultTab()`, `contentViewer()`
 
@@ -173,7 +173,7 @@ public function panel(Panel $panel): Panel
 ```
  **Note:** Disable search by passing `false`: `->chatsSearch(false)`.
 
-<x-sub-section-heading label="Linkify Messages" />
+<x-sub-section-heading label="Parse URLs" />
 
 Enable message link parsing so URLs and recognized bare domains (like `example.com`) render as clickable links inside chat bubbles:
 
@@ -184,14 +184,14 @@ public function panel(Panel $panel): Panel
 {
     return $panel
           //...
-          ->linkifyMessages();
+          ->parseUrls();
 }
 ```
 
 Disable it explicitly by passing `false`:
 
 ```php
-->linkifyMessages(false);
+->parseUrls(false);
 ```
 
 This feature only wraps the URL segments, leaving the rest of the message body unchanged. Link recognition respects the `wirechat.message_links` config settings.
@@ -522,7 +522,7 @@ public function panel(Panel $panel): Panel
                 'Middleware',
                 'Chat Middleware',
                 'Enable Chats Search',
-                'Linkify Messages',
+                'Parse URLs',
                 'Unread Messages Indicator',
                 'Conversation Tabs',
                 'Enable Emoji Picker',
