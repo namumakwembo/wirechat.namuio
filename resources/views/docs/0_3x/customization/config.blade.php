@@ -216,7 +216,7 @@ This configuration is package-wide rather than panel-specific so background jobs
 
 <x-section-heading label="Links" />
 
-Wirechat can linkify message bodies and mark messages as link-type based on their content.
+Wirechat can parse URLs in message bodies and mark messages as link-type based on their content.
 These settings control how URLs and bare domains are recognized.
 
 ```php
