@@ -80,14 +80,14 @@ return [
 
     /*
      |--------------------------------------------------------------------------
-     | Links
+     | Message URL Parsing
      |--------------------------------------------------------------------------
      |
      | Controls how message links are detected and normalized. These settings
      | power linkified message rendering and link-type detection.
      |
      */
-    'message_links' => [
+    'message_url_parsing' => [
         // Allow domains like "example.com" without http/https.
         'allow_bare_domains' => true,
 
@@ -214,13 +214,13 @@ This configuration is package-wide rather than panel-specific so background jobs
 
 ---
 
-<x-section-heading label="Links" />
+<x-section-heading label="Message URL Parsing" />
 
 Wirechat can parse URLs in message bodies and mark messages as link-type based on their content.
 These settings control how URLs and bare domains are recognized.
 
 ```php
-'message_links' => [
+'message_url_parsing' => [
     'allow_bare_domains' => true,
     'allowed_tlds' => [
         'com', 'net', 'org', 'io', 'co', 'me', 'app', 'dev', 'ai', 'gg', 'tv',
@@ -242,7 +242,7 @@ to tighten or expand what counts as a link.
         'Table Prefix',
         'Models',
         'Storage',
-        'Links',
+        'Message URL Parsing',
     ]"/>
 </x-slot>
 

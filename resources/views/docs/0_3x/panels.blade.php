@@ -40,7 +40,7 @@ Common panel method groups include:
 - **Chats list behavior:** `chatsSearch()`, `unreadIndicator()`
 - **Uploads and media:** `attachments()`, `fileAttachments()`, `mediaAttachments()`
 - **Appearance:** `layout()`, `colors()`, `heading()`, `favicon()`, `emojiPicker()`
-- **Message rendering:** `parseUrls()`
+- **Message rendering:** `parseMessageUrls()`
 - **Actions:** `createChatAction()`, `createGroupAction()`, `clearChatAction()`, `deleteChatAction()`, `redirectToHomeAction()`, `deleteMessageActions()`
 - **Pro features:** `tabs()`, `defaultTab()`, `contentViewer()`
 
@@ -173,7 +173,7 @@ public function panel(Panel $panel): Panel
 ```
  **Note:** Disable search by passing `false`: `->chatsSearch(false)`.
 
-<x-sub-section-heading label="Parse URLs" />
+<x-sub-section-heading label="Parse Message URLs" />
 
 Enable message link parsing so URLs and recognized bare domains (like `example.com`) render as clickable links inside chat bubbles:
 
@@ -184,22 +184,22 @@ public function panel(Panel $panel): Panel
 {
     return $panel
           //...
-          ->parseUrls();
+          ->parseMessageUrls();
 }
 ```
 
 Disable it explicitly by passing `false`:
 
 ```php
-->parseUrls(false);
+->parseMessageUrls(false);
 ```
 
-This feature only wraps the URL segments, leaving the rest of the message body unchanged. Link recognition respects the `wirechat.message_links` config settings.
+This feature only wraps the URL segments, leaving the rest of the message body unchanged. Link recognition respects the `wirechat.message_url_parsing` config settings.
 
 You can tune link recognition globally in `config/wirechat.php`:
 
 ```php
-'message_links' => [
+'message_url_parsing' => [
     // Allow domains like "example.com" without http/https.
     'allow_bare_domains' => true,
 
@@ -522,7 +522,7 @@ public function panel(Panel $panel): Panel
                 'Middleware',
                 'Chat Middleware',
                 'Enable Chats Search',
-                'Parse URLs',
+                'Parse Message URLs',
                 'Unread Messages Indicator',
                 'Conversation Tabs',
                 'Enable Emoji Picker',
