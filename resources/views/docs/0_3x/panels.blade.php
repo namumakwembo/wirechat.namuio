@@ -204,6 +204,7 @@ You can tune link recognition globally in `config/wirechat.php`:
     'allow_bare_domains' => true,
 
     // Limit recognized TLDs for bare domains.
+    // Set to null to allow all TLDs, or [] to block all.
     'allowed_tlds' => [
         'com', 'net', 'org', 'io', 'co', 'me', 'app', 'dev', 'ai', 'gg', 'tv',
         'info', 'biz', 'xyz', 'site', 'store', 'shop', 'pro', 'cloud',

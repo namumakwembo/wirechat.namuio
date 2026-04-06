@@ -92,6 +92,7 @@ return [
         'allow_bare_domains' => true,
 
         // Limit recognized TLDs for bare domains.
+        // Set to null to allow all TLDs, or [] to block all.
         'allowed_tlds' => [
             'com', 'net', 'org', 'io', 'co', 'me', 'app', 'dev', 'ai', 'gg', 'tv',
             'info', 'biz', 'xyz', 'site', 'store', 'shop', 'pro', 'cloud',
@@ -222,6 +223,7 @@ These settings control how URLs and bare domains are recognized.
 ```php
 'message_url_parsing' => [
     'allow_bare_domains' => true,
+    // Set to null to allow all TLDs, or [] to block all.
     'allowed_tlds' => [
         'com', 'net', 'org', 'io', 'co', 'me', 'app', 'dev', 'ai', 'gg', 'tv',
         'info', 'biz', 'xyz', 'site', 'store', 'shop', 'pro', 'cloud',
@@ -230,8 +232,9 @@ These settings control how URLs and bare domains are recognized.
 ```
 
 Use `allow_bare_domains` to let `example.com` be recognized without `http://` or `https://`.
-Use `allowed_tlds` to restrict recognized bare domains. Override the array with your own list
-to tighten or expand what counts as a link.
+Use `allowed_tlds` to restrict recognized bare domains. Set it to `null` to allow all TLDs,
+set it to `[]` to block all, or replace the list with your own to tighten or expand what
+counts as a link.
 
 </x-markdown>
 
