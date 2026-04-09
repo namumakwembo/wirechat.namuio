@@ -145,9 +145,9 @@ The standalone chat component supports the same scoped wrapper overrides:
 
 ---
 
-<x-section-heading label="Tray Widget" />
+{{-- <x-section-heading label="Tray Widget" />
 
-If you want chat to stay available as a floating entry point across your layout instead of occupying page content, see the Pro [Tray Widget]({{ docs()->route('usage.tray') }}) guide.
+If you want chat to stay available as a floating entry point across your layout instead of occupying page content, see the Pro [Tray Widget]({{ docs()->route('usage.tray') }}) guide. --}}
 
 ---
 

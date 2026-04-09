@@ -6,9 +6,9 @@
 
 Wirechat allows you to create private 1-on-1 chats, manage settings from the panel, send messages, and perform actions such as deleting or clearing chats.
 
-Need a review-first private flow where the recipient can open the thread before joining it? See the dedicated [Message Requests]({{ docs()->route('rooms.message-requests') }}) page.
+{{-- Need a review-first private flow where the recipient can open the thread before joining it? See the dedicated [Message Requests]({{ docs()->route('rooms.message-requests') }}) page.
 
-Need to organize the chats list into focused views such as unread or groups? See the [Tabs]({{ docs()->route('usage.tabs') }}) page. Conversation tabs are available in Wirechat Pro.
+Need to organize the chats list into focused views such as unread or groups? See the [Tabs]({{ docs()->route('usage.tabs') }}) page. Conversation tabs are available in Wirechat Pro. --}}
 
 ---
 
@@ -34,10 +34,10 @@ public function panel(Panel $panel): Panel
 -  **Create Using the WireChat UI**
 
     1. Click the **Plus** icon in the chat list.
-    2. Search for and select a user. [Customize Search]({{ docs()->route('customization.users',['#searching-users']) }}).
-    3. Click on the user’s name to open the private thread.
+            2. Search for and select a user. [Customize Search]({{ docs()->route('customization.users',['#searching-users']) }}).
+            3. Click on the user’s name to open the private thread.
 
-> **Note:** The default new-chat UI can also be used to start a **message request** flow, depending on how your application chooses to handle private chat creation. If you want the recipient to review the conversation before joining it, use the [Message Requests]({{ docs()->route('rooms.message-requests') }}) flow.
+{{-- > **Note:** The default new-chat UI can also be used to start a **message request** flow, depending on how your application chooses to handle private chat creation. If you want the recipient to review the conversation before joining it, use the [Message Requests]({{ docs()->route('rooms.message-requests') }}) flow. --}}
 
 - **Creating a Private Chat Programmatically**
 

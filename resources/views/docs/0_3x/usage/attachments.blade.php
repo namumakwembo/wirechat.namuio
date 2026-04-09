@@ -81,7 +81,7 @@ Users can share photos, videos, or documents in conversations by following these
 
 ---
 
-<x-section-heading label="Content Viewer" />
+{{-- <x-section-heading label="Content Viewer" />
 
 If you want users to browse shared media, documents, and links from inside the conversation interface, enable the Pro [Content Viewer]({{ docs()->route('usage.content-viewer') }}) feature on your panel:
 
@@ -96,7 +96,7 @@ public function panel(Panel $panel): Panel
 }
 ```
 
-`contentViewer()` adds the in-chat browsing experience for shared media, documents, and links. See the Content Viewer page for the full guide.
+`contentViewer()` adds the in-chat browsing experience for shared media, documents, and links. See the Content Viewer page for the full guide. --}}
 
 ---
 

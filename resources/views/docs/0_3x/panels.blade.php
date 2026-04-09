@@ -260,7 +260,7 @@ This setting affects the chats list in both full-page and widget mode.
 
 If you are upgrading from earlier panel examples, `unReadMessages()` still works as a backward-compatible alias, but `unreadIndicator()` is now the preferred name.
 
-<x-sub-section-heading label="Conversation Tabs" />
+{{-- <x-sub-section-heading label="Conversation Tabs" />
 
 Organize the chats list into focused views such as **All**, **Unread**, or **Groups**.
 
@@ -280,7 +280,7 @@ public function panel(Panel $panel): Panel
           )
           ->defaultTab('all');
 }
-```
+``` --}}
 
 
 <x-sub-section-heading label="Enable Emoji Picker" />
@@ -420,7 +420,7 @@ public function panel(Panel $panel): Panel
 }
 ```
 
-<x-sub-section-heading label="Content Viewer" />
+{{-- <x-sub-section-heading label="Content Viewer" />
 
 Browse shared media, documents, and links from a conversation-level viewer inside the chat details panel.
 
@@ -437,7 +437,7 @@ public function panel(Panel $panel): Panel
 }
 ```
 
-Pass `false` to disable it: `->contentViewer(false)`.
+Pass `false` to disable it: `->contentViewer(false)`. --}}
 
 <x-sub-section-heading label="Color theme" />
 
@@ -525,7 +525,6 @@ public function panel(Panel $panel): Panel
                 'Enable Chats Search',
                 'Parse Message URLs',
                 'Unread Messages Indicator',
-                'Conversation Tabs',
                 'Enable Emoji Picker',
                 'Web Push Notifications',
                 'Messages Queue',
@@ -534,7 +533,6 @@ public function panel(Panel $panel): Panel
                 'Attachments',
                 'File Attachments',
                 'Media Attachments',
-                'Content Viewer',
                 'Color theme',
                 'Heading',
                 'Favicon',

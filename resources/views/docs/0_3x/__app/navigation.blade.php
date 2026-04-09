@@ -103,23 +103,23 @@
                 Attachments
             </x-sidebar-link>
         </li>
-        <li>
+        {{-- <li>
             @if(docs()->hasRoute('usage.content-viewer'))
                 <x-sidebar-link new href="{{ docs()->route('usage.content-viewer') }}"
                                 active="{{docs()->routeIs('usage.content-viewer') }}">
                     Content Viewer
                 </x-sidebar-link>
             @endif
-        </li>
+        </li> --}}
  
-        <li>
+        {{-- <li>
             @if(docs()->hasRoute('usage.tabs'))
                 <x-sidebar-link new href="{{ docs()->route('usage.tabs') }}"
                                 active="{{docs()->routeIs('usage.tabs') }}">
                     Tabs
                 </x-sidebar-link>
             @endif
-        </li>
+        </li> --}}
         <li>
 
             <x-sidebar-link href="{{ docs()->route('usage.aggregations') }}"
@@ -128,14 +128,14 @@
             </x-sidebar-link>
 
         </li>
-       <li>
+       {{-- <li>
             @if(docs()->hasRoute('usage.tray'))
                 <x-sidebar-link new href="{{ docs()->route('usage.tray') }}"
                                 active="{{docs()->routeIs('usage.tray') }}">
                     Tray
                 </x-sidebar-link>
             @endif
-        </li>
+        </li> --}}
 
         <li>
             <x-sidebar-link  href="{{ docs()->route('usage.notifications') }}"
@@ -163,11 +163,11 @@
                 Chats
             </x-sidebar-link>
         </li>
-        <li>
+        {{-- <li>
             <x-sidebar-link href="{{ docs()->route('rooms.message-requests') }}" active="{{docs()->routeIs('rooms.message-requests') }}">
                 Message Requests
             </x-sidebar-link>
-        </li>
+        </li> --}}
         <li>
             <x-sidebar-link href="{{ docs()->route('rooms.groups') }}" active="{{docs()->routeIs('rooms.groups') }}">
                 Groups

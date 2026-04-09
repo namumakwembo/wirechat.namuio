@@ -19,9 +19,13 @@ By default, the main panel is available at `'/chats'`. If no panel has been defi
 
 <x-section-heading label="Rooms" />
 
-In addition to private 1-on-1 chats, WireChat also supports **Message Requests** and **Groups**. Message requests let someone open a private thread before becoming a participant, while groups enable multi-user conversations.
+{{-- In addition to private 1-on-1 chats, WireChat also supports **Message Requests** and **Groups**. Message requests let someone open a private thread before becoming a participant, while groups enable multi-user conversations.
 
-Learn more about [Chats]({{ docs()->route('rooms.chats') }}), [Message Requests]({{ docs()->route('rooms.message-requests') }}), and [Groups]({{ docs()->route('rooms.groups') }}).
+Learn more about [Chats]({{ docs()->route('rooms.chats') }}), [Message Requests]({{ docs()->route('rooms.message-requests') }}), and [Groups]({{ docs()->route('rooms.groups') }}). --}}
+
+In addition to private 1-on-1 chats, WireChat also supports **Groups**, enabling multi-user conversations.
+
+Learn more about [Chats]({{ docs()->route('rooms.chats') }}) and [Groups]({{ docs()->route('rooms.groups') }}).
 
 ---
 
