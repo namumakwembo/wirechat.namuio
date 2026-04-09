@@ -24,24 +24,13 @@ Before you begin, ensure the following are installed:
 
 <x-sub-section-heading label="1. Require composer package" />
 
-Before installing, ensure that authentication is already set up in your application. You may use built in laravel authenticated
+Before installing Wirechat, make sure authentication is already set up in your application.
+Any standard Laravel authentication flow is fine.
 
-Since wirechat v0.3+ is still in beta, make sure your `composer.json` allows beta packages by setting `minimum-stability` to `beta`. You can do this manually or via the CLI:
-```
-composer config minimum-stability beta
-```
+Install the package with Composer:
 
-Your `composer.json` should now include:
-
-```
-{
-    "minimum-stability": "beta"
-}
-```
-
-**Require the package**
-```php
-composer require wirechat/wirechat:"^0.3"
+```bash
+composer require wirechat/wirechat
 ```
 
 
@@ -60,8 +49,7 @@ The following actions will be executed:
 * Create a default panel
 * Create a storage symlink
 
-The  `wirechat:install` command will also create a default  panel at `app/Providers/Wirechat/ChatsPanelProvider.php` , so you can go ahead and start [Configuring your panel]({{docs()->route('panels')}}
-) and get ready for chatting
+The `wirechat:install` command also creates a default panel at `app/Providers/Wirechat/ChatsPanelProvider.php`, so you can move straight into [panel configuration]({{ docs()->route('panels') }}) after installation.
 
 
 <x-sub-section-heading label="3. Run Migrations:"/>
@@ -89,10 +77,9 @@ php artisan migrate
 
 <x-section-heading label="Setup Tailwind CSS"/>
 
-Wirechat `v0.3` requires Tailwind CSS v4.0 or later.
+Wirechat requires Tailwind CSS v4.0 or later.
 
-If you already have Tailwind installed in your project, just add the following configuration to your
-resources/css/app.css file:
+If Tailwind is already installed in your project, add the following import to `resources/css/app.css`:
 
 ```css
 /* resources/css/app.css */
@@ -143,11 +130,11 @@ php artisan queue:listen --queue=messages,default
 Wirechat uses two queues for efficient delivery:
 
 
-1. **High Priority (`messages`)**: For real-time broadcasting of messages to users in a conversation.
-2. **Default Priority (`default`)**: For notifications like updating chat lists or showing unread message
+1. **High Priority `messages`**: For real-time broadcasting of messages to users in a conversation.
+2. **Default Priority `default`**: For notifications like updating chat lists or showing unread message
 counts.
 
-To customize these queue names Navigate to your panel and set up queues
+To customize these queue names, configure them in your panel:
 
 ```php
 use Wirechat\Wirechat\Panel;
@@ -163,7 +150,7 @@ return $panel
 
 </details>
 
-#### Step 3: Step Development Server
+#### Step 3: Start Your Development Server
 
 To start your development server, run:
 
@@ -172,7 +159,12 @@ composer run dev
 ```
 
 
-If you're not running the latest Laravel version, you can run: `php artisan serve` && `npm run dev` seperately
+If your application does not use Laravel's `composer run dev` workflow, run your PHP server and frontend build separately instead:
+
+```bash
+php artisan serve
+npm run dev
+```
 
 For more details, see [Laravel's Tailwind and Composer Dev Command
 Documentation](https://laravel-news.com/laravel-11-28-0#content-add-tailwind-and-composer-run-dev-command).

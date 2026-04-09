@@ -48,11 +48,11 @@
 </div>
 
 
-<article class=" ring-3 ring-zinc-200/30   dark:ring-zinc-700/40 rounded-xl grid md:grid-cols-2 lg:overflow-hidden">
+<article class="ring-3 ring-zinc-200/30 dark:ring-zinc-700/40 rounded-xl grid lg:overflow-hidden bg-white dark:bg-zinc-900">
 
-<aside class=" overflow-scroll">
-
-<x-markdown class="text-sm w-full overflow-x-scroll ">
+    <!-- Left Side: Code Example -->
+<aside class="overflow-scroll border-r border-zinc-200 dark:border-zinc-700">
+<x-markdown class="text-sm w-full overflow-x-scroll">
 ```php
 use Wirechat\Wirechat\Panel;
 use Wirechat\Wirechat\Support\Color;
@@ -67,27 +67,172 @@ public function panel(Panel $panel): Panel
 }
 ```
 </x-markdown>
+    </aside>
 
-</aside>
+    <!-- Right Side: Color Palette Grid -->
+    <aside class="p-6 bg-gradient-to-br from-zinc-50 to-zinc-100 dark:from-zinc-800 dark:to-zinc-900">
+        <div class="space-y-4">
+            <h3 class="text-lg font-semibold text-zinc-800 dark:text-white mb-4">Available Colors</h3>
+            
+            <div class="grid grid-cols-2 gap-3">
+                <!-- Neutrals -->
+                <div class="group cursor-pointer">
+                    <div class="flex items-center gap-2 p-3 rounded-lg bg-white dark:bg-zinc-800 shadow-sm hover:shadow-md transition-all duration-200 border border-zinc-200 dark:border-zinc-700">
+                        <div class="w-8 h-8 rounded-md bg-slate-500 shadow-inner"></div>
+                        <span class="text-sm font-medium text-zinc-700 dark:text-zinc-300">Slate</span>
+                    </div>
+                </div>
 
+                <div class="group cursor-pointer">
+                    <div class="flex items-center gap-2 p-3 rounded-lg bg-white dark:bg-zinc-800 shadow-sm hover:shadow-md transition-all duration-200 border border-zinc-200 dark:border-zinc-700">
+                        <div class="w-8 h-8 rounded-md bg-gray-500 shadow-inner"></div>
+                        <span class="text-sm font-medium text-zinc-700 dark:text-zinc-300">Gray</span>
+                    </div>
+                </div>
 
-<aside>
-<x-markdown>
-```php
-Color list
-    'slate' => static::Slate,
-    'gray' => static::Gray,
-    'zinc' => static::Zinc,
-    'neutral' => static::Neutral,
-    'stone' => static::Stone,
-    'red' => static::Red,
-    'orange' => static::Orange,
-    //...
-```
-</x-markdown>
-</aside>
+                <div class="group cursor-pointer">
+                    <div class="flex items-center gap-2 p-3 rounded-lg bg-white dark:bg-zinc-800 shadow-sm hover:shadow-md transition-all duration-200 border border-zinc-200 dark:border-zinc-700">
+                        <div class="w-8 h-8 rounded-md bg-zinc-500 shadow-inner"></div>
+                        <span class="text-sm font-medium text-zinc-700 dark:text-zinc-300">Zinc</span>
+                    </div>
+                </div>
 
+                <div class="group cursor-pointer">
+                    <div class="flex items-center gap-2 p-3 rounded-lg bg-white dark:bg-zinc-800 shadow-sm hover:shadow-md transition-all duration-200 border border-zinc-200 dark:border-zinc-700">
+                        <div class="w-8 h-8 rounded-md bg-neutral-500 shadow-inner"></div>
+                        <span class="text-sm font-medium text-zinc-700 dark:text-zinc-300">Neutral</span>
+                    </div>
+                </div>
 
+                <div class="group cursor-pointer">
+                    <div class="flex items-center gap-2 p-3 rounded-lg bg-white dark:bg-zinc-800 shadow-sm hover:shadow-md transition-all duration-200 border border-zinc-200 dark:border-zinc-700">
+                        <div class="w-8 h-8 rounded-md bg-stone-500 shadow-inner"></div>
+                        <span class="text-sm font-medium text-zinc-700 dark:text-zinc-300">Stone</span>
+                    </div>
+                </div>
+
+                <!-- Vibrant Colors -->
+                <div class="group cursor-pointer">
+                    <div class="flex items-center gap-2 p-3 rounded-lg bg-white dark:bg-zinc-800 shadow-sm hover:shadow-md transition-all duration-200 border border-zinc-200 dark:border-zinc-700">
+                        <div class="w-8 h-8 rounded-md bg-red-500 shadow-inner"></div>
+                        <span class="text-sm font-medium text-zinc-700 dark:text-zinc-300">Red</span>
+                    </div>
+                </div>
+
+                <div class="group cursor-pointer">
+                    <div class="flex items-center gap-2 p-3 rounded-lg bg-white dark:bg-zinc-800 shadow-sm hover:shadow-md transition-all duration-200 border border-zinc-200 dark:border-zinc-700">
+                        <div class="w-8 h-8 rounded-md bg-orange-500 shadow-inner"></div>
+                        <span class="text-sm font-medium text-zinc-700 dark:text-zinc-300">Orange</span>
+                    </div>
+                </div>
+
+                <div class="group cursor-pointer">
+                    <div class="flex items-center gap-2 p-3 rounded-lg bg-white dark:bg-zinc-800 shadow-sm hover:shadow-md transition-all duration-200 border border-zinc-200 dark:border-zinc-700">
+                        <div class="w-8 h-8 rounded-md bg-amber-500 shadow-inner"></div>
+                        <span class="text-sm font-medium text-zinc-700 dark:text-zinc-300">Amber</span>
+                    </div>
+                </div>
+
+                <div class="group cursor-pointer">
+                    <div class="flex items-center gap-2 p-3 rounded-lg bg-white dark:bg-zinc-800 shadow-sm hover:shadow-md transition-all duration-200 border border-zinc-200 dark:border-zinc-700">
+                        <div class="w-8 h-8 rounded-md bg-yellow-500 shadow-inner"></div>
+                        <span class="text-sm font-medium text-zinc-700 dark:text-zinc-300">Yellow</span>
+                    </div>
+                </div>
+
+                <div class="group cursor-pointer">
+                    <div class="flex items-center gap-2 p-3 rounded-lg bg-white dark:bg-zinc-800 shadow-sm hover:shadow-md transition-all duration-200 border border-zinc-200 dark:border-zinc-700">
+                        <div class="w-8 h-8 rounded-md bg-lime-500 shadow-inner"></div>
+                        <span class="text-sm font-medium text-zinc-700 dark:text-zinc-300">Lime</span>
+                    </div>
+                </div>
+
+                <div class="group cursor-pointer">
+                    <div class="flex items-center gap-2 p-3 rounded-lg bg-white dark:bg-zinc-800 shadow-sm hover:shadow-md transition-all duration-200 border border-zinc-200 dark:border-zinc-700">
+                        <div class="w-8 h-8 rounded-md bg-green-500 shadow-inner"></div>
+                        <span class="text-sm font-medium text-zinc-700 dark:text-zinc-300">Green</span>
+                    </div>
+                </div>
+
+                <div class="group cursor-pointer">
+                    <div class="flex items-center gap-2 p-3 rounded-lg bg-white dark:bg-zinc-800 shadow-sm hover:shadow-md transition-all duration-200 border border-zinc-200 dark:border-zinc-700">
+                        <div class="w-8 h-8 rounded-md bg-emerald-500 shadow-inner"></div>
+                        <span class="text-sm font-medium text-zinc-700 dark:text-zinc-300">Emerald</span>
+                    </div>
+                </div>
+
+                <div class="group cursor-pointer">
+                    <div class="flex items-center gap-2 p-3 rounded-lg bg-white dark:bg-zinc-800 shadow-sm hover:shadow-md transition-all duration-200 border border-zinc-200 dark:border-zinc-700">
+                        <div class="w-8 h-8 rounded-md bg-teal-500 shadow-inner"></div>
+                        <span class="text-sm font-medium text-zinc-700 dark:text-zinc-300">Teal</span>
+                    </div>
+                </div>
+
+                <div class="group cursor-pointer">
+                    <div class="flex items-center gap-2 p-3 rounded-lg bg-white dark:bg-zinc-800 shadow-sm hover:shadow-md transition-all duration-200 border border-zinc-200 dark:border-zinc-700">
+                        <div class="w-8 h-8 rounded-md bg-cyan-500 shadow-inner"></div>
+                        <span class="text-sm font-medium text-zinc-700 dark:text-zinc-300">Cyan</span>
+                    </div>
+                </div>
+
+                <div class="group cursor-pointer">
+                    <div class="flex items-center gap-2 p-3 rounded-lg bg-white dark:bg-zinc-800 shadow-sm hover:shadow-md transition-all duration-200 border border-zinc-200 dark:border-zinc-700">
+                        <div class="w-8 h-8 rounded-md bg-sky-500 shadow-inner"></div>
+                        <span class="text-sm font-medium text-zinc-700 dark:text-zinc-300">Sky</span>
+                    </div>
+                </div>
+
+                <div class="group cursor-pointer">
+                    <div class="flex items-center gap-2 p-3 rounded-lg bg-white dark:bg-zinc-800 shadow-sm hover:shadow-md transition-all duration-200 border border-zinc-200 dark:border-zinc-700">
+                        <div class="w-8 h-8 rounded-md bg-blue-500 shadow-inner"></div>
+                        <span class="text-sm font-medium text-zinc-700 dark:text-zinc-300">Blue</span>
+                    </div>
+                </div>
+
+                <div class="group cursor-pointer">
+                    <div class="flex items-center gap-2 p-3 rounded-lg bg-white dark:bg-zinc-800 shadow-sm hover:shadow-md transition-all duration-200 border border-zinc-200 dark:border-zinc-700">
+                        <div class="w-8 h-8 rounded-md bg-indigo-500 shadow-inner"></div>
+                        <span class="text-sm font-medium text-zinc-700 dark:text-zinc-300">Indigo</span>
+                    </div>
+                </div>
+
+                <div class="group cursor-pointer">
+                    <div class="flex items-center gap-2 p-3 rounded-lg bg-white dark:bg-zinc-800 shadow-sm hover:shadow-md transition-all duration-200 border border-zinc-200 dark:border-zinc-700">
+                        <div class="w-8 h-8 rounded-md bg-violet-500 shadow-inner"></div>
+                        <span class="text-sm font-medium text-zinc-700 dark:text-zinc-300">Violet</span>
+                    </div>
+                </div>
+
+                <div class="group cursor-pointer">
+                    <div class="flex items-center gap-2 p-3 rounded-lg bg-white dark:bg-zinc-800 shadow-sm hover:shadow-md transition-all duration-200 border border-zinc-200 dark:border-zinc-700">
+                        <div class="w-8 h-8 rounded-md bg-purple-500 shadow-inner"></div>
+                        <span class="text-sm font-medium text-zinc-700 dark:text-zinc-300">Purple</span>
+                    </div>
+                </div>
+
+                <div class="group cursor-pointer">
+                    <div class="flex items-center gap-2 p-3 rounded-lg bg-white dark:bg-zinc-800 shadow-sm hover:shadow-md transition-all duration-200 border border-zinc-200 dark:border-zinc-700">
+                        <div class="w-8 h-8 rounded-md bg-fuchsia-500 shadow-inner"></div>
+                        <span class="text-sm font-medium text-zinc-700 dark:text-zinc-300">Fuchsia</span>
+                    </div>
+                </div>
+
+                <div class="group cursor-pointer">
+                    <div class="flex items-center gap-2 p-3 rounded-lg bg-white dark:bg-zinc-800 shadow-sm hover:shadow-md transition-all duration-200 border border-zinc-200 dark:border-zinc-700">
+                        <div class="w-8 h-8 rounded-md bg-pink-500 shadow-inner"></div>
+                        <span class="text-sm font-medium text-zinc-700 dark:text-zinc-300">Pink</span>
+                    </div>
+                </div>
+
+                <div class="group cursor-pointer">
+                    <div class="flex items-center gap-2 p-3 rounded-lg bg-white dark:bg-zinc-800 shadow-sm hover:shadow-md transition-all duration-200 border border-zinc-200 dark:border-zinc-700">
+                        <div class="w-8 h-8 rounded-md bg-rose-500 shadow-inner"></div>
+                        <span class="text-sm font-medium text-zinc-700 dark:text-zinc-300">Rose</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </aside>
 
 </article>
 

@@ -38,6 +38,12 @@ Route::prefix('docs/' . $routePrefix)
             return view('docs.' . $docs->getViewFolder() . '.panels');
         })->name('panels');
 
+        Route::get('/actions', function () use ($docs) {
+            Helper::seo('Actions', "Learn how to configure WireChat panel actions, including chat actions, home navigation actions, message deletion options, and action icon customization.");
+
+            return view('docs.' . $docs->getViewFolder() . '.actions');
+        })->name('actions');
+
         /**----------------
          * Usage
          */
@@ -57,6 +63,24 @@ Route::prefix('docs/' . $routePrefix)
 
             return view('docs.' . $docs->getViewFolder() . '.usage.attachments');
         })->name('usage.attachments');
+
+        /* Route::get('/content-viewer', function () use ($docs) {
+            Helper::seo('Content Viewer', 'Learn how to enable the Wirechat Pro content viewer to browse shared media, documents, and links inside the conversation interface.');
+
+            return view('docs.' . $docs->getViewFolder() . '.usage.content-viewer');
+        })->name('usage.content-viewer'); */
+
+        /* Route::get('/tray', function () use ($docs) {
+            Helper::seo('Tray Widget', 'Learn how to add the Wirechat Pro tray widget to your layout for floating access to conversations across the application.');
+
+            return view('docs.' . $docs->getViewFolder() . '.usage.tray');
+        })->name('usage.tray'); */
+
+        /* Route::get('/tabs', function () use ($docs) {
+            Helper::seo('Conversation Tabs', 'Learn how to configure conversation tabs in WireChat Pro to organize the chats list into focused views such as all, unread, groups, or custom segments.');
+
+            return view('docs.' . $docs->getViewFolder() . '.usage.tabs');
+        })->name('usage.tabs'); */
 
         Route::get('/notifications', function () use ($docs) {
             Helper::seo('Notifications', 'Wirechat offers a simple and efficient way to handle real-time push notifications using the Service Worker API and the Web Notifications API');
@@ -80,6 +104,11 @@ Route::prefix('docs/' . $routePrefix)
             Helper::seo('Users', 'WireChat allows you to define how users are represented within your application.');
             return view('docs.' . $docs->getViewFolder() . '.customization.users');
         })->name('customization.users');
+
+        Route::get('/models', function () use ($docs) {
+            Helper::seo('Models', 'Learn how Wirechat core models are structured, how they relate to each other, and how to safely replace them with your own subclasses.');
+            return view('docs.' . $docs->getViewFolder() . '.customization.models');
+        })->name('customization.models');
 
         Route::get('/authorization', function () use ($docs) {
             Helper::seo('Authorization', 'Wirechat offers flexible integration with multiple guards and middleware configurations to secure your application’s routes and broadcasting channels');
@@ -144,6 +173,11 @@ Route::prefix('docs/' . $routePrefix)
                 Helper::seo('Chats', 'Learn how to manage , create and edit chats');
                 return view('docs.' . $docs->getViewFolder() . '.rooms.chats');
             })->name('rooms.chats');
+
+            /* Route::get('/message-requests', function () use ($docs) {
+                Helper::seo('Message Requests', 'Learn how Wirechat private message requests work, how recipients review pending conversations, and how to handle accept or reject flows.');
+                return view('docs.' . $docs->getViewFolder() . '.rooms.message-requests');
+            })->name('rooms.message-requests'); */
 
             Route::get('/groups', function () use ($docs) {
                 Helper::seo('Groups', 'Learn how to manage , create and edit groups');

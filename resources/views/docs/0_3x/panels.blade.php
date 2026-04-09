@@ -1,13 +1,13 @@
 <x-docs-layout>
 
 <x-markdown>
-# WireChat Panel Configuration
+# Wirechat Panel Configuration
 
-WireChat panels centralize configuration for routing, middleware, features, and search functionality in a single file, streamlining package setup.
+Wirechat panels centralize configuration for routing, middleware, features, and search functionality in a single file, streamlining package setup.
 
 <x-section-heading label="Default Panel Setup" />
 
-When you install WireChat, a default panel is created at `app/Providers/WireChat/ChatsPanelProvider.php` and the wirechat can accessed at route `'/chats'`.
+When you install Wirechat, a default panel is created at `app/Providers/Wirechat/ChatsPanelProvider.php` and the wirechat can accessed at route `'/chats'`.
 
 <x-section-heading label="Creating Panels" />
 
@@ -21,13 +21,62 @@ To create a new panel, run:
 php artisan make:wirechat-panel panel-name
 ```
 
-For example, `php artisan make:wirechat-panel app` generates a panel named "app" with its configuration in `app/Providers/WireChat/AppPanelProvider.php`. The panel is accessible at `'/app'` by default, but you can customize the path (see [Changing the Panel Path](#path)).
+For example, `php artisan make:wirechat-panel app` generates a panel named "app" with its configuration in `app/Providers/Wirechat/AppPanelProvider.php`. The panel is accessible at `'/app'` by default, but you can customize the path (see [Changing the Panel Path](#path)).
 
 After creating a panel, register its service provider:
 - Laravel 11+: Add to `bootstrap/providers.php`.
 - Laravel 10 or below: Add to `config/app.php`.
 
-WireChat attempts automatic registration, but if the panel is inaccessible, verify the provider registration.
+Wirechat attempts automatic registration, but if the panel is inaccessible, verify the provider registration.
+
+<x-section-heading label="Panel Methods Overview" />
+
+Panels are the main configuration surface for Wirechat. Instead of scattering package setup across multiple files, you can keep routing, access rules, visual settings, chat-list behavior, and feature flags in one provider.
+
+Common panel method groups include:
+
+- **Identity and routing:** `id()`, `path()`, `default()`
+- **Access and middleware:** `middleware()`, `chatMiddleware()`
+- **Chats list behavior:** `chatsSearch()`, `unreadIndicator()`
+- **Uploads and media:** `attachments()`, `fileAttachments()`, `mediaAttachments()`
+- **Appearance:** `layout()`, `colors()`, `heading()`, `favicon()`, `emojiPicker()`
+- **Message rendering:** `parseMessageUrls()`
+- **Actions:** `createChatAction()`, `createGroupAction()`, `clearChatAction()`, `deleteChatAction()`, `redirectToHomeAction()`, `deleteMessageActions()`
+- **Pro features:** `tabs()`, `defaultTab()`, `contentViewer()`
+
+Use the methods below when you want fine-grained control, or start with a broader provider example and refine it over time.
+
+<x-section-heading label="Quick Example" />
+
+Here is a realistic panel provider example that combines some of the most commonly used panel methods:
+
+```php
+use Wirechat\Wirechat\Panel;
+use Wirechat\Wirechat\Support\Color;
+use Wirechat\Wirechat\Support\Enums\EmojiPickerPosition;
+use Wirechat\Wirechat\Support\Enums\UnreadIndicatorType;
+
+public function panel(Panel $panel): Panel
+{
+    return $panel
+        ->id('support')
+        ->path('support')
+        ->middleware(['web', 'auth'])
+        ->chatMiddleware(['verified'])
+        ->chatsSearch()
+        ->unreadIndicator(type: UnreadIndicatorType::Count)
+        ->emojiPicker(position: EmojiPickerPosition::Docked)
+        ->attachments()
+        ->colors([
+            'primary' => Color::Blue,
+        ])
+        ->heading('Support Chat')
+        ->createChatAction()
+        ->createGroupAction()
+        ->redirectToHomeAction(url: '/dashboard')
+        ->default();
+}
+```
 
 <x-section-heading label="Methods" />
 
@@ -78,7 +127,7 @@ public function panel(Panel $panel): Panel
 
 <x-sub-section-heading label="Middleware" />
 
-Apply additional middleware to WireChat routes using the `middleware()` method:
+Apply additional middleware to Wirechat routes using the `middleware()` method:
 
 ```php
 use Wirechat\Wirechat\Panel;
@@ -110,7 +159,7 @@ public function panel(Panel $panel): Panel
 
 <x-sub-section-heading label="Enable Chats Search" />
 
-Enable the chat search field in the WireChat UI:
+Enable the chat search field in the Wirechat UI:
 
 ```php
 use Wirechat\Wirechat\Panel;
@@ -123,6 +172,115 @@ public function panel(Panel $panel): Panel
 }
 ```
  **Note:** Disable search by passing `false`: `->chatsSearch(false)`.
+
+<x-sub-section-heading label="Parse Message URLs" />
+
+Enable message link parsing so URLs and recognized bare domains (like `example.com`) render as clickable links inside chat bubbles:
+
+```php
+use Wirechat\Wirechat\Panel;
+
+public function panel(Panel $panel): Panel
+{
+    return $panel
+          //...
+          ->parseMessageUrls();
+}
+```
+
+Disable it explicitly by passing `false`:
+
+```php
+->parseMessageUrls(false);
+```
+
+This feature only wraps the URL segments, leaving the rest of the message body unchanged. Link recognition respects the `wirechat.message_url_parsing` config settings.
+
+You can tune link recognition globally in `config/wirechat.php`:
+
+```php
+'message_url_parsing' => [
+    // Allow domains like "example.com" without http/https.
+    'allow_bare_domains' => true,
+
+    // Limit recognized TLDs for bare domains.
+    // Set to null to allow all TLDs, or [] to block all.
+    'allowed_tlds' => [
+        'com', 'net', 'org', 'io', 'co', 'me', 'app', 'dev', 'ai', 'gg', 'tv',
+        'info', 'biz', 'xyz', 'site', 'store', 'shop', 'pro', 'cloud',
+    ],
+],
+```
+
+<x-sub-section-heading label="Unread Messages Indicator" />
+
+Use `unreadIndicator()` to control how unread conversations are highlighted in the chats list.
+
+By default, Wirechat uses a small unread dot, so existing panels keep the current behavior without needing any changes:
+
+```php
+use Wirechat\Wirechat\Panel;
+
+public function panel(Panel $panel): Panel
+{
+    return $panel
+          //...
+          ->unreadIndicator();
+}
+```
+
+If you prefer a numeric unread badge, pass the `UnreadIndicatorType` enum:
+
+```php
+use Wirechat\Wirechat\Panel;
+use Wirechat\Wirechat\Support\Enums\UnreadIndicatorType;
+
+public function panel(Panel $panel): Panel
+{
+    return $panel
+          //...
+          ->unreadIndicator(type: UnreadIndicatorType::Count);
+}
+```
+
+You may also disable the unread indicator completely:
+
+```php
+use Wirechat\Wirechat\Panel;
+
+public function panel(Panel $panel): Panel
+{
+    return $panel
+          //...
+          ->unreadIndicator(false);
+}
+```
+
+This setting affects the chats list in both full-page and widget mode.
+
+If you are upgrading from earlier panel examples, `unReadMessages()` still works as a backward-compatible alias, but `unreadIndicator()` is now the preferred name.
+
+{{-- <x-sub-section-heading label="Conversation Tabs" />
+
+Organize the chats list into focused views such as **All**, **Unread**, or **Groups**.
+
+**Pro:** Conversation tabs are available in Wirechat Pro. See the [Tabs]({{ docs()->route('usage.tabs') }}) page for the full API and examples.
+
+```php
+use Wirechat\Wirechat\Panel;
+use Wirechat\Wirechat\Support\Tabs\Tab;
+
+public function panel(Panel $panel): Panel
+{
+    return $panel
+          //...
+          ->tabs(
+              Tab::make('all'),
+              Tab::make('groups')->count(),
+          )
+          ->defaultTab('all');
+}
+``` --}}
 
 
 <x-sub-section-heading label="Enable Emoji Picker" />
@@ -157,7 +315,7 @@ public function panel(Panel $panel): Panel
 
 <x-sub-section-heading label="Web Push Notifications" />
 
-WireChat web push notifications keep you connected to conversations via browser notifications, even when the app is not active:
+Wirechat web push notifications keep you connected to conversations via browser notifications, even when the app is not active:
 
 ```php
 use Wirechat\Wirechat\Panel;
@@ -202,7 +360,7 @@ public function panel(Panel $panel): Panel
 
 <x-sub-section-heading label="Layout" />
 
-WireChat uses the default layout `wirechat::layouts.app`. Override it with a custom layout:
+Wirechat uses the default layout `wirechat::layouts.app`. Override it with a custom layout:
 
 ```php
 use Wirechat\Wirechat\Panel;
@@ -261,6 +419,26 @@ public function panel(Panel $panel): Panel
           ->mediaAttachments();
 }
 ```
+
+{{-- <x-sub-section-heading label="Content Viewer" />
+
+Browse shared media, documents, and links from a conversation-level viewer inside the chat details panel.
+
+**Pro:** Content Viewer is available in Wirechat Pro. See the [Content Viewer]({{ docs()->route('usage.content-viewer') }}) page for the full guide.
+
+```php
+use Wirechat\Wirechat\Panel;
+
+public function panel(Panel $panel): Panel
+{
+    return $panel
+          //...
+          ->contentViewer();
+}
+```
+
+Pass `false` to disable it: `->contentViewer(false)`. --}}
+
 <x-sub-section-heading label="Color theme" />
 
 Easily update the panel’s primary color so it aligns with your brand colors.
@@ -276,7 +454,7 @@ return $panel
         'primary' => Color::Blue
     ]);
 }
-````
+```
 
 <x-sub-section-heading label="Heading" />
 
@@ -308,24 +486,11 @@ public function panel(Panel $panel): Panel
 }
 ```
 
-<x-sub-section-heading label="Create Chat Action" />
+<x-sub-section-heading label="Actions" />
 
-Make the create create chat button action visible on WireChat UI.
+Wirechat panel actions let you control shortcuts such as creating chats, creating groups, clearing chats, deleting chats, returning home, and deleting messages.
 
-```php
-use Wirechat\Wirechat\Panel;
-
-public function panel(Panel $panel): Panel
-{
-    return $panel
-          //...
-          ->createChatAction();
-}
-```
-
-<x-sub-section-heading label="Create Group Action" />
-
-Show the create create group action.
+For full action documentation, including `icon` and icon-attribute configuration, see the [Actions]({{ docs()->route('actions') }}) page.
 
 ```php
 use Wirechat\Wirechat\Panel;
@@ -333,59 +498,13 @@ use Wirechat\Wirechat\Panel;
 public function panel(Panel $panel): Panel
 {
     return $panel
-          //...
-          ->createGroupAction();
-}
-```
-
-<x-sub-section-heading label="Redirect To Home Action" />
-
-Show the create new group action
-
-```php
-use Wirechat\Wirechat\Panel;
-
-public function panel(Panel $panel): Panel
-{
-    return $panel
-          //...
-          ->redirectToHomeAction();
-}
-```
-
-<x-sub-section-heading label="HomeUrl" />
-
-Set the redirect url when the home action is clicked
-
-```php
-use Wirechat\Wirechat\Panel;
-
-public function panel(Panel $panel): Panel
-{
-    return $panel
-          //...
-          ->homeUrl('/dashboard');
-}
-```
-
-
-<x-sub-section-heading label="Delete Message Actions" />
-
-**Delete Message actions** are enabled by default:
-
-- Delete message for me
-- Delete message for everyone
-
-You can disable these actions in the panel.
-
-```php
-use Wirechat\Wirechat\Panel;
-
-public function panel(Panel $panel): Panel
-{
-    return $panel
-          //...
-          ->deleteMessageActions(false)
+        //...
+        ->createChatAction()
+        ->createGroupAction()
+        ->clearChatAction()
+        ->deleteChatAction()
+        ->redirectToHomeAction(url: '/dashboard')
+        ->deleteMessageActions();
 }
 ```
 
@@ -396,12 +515,16 @@ public function panel(Panel $panel): Panel
         <x-sub-navigation :items="[
             'Default Panel Setup',
             'Creating Panels',
+            'Panel Methods Overview',
+            'Quick Example',
             'Methods' => [
                 'Panel ID',
                 'Path',
                 'Middleware',
                 'Chat Middleware',
                 'Enable Chats Search',
+                'Parse Message URLs',
+                'Unread Messages Indicator',
                 'Enable Emoji Picker',
                 'Web Push Notifications',
                 'Messages Queue',
@@ -413,11 +536,7 @@ public function panel(Panel $panel): Panel
                 'Color theme',
                 'Heading',
                 'Favicon',
-                'Create Chat Action',
-                'Create Group Action',
-                'Redirect To Home Action',
-                'HomeUrl',
-                'Delete Message Actions'
+                'Actions'
             ],
 
 

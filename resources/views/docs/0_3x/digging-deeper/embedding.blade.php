@@ -45,6 +45,41 @@ With your layout set, you can embed the all-in-one `wirechat` component, which s
 > **Important:**
 > Always wrap Wirechat in a container with a **fixed height**. Otherwise, new messages and chats may overflow or render incorrectly.
 
+<x-sub-section-heading label="Styling Embedded Widgets"/>
+
+Embedded Wirechat components also accept scoped UI props so you can override wrapper classes without affecting every nested layer.
+
+- `class` and `styles` apply to the outer `wirechat` widget shell.
+- `chatsClass` and `chatsStyles` apply only to the embedded chats list inside the `wirechat` widget.
+- `chatClass` and `chatStyles` apply only to the active chat panel inside the `wirechat` widget.
+- When you embed `wirechat.chats` or `wirechat.chat` directly, those standalone components also accept `class` and `styles`.
+
+Because custom classes are appended after Wirechat’s defaults, utilities like Tailwind border and radius overrides work as expected.
+
+@verbatim
+```blade
+<div class="h-[calc(100vh_-_10.0rem)]">
+    <livewire:wirechat class="border-none rounded-none" />
+</div>
+```
+@endverbatim
+
+That example removes the default border and rounding from the outer Wirechat widget while leaving the inner chats and chat shells unchanged.
+
+If you want to target each layer separately, you can pass dedicated props:
+
+@verbatim
+```blade
+<div class="h-[calc(100vh_-_10.0rem)]">
+    <livewire:wirechat
+        class="border-none rounded-none"
+        chatsClass="border-r-none"
+        chatClass="dark:bg-gray-700 border"
+    />
+</div>
+```
+@endverbatim
+
 ---
 
 <x-section-heading label="Components"/>
@@ -73,6 +108,16 @@ Sometimes, you only want a list of available conversations in a specific area—
 
 In “traditional” mode, clicking on a conversation sends the user to the default conversation route, loading the chat on a new page.
 
+You can also style the standalone chats component directly:
+
+@verbatim
+```blade
+<div class="h-[calc(100vh_-_10.0rem)]">
+    <livewire:wirechat.chats class="rounded-none" />
+</div>
+```
+@endverbatim
+
 ### **Widget Component**
 
 For a completely dynamic experience, pass `widget="true"` to the `chats` component:
@@ -86,6 +131,23 @@ For a completely dynamic experience, pass `widget="true"` to the `chats` compone
 @endverbatim
 
 When a conversation is clicked, an `open-chat` event is dispatched as a Livewire event. If the `wirechat` component is on the same page, it listens for that event and immediately loads the selected chat—no page refresh required.
+
+The standalone chat component supports the same scoped wrapper overrides:
+
+@verbatim
+```blade
+<livewire:wirechat.chat
+    :conversation="$conversation->id"
+    class="rounded-none"
+/>
+```
+@endverbatim
+
+---
+
+{{-- <x-section-heading label="Tray Widget" />
+
+If you want chat to stay available as a floating entry point across your layout instead of occupying page content, see the Pro [Tray Widget]({{ docs()->route('usage.tray') }}) guide. --}}
 
 ---
 

@@ -58,7 +58,7 @@
     {!! SEO::generate(true) !!}
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.bunny.net/css?family=public-sans:400,500,600,700&display=swap" rel="stylesheet" />
 
     <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -74,19 +74,7 @@
             scroll-behavior: smooth;
             /*font-family: var(--Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace);*/
         }
-
-        .quicksand-font {
-                        font-family: "Quicksand", sans-serif;
-                        font-optical-sizing: auto;
-                        font-weight: 500;
-                        font-style: normal;
-                    }
-
-
     </style>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
 
     <!-- Styles / Scripts -->
     <!-- If dark mode, use this -->
@@ -98,7 +86,7 @@
     @livewireStyles
 </head>
 
-<body class="quicksand-font antialiased relative w-full h-full  min-h-screen dark:bg-zinc-900 dark:text-white/50 ">
+<body class="font-sans antialiased relative w-full h-full min-h-screen dark:bg-zinc-900 dark:text-white/50 ">
 
     @production
         <!-- Google Tag Manager (noscript) -->

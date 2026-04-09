@@ -80,7 +80,7 @@
 
         <li>
             @if(docs()->hasRoute('panels'))
-                <x-sidebar-link new href="{{ docs()->route('panels') }}"
+                <x-sidebar-link  href="{{ docs()->route('panels') }}"
                                 active="{{ request()->routeIs('panels') }}">
                     Panels
                 </x-sidebar-link>
@@ -88,9 +88,14 @@
             @endif
         </li>
 
-
         <li>
-
+            @if(docs()->hasRoute('actions'))
+                <x-sidebar-link new href="{{ docs()->route('actions') }}"
+                                active="{{ request()->routeIs('actions') }}">
+                    Actions
+                </x-sidebar-link>
+            @endif
+        </li>
 
         <li>
             <x-sidebar-link href="{{ docs()->route('usage.attachments') }}"
@@ -98,6 +103,23 @@
                 Attachments
             </x-sidebar-link>
         </li>
+        {{-- <li>
+            @if(docs()->hasRoute('usage.content-viewer'))
+                <x-sidebar-link new href="{{ docs()->route('usage.content-viewer') }}"
+                                active="{{docs()->routeIs('usage.content-viewer') }}">
+                    Content Viewer
+                </x-sidebar-link>
+            @endif
+        </li> --}}
+ 
+        {{-- <li>
+            @if(docs()->hasRoute('usage.tabs'))
+                <x-sidebar-link new href="{{ docs()->route('usage.tabs') }}"
+                                active="{{docs()->routeIs('usage.tabs') }}">
+                    Tabs
+                </x-sidebar-link>
+            @endif
+        </li> --}}
         <li>
 
             <x-sidebar-link href="{{ docs()->route('usage.aggregations') }}"
@@ -106,7 +128,14 @@
             </x-sidebar-link>
 
         </li>
-
+       {{-- <li>
+            @if(docs()->hasRoute('usage.tray'))
+                <x-sidebar-link new href="{{ docs()->route('usage.tray') }}"
+                                active="{{docs()->routeIs('usage.tray') }}">
+                    Tray
+                </x-sidebar-link>
+            @endif
+        </li> --}}
 
         <li>
             <x-sidebar-link  href="{{ docs()->route('usage.notifications') }}"
@@ -134,6 +163,11 @@
                 Chats
             </x-sidebar-link>
         </li>
+        {{-- <li>
+            <x-sidebar-link href="{{ docs()->route('rooms.message-requests') }}" active="{{docs()->routeIs('rooms.message-requests') }}">
+                Message Requests
+            </x-sidebar-link>
+        </li> --}}
         <li>
             <x-sidebar-link href="{{ docs()->route('rooms.groups') }}" active="{{docs()->routeIs('rooms.groups') }}">
                 Groups
@@ -165,9 +199,17 @@
 
         @if(docs()->hasRoute('customization.users'))
             <li>
-                <x-sidebar-link new href="{{ docs()->route('customization.users') }}"
+                <x-sidebar-link  href="{{ docs()->route('customization.users') }}"
                                 active="{{docs()->routeIs('customization.users') }}">
                     Users
+                </x-sidebar-link>
+            </li>
+        @endif
+        @if(docs()->hasRoute('customization.models'))
+            <li>
+                <x-sidebar-link new href="{{ docs()->route('customization.models') }}"
+                                active="{{docs()->routeIs('customization.models') }}">
+                    Models
                 </x-sidebar-link>
             </li>
         @endif
@@ -219,7 +261,7 @@
         </li>
         <li>
 
-            <x-sidebar-link new href="{{ docs()->route('customization.theme') }}"
+            <x-sidebar-link  href="{{ docs()->route('customization.theme') }}"
                             active="{{docs()->routeIs('customization.theme') }}">
                 Theme
             </x-sidebar-link>
@@ -296,4 +338,3 @@
         </li>
     </ol>
 </section>
-
