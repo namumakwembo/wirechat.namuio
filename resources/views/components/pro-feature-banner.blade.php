@@ -10,7 +10,7 @@
 <div class=" w-full sm:min-w-32 sm:max-w-fit ">
 <a href="https://buymeacoffee.com/namuio/e/366303" 
 target="_blank" 
-rel="noreferrer" 
+rel="noopener noreferrer" 
 class="  flex items-center gap-2 text-center justify-center border border-blue-500   no-underline  decoration-none rounded-lg  font-medium  text-sm px-2 py-2 focus:outline-none">
 Upgrade to Pro
 
