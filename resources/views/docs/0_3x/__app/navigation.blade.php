@@ -164,6 +164,11 @@
             </x-sidebar-link>
         </li>
         <li>
+            <x-sidebar-link href="{{ docs()->route('rooms.message-requests') }}" active="{{docs()->routeIs('rooms.message-requests') }}">
+                Message Requests
+            </x-sidebar-link>
+        </li>
+        <li>
             <x-sidebar-link href="{{ docs()->route('rooms.groups') }}" active="{{docs()->routeIs('rooms.groups') }}">
                 Groups
             </x-sidebar-link>

@@ -174,6 +174,11 @@ Route::prefix('docs/' . $routePrefix)
                 return view('docs.' . $docs->getViewFolder() . '.rooms.chats');
             })->name('rooms.chats');
 
+            Route::get('/message-requests', function () use ($docs) {
+                Helper::seo('Message Requests', 'Learn how Wirechat private message requests work, how recipients review pending conversations, and how to handle accept or reject flows.');
+                return view('docs.' . $docs->getViewFolder() . '.rooms.message-requests');
+            })->name('rooms.message-requests');
+
             Route::get('/groups', function () use ($docs) {
                 Helper::seo('Groups', 'Learn how to manage , create and edit groups');
                 return view('docs.' . $docs->getViewFolder() . '.rooms.groups');
